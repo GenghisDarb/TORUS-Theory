@@ -1,10 +1,25 @@
-name: CI Skeleton
+name: CI Full
 on: [push, pull_request]
 jobs:
-  ci-check:
+  validate-structure:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Verify CI skeleton
-        run: echo "CI skeleton OK"
+      - name: Validate chapters folder
+        run: |
+          if ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
+            echo "No DOCX files found in chapters folder!"; exit 1;
+          fi
+      - name: Validate supplements and experiments folders
+        run: |
+          for folder in docs/supplements docs/experiments; do
+            if [ ! -d "$folder" ]; then
+              echo "$folder does not exist!"; exit 1;
+            fi
+          done
+      - name: Check for duplicate filenames
+        run: |
+          if find docs/ -type f | sed 's!.*/!!' | sort | uniq -d | grep -q .; then
+            echo "Duplicate filenames detected!"; exit 1;
+          fi
