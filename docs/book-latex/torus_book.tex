@@ -1,0 +1,24 @@
+\documentclass[11pt]{book}
+\usepackage{graphicx,hyperref}
+\title{TORUS Theory}
+\author{Bradley C.\ Peter \& Halcyon}
+\date{\today}
+\begin{document}
+\maketitle
+\tableofcontents
+
+% --- front-matter ---
+\include{frontmatter/00_Preface}
+\include{frontmatter/Table_of_Contents}
+
+% --- chapters 01–15 ---
+\foreach \i in {01,...,15}{
+  \include{chapters/\i_*} % wildcard works with latexmk -shell-escape
+}
+
+% --- appendices A–E ---
+\foreach \a in {A,B,C,D,E}{
+  \include{appendices/\a_*}
+}
+
+\end{document}

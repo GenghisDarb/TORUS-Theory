@@ -1,0 +1,37 @@
+name: Build & Sync Book
+
+on:
+  push:
+    paths:
+      - 'docs/book/**/*.docx'
+      - '.github/workflows/book_pipeline.yml'
+  workflow_dispatch:
+
+jobs:
+  sync-and-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install Pandoc & LaTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc texlive-full
+    - name: Convert DOCX → LaTeX
+      run: scripts/convert_docx_to_tex.sh
+    - name: Commit updated .tex mirror
+      run: |
+        git config user.name  "docx-sync-bot"
+        git config user.email "bot@users.noreply.github.com"
+        git add docs/book-latex
+        git diff --cached --quiet || git commit -m "CI: auto-sync .tex mirror"
+        git push
+    - name: Build PDF
+      working-directory: docs/book-latex
+      run: latexmk -pdf -silent torus_book.tex
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: TORUS-Book
+        path: docs/book-latex/torus_book.pdf
