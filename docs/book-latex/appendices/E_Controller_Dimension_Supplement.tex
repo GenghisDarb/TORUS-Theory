@@ -341,12 +341,12 @@ abstract ``phase angle'' contribution of layer \$n\$'s transformation
 operator \$\textbackslash mathcal\{R\}\emph{n\$ in the complex plane, or
 via the phase of a state vector advanced by
 \$\textbackslash mathcal\{R\}n\$). The net phase accumulated after 13
-layers is\\
-\textbackslash Theta\_\{\textbackslash text\{net\}\}
+layers is}\\
+\emph{\textbackslash Theta\_\{\textbackslash text\{net\}\}
 \textbackslash;=\textbackslash; \textbackslash sum\_\{n=0\}\^{}\{12\}
-\textbackslash theta\_n \textbackslash,. \textbackslash tag\{2\}\\
-For perfect closure without a separate controller, we would require
-\$\textbackslash Theta\{\textbackslash text\{net\}\} =
+\textbackslash theta\_n \textbackslash,. \textbackslash tag\{2\}}\\
+\emph{For perfect closure without a separate controller, we would
+require \$\textbackslash Theta\{\textbackslash text\{net\}\} =
 2\textbackslash pi k\$ for some integer \$k\$ (usually we expect \$k=1\$
 for one complete cycle). If the TORUS model were exactly self-closing on
 its own, we would have
@@ -572,13 +572,11 @@ clarity:\\
 \textbackslash prod\_\{n=0\}\^{}\{12\} \textbackslash mathcal\{R\}\_n
 \textbackslash cdot
 \textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\} =
-\textbackslash mathbb\{I\}\textbackslash,.
-\textbackslash tag\{4\textquotesingle\}\\
-Equation (4\textquotesingle) is the formal statement that the
-\textbf{extended sequence of 14 transformations (including the
-controller) closes the loop}.
+\textbackslash mathbb\{I\}\textbackslash,. \textbackslash tag\{4'\}\\
+Equation (4') is the formal statement that the \textbf{extended sequence
+of 14 transformations (including the controller) closes the loop}.
 
-From Equation (4\textquotesingle), it immediately follows that\\
+From Equation (4'), it immediately follows that\\
 \textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\} =
 \textbackslash Big(\textbackslash prod\_\{n=0\}\^{}\{12\}
 \textbackslash mathcal\{R\}\_n\textbackslash Big)\^{}\{-1\} =
@@ -740,8 +738,7 @@ possesses to enforce self-consistency.
 \textbackslash mathcal\{R\}\_n \textbackslash cdot
 \textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\} =
 \textbackslash mathbb\{I\}∏n=012\hspace{0pt}Rn\hspace{0pt}⋅Rcontrol\hspace{0pt}=I
-(repeated from (4\textquotesingle)) is the centerpiece of the CDH. It
-states that once
+(repeated from (4')) is the centerpiece of the CDH. It states that once
 Rcontrol\textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\}Rcontrol\hspace{0pt}
 is included, the entire cycle's combined effect is the identity
 transformation. This is by construction -- we define
@@ -932,74 +929,20 @@ and the new controller operator requirement.
 \textbf{Table 1: Key Conditions for Recursion Closure and Controller
 Dimension}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1626}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4825}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3549}}@{}}
+\begin{longtable}[]{@{}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Closure Condition}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Mathematical Formulation}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Context}
-\end{minipage} \\
-\midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\textbf{Baseline Closure (No Controller)} &
-\$\textbackslash displaystyle
-\textbackslash prod\_\{n=0\}\^{}\{12\}\textbackslash mathcal\{R\}\emph{n
-= \textbackslash mathcal\{R\}}\{\textbackslash text\{net\}\}
-\textbackslash neq \textbackslash mathbb\{I\}\$ (expected
-\$\textbackslash mathcal\{R\}\_\{\textbackslash text\{net\}\}
-\textbackslash approx R(-25.71\^{}\textbackslash circ)\$) & Product of
-13 layer operators yields a net rotation (deficit) instead of identity
-(Section 1) \\
-\textbf{Phase Quantization per Cycle} & \$\textbackslash displaystyle
-\textbackslash omega\^{}\{13\} = 1 \textbackslash implies
-\textbackslash omega = e\^{}\{2\textbackslash pi i k/13\}\$ & Recursion
-eigenmodes repeat every 13 steps; \$k=1\$ gives fundamental phase
-advance \$2\textbackslash pi/13\$ per layer (no controller scenario) \\
-\textbf{Observer-State Quantization (OSQN)} &
-\$\textbackslash displaystyle 13,\textbackslash phi\_m =
-2\textbackslash pi \textbackslash ell,;
-\textbackslash ell\textbackslash in\textbackslash mathbb\{Z\}\$ & Total
-observer-induced phase over 13 layers must equal an integer multiple of
-\$2\textbackslash pi\$ for self-consistency (ensures \$m\$ is
-integer) \\
-\textbf{Angular Deficit (No Controller)} & \$\textbackslash displaystyle
-\textbackslash delta = \textbackslash frac\{2\textbackslash pi\}\{14\}
-\textbackslash approx 25.71\^{}\textbackslash circ\$ & The missing phase
-to close the loop, if only 13 physical layers contribute (Section 1.2 \&
-1.3) \\
-\textbf{Controller Insertion (Extended Closure)} &
-\$\textbackslash displaystyle
-\textbackslash prod\_\{n=0\}\^{}\{13\}\textbackslash mathcal\{R\}\emph{n
-\textbackslash cdot
-\textbackslash mathcal\{R\}}\{\textbackslash text\{control\}\} =
-\textbackslash mathbb\{I\}\$ & Inclusion of
-\$\textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\}\$ as
-14th operator yields exact closure (Section 2) \\
-\textbf{Controller Operator Definition} & \$\textbackslash displaystyle
-\textbackslash mathcal\{R\}\emph{\{\textbackslash text\{control\}\} =
-\textbackslash Big(\textbackslash prod}\{n=0\}\^{}\{12\}\textbackslash mathcal\{R\}\_n\textbackslash Big)\^{}\{-1\}\$
-& Controller is inverse of net physical-layer transformation, supplying
-missing rotation (Eq. 5) \\
-\textbf{Controller Operator Trace} & \$\textbackslash displaystyle
-\textbackslash mathrm\{Tr\}(\textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\})
-= 0\$ & Controller is a purely corrective rotation with no scalar
-component (Section 2.1) \\
-\textbf{Controller Non-triviality} & \$\textbackslash displaystyle
-\textbackslash mathcal\{R\}\_\{\textbackslash text\{control\}\}
-\textbackslash neq \textbackslash mathbb\{I\}\$ & Controller is an
-essential, non-identity operation (Section 2.2) \\
-\textbf{Minimal Closure (no multi-cycle)} &
-\$\textbackslash displaystyle \textbackslash ell \textbackslash text\{
-must be integer (no half-integer OSQN)\}\$\hspace{0pt} & Ensures the
-recursion closes in one 14-layer cycle, not requiring multiple loops
-(achieved by controller adjusting any fractional leftover phase) \\
+ \\
+ \\
+ \\
+ \\
+ \\
+ \\
+ \\
+ \\
+ \\
 \end{longtable}
 
 In Table 1, references to the TORUS master document are given for the
@@ -1309,17 +1252,17 @@ as an additive quantum number, then
 might shift \$m\$ by a fixed amount (e.g., subtract
 \$\textbackslash ell\$ if an \$\textbackslash ell\$ had accumulated). In
 a more concrete example: suppose an observer can be characterized by a
-state \$\textbar m\textbackslash rangle\$ indicating how many
-observations have been ``locked in'' (like memory of distinct events).
-As the recursion proceeds, \$m\$ might increment. By 13D, let's say the
-observer's state is \$\textbar m\_f\textbackslash rangle\$. Now 0D's
-observer state was \$\textbar m\_i\textbackslash rangle\$. For true
-closure, we require \$\textbar m\_f\textbackslash rangle\$ corresponds
-to \$\textbar m\_i\textbackslash rangle\$ (perhaps \$m\_f = m\_i\$ in
-modulo sense). The controller would facilitate this by an operation
-\$\textbar m\_f\textbackslash rangle \textbackslash to
-\textbar m\_i\textbackslash rangle\$. If \$m\_f - m\_i =
-\textbackslash ell\$, the controller action could be conceptualized as
+state \$m\textbackslash rangle\$ indicating how many observations have
+been ``locked in'' (like memory of distinct events). As the recursion
+proceeds, \$m\$ might increment. By 13D, let's say the observer's state
+is \$m\_f\textbackslash rangle\$. Now 0D's observer state was
+\$m\_i\textbackslash rangle\$. For true closure, we require
+\$m\_f\textbackslash rangle\$ corresponds to
+\$m\_i\textbackslash rangle\$ (perhaps \$m\_f = m\_i\$ in modulo sense).
+The controller would facilitate this by an operation
+\$m\_f\textbackslash rangle \textbackslash to
+m\_i\textbackslash rangle\$. If \$m\_f - m\_i = \textbackslash ell\$,
+the controller action could be conceptualized as
 \$e\^{}\{-i\textbackslash ell P\}\$ on the observer state, where \$P\$
 is the operator that increments \$m\$ (momentum conjugate if \$m\$ is
 like a position on a discrete circle). This ties in with the phase
