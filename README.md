@@ -9,6 +9,7 @@ This repository contains the book manuscript, peer-review papers, validation sui
 
 | Path | Contents |
 |------|-----------|
+| `docs/book-docx-fixed/` | Canonical DOCX: all edits here; legacy `docs/book/` retained for historical diff only |
 | `docs/book/frontmatter/` | `00_Preface.docx`, `Table_of_Contents.docx` |
 | `docs/book/chapters/`   | 15 chapter DOCX files (`01_…` – `15_…`) |
 | `docs/book/appendices/` | Appendices A–E (`A_…` – `E_…`) |
