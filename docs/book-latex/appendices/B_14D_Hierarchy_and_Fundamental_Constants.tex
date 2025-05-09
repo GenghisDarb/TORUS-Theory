@@ -1,66 +1,60 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\author{}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
 \date{}
 
 \begin{document}
@@ -78,72 +72,63 @@ scales (e.g. Planck time and length) up to the cosmic scale (observable
 universe size and age), and they are \textbf{not arbitrary} -- each
 constant is related to others through mathematical relationships, and
 the highest-level constants feed back into the lowest level to complete
-the toroidal recursion\hspace{0pt}.
+the toroidal recursion​.
 
 \textbf{Table B-1. TORUS Dimensional Hierarchy (0D--13D) with Key
-Constants}\hspace{0pt}
+Constants}​
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2476}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3426}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4097}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Dimension (Level)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Fundamental Constant (symbol, value)}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Physical Meaning / Role in Recursion}
-\end{minipage} \\
-\midrule\noalign{}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Dimension (Level)} & \textbf{Fundamental Constant (symbol,
+value)} & \textbf{Physical Meaning / Role in Recursion}\tabularnewline
+\midrule
 \endhead
-\bottomrule\noalign{}
-\endlastfoot
 \textbf{0D (Origin)} & Fine-Structure Constant (α ≈ 1/137) &
 Dimensionless seed coupling; no extent (baseline interaction
-strength)\hspace{0pt}. \\
+strength)​.\tabularnewline
 \textbf{1D (Temporal Quantum)} & Planck time (tₚ ≈ 5.39×10\^{}−44 s) &
 Fundamental time quantum -- the smallest meaningful ``tick'' of time in
-the model. \\
+the model.\tabularnewline
 \textbf{2D (Spatial Quantum)} & Planck length (ℓₚ ≈ 1.616×10\^{}−35 m) &
 Fundamental spatial quantum -- the smallest unit of length (the ``pixel
-size'' of space)\hspace{0pt}. \\
+size'' of space)​.\tabularnewline
 \textbf{3D (Mass--Energy Unit)} & Planck mass (mₚ ≈ 2.17×10\^{}−8 kg) &
 Fundamental mass--energy unit -- scale at which quantum and gravity meet
-(micro--macro threshold)\hspace{0pt}. \\
+(micro--macro threshold)​.\tabularnewline
 \textbf{4D (Space--Time Link)} & Speed of light (c = 3.0×10\^{}8 m/s) &
 Space--time conversion constant -- unifies space \& time (establishes
-relativistic structure)\hspace{0pt}. \\
+relativistic structure)​.\tabularnewline
 \textbf{5D (Quantum Action)} & Planck's constant (h = 6.626×10\^{}−34
 J·s) & Quantum of action -- introduces quantization (wave-particle
-duality phase)\hspace{0pt}. \\
+duality phase)​.\tabularnewline
 \textbf{6D (Thermal Energy Unit)} & Boltzmann's constant (k\_B =
 1.38065×10\^{}−23 J/K) & Thermodynamic energy scale -- converts energy
-to temperature (introduces statistical behavior)\hspace{0pt}. \\
+to temperature (introduces statistical behavior)​.\tabularnewline
 \textbf{7D (Macro-Particle Count)} & Avogadro's number (N\_A =
 6.022×10\^{}23) & Collective quantity scale -- standardizes large
-particle collections (bridges micro and macro scales)\hspace{0pt}. \\
+particle collections (bridges micro and macro scales)​.\tabularnewline
 \textbf{8D (Thermodynamic Completion)} & Ideal gas constant (R = 8.314
 J/(mol·K)) & Equation-of-state constant -- governs bulk matter behavior
-(links pressure, volume, temperature)\hspace{0pt}. \\
+(links pressure, volume, temperature)​.\tabularnewline
 \textbf{9D (Gravity Introduction)} & Gravitational constant (G ≈
 6.674×10\^{}−11 m\^{}3·kg\^{}−1·s\^{}−2) & Gravitational coupling --
 introduces gravity as the dominant long-range force (cosmic scale
-interaction)\hspace{0pt}. \\
+interaction)​.\tabularnewline
 \textbf{10D (Extreme Unification Temp)} & Planck temperature (T\_P ≈
 1.416×10\^{}32 K) & Ultimate temperature -- unification energy scale
-where all fundamental forces unify\hspace{0pt}. \\
+where all fundamental forces unify​.\tabularnewline
 \textbf{11D (Unified Force Coupling)} & Unified coupling
-(α\textless sub\textgreater unified\textless/sub\textgreater{}
+(α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{}
 \textasciitilde{} 1) & Single-force regime -- dimensionless coupling ≈1
-signifying convergence of all forces (maximal symmetry)\hspace{0pt}. \\
+signifying convergence of all forces (maximal symmetry)​.\tabularnewline
 \textbf{12D (Cosmic Spatial Scale)} & Cosmic length (L\_U
 \textasciitilde{} 4.4×10\^{}26 m) & Observable universe size --
 characteristic length scale of the universe (horizon scale for this
-cycle)\hspace{0pt}. \\
+cycle)​.\tabularnewline
 \textbf{13D (Cosmic Time Scale)} & Cosmic time (T\_U \textasciitilde{}
 4.35×10\^{}17 s) & Cycle duration -- the age of the universe in this
-cycle (time from Big Bang to present closure)\hspace{0pt}. \\
+cycle (time from Big Bang to present closure)​.\tabularnewline
+\bottomrule
 \end{longtable}
 
 Each of the above constants defines a \textbf{new layer of physical
@@ -154,101 +139,99 @@ scales. Crucially, these constants are interrelated across dimensions:
 lower-dimensional constants combine to give rise to higher-dimensional
 ones, and the highest levels feed back into the lowest, ensuring the
 \textbf{closure of the toroidal recursion} (after 13D, the ``next'' step
-loops back to 0D rather than introducing an independent
-14D)\hspace{0pt}. Below, we elaborate on each dimension's constant with
-its physical interpretation, derivation context, and how it harmonizes
-with other constants across the 14D scale.
+loops back to 0D rather than introducing an independent 14D)​. Below, we
+elaborate on each dimension's constant with its physical interpretation,
+derivation context, and how it harmonizes with other constants across
+the 14D scale.
 
 \textbf{0D -- Origin Coupling Constant (Seed Dimensionless Parameter)}
 
 \textbf{Constant \& Value:} A fundamental \textbf{dimensionless
-coupling} of order \textasciitilde0.0073 (approximately
-1/137)\hspace{0pt}. In magnitude, this is essentially the same as the
-electromagnetic fine-structure constant α ≈
-1/137.03599\ldots\hspace{0pt}. TORUS adopts this constant at 0D as an
-\emph{analog} of the fine-structure constant -- it represents the
-initial ``seed'' interaction strength at the origin of the recursion
-cycle.
+coupling} of order \textasciitilde{}0.0073 (approximately 1/137)​. In
+magnitude, this is essentially the same as the electromagnetic
+fine-structure constant α ≈ 1/137.03599\ldots{}​. TORUS adopts this
+constant at 0D as an \emph{analog} of the fine-structure constant -- it
+represents the initial ``seed'' interaction strength at the origin of
+the recursion cycle.
 
 \textbf{Physical Meaning:} At 0D (zero dimensions), we have an
 \textbf{origin point} with no extent in space or time. This tiny
 coupling is the only defining parameter of that stage, and it
 \textbf{``seeds'' the entire cycle} with a baseline interaction
-strength\hspace{0pt}. In other words, even in a 0-dimensional state
-there is a nonzero propensity for physical interaction -- a primordial
-kernel from which higher-dimensional structures will grow. The smallness
-of this constant (\textasciitilde10\^{}−2) means the cycle starts
-gently: the initial coupling is weak, providing a delicate starting
-point that will amplify through subsequent dimensions\hspace{0pt}.
+strength​. In other words, even in a 0-dimensional state there is a
+nonzero propensity for physical interaction -- a primordial kernel from
+which higher-dimensional structures will grow. The smallness of this
+constant (\textasciitilde{}10\^{}−2) means the cycle starts gently: the
+initial coupling is weak, providing a delicate starting point that will
+amplify through subsequent dimensions​.
 
 \textbf{Anchor Role in Recursion:} Being dimensionless and at the start,
 the 0D constant anchors the \textbf{micro end} of the TORUS loop. Many
 of the higher-dimensional constants relate back to this seed value
 through mathematical ratios or as part of larger dimensionless
 combinations. Notably, TORUS postulates that the \textbf{final 13D
-constant (cosmic time)} will inversely mirror the 0D
-constant\hspace{0pt}. In essence, the extremely small coupling at 0D
-finds its complement in an extremely large time/length at 13D, helping
-to close the recursion loop. This idea is that if one ``runs'' the tiny
-coupling through all the transformations of the 14-stage cycle, by the
-end (13D) the product of factors yields a dimensionless unity, which
-then effectively resets the next cycle\hspace{0pt}. The interplay
-between 0D and 13D is thus a cornerstone of TORUS's \textbf{toroidal
-closure}: the output of the highest dimension feeds back as the input to
-the lowest, ensuring consistency. In summary, 0D contributes a small but
-crucial dimensionless number that sets the stage for the universe's
-parameters, and after the full recursion up to 13D, the universe
-``closes the loop'' by using the 13D result to regenerate a 0D-like
-state for a new cycle\hspace{0pt}.
+constant (cosmic time)} will inversely mirror the 0D constant​. In
+essence, the extremely small coupling at 0D finds its complement in an
+extremely large time/length at 13D, helping to close the recursion loop.
+This idea is that if one ``runs'' the tiny coupling through all the
+transformations of the 14-stage cycle, by the end (13D) the product of
+factors yields a dimensionless unity, which then effectively resets the
+next cycle​. The interplay between 0D and 13D is thus a cornerstone of
+TORUS's \textbf{toroidal closure}: the output of the highest dimension
+feeds back as the input to the lowest, ensuring consistency. In summary,
+0D contributes a small but crucial dimensionless number that sets the
+stage for the universe's parameters, and after the full recursion up to
+13D, the universe ``closes the loop'' by using the 13D result to
+regenerate a 0D-like state for a new cycle​.
 
 \textbf{1D -- Temporal Quantum (Fundamental Time Interval)}
 
 \textbf{Constant \& Value:} The \textbf{Planck time} \emph{t}ₚ,
-approximately 5.39 × 10\^{}−44 seconds\hspace{0pt}. This is the smallest
-meaningful unit of time in known physics, effectively the ``quantum'' of
-time. TORUS designates \emph{t}ₚ as the fundamental time interval at the
-1D level.
+approximately 5.39 × 10\^{}−44 seconds​. This is the smallest meaningful
+unit of time in known physics, effectively the ``quantum'' of time.
+TORUS designates \emph{t}ₚ as the fundamental time interval at the 1D
+level.
 
 \textbf{Physical Meaning:} At 1D, one degree of freedom is introduced --
 \textbf{time}. The 1D constant represents the minimal ``tick'' of time,
-i.e. the shortest duration that makes physical sense in the
-model\hspace{0pt}. Below this scale, the concept of a smooth time
-continuum breaks down; 1D provides a discrete stepping for the
-recursion. We can think of \emph{t}ₚ as the \textbf{frame rate of the
-universe's progression}\hspace{0pt}: each step of the TORUS recursion
-advances by one Planck-time increment. This means all higher processes
-count time in units of this fundamental interval.
+i.e. the shortest duration that makes physical sense in the model​.
+Below this scale, the concept of a smooth time continuum breaks down; 1D
+provides a discrete stepping for the recursion. We can think of
+\emph{t}ₚ as the \textbf{frame rate of the universe's progression}​:
+each step of the TORUS recursion advances by one Planck-time increment.
+This means all higher processes count time in units of this fundamental
+interval.
 
 \textbf{Harmonization Across Scales:} The Planck time is intimately
 linked with other constants to ensure consistency. A key relation is
 with the speed of light (4D constant \emph{c}): one Planck time
 multiplied by \emph{c} yields one Planck length (2D constant): \emph{c}
-× \emph{t}ₚ ≈ \emph{ℓ}ₚ\hspace{0pt}. This built-in linkage means that in
-one fundamental time tick, light travels one fundamental length. It is a
+× \emph{t}ₚ ≈ \emph{ℓ}ₚ​. This built-in linkage means that in one
+fundamental time tick, light travels one fundamental length. It is a
 direct embedding of Einstein's \textbf{space--time relation} at the
 smallest scale. The 1D constant also sets a base frequency scale -- its
 inverse (≈ 1.854×10\^{}43 s\^{}−1) is the ``Planck frequency.'' Using
 this frequency with the 5D constant (Planck's \emph{h}) reproduces the
 Planck energy: \emph{h} × (1/\emph{t}ₚ) \textasciitilde{} 1.23×10\^{}10
-J, on the order of \emph{m}ₚ \emph{c}\^{}2\hspace{0pt}. Thus, one
-oscillation per \emph{t}ₚ carries roughly one Planck mass-energy,
-showing how 1D (time) combines with 5D (action) to connect to 3D
-(mass-energy). Furthermore, the enormous cosmic time (13D
-\emph{T}\textless sub\textgreater U\textless/sub\textgreater) is
+J, on the order of \emph{m}ₚ \emph{c}\^{}2​. Thus, one oscillation per
+\emph{t}ₚ carries roughly one Planck mass-energy, showing how 1D (time)
+combines with 5D (action) to connect to 3D (mass-energy). Furthermore,
+the enormous cosmic time (13D
+\emph{T}\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}) is
 essentially a colossal multiple of this 1D tick. In fact,
-\emph{T}\textless sub\textgreater U\textless/sub\textgreater/\emph{t}ₚ
+\emph{T}\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/\emph{t}ₚ
 \textasciitilde{} 8×10\^{}60, a huge dimensionless number that
 intriguingly can be factored into products of other fundamental ratios
-(as discussed at 13D)\hspace{0pt}. All these connections underscore that
-\emph{t}ₚ is not an isolated parameter; it sits at the foundation of a
-hierarchy where \textbf{time scales from 10\^{}−44 s to 10\^{}17 s are
-related} by the structure of the recursion.
+(as discussed at 13D)​. All these connections underscore that \emph{t}ₚ
+is not an isolated parameter; it sits at the foundation of a hierarchy
+where \textbf{time scales from 10\^{}−44 s to 10\^{}17 s are related} by
+the structure of the recursion.
 
 \textbf{2D -- Spatial Quantum (Fundamental Length Scale)}
 
 \textbf{Constant \& Value:} The \textbf{Planck length} \emph{ℓ}ₚ, about
-1.616 × 10\^{}−35 meters\hspace{0pt}. This is the smallest meaningful
-unit of length, effectively the ``quantum'' of space in the model.
+1.616 × 10\^{}−35 meters​. This is the smallest meaningful unit of
+length, effectively the ``quantum'' of space in the model.
 
 \textbf{Physical Meaning:} At 2D, the recursion adds \textbf{spatial
 extent}. The 2D constant \emph{ℓ}ₚ defines the minimal length scale --
@@ -272,130 +255,127 @@ uncertainty in position) equals its \textbf{Schwarzschild radius}
 (gravitational radius). This happens for a particle of Planck mass (3D
 constant), illustrating that when you plug in \emph{m}ₚ, the
 characteristic quantum length ħ/(mₚ c) and gravitational length 2G
-mₚ/c\^{}2 both come out to \textasciitilde1.6×10\^{}−35 m\hspace{0pt}.
-That duality is essentially the definition of the Planck length in terms
-of ħ, G, and c, and TORUS encapsulates it as the point where the 2D, 3D,
+mₚ/c\^{}2 both come out to \textasciitilde{}1.6×10\^{}−35 m​. That
+duality is essentially the definition of the Planck length in terms of
+ħ, G, and c, and TORUS encapsulates it as the point where the 2D, 3D,
 and 9D constants intersect. Thus, 2D's constant ties together the
 presence of time (1D) and light speed (4D) with quantum (ħ at 5D) and
-gravity (G at 9D) in a single fundamental scale\hspace{0pt}. As the
-recursion proceeds to larger scales, \emph{ℓ}ₚ acts as the \textbf{base
-unit}: all macroscopic lengths (atomic scales, meter scales, etc.) are
-multiples of this fundamental quantum of space. Ultimately, the
-observable universe's size (12D) is an enormous multiple of \emph{ℓ}ₚ,
-and TORUS emphasizes that the product of the smallest and largest
-lengths is not random but yields a meaningful dimensionless number (see
-12D)\hspace{0pt}.
+gravity (G at 9D) in a single fundamental scale​. As the recursion
+proceeds to larger scales, \emph{ℓ}ₚ acts as the \textbf{base unit}: all
+macroscopic lengths (atomic scales, meter scales, etc.) are multiples of
+this fundamental quantum of space. Ultimately, the observable universe's
+size (12D) is an enormous multiple of \emph{ℓ}ₚ, and TORUS emphasizes
+that the product of the smallest and largest lengths is not random but
+yields a meaningful dimensionless number (see 12D)​.
 
 \textbf{3D -- Mass--Energy Unit (Quantum--Gravity Crossover Scale)}
 
 \textbf{Constant \& Value:} The \textbf{Planck mass} \emph{m}ₚ, roughly
-2.176 × 10\^{}−8 kilograms\hspace{0pt}, equivalent to about 2.0 ×
-10\^{}9 Joules of energy (\emph{m}ₚ c\^{}2). This is the fundamental
-mass-energy unit in the TORUS recursion.
+2.176 × 10\^{}−8 kilograms​, equivalent to about 2.0 × 10\^{}9 Joules of
+energy (\emph{m}ₚ c\^{}2). This is the fundamental mass-energy unit in
+the TORUS recursion.
 
 \textbf{Physical Meaning:} By 3D, having time (1D) and length (2D) in
 place, the recursion introduces \textbf{mass and energy}. The 3D
 constant \emph{m}ₚ represents a pivotal scale where quantum effects and
 gravitational effects are equally important. It is essentially the mass
 at which an object's own gravity is as significant as its quantum
-(wave-particle) nature\hspace{0pt}. Below this mass, particles are
-typically in the quantum regime with negligible self-gravity; at around
-this mass and above, gravitational interactions become non-negligible
-even at the quantum scale. In TORUS, \emph{m}ₚ thus marks the
-\textbf{threshold between the microcosm and the macrocosm}\hspace{0pt}:
-it's the scale at which a particle can gravitate like a black hole and
-at the same time have a quantum wavelength on the order of the Planck
-length. In practical terms, this is around 21.8 micrograms --
-surprisingly large for a ``fundamental'' mass (about the mass of a dust
-mite or a flea's egg), yet incredibly tiny on astronomical
-scales\hspace{0pt}. No known elementary particle approaches this mass;
-it's a theoretical construct signaling where our conventional physics
-might need unification.
+(wave-particle) nature​. Below this mass, particles are typically in the
+quantum regime with negligible self-gravity; at around this mass and
+above, gravitational interactions become non-negligible even at the
+quantum scale. In TORUS, \emph{m}ₚ thus marks the \textbf{threshold
+between the microcosm and the macrocosm}​: it's the scale at which a
+particle can gravitate like a black hole and at the same time have a
+quantum wavelength on the order of the Planck length. In practical
+terms, this is around 21.8 micrograms -- surprisingly large for a
+``fundamental'' mass (about the mass of a dust mite or a flea's egg),
+yet incredibly tiny on astronomical scales​. No known elementary
+particle approaches this mass; it's a theoretical construct signaling
+where our conventional physics might need unification.
 
 \textbf{Derivation \& Cross-Links:} The Planck mass is determined by
 lower-level constants together with gravity (9D). In fact, by setting
 the Compton wavelength equal to the Schwarzschild radius as noted above,
 one can solve for \emph{m} that satisfies ħ/(m c) = 2Gm/c\^{}2 =
-\emph{ℓ}ₚ, which yields m = \emph{m}ₚ\hspace{0pt}. Another way to see
-its significance is through a dimensionless combination: Gm ⁣p2/(ℏc)≈1G
-m\_\{\textbackslash!p\}\^{}2/(\textbackslash hbar c) ≈
-1Gmp2\hspace{0pt}/(ℏc)≈1\hspace{0pt}, meaning the gravitational
-interaction energy of two Planck masses at Planck-length separation is
-comparable to the energy of a single quantum (ħ) times c. TORUS builds
-this unity in by design: by the time we reach 3D in the hierarchy, the
-constants introduced (including G from 9D and ħ from 5D) ensure that
-this combination is \textasciitilde1\hspace{0pt}. Thus \emph{m}ₚ is not
-a free parameter but one fixed by earlier constants ħ, G, and c (indeed
-m ⁣p=ℏc/Gm\_\{\textbackslash!p\} =
-\textbackslash sqrt\{\textbackslash hbar
-c/G\}mp\hspace{0pt}=ℏc/G\hspace{0pt}). In the recursion context, the 3D
-scale is supported by 2D and 4D (space and relativistic unit c, via E =
-m c\^{}2) and also anticipates 9D (gravity) by defining where gravity
-``turns on.'' If one accumulates enough 1D time quanta and 2D spatial
-quanta worth of energy, reaching one 3D quantum of energy (∼2×10\^{}9 J)
-means \textbf{self-gravity becomes noticeable}\hspace{0pt}. In summary,
-3D's Planck mass ties together the foundational constants from lower
-dimensions into a mass scale that bridges quantum mechanics and
-gravitation, ensuring the hierarchy smoothly transitions from
-quantum-dominated physics to gravity-influenced physics at this point.
+\emph{ℓ}ₚ, which yields m = \emph{m}ₚ​. Another way to see its
+significance is through a dimensionless combination: Gm ⁣p2/(ℏc)≈1G
+m\_\{\textbackslash{}!p\}\^{}2/(\textbackslash{}hbar c) ≈
+1Gmp2​/(ℏc)≈1​, meaning the gravitational interaction energy of two
+Planck masses at Planck-length separation is comparable to the energy of
+a single quantum (ħ) times c. TORUS builds this unity in by design: by
+the time we reach 3D in the hierarchy, the constants introduced
+(including G from 9D and ħ from 5D) ensure that this combination is
+\textasciitilde{}1​. Thus \emph{m}ₚ is not a free parameter but one
+fixed by earlier constants ħ, G, and c (indeed
+m ⁣p=ℏc/Gm\_\{\textbackslash{}!p\} =
+\textbackslash{}sqrt\{\textbackslash{}hbar c/G\}mp​=ℏc/G​). In the
+recursion context, the 3D scale is supported by 2D and 4D (space and
+relativistic unit c, via E = m c\^{}2) and also anticipates 9D (gravity)
+by defining where gravity ``turns on.'' If one accumulates enough 1D
+time quanta and 2D spatial quanta worth of energy, reaching one 3D
+quantum of energy (∼2×10\^{}9 J) means \textbf{self-gravity becomes
+noticeable}​. In summary, 3D's Planck mass ties together the
+foundational constants from lower dimensions into a mass scale that
+bridges quantum mechanics and gravitation, ensuring the hierarchy
+smoothly transitions from quantum-dominated physics to
+gravity-influenced physics at this point.
 
 \textbf{4D -- Space--Time Link (Invariant Speed of Light)}
 
 \textbf{Constant \& Value:} The \textbf{speed of light} \emph{c},
-exactly 299,792,458 m/s in vacuum (defined value)\hspace{0pt}. TORUS
-takes \emph{c} as the defining constant of the 4D level.
+exactly 299,792,458 m/s in vacuum (defined value)​. TORUS takes \emph{c}
+as the defining constant of the 4D level.
 
 \textbf{Physical Meaning:} At 4D, the concept of \textbf{space-time
 unification} enters. While time and space were introduced at 1D and 2D,
 it is the 4D constant \emph{c} that truly binds them into a single
 framework. The speed of light is the conversion factor between units of
-time and units of space\hspace{0pt}, effectively defining how many
-meters ``correspond'' to a second. In TORUS, reaching 4D corresponds to
+time and units of space​, effectively defining how many meters
+``correspond'' to a second. In TORUS, reaching 4D corresponds to
 achieving a (3+1)-dimensional space-time with \emph{c} dictating the
 structure of relativity. The presence of \emph{c} ensures that
 \textbf{causality} is built into the recursion: no signal or influence
-can propagate faster than this speed, at any subsequent
-level\hspace{0pt}. In essence, 4D marks the stage where the universe's
-fabric has a finite light-speed limit, establishing the relativistic
-arena for all higher-dimensional physics to play out.
+can propagate faster than this speed, at any subsequent level​. In
+essence, 4D marks the stage where the universe's fabric has a finite
+light-speed limit, establishing the relativistic arena for all
+higher-dimensional physics to play out.
 
 \textbf{Interrelations:} The introduction of \emph{c} solidifies links
 that were already implicit. We've noted \emph{c} ties the 1D and 2D
-constants by \emph{c} · \emph{t}ₚ = \emph{ℓ}ₚ\hspace{0pt}, cementing the
-harmony between fundamental time and length. \emph{c} also appears in
-relations involving other constants: for the 3D mass-energy, \emph{c}
-converts mass to energy (E = m c\^{}2), and for the 5D action quantum,
-\emph{c} relates energy and wavelength (E = h c/λ)\hspace{0pt}. By
-explicitly including \emph{c}, TORUS ensures that \textbf{Lorentz
-invariance} (the principle of relativity) is ingrained in the theory
-from 4D onward. This means all processes from here up respect the fact
-that space and time coordinates mix under high-speed motion and that
-\emph{c} is the same in all reference frames. Adjacently, the value of
-the Planck mass (3D) and Planck time (1D) were defined using \emph{c},
-and upcoming constants will frequently incorporate \emph{c} (e.g. Planck
-temperature uses c in mₚ c\^{}2). By 4D, the recursion has constructed a
-full space-time backdrop; any phenomena introduced at 5D and above will
-occur \textbf{within this relativistic space-time}\hspace{0pt}. In
-summary, \emph{c} is the \textbf{glue of spacetime} in TORUS: it links
-space with time and ensures that the hierarchy conforms to the same
-light-speed limit observed in reality, underpinning cause and effect at
-all scales.
+constants by \emph{c} · \emph{t}ₚ = \emph{ℓ}ₚ​, cementing the harmony
+between fundamental time and length. \emph{c} also appears in relations
+involving other constants: for the 3D mass-energy, \emph{c} converts
+mass to energy (E = m c\^{}2), and for the 5D action quantum, \emph{c}
+relates energy and wavelength (E = h c/λ)​. By explicitly including
+\emph{c}, TORUS ensures that \textbf{Lorentz invariance} (the principle
+of relativity) is ingrained in the theory from 4D onward. This means all
+processes from here up respect the fact that space and time coordinates
+mix under high-speed motion and that \emph{c} is the same in all
+reference frames. Adjacently, the value of the Planck mass (3D) and
+Planck time (1D) were defined using \emph{c}, and upcoming constants
+will frequently incorporate \emph{c} (e.g. Planck temperature uses c in
+mₚ c\^{}2). By 4D, the recursion has constructed a full space-time
+backdrop; any phenomena introduced at 5D and above will occur
+\textbf{within this relativistic space-time}​. In summary, \emph{c} is
+the \textbf{glue of spacetime} in TORUS: it links space with time and
+ensures that the hierarchy conforms to the same light-speed limit
+observed in reality, underpinning cause and effect at all scales.
 
 \textbf{5D -- Quantum of Action (Planck's Constant, ħ)}
 
 \textbf{Constant \& Value:} \textbf{Planck's constant} \emph{h}, which
-is 6.62607015 × 10\^{}−34 J·s (exact, by SI definition)\hspace{0pt}.
-Often one uses the reduced Planck constant ħ = h/2π, but TORUS treats
-\emph{h} itself as the 5D constant for simplicity. This constant
-represents the smallest unit of action in quantum mechanics.
+is 6.62607015 × 10\^{}−34 J·s (exact, by SI definition)​. Often one uses
+the reduced Planck constant ħ = h/2π, but TORUS treats \emph{h} itself
+as the 5D constant for simplicity. This constant represents the smallest
+unit of action in quantum mechanics.
 
 \textbf{Physical Meaning:} By the time we reach 5D, the recursion
 explicitly incorporates \textbf{quantum mechanics}. Planck's constant
 introduces the rule that action (energy × time, or momentum × distance)
 comes in discrete packets. In other words, 5D is the stage where
-nature's processes become quantized\hspace{0pt}. Before this, one could
-imagine time, length, and even energy as continuous (though bounded by
-Planck scales); with 5D, we recognize that not every value is allowed --
+nature's processes become quantized​. Before this, one could imagine
+time, length, and even energy as continuous (though bounded by Planck
+scales); with 5D, we recognize that not every value is allowed --
 energy, angular momentum, etc., increase in jumps of size h (or related
 quanta like ħ). This adds a new degree of freedom often described as the
 phase or quantum state. Essentially, 5D anchors the entire
@@ -405,52 +385,52 @@ wave-particle duality enter, governed by this constant unit of action.
 \textbf{Context and Integration:} Planck's constant ties together
 earlier constants by relating energy and frequency: E = h ν. If we take
 ν = 1/\emph{t}ₚ (the fundamental frequency of the 1D tick), then E = h/
-\emph{t}ₚ ≈ 1.23×10\^{}10 J\hspace{0pt}. Remarkably, this is on the same
-order as \emph{m}ₚ c\^{}2 (\textasciitilde2×10\^{}9 J)\hspace{0pt}. Thus
-one quantum oscillation at the Planck frequency carries roughly a Planck
+\emph{t}ₚ ≈ 1.23×10\^{}10 J​. Remarkably, this is on the same order as
+\emph{m}ₚ c\^{}2 (\textasciitilde{}2×10\^{}9 J)​. Thus one quantum
+oscillation at the Planck frequency carries roughly a Planck
 mass-energy. This near-equality demonstrates a \textbf{harmonic
 consistency}: the 5D constant and the 1D time quantum are chosen such
-that h/ \emph{t}ₚ ≈ \emph{m}ₚ c\^{}2\hspace{0pt}. In other words, the
-fundamental energy associated with the smallest time interval aligns
-with the fundamental mass-energy introduced at 3D -- showing that the
+that h/ \emph{t}ₚ ≈ \emph{m}ₚ c\^{}2​. In other words, the fundamental
+energy associated with the smallest time interval aligns with the
+fundamental mass-energy introduced at 3D -- showing that the
 microphysical constants (ħ, tₚ, c) work together rather than in
 isolation. Planck's constant also works with the next constant, k\_B
 (6D), to connect quantum and thermal physics. For example, setting a
 quantum's energy h ν equal to thermal energy k\_B T leads to a
 characteristic temperature; using ν = 1/tₚ yields T on the order of
-10\^{}32 K, essentially the Planck temperature (10D)\hspace{0pt}.
-Additionally, h and k\_B appear together in formulas like Planck's law
-of blackbody radiation and the Boltzmann factor e\^{}(--E/k\_B T),
-indicating 5D and 6D jointly govern quantum statistical behavior. By
-sitting at 5D, Planck's constant is flanked by c (4D) which provides the
-link between frequency and wavelength (as in E = h c/λ) and k\_B (6D)
-which will convert energies to temperature\hspace{0pt}. This central
-position means 5D connects the \textbf{microscopic oscillations} of
-fields/particles to both the spacetime structure beneath (via 4D) and
-the macroscopic ensembles above (via 6D). In summary, TORUS includes
-\emph{h} as a fundamental step to ensure that \textbf{quantization} is a
-built-in feature of the universe once spacetime is established,
-seamlessly integrating classical scales with quantum rules.
+10\^{}32 K, essentially the Planck temperature (10D)​. Additionally, h
+and k\_B appear together in formulas like Planck's law of blackbody
+radiation and the Boltzmann factor e\^{}(--E/k\_B T), indicating 5D and
+6D jointly govern quantum statistical behavior. By sitting at 5D,
+Planck's constant is flanked by c (4D) which provides the link between
+frequency and wavelength (as in E = h c/λ) and k\_B (6D) which will
+convert energies to temperature​. This central position means 5D
+connects the \textbf{microscopic oscillations} of fields/particles to
+both the spacetime structure beneath (via 4D) and the macroscopic
+ensembles above (via 6D). In summary, TORUS includes \emph{h} as a
+fundamental step to ensure that \textbf{quantization} is a built-in
+feature of the universe once spacetime is established, seamlessly
+integrating classical scales with quantum rules.
 
 \textbf{6D -- Thermodynamic Link (Boltzmann's Constant)}
 
 \textbf{Constant \& Value:} \textbf{Boltzmann's constant} k\_B =
-1.380649 × 10\^{}−23 J/K (exact, by definition)\hspace{0pt}. This
-constant converts energy (joules) to temperature (kelvins), effectively
-setting the scale of thermal energy per degree of freedom per Kelvin.
+1.380649 × 10\^{}−23 J/K (exact, by definition)​. This constant converts
+energy (joules) to temperature (kelvins), effectively setting the scale
+of thermal energy per degree of freedom per Kelvin.
 
 \textbf{Physical Meaning:} At 6D, the TORUS recursion transitions from
 the realm of single particles and quantum interactions to the realm of
 \textbf{many-particle systems and statistics}. Boltzmann's constant
 introduces the concepts of temperature and entropy, marking the
-emergence of \textbf{thermodynamics} in the hierarchy\hspace{0pt}. In
-essence, by including k\_B, TORUS acknowledges that when enough degrees
-of freedom accumulate (large numbers of particles), we need a way to
-describe average energies, distributions, and thermal behavior. The 6D
-constant provides the bridge: it links a microscopic energy scale (the
-joule) to the macroscopic idea of temperature. Physically, this means
-that at 6D, one can start talking about systems not just in terms of
-individual quantum events, but in terms of ensemble properties like
+emergence of \textbf{thermodynamics} in the hierarchy​. In essence, by
+including k\_B, TORUS acknowledges that when enough degrees of freedom
+accumulate (large numbers of particles), we need a way to describe
+average energies, distributions, and thermal behavior. The 6D constant
+provides the bridge: it links a microscopic energy scale (the joule) to
+the macroscopic idea of temperature. Physically, this means that at 6D,
+one can start talking about systems not just in terms of individual
+quantum events, but in terms of ensemble properties like
 \textbf{temperature (T)}, \textbf{entropy (S)}, and probability
 distributions of states. It's the point where the model begins to
 incorporate the second law of thermodynamics and statistical mechanics
@@ -461,46 +441,44 @@ closely with the 5D constant h to unify quantum and thermal scales. A
 striking relationship is obtained by equating a single quantum of energy
 to thermal energy: h ν = k\_B T. If we choose ν = 1/tₚ (the highest
 fundamental frequency), we get T = h/(k\_B tₚ). Plugging in values, T ≈
-8.9 × 10\^{}31 K\hspace{0pt}. This is on the order of 10\^{}32 K, which
-is basically the \textbf{Planck temperature} (the 10D constant. In other
+8.9 × 10\^{}31 K​. This is on the order of 10\^{}32 K, which is
+basically the \textbf{Planck temperature} (the 10D constant. In other
 words, using the fundamental time scale (1D), the quantum of action
 (5D), and Boltzmann's constant (6D) together naturally produces the
 extreme unification temperature at 10D. This three-constant interplay is
 a powerful confirmation that TORUS's constants are self-consistent
 across scales: the \emph{h} and \emph{k\_B} introduced at 5D and 6D are
 precisely such that when applied to the smallest time scale 1D, they
-yield the highest meaningful temperature 10D\hspace{0pt}. Adjacent to
-6D, we also have the next constant 7D (Avogadro's number) such that k\_B
-combined with N\_A will yield the ideal gas constant R (8D)\hspace{0pt}.
-Thus, k\_B is part of a \textbf{layering}: 5D (quantum) → 6D
-(single-particle thermal) → 7D (Avogadro, turning single-particle to
-per-mole). Below 6D, physics was about individual particles or quanta;
-at 6D and beyond, we consider huge numbers of particles. Including k\_B
-ensures that as soon as we consider ensembles, we have the correct
-scaling to relate energy per particle to temperature. It effectively
-seeds the recursion with the concept of \textbf{thermal energy per
-degree of freedom}, allowing higher dimensions to build on full
-statistical and thermodynamic laws. By 6D, each new layer is now summing
-over vast numbers of states (whereas 5D and below dealt with one state
-or a few). In summary, Boltzmann's constant is the keystone for moving
-from quantum physics to classical thermodynamics within TORUS -- it
-quantifies the point where averaging over many quanta becomes
-fundamental.
+yield the highest meaningful temperature 10D​. Adjacent to 6D, we also
+have the next constant 7D (Avogadro's number) such that k\_B combined
+with N\_A will yield the ideal gas constant R (8D)​. Thus, k\_B is part
+of a \textbf{layering}: 5D (quantum) → 6D (single-particle thermal) → 7D
+(Avogadro, turning single-particle to per-mole). Below 6D, physics was
+about individual particles or quanta; at 6D and beyond, we consider huge
+numbers of particles. Including k\_B ensures that as soon as we consider
+ensembles, we have the correct scaling to relate energy per particle to
+temperature. It effectively seeds the recursion with the concept of
+\textbf{thermal energy per degree of freedom}, allowing higher
+dimensions to build on full statistical and thermodynamic laws. By 6D,
+each new layer is now summing over vast numbers of states (whereas 5D
+and below dealt with one state or a few). In summary, Boltzmann's
+constant is the keystone for moving from quantum physics to classical
+thermodynamics within TORUS -- it quantifies the point where averaging
+over many quanta becomes fundamental.
 
 \textbf{7D -- Collective Quantity (Avogadro's Number)}
 
 \textbf{Constant \& Value:} \textbf{Avogadro's number} N\_A = 6.02214076
-× 10\^{}23 (dimensionless count of particles per mole)\hspace{0pt}. This
-is an exact defined number that sets the scale of one ``mole'' of
-substance.
+× 10\^{}23 (dimensionless count of particles per mole)​. This is an
+exact defined number that sets the scale of one ``mole'' of substance.
 
 \textbf{Physical Meaning:} At 7D, the recursion introduces a standard
 \textbf{large number of particles} as a single unit. Avogadro's number
 is essentially the scaling factor between the microscopic world
 (individual atoms/molecules) and the macroscopic world (bulk quantities
-of matter in moles and grams)\hspace{0pt}. By including N\_A, TORUS
-explicitly integrates \textbf{chemistry and bulk matter} into its
-hierarchy. It means the model now has a built-in way to talk about, say,
+of matter in moles and grams)​. By including N\_A, TORUS explicitly
+integrates \textbf{chemistry and bulk matter} into its hierarchy. It
+means the model now has a built-in way to talk about, say,
 6.022×10\^{}23 atoms of carbon (which is 12 grams) as a natural unit.
 This level is where the idea of a ``mole'' -- a bridge between atomic
 mass units and laboratory-scale masses -- becomes fundamental. In
@@ -512,50 +490,49 @@ themselves an important parameter.
 
 \textbf{Inter-scale Connectivity:} Immediately, we see a beautiful
 relationship: the 7D constant N\_A multiplied by the 6D constant k\_B
-yields the 8D constant R (ideal gas constant)\hspace{0pt}. That is, N\_A
-· k\_B = R, the constant that appears in the ideal gas law PV = N\_A
-k\_B T = R T (per mole). In TORUS, this is \textbf{not coincidental} --
-it's an explicit demonstration of recursion layering: the constant
-introduced at one level (Avogadro) times the previous level's constant
-(Boltzmann) produces the next level's constant (gas
-constant)\hspace{0pt}. This harmonic progression underscores that once
-we decide to include a ``per mole'' scaling, it naturally completes the
-thermodynamic constants set. Additionally, Avogadro's number allows
-conversion between the Planck mass scale and macroscopic masses: for
-example, \emph{m}ₚ × N\_A ≈ 1.31×10\^{}16 kg\hspace{0pt}, which is about
-the mass of a small asteroid. While that particular product may not
-signify a fundamental law, a more tangible one is that one mole of
-protons (N\_A protons) has a mass of \textasciitilde1 gram (since 1
-proton \textasciitilde1 atomic mass unit by definition, and 1 u × N\_A =
-1 gram). This illustrates how N\_A serves as the link between the atomic
-mass scale and the gram scale\hspace{0pt}. In the recursion context, 7D
-sits between the microscopic constants (like h, k\_B) and the truly
-macroscopic/cosmic constants (like G at 9D). It's the \emph{step that
-explicitly brings large-N into play}. With N\_A, the theory can smoothly
-talk about the energy of a mole of photons or the entropy in a mole of
-gas, etc., which is essential for connecting to macroscopic
-thermodynamics and even astrophysics. In summary, Avogadro's number in
-TORUS emphasizes that \textbf{no scale is left out} -- by this stage,
-the framework has spanned from Planck units up to human-scale units in a
-continuous thread\hspace{0pt}. The presence of N\_A signals that the
+yields the 8D constant R (ideal gas constant)​. That is, N\_A · k\_B =
+R, the constant that appears in the ideal gas law PV = N\_A k\_B T = R T
+(per mole). In TORUS, this is \textbf{not coincidental} -- it's an
+explicit demonstration of recursion layering: the constant introduced at
+one level (Avogadro) times the previous level's constant (Boltzmann)
+produces the next level's constant (gas constant)​. This harmonic
+progression underscores that once we decide to include a ``per mole''
+scaling, it naturally completes the thermodynamic constants set.
+Additionally, Avogadro's number allows conversion between the Planck
+mass scale and macroscopic masses: for example, \emph{m}ₚ × N\_A ≈
+1.31×10\^{}16 kg​, which is about the mass of a small asteroid. While
+that particular product may not signify a fundamental law, a more
+tangible one is that one mole of protons (N\_A protons) has a mass of
+\textasciitilde{}1 gram (since 1 proton \textasciitilde{}1 atomic mass
+unit by definition, and 1 u × N\_A = 1 gram). This illustrates how N\_A
+serves as the link between the atomic mass scale and the gram scale​. In
+the recursion context, 7D sits between the microscopic constants (like
+h, k\_B) and the truly macroscopic/cosmic constants (like G at 9D). It's
+the \emph{step that explicitly brings large-N into play}. With N\_A, the
+theory can smoothly talk about the energy of a mole of photons or the
+entropy in a mole of gas, etc., which is essential for connecting to
+macroscopic thermodynamics and even astrophysics. In summary, Avogadro's
+number in TORUS emphasizes that \textbf{no scale is left out} -- by this
+stage, the framework has spanned from Planck units up to human-scale
+units in a continuous thread​. The presence of N\_A signals that the
 recursion has grown from single particles to huge collections, setting
 the stage for even larger structures and forces to come.
 
 \textbf{8D -- Thermodynamic Completion (Ideal Gas Constant R)}
 
 \textbf{Constant \& Value:} The \textbf{ideal gas constant} R =
-8.314462618 J/(mol·K) (exact, being N\_A × k\_B)\hspace{0pt}. TORUS
-assigns R as the characteristic constant of the 8D level.
+8.314462618 J/(mol·K) (exact, being N\_A × k\_B)​. TORUS assigns R as
+the characteristic constant of the 8D level.
 
 \textbf{Physical Meaning:} By 8D, the set of constants needed to
 describe \textbf{bulk matter thermodynamics} is complete. R is the
 constant that appears in the ideal gas law PV = R T (for one mole of
 gas), linking pressure, volume, and temperature for macroscopic amounts
-of matter\hspace{0pt}. In the TORUS hierarchy, introducing R signifies
-that we now have all the tools to describe a \textbf{classical,
-continuum chunk of matter} (one that has volume, temperature, pressure,
-and quantity), without yet invoking gravity. Essentially, 8D is the
-capstone of internal thermodynamic description -- it encapsulates the
+of matter​. In the TORUS hierarchy, introducing R signifies that we now
+have all the tools to describe a \textbf{classical, continuum chunk of
+matter} (one that has volume, temperature, pressure, and quantity),
+without yet invoking gravity. Essentially, 8D is the capstone of
+internal thermodynamic description -- it encapsulates the
 equation-of-state behavior of matter in aggregate. At this stage, TORUS
 can account for systems like a gas in a container or heat flow in
 materials purely from fundamental constants (now that R is included).
@@ -564,7 +541,7 @@ effects) and the cosmic-scale physics that comes next.
 
 \textbf{Recursive Derivation:} As noted, R is \emph{not} an independent
 constant in TORUS; it is literally the product of 6D and 7D constants: R
-= N\_A · k\_B\hspace{0pt}. This direct derivation highlights the layered
+= N\_A · k\_B​. This direct derivation highlights the layered
 construction of the hierarchy -- 8D emerges naturally once 6D and 7D are
 in place. The presence of R allows us to easily move between
 per-particle and per-mole descriptions. For example, a thermal energy of
@@ -572,34 +549,33 @@ k\_B T per particle corresponds to an energy of R T per mole. With R,
 one can compute meaningful macroscopic energies: R × 300 K ≈ 2.5×10\^{}3
 J per mole (around room-temperature thermal energy per mole), or R ×
 10\^{}9 K ≈ 8.3×10\^{}9 J per mole (on the order of nuclear binding
-energy per mole)\hspace{0pt}. These show that by using R we can quantify
-chemistry (kJ per mole) and even nuclear processes in a unified way. R
-also subtly ties into earlier constants in blackbody radiation and
-astrophysical formulas: while not fundamental in those, R's constituents
-(N\_A, k\_B) are present in derivations of the Stefan--Boltzmann
-constant and other relations\hspace{0pt}. The key adjacent jump after 8D
-is 9D -- the introduction of gravity. It's noteworthy that even before
-explicitly introducing gravity, R allows some interplay with it: for
-instance, in planetary atmospheres, the scale height H = R T/(M g)
-involves R (thermodynamics) and g (gravity) together\hspace{0pt}. This
-shows that at the 8D→9D boundary, matter's internal pressure (via R and
-T) meets gravitational pull (via G giving weight \emph{mg}). Indeed,
-phenomena like the \textbf{Jeans criterion} for gravitational collapse
-involve both R (through temperature pressure support) and G (pulling
-matter together), foreshadowing the integration at higher dimensions. To
-summarize, 8D's ideal gas constant represents the \textbf{completion of
-the thermodynamic toolkit} in TORUS. It signals that the theory now
-fully accounts for bulk matter behavior in the absence of gravity, and
-sets the stage to move to scales and forces that shape planets, stars,
-and the universe as a whole.
+energy per mole)​. These show that by using R we can quantify chemistry
+(kJ per mole) and even nuclear processes in a unified way. R also subtly
+ties into earlier constants in blackbody radiation and astrophysical
+formulas: while not fundamental in those, R's constituents (N\_A, k\_B)
+are present in derivations of the Stefan--Boltzmann constant and other
+relations​. The key adjacent jump after 8D is 9D -- the introduction of
+gravity. It's noteworthy that even before explicitly introducing
+gravity, R allows some interplay with it: for instance, in planetary
+atmospheres, the scale height H = R T/(M g) involves R (thermodynamics)
+and g (gravity) together​. This shows that at the 8D→9D boundary,
+matter's internal pressure (via R and T) meets gravitational pull (via G
+giving weight \emph{mg}). Indeed, phenomena like the \textbf{Jeans
+criterion} for gravitational collapse involve both R (through
+temperature pressure support) and G (pulling matter together),
+foreshadowing the integration at higher dimensions. To summarize, 8D's
+ideal gas constant represents the \textbf{completion of the
+thermodynamic toolkit} in TORUS. It signals that the theory now fully
+accounts for bulk matter behavior in the absence of gravity, and sets
+the stage to move to scales and forces that shape planets, stars, and
+the universe as a whole.
 
 \textbf{9D -- Gravity Introduction (Newton's Gravitational Constant G)}
 
 \textbf{Constant \& Value:} \textbf{Newton's gravitational constant} G ≈
-6.6743 × 10\^{}−11 m\^{}3·kg\^{}−1·s\^{}−2\hspace{0pt}. This constant
-determines the strength of gravity in Newton's law (and enters general
-relativity as well). TORUS assigns G as the fundamental constant of the
-9D level.
+6.6743 × 10\^{}−11 m\^{}3·kg\^{}−1·s\^{}−2​. This constant determines
+the strength of gravity in Newton's law (and enters general relativity
+as well). TORUS assigns G as the fundamental constant of the 9D level.
 
 \textbf{Physical Meaning:} At 9D, the recursion includes
 \textbf{gravity} -- the first force that dominates at large, cosmic
@@ -607,70 +583,66 @@ scales. Introducing G marks a dramatic phase change in the hierarchy:
 prior to this, the constants dealt with quantum forces (like
 electromagnetism via α, quantum action ħ) and thermodynamic/statistical
 behavior. With 9D, \textbf{astronomical and cosmological structures}
-come into play\hspace{0pt}. G is the constant that allows matter to
-clump into planets, stars, and galaxies, as it quantifies the
-gravitational attraction between masses. In TORUS, the 9D stage means
-the framework can now describe spacetime curvature and gravitational
-binding -- phenomena like orbits, gravitational potential, and
-eventually the expansion of the universe (via the Friedmann equations)
-become accessible. Essentially, 9D is where the model gains the ability
-to explain why the matter (described up to 8D) organizes into the
+come into play​. G is the constant that allows matter to clump into
+planets, stars, and galaxies, as it quantifies the gravitational
+attraction between masses. In TORUS, the 9D stage means the framework
+can now describe spacetime curvature and gravitational binding --
+phenomena like orbits, gravitational potential, and eventually the
+expansion of the universe (via the Friedmann equations) become
+accessible. Essentially, 9D is where the model gains the ability to
+explain why the matter (described up to 8D) organizes into the
 large-scale structures we observe, rather than remaining a diffuse gas.
 
 \textbf{Consistency and Integration:} One might think gravity's strength
 is independent, but in the Planck unit system, G is intertwined with
 other constants. A revealing relationship from Planck units is:
-G=c3tPmPG = \textbackslash frac\{c\^{}3
-t\_P\}\{m\_P\}G=mP\hspace{0pt}c3tP\hspace{0pt}\hspace{0pt}\hspace{0pt}.
+G=c3tPmPG = \textbackslash{}frac\{c\^{}3 t\_P\}\{m\_P\}G=mP​c3tP​​​.
 Plugging in the Planck time (1D), Planck mass (3D), and light speed (4D)
 yields the observed G (this is essentially derived from tP=ℏG/c5t\_P =
-\textbackslash sqrt\{\textbackslash hbar
-G/c\^{}5\}tP\hspace{0pt}=ℏG/c5\hspace{0pt} and mP=ℏc/Gm\_P =
-\textbackslash sqrt\{\textbackslash hbar
-c/G\}mP\hspace{0pt}=ℏc/G\hspace{0pt}). Rearranged, it shows that once
-\emph{t}ₚ, \emph{m}ₚ, and \emph{c} are set, G is \textbf{fixed by
-consistency}\hspace{0pt}. Indeed, if we require that 1D, 2D, 3D, 4D
-constants produce a coherent set of Planck units, G cannot be anything
-else -- it is determined such that the combination G⋅tP2/ℓP3=1/c2G
-\textbackslash cdot t\_P\^{}2/ℓ\_P\^{}3 =
-1/c\^{}2G⋅tP2\hspace{0pt}/ℓP3\hspace{0pt}=1/c2 (or similar dimensionless
-unity conditions) holds\hspace{0pt}. TORUS incorporates this by not
-treating G as arbitrary: by the time we ``turn on'' gravity at 9D, its
-value is already harmonically related to the lower
-constants\hspace{0pt}. In simpler terms, the prior recursion steps
-``choose'' G such that the boundary between quantum and gravity (the
-Planck scale) lines up exactly\hspace{0pt}-- which mirrors how nature's
-Planck units are defined. With G now in play, we can examine
-cross-links: for instance, combining G with earlier constants yields
-enlightening scales. We saw one with \emph{m}ₚ (where G ties quantum
-length to gravitational radius). Another is combining G with k\_B and
-other constants: e.g., using G with the Planck temperature (10D) and
-Boltzmann's constant relates to Planck mass as k\_B T\_P = m\_P c\^{}2,
-implicitly involving G\hspace{0pt}. At 9D's introduction, gravity also
-begins to interplay with thermodynamics: consider the \textbf{Jeans
-length} for collapse of a gas cloud, λ\_J \textasciitilde{} √(R T/(G
-ρ)). This critical length involves G (gravity) and R (8D thermodynamics)
-together\hspace{0pt}. It shows that whether a cloud will collapse
-(gravity wins) or disperse (pressure wins) depends on a balance between
-8D and 9D constants. Thus, as soon as G enters, it starts linking with
-the constants of matter and heat to govern structure formation. Finally,
-note that 0D and 9D can be contrasted: 0D gave a dimensionless coupling
-for microscopic force, and 9D gives the coupling for the
-\textbf{macroscopic force}. The gravitational coupling constant for two
-elementary particles (like two electrons) is incredibly small
-(\textasciitilde10\^{}−40), reflecting gravity's relative weakness, but
-when large masses are involved, G accumulates effect. TORUS highlights
-that once G is introduced, the recursion can extend to explain why the
-cosmos has galaxies and not just gas -- \textbf{structure emerges}. In
-summary, 9D's gravitational constant is the gateway to cosmic physics in
-TORUS, and it is carefully chosen to mesh with the tiny-scale constants
-so that the entire range from quantum to cosmos remains self-consistent.
+\textbackslash{}sqrt\{\textbackslash{}hbar G/c\^{}5\}tP​=ℏG/c5​ and
+mP=ℏc/Gm\_P = \textbackslash{}sqrt\{\textbackslash{}hbar
+c/G\}mP​=ℏc/G​). Rearranged, it shows that once \emph{t}ₚ, \emph{m}ₚ,
+and \emph{c} are set, G is \textbf{fixed by consistency}​. Indeed, if we
+require that 1D, 2D, 3D, 4D constants produce a coherent set of Planck
+units, G cannot be anything else -- it is determined such that the
+combination G⋅tP2/ℓP3=1/c2G \textbackslash{}cdot t\_P\^{}2/ℓ\_P\^{}3 =
+1/c\^{}2G⋅tP2​/ℓP3​=1/c2 (or similar dimensionless unity conditions)
+holds​. TORUS incorporates this by not treating G as arbitrary: by the
+time we ``turn on'' gravity at 9D, its value is already harmonically
+related to the lower constants​. In simpler terms, the prior recursion
+steps ``choose'' G such that the boundary between quantum and gravity
+(the Planck scale) lines up exactly​-- which mirrors how nature's Planck
+units are defined. With G now in play, we can examine cross-links: for
+instance, combining G with earlier constants yields enlightening scales.
+We saw one with \emph{m}ₚ (where G ties quantum length to gravitational
+radius). Another is combining G with k\_B and other constants: e.g.,
+using G with the Planck temperature (10D) and Boltzmann's constant
+relates to Planck mass as k\_B T\_P = m\_P c\^{}2, implicitly involving
+G​. At 9D's introduction, gravity also begins to interplay with
+thermodynamics: consider the \textbf{Jeans length} for collapse of a gas
+cloud, λ\_J \textasciitilde{} √(R T/(G ρ)). This critical length
+involves G (gravity) and R (8D thermodynamics) together​. It shows that
+whether a cloud will collapse (gravity wins) or disperse (pressure wins)
+depends on a balance between 8D and 9D constants. Thus, as soon as G
+enters, it starts linking with the constants of matter and heat to
+govern structure formation. Finally, note that 0D and 9D can be
+contrasted: 0D gave a dimensionless coupling for microscopic force, and
+9D gives the coupling for the \textbf{macroscopic force}. The
+gravitational coupling constant for two elementary particles (like two
+electrons) is incredibly small (\textasciitilde{}10\^{}−40), reflecting
+gravity's relative weakness, but when large masses are involved, G
+accumulates effect. TORUS highlights that once G is introduced, the
+recursion can extend to explain why the cosmos has galaxies and not just
+gas -- \textbf{structure emerges}. In summary, 9D's gravitational
+constant is the gateway to cosmic physics in TORUS, and it is carefully
+chosen to mesh with the tiny-scale constants so that the entire range
+from quantum to cosmos remains self-consistent.
 
 \textbf{10D -- Extreme Unification Temperature (Planck Temperature)}
 
 \textbf{Constant \& Value:} The \textbf{Planck temperature} T\_P,
-approximately 1.4168 × 10\^{}32 K\hspace{0pt}. This is the temperature
-corresponding to the Planck energy (\textasciitilde2 × 10\^{}9 J per
+approximately 1.4168 × 10\^{}32 K​. This is the temperature
+corresponding to the Planck energy (\textasciitilde{}2 × 10\^{}9 J per
 particle) when divided by k\_B. TORUS uses T\_P as the fundamental
 constant at 10D.
 
@@ -683,56 +655,56 @@ temperature would have existed approximately 10\^{}−43 seconds after the
 Big Bang (the Planck time) in conventional scenarios. TORUS treats 10D
 as the point where \textbf{all forces unify into one}: at this ultimate
 temperature, distinctions between the fundamental forces (strong,
-electroweak, gravity) blur, and we have a symmetric state of
-physics\hspace{0pt}. In essence, T\_P is like a capstone of energy in
-the universe -- heating beyond this (or equivalently going to smaller
-scales than ℓ\_P or earlier than t\_P) is not meaningful within the
-model, as it would require a new cycle or new physics. Thus, 10D marks
-the \textbf{end of the line for increasing energy} in one TORUS cycle;
-it's the point at which the recursion in energy terms is complete, and
-any further ``increase'' would loop back (starting a new torus).
+electroweak, gravity) blur, and we have a symmetric state of physics​.
+In essence, T\_P is like a capstone of energy in the universe -- heating
+beyond this (or equivalently going to smaller scales than ℓ\_P or
+earlier than t\_P) is not meaningful within the model, as it would
+require a new cycle or new physics. Thus, 10D marks the \textbf{end of
+the line for increasing energy} in one TORUS cycle; it's the point at
+which the recursion in energy terms is complete, and any further
+``increase'' would loop back (starting a new torus).
 
 \textbf{Derivation and Cross-Scale Links:} Planck temperature is derived
 directly from lower constants: by definition, k\_B T\_P = E\_P = m\_P
-c\^{}2\hspace{0pt}. Substituting the Planck mass (3D), c (4D), and k\_B
-(6D) gives T\_P ≈ 1.4×10\^{}32 K\hspace{0pt}. This shows that the 10D
-constant is not independent at all -- it's a \textbf{synthesis of 3D,
-4D, 6D (and implicitly 5D and 9D)}\hspace{0pt}. In deriving m\_P we used
-ħ and G, so those are in the mix as well; thus T\_P encapsulates ħ (5D),
-G (9D), c (4D), and k\_B (6D) all in one number\hspace{0pt}. This
-remarkable unity means 10D's value reflects the combined effect of
-quantum mechanics, relativity, gravity, and thermodynamics. Adjacent
-constants highlight its role: coming from 9D, without G setting m\_P, we
-wouldn't get this extreme temperature value -- gravity's inclusion fixed
-T\_P. And looking forward, 11D is about the unified force coupling which
-conceptually ``kicks in'' at this temperature. In other words, 10D
-provides the \textbf{energy scale} (temperature) at which unification
-happens, and 11D will provide the \textbf{coupling strength} at that
-unification\hspace{0pt}. One can view T\_P as the threshold at which our
-cycle's laws must \textbf{restart or recycle}. TORUS suggests that once
-this temperature is reached (e.g. at the end of a collapsing universe or
-start of a Big Bang), a phase transition or ``bounce'' occurs that
-effectively resets the universe's conditions -- akin to closing the
-torus and opening a new one\hspace{0pt}. As a check, current physics
-gives context: T\_P is vastly higher than any temperature achieved or
-expected in stars or accelerators (it's billions of times hotter than
-the center of a supernova, for instance). It's truly a
-\textbf{theoretical upper limit} of temperature. By including it, TORUS
-ensures that the model accounts for the earliest moments of the universe
-and the potential unity of forces, rather than leaving that as an
-open-ended infinity. In summary, 10D's Planck temperature is the
+c\^{}2​. Substituting the Planck mass (3D), c (4D), and k\_B (6D) gives
+T\_P ≈ 1.4×10\^{}32 K​. This shows that the 10D constant is not
+independent at all -- it's a \textbf{synthesis of 3D, 4D, 6D (and
+implicitly 5D and 9D)}​. In deriving m\_P we used ħ and G, so those are
+in the mix as well; thus T\_P encapsulates ħ (5D), G (9D), c (4D), and
+k\_B (6D) all in one number​. This remarkable unity means 10D's value
+reflects the combined effect of quantum mechanics, relativity, gravity,
+and thermodynamics. Adjacent constants highlight its role: coming from
+9D, without G setting m\_P, we wouldn't get this extreme temperature
+value -- gravity's inclusion fixed T\_P. And looking forward, 11D is
+about the unified force coupling which conceptually ``kicks in'' at this
+temperature. In other words, 10D provides the \textbf{energy scale}
+(temperature) at which unification happens, and 11D will provide the
+\textbf{coupling strength} at that unification​. One can view T\_P as
+the threshold at which our cycle's laws must \textbf{restart or
+recycle}. TORUS suggests that once this temperature is reached (e.g. at
+the end of a collapsing universe or start of a Big Bang), a phase
+transition or ``bounce'' occurs that effectively resets the universe's
+conditions -- akin to closing the torus and opening a new one​. As a
+check, current physics gives context: T\_P is vastly higher than any
+temperature achieved or expected in stars or accelerators (it's billions
+of times hotter than the center of a supernova, for instance). It's
+truly a \textbf{theoretical upper limit} of temperature. By including
+it, TORUS ensures that the model accounts for the earliest moments of
+the universe and the potential unity of forces, rather than leaving that
+as an open-ended infinity. In summary, 10D's Planck temperature is the
 \textbf{culmination of energy scales} in the theory -- a unification
 point derived from the interplay of all earlier constants, beyond which
 a new cycle of physics begins.
 
-\textbf{11D -- Unified Force Coupling (Dimensionless \textasciitilde1)}
+\textbf{11D -- Unified Force Coupling (Dimensionless
+\textasciitilde{}1)}
 
 \textbf{Constant \& Value:} The \textbf{unified coupling constant}
-α\textless sub\textgreater unified\textless/sub\textgreater, a
-dimensionless number on the order of 1\hspace{0pt}. TORUS sets the 11D
-constant essentially to 1 (within order of magnitude), representing the
-strength of a hypothetical single force in the fully unified regime. In
-other words, at this stage all fundamental forces have merged and are
+α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{}, a
+dimensionless number on the order of 1​. TORUS sets the 11D constant
+essentially to 1 (within order of magnitude), representing the strength
+of a hypothetical single force in the fully unified regime. In other
+words, at this stage all fundamental forces have merged and are
 characterized by one coupling parameter, which we take to be α\_unified
 ≈ 1 for normalized units.
 
@@ -740,209 +712,203 @@ characterized by one coupling parameter, which we take to be α\_unified
 state of \textbf{symmetry and unification}. Having surpassed the Planck
 temperature at 10D, the distinctions between electromagnetic, weak,
 strong, and gravitational forces vanish; there is effectively
-\textbf{one force} and one coupling describing interactions\hspace{0pt}.
-The 11D constant thus represents the \textbf{pinnacle of unification} in
-TORUS Theory -- all separate interaction constants have flowed together
-into a single dimensionless constant. Setting it to \textasciitilde1 is
-a matter of convention (one can always choose units at that scale so
-that the coupling is unity), but it reflects the idea that at the
-unification scale, the interaction is ``of order one,'' not feeble like
+\textbf{one force} and one coupling describing interactions​. The 11D
+constant thus represents the \textbf{pinnacle of unification} in TORUS
+Theory -- all separate interaction constants have flowed together into a
+single dimensionless constant. Setting it to \textasciitilde{}1 is a
+matter of convention (one can always choose units at that scale so that
+the coupling is unity), but it reflects the idea that at the unification
+scale, the interaction is ``of order one,'' not feeble like
 electromagnetism at low energy nor insanely weak like gravity between
 elementary particles. Physically, this could correspond to a Grand
 Unified Theory (GUT) state or something even beyond, where perhaps all
 particles are identical or in a single super-multiplet due to symmetry
-restoration\hspace{0pt}.
+restoration​.
 
 \textbf{Role in Recursion and Closure:} In the TORUS cycle, 11D serves
 as a \textbf{reset point} before transitioning to the final
 geometric/cosmological stages. Because α\_unified is dimensionless, it
 provides a pure number that can tie together all the dimensionless
 ratios accumulated from 0D up to 10D. One way to see its importance: The
-small coupling we started with at 0D (α \textasciitilde1/137) has grown
-(or ``run'') through various scales. By 11D, that growth results in a
-coupling \textasciitilde1. In essence, the product of various scaling
-factors from each level has taken 0.0073 and yielded
-\textasciitilde1\hspace{0pt}. This is a strong consistency check: it
-means the vast range of scales and strengths in the universe are chosen
-such that when multiplied appropriately, they give unity at the
-unification point. It ``closes the loop'' on strengths: the cycle began
-with a tiny coupling and ends with a large coupling, ready to feed into
-the next steps of cosmic structure\hspace{0pt}. In fact, TORUS posits
-that 11D's unified force state effectively becomes the \emph{seed} for
-the next cycle's early geometric conditions -- one can think of 11D as
-analogous to 0D but at the opposite end of scale\hspace{0pt}. After
-forces unify at 11D, what follows (12D and 13D) are the large-scale
-structure constants (universe size and time) that \emph{complete} the
-cycle and lead back to a new 0D. Thus, α\_unified \textasciitilde1 is
-like saying: ``if you multiply the inverse of the 0D coupling
-(\textasciitilde137) by all the appropriate ratios up to this point, you
-get \textasciitilde1.'' It ensures that no large disparity is left
-unaccounted for by the time we have one force -- everything has been
-balanced out.
+small coupling we started with at 0D (α \textasciitilde{}1/137) has
+grown (or ``run'') through various scales. By 11D, that growth results
+in a coupling \textasciitilde{}1. In essence, the product of various
+scaling factors from each level has taken 0.0073 and yielded
+\textasciitilde{}1​. This is a strong consistency check: it means the
+vast range of scales and strengths in the universe are chosen such that
+when multiplied appropriately, they give unity at the unification point.
+It ``closes the loop'' on strengths: the cycle began with a tiny
+coupling and ends with a large coupling, ready to feed into the next
+steps of cosmic structure​. In fact, TORUS posits that 11D's unified
+force state effectively becomes the \emph{seed} for the next cycle's
+early geometric conditions -- one can think of 11D as analogous to 0D
+but at the opposite end of scale​. After forces unify at 11D, what
+follows (12D and 13D) are the large-scale structure constants (universe
+size and time) that \emph{complete} the cycle and lead back to a new 0D.
+Thus, α\_unified \textasciitilde{}1 is like saying: ``if you multiply
+the inverse of the 0D coupling (\textasciitilde{}137) by all the
+appropriate ratios up to this point, you get \textasciitilde{}1.'' It
+ensures that no large disparity is left unaccounted for by the time we
+have one force -- everything has been balanced out.
 
 In known physics, we don't yet have experimental confirmation of a
-single unified coupling \textasciitilde1, but theoretical extrapolations
-(with supersymmetry, for example) suggest the electroweak and strong
-forces' couplings converge to a number not too far from unity at
-\textasciitilde10\^{}16 GeV (the GUT scale)\hspace{0pt}. Including
-gravity at \textasciitilde10\^{}19 GeV (Planck scale) is conjectural,
-but TORUS essentially assumes such a convergence does happen. By baking
-α\_unified ≈1 into the hierarchy, the theory asserts that the
-\textbf{unification is achieved within one cycle}, and we don't need an
-external energy or scale beyond the 14D loop to bring forces together.
-In summary, 11D's unified coupling constant is a \textbf{unitless
-linchpin} of TORUS's self-consistency: it signifies that after
-traversing an immense range of scales from 0D to 10D, the strengths of
-nature's interactions coalesce into a single value, preparing the way
-for the final cosmic-scale steps and the closure of the toroidal
-universe.
+single unified coupling \textasciitilde{}1, but theoretical
+extrapolations (with supersymmetry, for example) suggest the electroweak
+and strong forces' couplings converge to a number not too far from unity
+at \textasciitilde{}10\^{}16 GeV (the GUT scale)​. Including gravity at
+\textasciitilde{}10\^{}19 GeV (Planck scale) is conjectural, but TORUS
+essentially assumes such a convergence does happen. By baking α\_unified
+≈1 into the hierarchy, the theory asserts that the \textbf{unification
+is achieved within one cycle}, and we don't need an external energy or
+scale beyond the 14D loop to bring forces together. In summary, 11D's
+unified coupling constant is a \textbf{unitless linchpin} of TORUS's
+self-consistency: it signifies that after traversing an immense range of
+scales from 0D to 10D, the strengths of nature's interactions coalesce
+into a single value, preparing the way for the final cosmic-scale steps
+and the closure of the toroidal universe.
 
 \textbf{12D -- Cosmic Spatial Scale (Observable Universe Size)}
 
 \textbf{Constant \& Value:} \textbf{Cosmic length scale} L\_U, on the
-order of 4 × 10\^{}26 m\hspace{0pt}. This is roughly the radius of the
-observable universe (\textasciitilde46 billion light years). TORUS takes
-L\_U as a fundamental constant at 12D, representing the large-scale
-spatial extent of the universe for this cycle.
+order of 4 × 10\^{}26 m​. This is roughly the radius of the observable
+universe (\textasciitilde{}46 billion light years). TORUS takes L\_U as
+a fundamental constant at 12D, representing the large-scale spatial
+extent of the universe for this cycle.
 
 \textbf{Physical Meaning:} At 12D, the recursion returns to a length
 scale -- but at the \textbf{opposite extreme} from 2D's Planck length.
 L\_U is essentially the size of the universe (or the horizon distance)
-in the present cycle\hspace{0pt}. One can think of it as the
-``diameter'' or ``circumference'' of the torus if we visualize the 14D
-cycle as a closed loop in spacetime\hspace{0pt}. By including a
-cosmic-length constant, TORUS integrates cosmology directly into the
-fundamental framework: instead of treating the size of the universe as
-just an initial condition or a result of dynamic evolution, it's
-enshrined as a parameter that must align with all others. In effect, 12D
-gives a \textbf{boundary (without boundary)} -- it's the largest
-distance that fits in one cycle of the universe. Beyond this scale, one
-might conceptually step into the next ``cell'' of the multiverse or wrap
-around due to the toroidal topology. Physically, L\_U is related to the
-distance light has traveled since the Big Bang, taking into account
-cosmic expansion. It's the scale at which we have no further information
-because light (or any causal influence) couldn't have reached us from
-beyond that distance in the age of the universe.
+in the present cycle​. One can think of it as the ``diameter'' or
+``circumference'' of the torus if we visualize the 14D cycle as a closed
+loop in spacetime​. By including a cosmic-length constant, TORUS
+integrates cosmology directly into the fundamental framework: instead of
+treating the size of the universe as just an initial condition or a
+result of dynamic evolution, it's enshrined as a parameter that must
+align with all others. In effect, 12D gives a \textbf{boundary (without
+boundary)} -- it's the largest distance that fits in one cycle of the
+universe. Beyond this scale, one might conceptually step into the next
+``cell'' of the multiverse or wrap around due to the toroidal topology.
+Physically, L\_U is related to the distance light has traveled since the
+Big Bang, taking into account cosmic expansion. It's the scale at which
+we have no further information because light (or any causal influence)
+couldn't have reached us from beyond that distance in the age of the
+universe.
 
 \textbf{Harmonization with Other Scales:} One striking relation is
 between 12D and 2D: multiply the smallest length by the largest length,
-\emph{ℓ}ₚ × L\_U. Using ℓₚ \textasciitilde1.6×10\^{}−35 m and L\_U
-\textasciitilde4×10\^{}26 m gives \textasciitilde6.4×10\^{}−9, a tiny
-dimensionless number (\textasciitilde10\^{}−8)\hspace{0pt}. While not
+\emph{ℓ}ₚ × L\_U. Using ℓₚ \textasciitilde{}1.6×10\^{}−35 m and L\_U
+\textasciitilde{}4×10\^{}26 m gives \textasciitilde{}6.4×10\^{}−9, a
+tiny dimensionless number (\textasciitilde{}10\^{}−8)​. While not
 exactly unity, this number is far larger than, say, 10\^{}−60 (which one
 would get if the universe were enormously bigger compared to the Planck
 scale). TORUS notes that by including other factors like the 0D coupling
-and the unified coupling, one might bring this product closer to
-1\hspace{0pt}. The point is that the \textbf{disparity between micro and
-macro lengths} in the TORUS universe is not completely arbitrary -- it
-is tuned such that the extremes are related by the dynamics of the
-cycle\hspace{0pt}. Another direct closure relation: the 13D time
-constant \emph{T}\textless sub\textgreater U\textless/sub\textgreater{}
-times \emph{c} (4D) yields a distance \textasciitilde1.3×10\^{}26 m,
-which is on the same order as L\_U\hspace{0pt}. Indeed, c×TU≈LUc
-\textbackslash times T\_U ≈ L\_Uc×TU\hspace{0pt}≈LU\hspace{0pt} to
-within a factor of order unity, which is exactly what we expect for an
-almost flat, horizon-limited universe. This 12D--13D link is a
-\textbf{cosmic echo} of the 1D--2D link (c × t\_P = ℓ\_P), but at the
-largest scale\hspace{0pt}. It signifies that space and time once again
-correlate: the size of the universe is roughly what light could travel
-in its age. Additionally, 12D is related to 9D (G) and the matter
+and the unified coupling, one might bring this product closer to 1​. The
+point is that the \textbf{disparity between micro and macro lengths} in
+the TORUS universe is not completely arbitrary -- it is tuned such that
+the extremes are related by the dynamics of the cycle​. Another direct
+closure relation: the 13D time constant
+\emph{T}\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} times
+\emph{c} (4D) yields a distance \textasciitilde{}1.3×10\^{}26 m, which
+is on the same order as L\_U​. Indeed, c×TU≈LUc \textbackslash{}times
+T\_U ≈ L\_Uc×TU​≈LU​ to within a factor of order unity, which is exactly
+what we expect for an almost flat, horizon-limited universe. This
+12D--13D link is a \textbf{cosmic echo} of the 1D--2D link (c × t\_P =
+ℓ\_P), but at the largest scale​. It signifies that space and time once
+again correlate: the size of the universe is roughly what light could
+travel in its age. Additionally, 12D is related to 9D (G) and the matter
 content of the universe through cosmological equations. For example, the
 Hubble length c/H0 (which is of order L\_U) depends on G and the average
-density via H0∼GρH\_0 \textbackslash sim \textbackslash sqrt\{G
-\textbackslash rho\}H0\hspace{0pt}∼Gρ\hspace{0pt} in the Friedmann
-equation for a matter-dominated universe\hspace{0pt}. If one plugs in
-the observed density, one gets a timescale on the order of the
-universe's age, and hence a length scale on order 10\^{}26 m, showing
-that \textbf{G and cosmic density ``choose'' L\_U} so that the
-universe's size is consistent with its mass content. TORUS emphasizes
-that 12D's value is fixed by the requirement of recursion closure and
-consistency with observed cosmology\hspace{0pt}. By introducing 11D's
-dimensionless unity prior, we had the freedom to incorporate a large
-length without breaking scale consistency -- effectively 11D's ``1'' can
-scale lengths or times without needing a new physics
-constant\hspace{0pt}. Adjacently, 13D will provide the corresponding
-time. Summing up, 12D in TORUS is the \textbf{cosmic horizon scale}
-turned into a constant. It reflects the idea that the universe's vast
-size is not just a random outcome but a part of a self-consistent
-scheme: the smallest and largest lengths in nature are related through
-the closed recursion, and the inclusion of L\_U ensures the model spans
-a \textbf{complete range of scales from 10\^{}−35 m to 10\^{}26 m in one
+density via H0∼GρH\_0 \textbackslash{}sim \textbackslash{}sqrt\{G
+\textbackslash{}rho\}H0​∼Gρ​ in the Friedmann equation for a
+matter-dominated universe​. If one plugs in the observed density, one
+gets a timescale on the order of the universe's age, and hence a length
+scale on order 10\^{}26 m, showing that \textbf{G and cosmic density
+``choose'' L\_U} so that the universe's size is consistent with its mass
+content. TORUS emphasizes that 12D's value is fixed by the requirement
+of recursion closure and consistency with observed cosmology​. By
+introducing 11D's dimensionless unity prior, we had the freedom to
+incorporate a large length without breaking scale consistency --
+effectively 11D's ``1'' can scale lengths or times without needing a new
+physics constant​. Adjacently, 13D will provide the corresponding time.
+Summing up, 12D in TORUS is the \textbf{cosmic horizon scale} turned
+into a constant. It reflects the idea that the universe's vast size is
+not just a random outcome but a part of a self-consistent scheme: the
+smallest and largest lengths in nature are related through the closed
+recursion, and the inclusion of L\_U ensures the model spans a
+\textbf{complete range of scales from 10\^{}−35 m to 10\^{}26 m in one
 cycle}.
 
 \textbf{13D -- Cosmic Time Scale (Universe Age / Cycle Duration)}
 
 \textbf{Constant \& Value:} \textbf{Cosmic time (universal cycle
-duration)} T\_U, approximately 4.35 × 10\^{}17 s\hspace{0pt}, which is
-about 13.8 billion years. TORUS takes T\_U as the fundamental time scale
-of the 13D level, essentially the age of the universe (or the time from
-Big Bang to the present closure point).
+duration)} T\_U, approximately 4.35 × 10\^{}17 s​, which is about 13.8
+billion years. TORUS takes T\_U as the fundamental time scale of the 13D
+level, essentially the age of the universe (or the time from Big Bang to
+the present closure point).
 
 \textbf{Physical Meaning:} 13D provides the \textbf{temporal extent of
 the entire universe's cycle}. In a standard cosmology context, this is
 the time elapsed since the Big Bang. In TORUS, it can be thought of as
 the duration of one full cycle of the toroidal recursion -- from the
 initial 0D seed through the expansion and evolution up to the present,
-possibly ending in a turnaround or ``closure'' event\hspace{0pt}.
-Including T\_U as a constant means TORUS treats the age of the universe
-not just as a measured historical fact, but as a parameter that is
-determined by the interplay of fundamental physics (much like c or G).
-It implies the universe's longevity is \textbf{built into the theory}
-and must be consistent with all other constants, rather than being an
-arbitrary initial condition\hspace{0pt}. In a cyclic or closed universe
-picture, T\_U might also represent the time until a recollapse or
-bounce, after which a new cycle begins. Thus, 13D marks the
-\textbf{completion of the time dimension's loop} -- after this much
-time, the recursion is supposed to ``reset'' in the TORUS model, feeding
-13D's output back into 0D.
+possibly ending in a turnaround or ``closure'' event​. Including T\_U as
+a constant means TORUS treats the age of the universe not just as a
+measured historical fact, but as a parameter that is determined by the
+interplay of fundamental physics (much like c or G). It implies the
+universe's longevity is \textbf{built into the theory} and must be
+consistent with all other constants, rather than being an arbitrary
+initial condition​. In a cyclic or closed universe picture, T\_U might
+also represent the time until a recollapse or bounce, after which a new
+cycle begins. Thus, 13D marks the \textbf{completion of the time
+dimension's loop} -- after this much time, the recursion is supposed to
+``reset'' in the TORUS model, feeding 13D's output back into 0D.
 
 \textbf{Relations and Closure:} We already noted the essential relation
-c × T\_U ≈ L\_U\hspace{0pt}. Numerically, 4.35×10\^{}17 s × 3×10\^{}8
-m/s ≈ 1.3×10\^{}26 m, which is on the same order as our L\_U
-\textasciitilde4×10\^{}26 m (a factor difference of a few is acceptable
-given cosmic expansion and model specifics)\hspace{0pt}. This is exactly
+c × T\_U ≈ L\_U​. Numerically, 4.35×10\^{}17 s × 3×10\^{}8 m/s ≈
+1.3×10\^{}26 m, which is on the same order as our L\_U
+\textasciitilde{}4×10\^{}26 m (a factor difference of a few is
+acceptable given cosmic expansion and model specifics)​. This is exactly
 what one expects: the horizon distance is c times the universe age
 (adjusted for expansion). This relation is a \textbf{consistency check}
 that at the largest scale, space and time are in sync, just as they were
 at the smallest scale (c ties t\_P to ℓ\_P). It essentially says that in
 one universe-lifetime, light can traverse the universe -- a necessary
-condition for the toroidal closure (no causally disconnected
-pieces)\hspace{0pt}. The 13D constant also ties in with gravity and the
-content of the universe: using the Friedmann equation for a flat
-matter-dominated universe, one finds TU∼23H0−1≈231GρT\_U
-\textbackslash sim \textbackslash frac\{2\}\{3\} H\_0\^{}\{-1\} ≈
-\textbackslash frac\{2\}\{3\}
-\textbackslash sqrt\{\textbackslash frac\{1\}\{G
-\textbackslash rho\}\}TU\hspace{0pt}∼32\hspace{0pt}H0−1\hspace{0pt}≈32\hspace{0pt}Gρ1\hspace{0pt}\hspace{0pt}\hspace{0pt}.
-This shows T\_U depends on G (9D) and the average density ρ (which
-itself is set by things like particle masses, cosmological parameters,
-etc., ultimately traceable to earlier constants). In fact, 13D encodes a
-combination of G (9D), R (8D, through the equation of state of cosmic
-components), and even α (0D) through astrophysical
-processes\hspace{0pt}. For example, the tiny 0D coupling α influences
-nuclear reaction rates in the early universe, determining how much
-hydrogen and helium form, which in turn affects the matter density and
-thus the expansion rate and age. TORUS points out that such multi-scale
-links mean the \textbf{microscopic physics can influence the cosmic
-timetable}. The enormous ratio T\_U/t\_P (\textasciitilde8×10\^{}60) can
-be factorized into contributions from various fundamental ratios: indeed
-\textasciitilde10\^{}60 ≈ 10\^{}2 × 10\^{}38 × 10\^{}20 was
-noted\hspace{0pt}, corresponding to (approximately) the inverse of α
-(∼10\^{}2), times the inverse gravitational coupling of an electron
-(∼10\^{}38), times an entropy or particle-number factor (∼10\^{}20). The
-fact that these numbers multiply to the observed age in Planck units
-hints that the values of α, G (as it affects particle masses), and the
-number of particles in the universe (entropy) are all related in a way
-that yields the universe's age -- a kind of large-number coincidence
-that TORUS elevates to a principle rather than a fluke\hspace{0pt}. In
-the recursion, 13D's adjacent link to 12D was the cT\_U ≈ L\_U closure;
-looking beyond 13D, there is no ``14D'' with new physics, but rather the
-idea that after T\_U, the universe's state transitions into the starting
-conditions for a new cycle (0D)\hspace{0pt}. This could correspond to a
-Big Crunch followed by a bounce or some reset mechanism -- the
-\textbf{toroidal closure} in time. Thus, 13D not only quantifies our
-universe's lifetime but also ensures the cycle is a loop: once this time
-passes, we circle back to a 0D-like origin for the next iteration.
+condition for the toroidal closure (no causally disconnected pieces)​.
+The 13D constant also ties in with gravity and the content of the
+universe: using the Friedmann equation for a flat matter-dominated
+universe, one finds TU∼23H0−1≈231GρT\_U \textbackslash{}sim
+\textbackslash{}frac\{2\}\{3\} H\_0\^{}\{-1\} ≈
+\textbackslash{}frac\{2\}\{3\}
+\textbackslash{}sqrt\{\textbackslash{}frac\{1\}\{G
+\textbackslash{}rho\}\}TU​∼32​H0−1​≈32​Gρ1​​​. This shows T\_U depends
+on G (9D) and the average density ρ (which itself is set by things like
+particle masses, cosmological parameters, etc., ultimately traceable to
+earlier constants). In fact, 13D encodes a combination of G (9D), R (8D,
+through the equation of state of cosmic components), and even α (0D)
+through astrophysical processes​. For example, the tiny 0D coupling α
+influences nuclear reaction rates in the early universe, determining how
+much hydrogen and helium form, which in turn affects the matter density
+and thus the expansion rate and age. TORUS points out that such
+multi-scale links mean the \textbf{microscopic physics can influence the
+cosmic timetable}. The enormous ratio T\_U/t\_P
+(\textasciitilde{}8×10\^{}60) can be factorized into contributions from
+various fundamental ratios: indeed \textasciitilde{}10\^{}60 ≈ 10\^{}2 ×
+10\^{}38 × 10\^{}20 was noted​, corresponding to (approximately) the
+inverse of α (∼10\^{}2), times the inverse gravitational coupling of an
+electron (∼10\^{}38), times an entropy or particle-number factor
+(∼10\^{}20). The fact that these numbers multiply to the observed age in
+Planck units hints that the values of α, G (as it affects particle
+masses), and the number of particles in the universe (entropy) are all
+related in a way that yields the universe's age -- a kind of
+large-number coincidence that TORUS elevates to a principle rather than
+a fluke​. In the recursion, 13D's adjacent link to 12D was the cT\_U ≈
+L\_U closure; looking beyond 13D, there is no ``14D'' with new physics,
+but rather the idea that after T\_U, the universe's state transitions
+into the starting conditions for a new cycle (0D)​. This could
+correspond to a Big Crunch followed by a bounce or some reset mechanism
+-- the \textbf{toroidal closure} in time. Thus, 13D not only quantifies
+our universe's lifetime but also ensures the cycle is a loop: once this
+time passes, we circle back to a 0D-like origin for the next iteration.
 
 In summary, the 13D cosmic time constant is the \textbf{culmination of
 the TORUS hierarchy}: it places the universe's age on the same
@@ -953,6 +919,6 @@ constants, achieving a deep coherence across all scales. After 13D, the
 model's demand for self-consistency requires that we do not introduce
 any new arbitrary scale -- instead, we recognize that the ``end'' feeds
 into the ``beginning,'' completing the \textbf{eternal recursion} of the
-TORUS universe\hspace{0pt}.
+TORUS universe​.
 
 \end{document}
