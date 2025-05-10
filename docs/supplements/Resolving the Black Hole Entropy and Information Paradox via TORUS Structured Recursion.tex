@@ -56,6 +56,13 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
+
 \date{}
 
 \begin{document}
@@ -908,7 +915,7 @@ closure at 13D implies that after including up to 13D, there are no
 further contributions -- the series stops. This might result in a slight
 \emph{shortfall} compared to an infinite series. If the infinite
 geometric series would have summed to S0 * (1/(1-q)), cutting it off at
-a finite number of terms yields a sum slightly less. In our earlier
+a finite number of terms yields a sum slightly lower. In our earlier
 example (α=0.1, q=0.5), an infinite sum would give 0.1/(1-0.5)=0.2 (20\%
 extra). But summing only up to, say, 6 terms (which might correspond to
 adding 1D,3D,4D,5D,6D,7D contributions if 2D is main and 13D closure

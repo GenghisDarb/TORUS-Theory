@@ -58,6 +58,12 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
 
 \date{}
 

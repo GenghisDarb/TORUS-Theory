@@ -59,6 +59,13 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
+
 \date{}
 
 \begin{document}
@@ -238,14 +245,14 @@ repo because families were renumbered chronologically after export.
 \textbf{Type 9 (avg)}\tabularnewline
 \midrule
 \endhead
-Arm length LarmL\_\textbackslash{}mathrm\{arm\}Larm​ & 4 000 m & 4 000 m
-& 4 000 m & 4 000 m & 4 000 m & 4 000 m\tabularnewline
-Circulating power PcavP\_\textbackslash{}mathrm\{cav\}Pcav​ & 3 MW & 3.3
-MW & 2.9 MW & 3.1 MW & 3.2 MW & 3.6 MW\tabularnewline
+Arm length LarmL\subscript{arm} & 4 000 m & 4 000 m & 4 000 m & 4 000 m
+& 4 000 m & 4 000 m\tabularnewline
+Circulating power PcavP\subscript{cav} & 3 MW & 3.3 MW & 2.9 MW & 3.1 MW
+& 3.2 MW & 3.6 MW\tabularnewline
 Squeezer level (dB) & 12 & 14 & 15 & 13 & 14 & 16\tabularnewline
 \# filter cavities & 1 & 2 & 2 & 2 & 3 & 2\tabularnewline
-Mode order controlled & TEM00\_\{00\}00​ & up to 02 & up to 04 & up to
-02 & up to 04 & up to 06\tabularnewline
+Mode order controlled & TEM00\subscript{00} & up to 02 & up to 04 & up
+to 02 & up to 04 & up to 06\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -451,7 +458,8 @@ steals.''}\\
 \textbf{4.1 Scope and Method}
 
 For each validated family (Types 2, 5, 6, 8, 9) we decomposed the total
-strain noise Sh(f)S\_h(f)Sh​(f) into \textbf{seven canonical sources}:
+strain noise Sh(f)S\subscript{h}(f) into \textbf{seven canonical
+sources}:
 
 \textbar{} Label \textbar{} Physical origin \textbar{} Model / tool
 \textbar{}
@@ -477,28 +485,28 @@ coatings, 300 K sapphire substrates) unless otherwise noted.
 
 \begin{longtable}[]{@{}lllll@{}}
 \toprule
-\textbf{Family} & \textbf{P-opt (MW)} & \textbf{Lowest ShS\_hSh​} &
-\textbf{Dominant noise @ min fff} & \textbf{Comment}\tabularnewline
+\textbf{Family} & \textbf{P-opt (MW)} & \textbf{Lowest ShS\subscript{h}}
+& \textbf{Dominant noise @ min fff} & \textbf{Comment}\tabularnewline
 \midrule
 \endhead
 \textbf{Type 5 (Broadband)} & 2.8 &
-3.1×10−25 Hz−1/23.1\textbackslash{}times10\^{}\{-25\}\textbackslash{},\textbackslash{}mathrm\{Hz\^{}\{-1/2\}\}3.1×10−25Hz−1/2
+3.1×10−25 Hz−1/23.1\textbackslash{}times10\superscript{-25}\textbackslash{},\textbackslash{}mathrm\{Hz\superscript{-1/2}\}3.1×10−25Hz−1/2
 @ 150 Hz & \textbf{QNL} (shot-noise limited) & 8 dB squeezing + 600 m
 filter cavity\tabularnewline
 \textbf{Type 9 (Primordial BH)} & 1.3 &
-6.5×10−256.5\textbackslash{}times10\^{}\{-25\}6.5×10−25 @ 12 Hz &
+6.5×10−256.5\textbackslash{}times10\superscript{-25}6.5×10−25 @ 12 Hz &
 \textbf{Seis} & 6-stage blade + IPS feed-forward cuts seismic by
 ×9\tabularnewline
 \textbf{Type 6 (Narrow PM)} & 0.9 &
-1.2×10−241.2\textbackslash{}times10\^{}\{-24\}1.2×10−24 @ 2.9 kHz &
+1.2×10−241.2\textbackslash{}times10\superscript{-24}1.2×10−24 @ 2.9 kHz &
 \textbf{QNL} & Two cascaded triangular SRCs give 27 dB of signal
 gain\tabularnewline
 \textbf{Type 8 (Post-Merger)} & 1.7 &
-4.8×10−254.8\textbackslash{}times10\^{}\{-25\}4.8×10−25 @ 900 Hz &
+4.8×10−254.8\textbackslash{}times10\superscript{-25}4.8×10−25 @ 900 Hz &
 \textbf{CTN} & AI selects \textbf{double-wedge optics} → 23 \% coating
 area reduction\tabularnewline
 \textbf{Type 2 (Super-nova)} & 2.2 &
-3.8×10−253.8\textbackslash{}times10\^{}\{-25\}3.8×10−25 @ 400 Hz &
+3.8×10−253.8\textbackslash{}times10\superscript{-25}3.8×10−25 @ 400 Hz &
 \textbf{Susp} & Vertical--horizontal mode decoupler lowers violin-peak
 forest by 8 dB\tabularnewline
 \bottomrule
@@ -581,7 +589,7 @@ conjugate quantum variables across nested control layers}.
   product
 \end{itemize}
 
-Pcir Leff  ∣χmech(f)∣≈const.\textbackslash{}sqrt\{P\_\{\textbackslash{}text\{cir\}\}\textbackslash{},L\_\{\textbackslash{}text\{eff\}\}\}\textbackslash{};\textbar{}\textbackslash{}chi\_\{\textbackslash{}text\{mech\}\}(f)\textbar{}
+Pcir Leff  ∣χmech(f)∣≈const.\textbackslash{}sqrt\{P\subscript{\textbackslash{}text\{cir\}\}\textbackslash{},L\subscript{\textbackslash{}text\{eff\}\}\}\textbackslash{};\textbar{}\textbackslash{}chi\subscript{\textbackslash{}text\{mech\}\}(f)\textbar{}
 \textbackslash{}approx
 \textbackslash{}text\{const.\}Pcir​Leff​​∣χmech​(f)∣≈const.
 
@@ -628,8 +636,8 @@ linking AI designs to TORUS's abstract dynamical-systems framework.
 subsystems & ≥ 3 dB noise-reduction vs baseline at subsystem level &
 Tech-Readiness Review (TRR-1)\tabularnewline
 \textbf{H-1} \emph{(1-3 yr)} & Integrated \textbf{40 m-scale prototype}
-(Caltech / Virgo‐North) & Combined ShS\_hSh​ within 20 \% of full-scale
-prediction in 50 Hz--3 kHz & Ops‐Readiness Review (ORR-40
+(Caltech / Virgo‐North) & Combined ShS\subscript{h} within 20 \% of
+full-scale prediction in 50 Hz--3 kHz & Ops‐Readiness Review (ORR-40
 m)\tabularnewline
 \textbf{H-2} \emph{(3-7 yr)} & Full \textbf{4 km class upgrade} to one
 arm of Voyager test-site & Range improvement ≥ 1.7× for BNS, 3× for PBH
@@ -1140,7 +1148,7 @@ chips per surface (``tiling'') cover a full 220 mm aperture test mass.
 correction (nm)} & \textbf{Strain-sensitivity gain}\tabularnewline
 \midrule
 \endhead
-Type 2 & 0.34 & \textbf{0.14} & 1.18 × reach\tabularnewline
+Type 2 & 0.34 & \textbf{0.14} & 1.18 ×\tabularnewline
 Type 5 & 0.37 & \textbf{0.15} & 1.22 ×\tabularnewline
 Type 6 & 0.29 & \textbf{0.13} & 1.15 ×\tabularnewline
 Type 8 & 0.32 & \textbf{0.13} & 1.19 ×\tabularnewline

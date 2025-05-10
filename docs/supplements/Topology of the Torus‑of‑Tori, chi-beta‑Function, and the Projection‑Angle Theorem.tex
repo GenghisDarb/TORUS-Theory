@@ -59,6 +59,13 @@
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
+
 \date{}
 
 \begin{document}
@@ -493,8 +500,9 @@ non-trivial case is that one full turn projects onto itself ---
 effectively, the helix appears to not rise at all in the image. Setting
 the projected rise \$(H/N)\textbackslash{}cos\textbackslash{}theta\$
 equal to the vertical spacing of coils in the image (which should be an
-integer multiple of \$2R\$, the image diameter), the only way to have a
-\emph{single} circle is to have that spacing equal zero. Therefore,
+integer multiple of \$2R\textbackslash{}cos\textbackslash{}theta\$), the
+only way to have a \emph{single} circle is to have that spacing equal
+zero. Therefore,
 \$\textbackslash{}cos\textbackslash{}theta\$ must be zero or \$H=0\$ to
 literally have no rise, which is not possible except
 \$\textbackslash{}theta=90\^{}\textbackslash{}circ\$ (top-down view).
@@ -918,7 +926,6 @@ several criteria must be satisfied:
   \textbf{Torsion Field Saturation:} The \$\textbackslash{}chi\$ field
   has a finite capacity (like a maximum field strength or a point where
   higher torsion would cause instabilities). Safe operation requires
-  \$\textbackslash{}chi\$ to stay below saturation:
   \$\textbar{}\textbackslash{}chi\textbar{} \textless{}
   \textbackslash{}chi\_\{\textbackslash{}text\{sat\}\}\$. In practice,
   this means do not attempt to ramp curvature faster or higher than
@@ -1661,8 +1668,8 @@ then the last twist cancels the aggregate of previous ones.
 Summing up \$c\_1\$ contributions:
 \$\textbackslash{}sum\_\{i=2\}\^{}\{14\} p\_\{(i-1),i\} (a\_\{i-1\}\^{}*
 \textbackslash{}wedge a\_i\^{}\emph{) + p\_\{14,1\}(a\_\{14\}\^{}}
-\textbackslash{}wedge a\_1\^{}\emph{)\$. Notice this sum, every
-\$a\_j\^{}} \textbackslash{}wedge a\_k\^{}*\$ term appears at most once,
+\textbackslash{}wedge a\_1\^{}*\$). Notice this sum, every
+\$a\_j\^{}}\textbackslash{}wedge a\_k\^{}*\$ term appears at most once,
 because each fiber couples only two indices. The sum forms a ``cycle''
 through indices 1 to 14. If we rearrange the terms cyclically, we have:
 
@@ -1737,6 +1744,7 @@ earlier cycles, so we disallow \$p\textless{}q\$ twisting \$p\$ around
 lower-index fibre around a higher-index base cycle because the
 higher-index cycle doesn't exist yet when attaching the lower-index
 fibre). So \$p\_\{p,q
+\textbackslash{}textbackslash{}\$
 
 \textbf{Appendix B -- Monte Carlo Validation Code}
 
