@@ -1,57 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
+\author{}
 \date{}
 
 \begin{document}
@@ -66,13 +65,13 @@ creating a self-referential cycle. Rather than a one-way chain of cause
 and effect, recursion implies that different scales or stages of a
 system are linked in a closed loop. A simple analogy is a
 \textbf{fractal} pattern: zooming into a fractal reveals structures that
-resemble the whole, reflecting self-similarity across scales​. In a
-recursive physical model, similarly, the laws or constants at one scale
-reappear or inform those at another scale, making the entire structure
-self-similar or self-consistent. This stands in contrast to
-\textbf{linear or reductionist} approaches, which attempt to break
-phenomena down into independent, non-repeating components and view
-evolution as strictly sequential. A reductionist framework might
+resemble the whole, reflecting self-similarity across
+scales\hspace{0pt}. In a recursive physical model, similarly, the laws
+or constants at one scale reappear or inform those at another scale,
+making the entire structure self-similar or self-consistent. This stands
+in contrast to \textbf{linear or reductionist} approaches, which attempt
+to break phenomena down into independent, non-repeating components and
+view evolution as strictly sequential. A reductionist framework might
 describe the universe as proceeding from a set of initial conditions in
 a straight line, whereas a recursive framework envisions the ``end''
 conditions feeding back into the ``beginning'' in a continuous cycle.
@@ -94,11 +93,11 @@ exhibits similar structure at large and small scales, hinting that some
 generative rule is repeating recursively. Indeed, some cosmological
 models have speculated that the universe might exhibit fractal-like
 organization -- so-called \emph{fractal cosmology} posits that matter
-could be distributed in self-similar patterns at various scales​. While
-traditional cosmology assumes the universe becomes homogeneous at the
-largest scales, fractal cosmology theories (though speculative and in
-the minority) explore the possibility of recursive, scale-invariant
-structure in the cosmos​.
+could be distributed in self-similar patterns at various
+scales\hspace{0pt}. While traditional cosmology assumes the universe
+becomes homogeneous at the largest scales, fractal cosmology theories
+(though speculative and in the minority) explore the possibility of
+recursive, scale-invariant structure in the cosmos\hspace{0pt}.
 
 Recursive concepts have also appeared in the methodologies of physics.
 \textbf{Perturbation theory}, for instance, relies on iteratively
@@ -113,18 +112,18 @@ These are not usually called ``recursion'' outright, but they embody
 self-referential influence. Even quantum physics has flirted with
 recursive ideas: some approaches like scale-relativity suggest that on
 extremely small scales, spacetime could be \emph{fractal}, and this
-self-similar geometry might give rise to quantum behavior​. All of these
-cases show researchers inserting a bit of recursion into otherwise
-linear frameworks to solve problems or explain anomalies.
+self-similar geometry might give rise to quantum behavior\hspace{0pt}.
+All of these cases show researchers inserting a bit of recursion into
+otherwise linear frameworks to solve problems or explain anomalies.
 
 \textbf{TORUS Theory} takes the notion of recursion much further --
 elevating it from a tool or curiosity to the very foundation of physical
 law. Instead of viewing recursion as an occasional feature, TORUS posits
 that the universe \emph{itself} is organized by a structured recursion
-spanning all levels of reality​ 2rv. In TORUS, the progression of
-physical domains (from quantum to cosmological) is not a open-ended
-hierarchy but a closed loop: the highest scale feeds back to the
-starting point, forming what one can visualize as a cosmic torus or
+spanning all levels of reality\hspace{0pt} 2rv. In TORUS, the
+progression of physical domains (from quantum to cosmological) is not a
+open-ended hierarchy but a closed loop: the highest scale feeds back to
+the starting point, forming what one can visualize as a cosmic torus or
 ring. This means the ``initial conditions'' of physics are determined by
 the universe's own final state in a self-consistent way. The result is a
 radically non-linear worldview: no fundamental scale is truly
@@ -150,18 +149,18 @@ materials, which make planets,'' and so on -- but in such a tree, the
 causal influence flows upward and does not return back down. By
 contrast, in a recursive hierarchy each layer can \emph{talk back} to
 its origin. The 0D level influences 1D, 2D, and so on, but once we reach
-the top (13D), that top level feeds back to 0D again​. In TORUS this
-closure is literal: after the 13th dimension, the system's boundary
-conditions cycle back to the 0th dimension, enforcing that the entire
-sequence of layers is self-consistent and cyclic. In effect, causality
-runs \textbf{both upward and downward} through the levels, not just one
-way. Higher-dimensional physics (large-scale structure, cosmological
-parameters) sets boundary conditions or overall constraints that the
-lower levels must satisfy, while lower-dimensional physics (quantum
-fields, particles) provides the building blocks whose collective
-behavior shapes the higher levels. This two-way flow is a hallmark of
-recursive hierarchies and is fundamentally different from the
-one-directional assembly in a non-recursive (or merely branching)
+the top (13D), that top level feeds back to 0D again\hspace{0pt}. In
+TORUS this closure is literal: after the 13th dimension, the system's
+boundary conditions cycle back to the 0th dimension, enforcing that the
+entire sequence of layers is self-consistent and cyclic. In effect,
+causality runs \textbf{both upward and downward} through the levels, not
+just one way. Higher-dimensional physics (large-scale structure,
+cosmological parameters) sets boundary conditions or overall constraints
+that the lower levels must satisfy, while lower-dimensional physics
+(quantum fields, particles) provides the building blocks whose
+collective behavior shapes the higher levels. This two-way flow is a
+hallmark of recursive hierarchies and is fundamentally different from
+the one-directional assembly in a non-recursive (or merely branching)
 hierarchy.
 
 \textbf{Feedback loops} are the mechanism that bind this hierarchy
@@ -212,9 +211,10 @@ the requirement of consistency across the cycle. This self-contained
 nature addresses classic cosmological questions (like ``what sets the
 size of the universe?'' or ``what happened before the Big Bang?'') by
 asserting that those answers lie in the feedback loop -- the end
-conditions become the next beginning​. In summary, a recursive hierarchy
-is \textbf{holistic}: no level is autonomous, and the structure as a
-whole defines the parts, just as the parts define the whole.
+conditions become the next beginning\hspace{0pt}. In summary, a
+recursive hierarchy is \textbf{holistic}: no level is autonomous, and
+the structure as a whole defines the parts, just as the parts define the
+whole.
 
 One of the powerful outcomes of a recursive hierarchy with strong
 feedback loops is the potential for \textbf{self-organization and
@@ -299,18 +299,18 @@ observer) has taken place. One intuitive way to think of this is that
 when an observer is watching a system, the system+observer together form
 a larger recursive unit which must obey the same closure rules. TORUS
 formalism shows that this can be represented by an extra parameter (the
-OSQN) that changes state when an observation occurs​. Physically, this
-corresponds to a tiny feedback loop between the observer and the system.
-For instance, the \textbf{act of measurement} in TORUS might be
-accompanied by a calculable ``back-reaction'' on the system: when a
-quantum system's wavefunction appears to collapse due to observation,
-what's happening in TORUS terms is that the system and observer together
-transition to a new joint state that is still part of the allowed
-recursive solutions. The observer's knowledge has increased (they have
-recorded an outcome), and this new information state is now embedded in
-the universe's state going forward. The recursion ensures that this
-change is consistent across all levels -- down to quantum and up to
-thermodynamic and even cosmological scales. In effect, the
+OSQN) that changes state when an observation occurs\hspace{0pt}.
+Physically, this corresponds to a tiny feedback loop between the
+observer and the system. For instance, the \textbf{act of measurement}
+in TORUS might be accompanied by a calculable ``back-reaction'' on the
+system: when a quantum system's wavefunction appears to collapse due to
+observation, what's happening in TORUS terms is that the system and
+observer together transition to a new joint state that is still part of
+the allowed recursive solutions. The observer's knowledge has increased
+(they have recorded an outcome), and this new information state is now
+embedded in the universe's state going forward. The recursion ensures
+that this change is consistent across all levels -- down to quantum and
+up to thermodynamic and even cosmological scales. In effect, the
 \textbf{observer's influence propagates through the hierarchy}: TORUS
 papers describe how an observer's measurement can link micro-level
 quantum events with macro-level irreversibility (entropy increase) and
@@ -339,13 +339,14 @@ is endogenous} to the theory. The benefit of this is conceptual clarity
 and potentially even predictive power: TORUS suggests there might be
 slight, subtle deviations from standard quantum theory in situations
 involving conscious observers or measurement-like interactions, because
-the equations now include new terms for the observer's influence​. These
-deviations (perhaps tiny violations of perfect coherence or slight
-shifts in outcome probabilities) would be a signature of the
-observer-state dynamics. While such effects are speculative, TORUS's
-structured recursion provides a framework to discuss and even calculate
-them rigorously, shifting the discourse on the measurement problem from
-philosophical interpretation to physical mechanism.
+the equations now include new terms for the observer's
+influence\hspace{0pt}. These deviations (perhaps tiny violations of
+perfect coherence or slight shifts in outcome probabilities) would be a
+signature of the observer-state dynamics. While such effects are
+speculative, TORUS's structured recursion provides a framework to
+discuss and even calculate them rigorously, shifting the discourse on
+the measurement problem from philosophical interpretation to physical
+mechanism.
 
 In summary, \textbf{observers are elevated to participants in TORUS's
 recursive universe}. The state of an observer (their information, their
@@ -384,25 +385,26 @@ the diverse behaviors seen in those realms. By the time the recursion
 has built up to the familiar 3+1 dimensional world (around level 4D in
 the hierarchy), it has already incorporated the necessary ingredients
 for quantum field physics (fundamental constants such as \$c\$,
-\$\textbackslash{}hbar\$, and the fine-structure constant
-\$\textbackslash{}alpha\$ emerge at the appropriate stage)​. As one
-moves to higher recursion levels, new layers of physics come into play
-in a natural sequence: statistical and thermodynamic behavior emerge by
-around 6D--8D, gravity becomes significant at 9D, and the unification of
-forces and large-scale cosmic dynamics appear by 10D--13D​. Crucially,
-this buildup is \emph{cumulative} and interlinked. The laws we know in
-three spatial dimensions are not violated by the higher layers --
-instead, they are encompassed and given context. Each regime (quantum,
-classical, cosmic) is like a chapter in one story rather than separate
-books on different topics. The outcome is a framework in which quantum
-field theory and general relativity (and beyond) are not fundamentally
-at odds; they are successive outcomes of the same recursive process.
-TORUS explicitly highlights this: the theory shows how known quantum
-field equations can be obtained as ``local'' manifestations of the
-deeper recursion​, and how Einstein's field equations get augmented but
-recovered in the appropriate limit from the recursion-based gravity. The
-multi-layer recursion thus acts as a \textbf{bridge} between the
-microphysics of particles and the macrophysics of the universe.
+\$\textbackslash hbar\$, and the fine-structure constant
+\$\textbackslash alpha\$ emerge at the appropriate stage)\hspace{0pt}.
+As one moves to higher recursion levels, new layers of physics come into
+play in a natural sequence: statistical and thermodynamic behavior
+emerge by around 6D--8D, gravity becomes significant at 9D, and the
+unification of forces and large-scale cosmic dynamics appear by
+10D--13D\hspace{0pt}. Crucially, this buildup is \emph{cumulative} and
+interlinked. The laws we know in three spatial dimensions are not
+violated by the higher layers -- instead, they are encompassed and given
+context. Each regime (quantum, classical, cosmic) is like a chapter in
+one story rather than separate books on different topics. The outcome is
+a framework in which quantum field theory and general relativity (and
+beyond) are not fundamentally at odds; they are successive outcomes of
+the same recursive process. TORUS explicitly highlights this: the theory
+shows how known quantum field equations can be obtained as ``local''
+manifestations of the deeper recursion\hspace{0pt}, and how Einstein's
+field equations get augmented but recovered in the appropriate limit
+from the recursion-based gravity. The multi-layer recursion thus acts as
+a \textbf{bridge} between the microphysics of particles and the
+macrophysics of the universe.
 
 One immediate benefit of this unified principle is that it
 \textbf{resolves certain puzzles that come from viewing scales in
@@ -412,7 +414,7 @@ parameters in one domain to relate to those in another. For example, why
 is the strength of gravity (a cosmological-scale parameter) so
 incredibly small compared to the strength of electromagnetism (a
 quantum-scale parameter)? Why is the observed age of the universe
-(\textasciitilde{}13.8 billion years) so large compared to microscopic
+(\textasciitilde13.8 billion years) so large compared to microscopic
 timescales, yet it just happens to be the right order of magnitude to
 allow complex structures? In a non-recursive framework these are either
 chalked up to lucky accidents or sometimes approached with anthropic
@@ -421,16 +423,17 @@ mandated by recursion. The smallness of gravity relative to
 electromagnetism, or the specific huge ratio of the universe's lifespan
 to Planck time, are not mysterious numbers but rather outputs of the
 requirement that the 13D state loops back to generate the 0D coupling
-consistently​. Indeed, TORUS calculations demonstrate that certain large
-dimensionless numbers (like the \textasciitilde{}\$10\^{}\{60\}\$ ratio
-between cosmic scale and Planck scale) can be derived from products of
-fundamental constants once the recursion conditions are applied. What
-appears coincidental in a conventional view is \emph{forced} in TORUS --
-the universe couldn't close the loop unless those values aligned​. This
-means the \textbf{hierarchy problem} (why forces have such different
-strengths) and other cross-scale problems find a natural explanation:
-intermediate recursion levels ``ladder'' the gap between micro and macro
-so that no jump is unexplained​. Instead of free constants that differ
+consistently\hspace{0pt}. Indeed, TORUS calculations demonstrate that
+certain large dimensionless numbers (like the
+\textasciitilde\$10\^{}\{60\}\$ ratio between cosmic scale and Planck
+scale) can be derived from products of fundamental constants once the
+recursion conditions are applied. What appears coincidental in a
+conventional view is \emph{forced} in TORUS -- the universe couldn't
+close the loop unless those values aligned\hspace{0pt}. This means the
+\textbf{hierarchy problem} (why forces have such different strengths)
+and other cross-scale problems find a natural explanation: intermediate
+recursion levels ``ladder'' the gap between micro and macro so that no
+jump is unexplained\hspace{0pt}. Instead of free constants that differ
 by orders of magnitude for no clear reason, we have interdependent
 constants connected by the recursion relations. Such \textbf{cross-scale
 unity} is exactly what one expects from a true unified theory.
@@ -444,35 +447,36 @@ with other unification approaches. \textbf{String Theory and M-Theory}
 attempt unification by positing tiny extra spatial dimensions and
 strings or branes as fundamental objects, achieving unity at the cost of
 introducing a vast landscape of possibilities and parameters that are
-difficult to tie to experiment​. Decades on, string theory still
-struggles to produce a unique, testable prediction. \textbf{Loop Quantum
-Gravity} focuses on quantizing spacetime itself, which is a beautiful
-idea for merging quantum mechanics and general relativity, but it
-largely leaves out the other forces and has not yet shown how to recover
-the Standard Model of particle physics. Both frameworks, in a sense,
-\emph{compartmentalize} aspects of physics (strings primarily address
-quantum gravity, leaving cosmology somewhat open; LQG addresses
+difficult to tie to experiment\hspace{0pt}. Decades on, string theory
+still struggles to produce a unique, testable prediction. \textbf{Loop
+Quantum Gravity} focuses on quantizing spacetime itself, which is a
+beautiful idea for merging quantum mechanics and general relativity, but
+it largely leaves out the other forces and has not yet shown how to
+recover the Standard Model of particle physics. Both frameworks, in a
+sense, \emph{compartmentalize} aspects of physics (strings primarily
+address quantum gravity, leaving cosmology somewhat open; LQG addresses
 spacetime, separate from matter fields). TORUS's strategy of recursion,
 by contrast, inherently links all forces and scales by building them
 into a single closed structure. It doesn't require separate modules for
 different forces -- they are different faces of the same recursive
 jewel. For instance, electromagnetism in TORUS can be seen as emerging
-from a recursive correction in the gravitational equation​, and the
-strong and weak nuclear forces are hinted to arise from symmetry
-patterns in the recursion as well​. Gravity itself is modified but
-integrated, not an outlier. This \textbf{consolidation of disparate
-domains} is reflected in commentary on TORUS: it retains the useful
-insights of other approaches (higher-dimensional thinking, quantum
-geometry, Mach's principle of cosmic influence) but brings them under
-one explanatory roof​. The structured recursion is the single principle
-that replaces what otherwise might be a patchwork of ideas​.
+from a recursive correction in the gravitational equation\hspace{0pt},
+and the strong and weak nuclear forces are hinted to arise from symmetry
+patterns in the recursion as well\hspace{0pt}. Gravity itself is
+modified but integrated, not an outlier. This \textbf{consolidation of
+disparate domains} is reflected in commentary on TORUS: it retains the
+useful insights of other approaches (higher-dimensional thinking,
+quantum geometry, Mach's principle of cosmic influence) but brings them
+under one explanatory roof\hspace{0pt}. The structured recursion is the
+single principle that replaces what otherwise might be a patchwork of
+ideas\hspace{0pt}.
 
 A crucial advantage of TORUS's unified recursive approach is that it
 remains \textbf{empirically testable} in ways some other theories are
 not. Because the recursion connects physics at all scales, a change or
 prediction at one scale often has consequences at another, making the
-theory rich in observable implications​. This is deliberate: the
-architects of TORUS emphasize falsifiability. For example, if the
+theory rich in observable implications\hspace{0pt}. This is deliberate:
+the architects of TORUS emphasize falsifiability. For example, if the
 universe truly operates in a closed 14-dimensional recursion, there
 might be subtle signs of this in current or upcoming experiments. TORUS
 documentation highlights many such potential \textbf{predictions}. One
@@ -485,48 +489,48 @@ detected as a timing spread in signals from distant cosmic events if our
 detectors become sensitive enough. Another prediction is the possibility
 of an extra polarization mode of gravitational waves (a scalar or
 longitudinal polarization at the 0.1\% level) arising from the recursive
-structure​. On cosmological scales, as mentioned earlier, TORUS
-naturally explains \textbf{galaxy rotation curves} without dark matter
-by a small deviation from Newtonian gravity at low accelerations, akin
-to the MOdified Newtonian Dynamics (MOND) theory but here emerging from
-first principles. This implies that galaxies might exhibit precisely the
-kind of flat rotation profiles we see, with a specific acceleration
-scale tied to fundamental constants via recursion. Furthermore, because
-TORUS postulates a toroidal, closed universe, it predicts that we might
-find matching patterns in the sky (for instance, unusual correlations in
-the cosmic microwave background on very large scales) corresponding to
-light that has wrapped around the torus -- a testable cosmological
-signature if our observations become sensitive to topology. All these
-examples illustrate that \textbf{TORUS does not lack for concrete
-tests}. Its unified nature is actually a strength in making predictions:
-a tweak in the theory could show up in gravitational wave observations,
-in precision measurements of fundamental constants, in cosmological
-surveys, or in quantum coherence experiments. This multi-domain
-visibility means the theory can be \emph{falsified} or supported by a
-variety of data. By contrast, some other unification proposals reside
-largely in mathematical space with few distinctive empirical hooks
-(string theory's difficulties here have been well noted). TORUS's
-structured recursion, precisely because it anchors every scale to every
-other, gives a plethora of ways to probe it.
+structure\hspace{0pt}. On cosmological scales, as mentioned earlier,
+TORUS naturally explains \textbf{galaxy rotation curves} without dark
+matter by a small deviation from Newtonian gravity at low accelerations,
+akin to the MOdified Newtonian Dynamics (MOND) theory but here emerging
+from first principles. This implies that galaxies might exhibit
+precisely the kind of flat rotation profiles we see, with a specific
+acceleration scale tied to fundamental constants via recursion.
+Furthermore, because TORUS postulates a toroidal, closed universe, it
+predicts that we might find matching patterns in the sky (for instance,
+unusual correlations in the cosmic microwave background on very large
+scales) corresponding to light that has wrapped around the torus -- a
+testable cosmological signature if our observations become sensitive to
+topology. All these examples illustrate that \textbf{TORUS does not lack
+for concrete tests}. Its unified nature is actually a strength in making
+predictions: a tweak in the theory could show up in gravitational wave
+observations, in precision measurements of fundamental constants, in
+cosmological surveys, or in quantum coherence experiments. This
+multi-domain visibility means the theory can be \emph{falsified} or
+supported by a variety of data. By contrast, some other unification
+proposals reside largely in mathematical space with few distinctive
+empirical hooks (string theory's difficulties here have been well
+noted). TORUS's structured recursion, precisely because it anchors every
+scale to every other, gives a plethora of ways to probe it.
 
 In summary, multi-layered recursion serves as the \textbf{unifying
 backbone} of TORUS Theory. It provides a single conceptual thread that
 weaves through quantum mechanics, thermodynamics, general relativity,
 and cosmology, stitching them into one coherent fabric. This approach
 not only addresses theoretical unification (showing how different forces
-and constants relate as part of one self-consistent system​) but also
-ensures that the unified theory remains grounded in \textbf{testable
-physics}. The ability to predict cross-connected phenomena -- such as
-linking a cosmological parameter to a subatomic measurement -- is a
-direct consequence of the recursive unification. It transforms
-unification from a purely theoretical quest into an empirical one, where
-each layer of the theory can be checked against reality. In the coming
-chapters of this book, the detailed mathematical structure of the TORUS
-recursion will be developed, and we will see explicitly how quantum
-field equations, force unification, and cosmological dynamics all emerge
-from this single recursive schema. What Chapter 2 has established is the
-conceptual foundation for that endeavor: it has laid out how
-\emph{structured recursion} operates as a principle, why it's
+and constants relate as part of one self-consistent system\hspace{0pt})
+but also ensures that the unified theory remains grounded in
+\textbf{testable physics}. The ability to predict cross-connected
+phenomena -- such as linking a cosmological parameter to a subatomic
+measurement -- is a direct consequence of the recursive unification. It
+transforms unification from a purely theoretical quest into an empirical
+one, where each layer of the theory can be checked against reality. In
+the coming chapters of this book, the detailed mathematical structure of
+the TORUS recursion will be developed, and we will see explicitly how
+quantum field equations, force unification, and cosmological dynamics
+all emerge from this single recursive schema. What Chapter 2 has
+established is the conceptual foundation for that endeavor: it has laid
+out how \emph{structured recursion} operates as a principle, why it's
 fundamentally different from linear paradigms, and how it promises to
 unify physics in an internally consistent and experimentally relevant
 way.

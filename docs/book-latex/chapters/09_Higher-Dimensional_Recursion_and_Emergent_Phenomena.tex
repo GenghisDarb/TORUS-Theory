@@ -1,57 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
+\author{}
 \date{}
 
 \begin{document}
@@ -95,9 +94,9 @@ system where higher dimensions effectively shape the behavior of lower
 dimensions. In practical terms, TORUS treats our familiar 4D physics as
 \emph{embedded} in a larger 14D structure. What we call ``constants of
 nature'' or laws in 4D are in part determined by conditions spanning all
-the higher dimensions​. The 13D→0D closure condition imposes that the
-universe's highest-scale parameters (like total size or age) directly
-connect with the tiniest-scale parameters (like the strength of
+the higher dimensions\hspace{0pt}. The 13D→0D closure condition imposes
+that the universe's highest-scale parameters (like total size or age)
+directly connect with the tiniest-scale parameters (like the strength of
 fundamental couplings). Higher-dimensional recursion, therefore, means
 that \textbf{the entire tower of dimensional layers coherently
 contributes to the physics at any given level} -- a distinguishing
@@ -116,28 +115,29 @@ determined solely by 4D matter, but also by the bending of the
 higher-dimensional structure around it. Mathematically, one writes the
 \textbf{recursion-modified Einstein equation} as:
 
-Gμν(rec)+Λrec gμν=8πGc4 Tμν(rec),G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}
+Gμν(rec)+Λrec gμν=8πGc4 Tμν(rec),G\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}
 +
-\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\textbackslash{},g\_\{\textbackslash{}mu\textbackslash{}nu\}
-= \textbackslash{}frac\{8\textbackslash{}pi
-G\}\{c\^{}4\}\textbackslash{},T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\},Gμν(rec)​+Λrec​gμν​=c48πG​Tμν(rec)​,
+\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\textbackslash,g\_\{\textbackslash mu\textbackslash nu\}
+= \textbackslash frac\{8\textbackslash pi
+G\}\{c\^{}4\}\textbackslash,T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\},Gμν(rec)\hspace{0pt}+Λrec\hspace{0pt}gμν\hspace{0pt}=c48πG\hspace{0pt}Tμν(rec)\hspace{0pt},
 
 which mirrors the form of the standard Einstein equation but now each
-term carries a ``(rec)'' superscript​. The superscript indicates that
-quantities like \$G\_\{\textbackslash{}mu\textbackslash{}nu\}\$
-(Einstein tensor), \$T\_\{\textbackslash{}mu\textbackslash{}nu\}\$
-(stress-energy), and \$\textbackslash{}Lambda\$ (cosmological term) are
-\emph{dressed} with contributions from all recursion layers​. In
-particular, TORUS introduces an extra curvature term
-\$\textbackslash{}Delta G\_\{\textbackslash{}mu\textbackslash{}nu\}\$ to
-the Einstein tensor, representing the \textbf{feedback of higher
-dimensions (5D through 13D) onto 4D curvature}​. Intuitively, we can
-imagine that beyond the usual 4D curvature caused by visible matter,
-there is a faint imprint of curvature from ``outside'' our 4D world --
-the gravitational pull of 5D, 6D, ... up to 13D layers wrapping around.
-This higher-dimensional influence is constrained such that the whole
-0D--13D cycle remains self-consistent (the torus closes without any gap
-or inconsistency). As a result, while in ordinary conditions the extra
+term carries a ``(rec)'' superscript\hspace{0pt}. The superscript
+indicates that quantities like
+\$G\_\{\textbackslash mu\textbackslash nu\}\$ (Einstein tensor),
+\$T\_\{\textbackslash mu\textbackslash nu\}\$ (stress-energy), and
+\$\textbackslash Lambda\$ (cosmological term) are \emph{dressed} with
+contributions from all recursion layers\hspace{0pt}. In particular,
+TORUS introduces an extra curvature term \$\textbackslash Delta
+G\_\{\textbackslash mu\textbackslash nu\}\$ to the Einstein tensor,
+representing the \textbf{feedback of higher dimensions (5D through 13D)
+onto 4D curvature}\hspace{0pt}. Intuitively, we can imagine that beyond
+the usual 4D curvature caused by visible matter, there is a faint
+imprint of curvature from ``outside'' our 4D world -- the gravitational
+pull of 5D, 6D, ... up to 13D layers wrapping around. This
+higher-dimensional influence is constrained such that the whole 0D--13D
+cycle remains self-consistent (the torus closes without any gap or
+inconsistency). As a result, while in ordinary conditions the extra
 curvature is negligible (ensuring we recover normal 4D physics), in
 certain regimes the higher-dimensional effects become noticeable.
 
@@ -147,18 +147,18 @@ local inertial physics. TORUS gives Mach's principle a concrete
 implementation: because the largest scale (13D, essentially the cosmos)
 closes on the smallest (0D, fundamental constants), the
 \textbf{structure of the entire universe feeds into local physical
-laws}​. For instance, the value of Newton's gravitational constant \$G\$
-or the fine-structure constant \$\textbackslash{}alpha\$ might not be
-fixed in isolation -- they are balanced in the recursion by the amount
-of matter and size of the universe at 13D. If the universe's mass/energy
-content or total scale were different, those ``constant'' values could
-shift to maintain the consistency of the toroidal loop. In TORUS, the
-usual separation between cosmology and local physics dissolves: higher
-dimensions provide \emph{global constraints} that shape the parameter
-values and equations we measure in 4D​. This means phenomena
-traditionally attributed to arbitrary initial conditions or separate new
-physics can be reinterpreted as \textbf{higher-dimensional recursion
-effects}.
+laws}\hspace{0pt}. For instance, the value of Newton's gravitational
+constant \$G\$ or the fine-structure constant \$\textbackslash alpha\$
+might not be fixed in isolation -- they are balanced in the recursion by
+the amount of matter and size of the universe at 13D. If the universe's
+mass/energy content or total scale were different, those ``constant''
+values could shift to maintain the consistency of the toroidal loop. In
+TORUS, the usual separation between cosmology and local physics
+dissolves: higher dimensions provide \emph{global constraints} that
+shape the parameter values and equations we measure in 4D\hspace{0pt}.
+This means phenomena traditionally attributed to arbitrary initial
+conditions or separate new physics can be reinterpreted as
+\textbf{higher-dimensional recursion effects}.
 
 \textbf{Observable Impacts and Examples:} What might such
 higher-dimensional influences look like in practice? TORUS posits
@@ -172,85 +172,86 @@ observable physics:
   be explained by visible mass, leading to the dark matter hypothesis.
   TORUS offers an alternative explanation: the \emph{recursion-induced
   curvature} from higher dimensions could modify the gravitational law
-  at very low accelerations​. Essentially, the usual \$1/r\^{}2\$
-  gravity might get a tiny boost on galactic scales due to 5D+
-  influences, producing flat rotation curves without needing unseen 4D
-  mass. This is analogous to MOdified Newtonian Dynamics (MOND), but
+  at very low accelerations\hspace{0pt}. Essentially, the usual
+  \$1/r\^{}2\$ gravity might get a tiny boost on galactic scales due to
+  5D+ influences, producing flat rotation curves without needing unseen
+  4D mass. This is analogous to MOdified Newtonian Dynamics (MOND), but
   here the adjustment isn't an ad hoc tweak -- it \emph{emerges
-  naturally} from the higher-dimensional field equations of TORUS​.
-  Moreover, TORUS ties the scale of this effect to fundamental constants
-  (via the recursion linking cosmic size to local parameters), whereas
-  MOND must simply postulate a new acceleration scale. If TORUS is
-  correct, galaxies behave as they do not because of mysterious dark
-  particles, but because our 4D spacetime is subtly curved by the
-  embedding 5D--13D structure. Ongoing research in TORUS is quantifying
-  this effect, but it already suggests a clear empirical difference:
-  \textbf{galactic dynamics might be explainable by a fully relativistic
-  recursion theory}, verifiable by precision measurements of gravity at
-  low accelerations.
+  naturally} from the higher-dimensional field equations of
+  TORUS\hspace{0pt}. Moreover, TORUS ties the scale of this effect to
+  fundamental constants (via the recursion linking cosmic size to local
+  parameters), whereas MOND must simply postulate a new acceleration
+  scale. If TORUS is correct, galaxies behave as they do not because of
+  mysterious dark particles, but because our 4D spacetime is subtly
+  curved by the embedding 5D--13D structure. Ongoing research in TORUS
+  is quantifying this effect, but it already suggests a clear empirical
+  difference: \textbf{galactic dynamics might be explainable by a fully
+  relativistic recursion theory}, verifiable by precision measurements
+  of gravity at low accelerations.
 \item
   \textbf{Emergent Cosmological Constant (Dark Energy):} Another puzzle
   in 4D physics is the tiny but nonzero cosmological constant
-  \$\textbackslash{}Lambda\$ that drives the universe's accelerated
+  \$\textbackslash Lambda\$ that drives the universe's accelerated
   expansion (often attributed to ``dark energy''). TORUS naturally
   generates a small cosmological term
-  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$ as a
-  \textbf{residual curvature from the closed recursion cycle}​. Because
-  the 13D layer ``closes the loop'' back to 0D, there can be a slight
-  mismatch -- akin to the last piece of a thread being tucked in --
-  which appears in 4D as a vacuum energy. In TORUS,
-  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$ is
+  \$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$ as a
+  \textbf{residual curvature from the closed recursion
+  cycle}\hspace{0pt}. Because the 13D layer ``closes the loop'' back to
+  0D, there can be a slight mismatch -- akin to the last piece of a
+  thread being tucked in -- which appears in 4D as a vacuum energy. In
+  TORUS, \$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$ is
   \emph{not inserted by hand}; it is an \textbf{emergent property of
-  recursion symmetry}​. Qualitatively, one can imagine that as the
-  universe's 13-dimensional structure completes itself, it leaves a tiny
-  ``curvature memory'' that we perceive as dark energy in our 4D cosmos.
-  This provides a compelling explanation for why
-  \$\textbackslash{}Lambda\$ is incredibly small but not zero: it
+  recursion symmetry}\hspace{0pt}. Qualitatively, one can imagine that
+  as the universe's 13-dimensional structure completes itself, it leaves
+  a tiny ``curvature memory'' that we perceive as dark energy in our 4D
+  cosmos. This provides a compelling explanation for why
+  \$\textbackslash Lambda\$ is incredibly small but not zero: it
   balances the books of the recursion closure. If this idea is right,
   the value of the cosmological constant is linked to other fundamental
   quantities (like the 0D coupling and the age of the universe) rather
   than being an independent parameter. Additionally, TORUS hints that a
   phenomenon like \textbf{inflation} (the rapid expansion in the early
-  universe) might correspond to a phase in the recursion cycle​. In
-  other words, instead of invoking a separate inflation field, TORUS
-  would see inflationary expansion as a temporary outcome of recursion
-  dynamics when certain layers strongly couple -- a testable deviation
-  being that inflation's parameters (e.g. the spectrum of primordial
-  fluctuations) could be related to recursion constants rather than
-  arbitrary. These cosmological insights illustrate how
-  higher-dimensional recursion layers can give rise to effects that in
-  4D seem like new energy components or expansion dynamics.
+  universe) might correspond to a phase in the recursion
+  cycle\hspace{0pt}. In other words, instead of invoking a separate
+  inflation field, TORUS would see inflationary expansion as a temporary
+  outcome of recursion dynamics when certain layers strongly couple -- a
+  testable deviation being that inflation's parameters (e.g. the
+  spectrum of primordial fluctuations) could be related to recursion
+  constants rather than arbitrary. These cosmological insights
+  illustrate how higher-dimensional recursion layers can give rise to
+  effects that in 4D seem like new energy components or expansion
+  dynamics.
 \item
   \textbf{Variations in Fundamental ``Constants'' or Laws:} If global
   structure influences local physics, we might detect spatial or
   temporal variations in quantities long thought constant. For example,
-  the fine-structure constant \$\textbackslash{}alpha\$ (which is 0D in
+  the fine-structure constant \$\textbackslash alpha\$ (which is 0D in
   TORUS) could vary extremely slightly across the universe in
   correlation with large-scale structures. TORUS predicts that any such
   variation would \emph{not} be random; it would map onto known cosmic
-  features​. A region of space near a huge concentration of galaxies (a
-  supercluster) might show a minuscule uptick in
-  \$\textbackslash{}alpha\$, or \$\textbackslash{}alpha\$ might evolve
-  over billions of years in tune with cosmic expansion​. Some tentative
-  observations have hinted at spatial variations in constants, but
-  nothing definitive. TORUS provides a framework where this can be
+  features\hspace{0pt}. A region of space near a huge concentration of
+  galaxies (a supercluster) might show a minuscule uptick in
+  \$\textbackslash alpha\$, or \$\textbackslash alpha\$ might evolve
+  over billions of years in tune with cosmic expansion\hspace{0pt}. Some
+  tentative observations have hinted at spatial variations in constants,
+  but nothing definitive. TORUS provides a framework where this can be
   systematically explored: because 13D (cosmic age/scale) feeds into 0D
-  (\$\textbackslash{}alpha\$), a precise relationship could exist
-  linking the evolution of the universe to the values of constants.
-  Another possible variation is in gravity's behavior at the largest
-  scales -- if higher-dimensional feedback becomes relevant only on
-  cosmological distances, then beyond a certain scale one might see
-  deviations from the predictions of the standard 4D
-  \$\textbackslash{}Lambda\$CDM model. Indeed, TORUS specifically
-  predicts a subtle \textbf{oscillatory modulation in the distribution
-  of matter at ultra-large scales} (on the order of gigaparsecs) due to
-  the toroidal boundary condition of recursion​. This would be observed
-  as a gentle ripple or preferred scale in the clustering of galaxies --
-  a phenomenon not expected from random initial fluctuations alone.
-  Ongoing and future galaxy surveys (like \emph{Euclid} and \emph{LSST})
-  will be able to hunt for this kind of pattern​. A confirmed detection
-  of such a recursion-induced cosmic ``wiggle'' (beyond the well-known
-  100 Mpc baryon acoustic oscillation scale) would strongly support the
+  (\$\textbackslash alpha\$), a precise relationship could exist linking
+  the evolution of the universe to the values of constants. Another
+  possible variation is in gravity's behavior at the largest scales --
+  if higher-dimensional feedback becomes relevant only on cosmological
+  distances, then beyond a certain scale one might see deviations from
+  the predictions of the standard 4D \$\textbackslash Lambda\$CDM model.
+  Indeed, TORUS specifically predicts a subtle \textbf{oscillatory
+  modulation in the distribution of matter at ultra-large scales} (on
+  the order of gigaparsecs) due to the toroidal boundary condition of
+  recursion\hspace{0pt}. This would be observed as a gentle ripple or
+  preferred scale in the clustering of galaxies -- a phenomenon not
+  expected from random initial fluctuations alone. Ongoing and future
+  galaxy surveys (like \emph{Euclid} and \emph{LSST}) will be able to
+  hunt for this kind of pattern\hspace{0pt}. A confirmed detection of
+  such a recursion-induced cosmic ``wiggle'' (beyond the well-known 100
+  Mpc baryon acoustic oscillation scale) would strongly support the
   presence of higher-dimensional influences, whereas its absence would
   constrain or falsify aspects of TORUS's higher-layer dynamics.
 \end{itemize}
@@ -330,7 +331,7 @@ the toroidal cycle.
 TORUS is that it strives to eliminate arbitrariness in fundamental
 physics. Many existing theories require extra assumptions or special
 ingredients to account for observed complexity. For example, quantum
-theory introduces Planck's constant \$\textbackslash{}hbar\$ and
+theory introduces Planck's constant \$\textbackslash hbar\$ and
 quantization rules somewhat axiomatically, grand unification theories
 introduce new symmetries or particles to unify forces, and cosmology
 sometimes invokes finely tuned initial conditions to explain the
@@ -338,8 +339,8 @@ structured universe. TORUS attempts to show that \textbf{a single
 recursion principle can replace many of these separate assumptions},
 yielding a more economical explanation. The built-in self-similarity and
 closure of the 14D cycle \textbf{resolves issues that otherwise demand
-ad hoc fixes in other frameworks​}. Several instances of this emergent
-resolution have been highlighted throughout TORUS theory:
+ad hoc fixes in other frameworks\hspace{0pt}}. Several instances of this
+emergent resolution have been highlighted throughout TORUS theory:
 
 \begin{itemize}
 \item
@@ -350,27 +351,28 @@ resolution have been highlighted throughout TORUS theory:
   quantization: the requirement that the recursion cycle closes
   consistently after 13 jumps forces certain parameters to take on
   \textbf{discrete eigenvalues}, analogous to how a standing wave fits
-  only an integer number of wavelengths in a closed loop​. In the
-  algebraic formulation of TORUS, the condition
-  \$\textbackslash{}mathcal\{R\}\^{}\{13\} =
-  \textbackslash{}mathbb\{I\}\$ (the recursion operator composed 13
-  times yields the identity) means that any phase accumulated over one
-  full cycle must be an integer multiple of \$2\textbackslash{}pi\$​.
-  This mirrors the quantization condition in quantum mechanics for a
-  particle on a ring (where the momentum is quantized by the requirement
-  that the wavefunction be single-valued after one loop)​. The upshot is
-  that \emph{discreteness emerges from topology}: when the universe's
+  only an integer number of wavelengths in a closed loop\hspace{0pt}. In
+  the algebraic formulation of TORUS, the condition
+  \$\textbackslash mathcal\{R\}\^{}\{13\} = \textbackslash mathbb\{I\}\$
+  (the recursion operator composed 13 times yields the identity) means
+  that any phase accumulated over one full cycle must be an integer
+  multiple of \$2\textbackslash pi\$\hspace{0pt}. This mirrors the
+  quantization condition in quantum mechanics for a particle on a ring
+  (where the momentum is quantized by the requirement that the
+  wavefunction be single-valued after one loop)\hspace{0pt}. The upshot
+  is that \emph{discreteness emerges from topology}: when the universe's
   dimensional structure is circular, only certain ``harmonic'' patterns
   fit. TORUS suggests that fundamental constants like
-  \$\textbackslash{}hbar\$ itself might arise from the minimal action
-  needed to complete one recursion loop​. Thus, the existence of
-  quantized energy levels, fundamental units of charge, and
-  \$\textbackslash{}hbar\$ are \textbf{natural byproducts of recursion},
-  not independent postulates​. The strange quantum rules (like \${[}x,
-  p{]} = i\textbackslash{}hbar\$ commutation) could be viewed as just
-  the effective 4D reflection of deeper recursion algebra rules​. In
-  summary, TORUS doesn't merely accommodate quantization -- it
-  \emph{demystifies} it by linking it to a structural necessity.
+  \$\textbackslash hbar\$ itself might arise from the minimal action
+  needed to complete one recursion loop\hspace{0pt}. Thus, the existence
+  of quantized energy levels, fundamental units of charge, and
+  \$\textbackslash hbar\$ are \textbf{natural byproducts of recursion},
+  not independent postulates\hspace{0pt}. The strange quantum rules
+  (like \${[}x, p{]} = i\textbackslash hbar\$ commutation) could be
+  viewed as just the effective 4D reflection of deeper recursion algebra
+  rules\hspace{0pt}. In summary, TORUS doesn't merely accommodate
+  quantization -- it \emph{demystifies} it by linking it to a structural
+  necessity.
 \item
   \emph{Emergence of Forces and Fields:} In conventional physics, each
   fundamental force (electromagnetism, weak, strong, gravity) comes with
@@ -378,24 +380,25 @@ resolution have been highlighted throughout TORUS theory:
   to show these different forces are facets of one recursion-unified
   field. In Chapter 4, for instance, we saw that applying recursion to
   Einstein's equations in 4D naturally yields an extra term that looks
-  like Maxwell's equations (electromagnetism) at the next level​. This
-  is analogous to the classic Kaluza--Klein theory where adding a 5th
-  dimension to gravity produces electromagnetism, but TORUS achieves it
-  through the discrete recursion step rather than a continuous extra
-  dimension. Specifically, the structured recursion produces an
-  \textbf{emergent \$U(1)\$ gauge field} (the symmetry group of
-  electromagnetism) from the geometry of the 4D→5D step​. One finds that
-  a certain antisymmetric tensor arising in the 5D recursion-corrected
-  curvature has exactly the properties of the electromagnetic field
-  tensor in 4D, and it satisfies Maxwell's source-free equations​. In
-  plain terms, \emph{Maxwell's laws appear ``for free'' once we include
-  the 5D recursion layer}. Similarly, as the recursion proceeds, higher
-  layers could give rise to Yang--Mills fields that resemble the weak
-  and strong nuclear forces (an idea touched on in Chapter 6). The
-  concept of \textbf{structured novelty} is at play: at each new
-  dimensional layer, a novel field or interaction pops out, but it's not
-  magic -- it's the \emph{same gravitational field} carrying over into a
-  new dimension, now perceived differently. By 11D, TORUS predicts an
+  like Maxwell's equations (electromagnetism) at the next
+  level\hspace{0pt}. This is analogous to the classic Kaluza--Klein
+  theory where adding a 5th dimension to gravity produces
+  electromagnetism, but TORUS achieves it through the discrete recursion
+  step rather than a continuous extra dimension. Specifically, the
+  structured recursion produces an \textbf{emergent \$U(1)\$ gauge
+  field} (the symmetry group of electromagnetism) from the geometry of
+  the 4D→5D step\hspace{0pt}. One finds that a certain antisymmetric
+  tensor arising in the 5D recursion-corrected curvature has exactly the
+  properties of the electromagnetic field tensor in 4D, and it satisfies
+  Maxwell's source-free equations\hspace{0pt}. In plain terms,
+  \emph{Maxwell's laws appear ``for free'' once we include the 5D
+  recursion layer}. Similarly, as the recursion proceeds, higher layers
+  could give rise to Yang--Mills fields that resemble the weak and
+  strong nuclear forces (an idea touched on in Chapter 6). The concept
+  of \textbf{structured novelty} is at play: at each new dimensional
+  layer, a novel field or interaction pops out, but it's not magic --
+  it's the \emph{same gravitational field} carrying over into a new
+  dimension, now perceived differently. By 11D, TORUS predicts an
   effective unification of all forces in a single framework, since
   recursion would have generated all the gauge fields by then (and
   indeed 11D in the cycle is often associated with a fully unified force
@@ -405,13 +408,13 @@ resolution have been highlighted throughout TORUS theory:
   closes. We also saw that \textbf{the absence of magnetic monopoles and
   the quantization of electric charge} can be explained by the topology
   of recursion: field lines cannot just start or end in mid-space
-  because they loop through higher dimensions​. What in standard physics
-  might require an arbitrary topological assumption (no monopoles) is
-  here a natural consequence of the closed toroidal structure --
-  \textbf{every ``line'' must form a closed loop in the
-  higher-dimensional fabric}​. These examples illustrate how the
-  complexity of multiple forces and peculiar charge rules are actually
-  structured outcomes of one recursion principle.
+  because they loop through higher dimensions\hspace{0pt}. What in
+  standard physics might require an arbitrary topological assumption (no
+  monopoles) is here a natural consequence of the closed toroidal
+  structure -- \textbf{every ``line'' must form a closed loop in the
+  higher-dimensional fabric}\hspace{0pt}. These examples illustrate how
+  the complexity of multiple forces and peculiar charge rules are
+  actually structured outcomes of one recursion principle.
 \item
   \emph{Elimination of Singularities and Fine-Tuning:} Recursion also
   brings novel ways to resolve thorny issues like singularities (points
@@ -421,30 +424,30 @@ resolution have been highlighted throughout TORUS theory:
   that prevents runaway extremes}. For example, instead of a Big Bang
   singularity where physics breaks down, TORUS suggests a bounce: as 13D
   (the universe's ultimate scale) feeds into 0D, a hot dense state at
-  the end of a cycle becomes the seed of the next cycle​. This
-  \emph{cyclic cosmology} is an emergent feature of the model that could
-  avert an initial singularity and perhaps the infinite collapse of a
-  final state -- effectively the universe repeats or reinvents itself,
-  but crucially with potentially new variations each cycle. The need for
-  an initial condition is transformed into a self-consistency condition.
-  Likewise, the ``fine-tuning'' of constants (why is our universe so
-  hospitable to complexity?) is addressed by the recursion: only those
-  sets of constants that allow the cycle to close and remain stable are
-  realized​. In a sense, the universe filters itself -- if gravity were
-  too strong or \$\textbackslash{}alpha\$ too large, the chain of
-  influences 0D→...→13D would not self-consistently close (the torus
-  would break). Thus, the actual values we observe are \emph{selected by
-  the requirement of a self-consistent recursion}, not by a random draw
-  from all possibilities​. This is a more physical version of the
-  anthropic principle: rather than saying ``we observe these values
-  because otherwise we wouldn't be here,'' TORUS says ``these values are
-  the only ones that geometrically work for a universe that loops
-  through 14D and back.'' The complexity we see (stars, planets, life)
-  then is not a lucky accident but a likely outcome of a cosmos
-  structured to persist through recursive cycles. The emergence of order
-  -- from the periodic table of elements to the cosmic web of galaxies
-  -- can be viewed as flowing from the foundational order of the TORUS
-  recursion.
+  the end of a cycle becomes the seed of the next cycle\hspace{0pt}.
+  This \emph{cyclic cosmology} is an emergent feature of the model that
+  could avert an initial singularity and perhaps the infinite collapse
+  of a final state -- effectively the universe repeats or reinvents
+  itself, but crucially with potentially new variations each cycle. The
+  need for an initial condition is transformed into a self-consistency
+  condition. Likewise, the ``fine-tuning'' of constants (why is our
+  universe so hospitable to complexity?) is addressed by the recursion:
+  only those sets of constants that allow the cycle to close and remain
+  stable are realized\hspace{0pt}. In a sense, the universe filters
+  itself -- if gravity were too strong or \$\textbackslash alpha\$ too
+  large, the chain of influences 0D→...→13D would not self-consistently
+  close (the torus would break). Thus, the actual values we observe are
+  \emph{selected by the requirement of a self-consistent recursion}, not
+  by a random draw from all possibilities\hspace{0pt}. This is a more
+  physical version of the anthropic principle: rather than saying ``we
+  observe these values because otherwise we wouldn't be here,'' TORUS
+  says ``these values are the only ones that geometrically work for a
+  universe that loops through 14D and back.'' The complexity we see
+  (stars, planets, life) then is not a lucky accident but a likely
+  outcome of a cosmos structured to persist through recursive cycles.
+  The emergence of order -- from the periodic table of elements to the
+  cosmic web of galaxies -- can be viewed as flowing from the
+  foundational order of the TORUS recursion.
 \end{itemize}
 
 \textbf{Examples of Recursion-Driven Emergent Phenomena:} To ground
@@ -457,30 +460,31 @@ where TORUS's recursive structure yields emergent effects:
   is the apparent ``coincidence'' of certain cosmic numbers. For
   instance, the ratio of the universe's age to the Planck time is an
   enormous dimensionless number
-  (\textasciitilde{}\$8\textbackslash{}times10\^{}\{60\}\$). In standard
+  (\textasciitilde\$8\textbackslash times10\^{}\{60\}\$). In standard
   physics, there's no obvious reason for this number's value -- it's
   just a result of very different scales. TORUS, however, predicts a
   specific relationship between such large-scale and small-scale
   quantities. By enforcing that the highest layer (13D, roughly the
   age/horizon of the universe) resonates correctly with the lowest (0D,
-  the fine-structure constant \$\textbackslash{}alpha\$), TORUS derives
-  a condition of the form \textbf{\$T\_U / t\_P \textbackslash{}approx
-  \textbackslash{}kappa,\textbackslash{}alpha\^{}\{-2\}\$} (with \$n=2\$
-  in this case)​. Plugging in known values, this yields a consistent
-  huge number \textasciitilde{} \$10\^{}\{60\}\$, matching observations.
-  What looks like a wild coincidence in a non-recursive framework
-  \emph{emerges as a necessary harmonic in TORUS}. It's as if the cosmos
-  is ``tuned'' so that when you multiply together ratios spanning all
-  scales, they neatly line up (much like musical harmonics aligning
-  frequencies). This emergent harmony suggests that complexity at one
-  scale (e.g. galaxies existing for billions of years) is intertwined
-  with parameters at vastly different scales (quantum processes at
-  \$10\^{}\{-44\}\$ seconds). TORUS not only explains the coincidence
-  but also provides a target for empirical tests: measure these
-  fundamental constants and cosmic parameters more precisely, and see if
-  they satisfy the predicted recursion formulas​. Any deviation could
-  signal a flaw in the theory, while confirmation would strengthen the
-  case that the universe's complexity is orchestrated by recursion.
+  the fine-structure constant \$\textbackslash alpha\$), TORUS derives a
+  condition of the form \textbf{\$T\_U / t\_P \textbackslash approx
+  \textbackslash kappa,\textbackslash alpha\^{}\{-2\}\$} (with \$n=2\$
+  in this case)\hspace{0pt}. Plugging in known values, this yields a
+  consistent huge number \textasciitilde{} \$10\^{}\{60\}\$, matching
+  observations. What looks like a wild coincidence in a non-recursive
+  framework \emph{emerges as a necessary harmonic in TORUS}. It's as if
+  the cosmos is ``tuned'' so that when you multiply together ratios
+  spanning all scales, they neatly line up (much like musical harmonics
+  aligning frequencies). This emergent harmony suggests that complexity
+  at one scale (e.g. galaxies existing for billions of years) is
+  intertwined with parameters at vastly different scales (quantum
+  processes at \$10\^{}\{-44\}\$ seconds). TORUS not only explains the
+  coincidence but also provides a target for empirical tests: measure
+  these fundamental constants and cosmic parameters more precisely, and
+  see if they satisfy the predicted recursion formulas\hspace{0pt}. Any
+  deviation could signal a flaw in the theory, while confirmation would
+  strengthen the case that the universe's complexity is orchestrated by
+  recursion.
 \item
   \emph{Unification without Additional Symmetries:} Emergent novelty via
   recursion can also be seen in how TORUS achieves unification of
@@ -527,12 +531,12 @@ where TORUS's recursive structure yields emergent effects:
   dimensional sense. Empirically, one could search for unexpected
   regularities -- for instance, a preferred scale in cosmic void sizes
   that mirrors a scale in subatomic physics. TORUS's own prediction of a
-  gigaparsec-scale cosmic oscillation​ can be seen in this light: it's a
-  grand-scale echo (a structured novelty) of a resonance condition that
-  also manifests at the smallest scale (via \$\textbackslash{}alpha\$).
-  If future data confirms such patterns, it would hint that complexity
-  in the universe is \emph{recursive rather than random}, guided by an
-  almost aesthetic consistency across scales.
+  gigaparsec-scale cosmic oscillation\hspace{0pt} can be seen in this
+  light: it's a grand-scale echo (a structured novelty) of a resonance
+  condition that also manifests at the smallest scale (via
+  \$\textbackslash alpha\$). If future data confirms such patterns, it
+  would hint that complexity in the universe is \emph{recursive rather
+  than random}, guided by an almost aesthetic consistency across scales.
 \end{itemize}
 
 In summary, \textbf{structured recursion in TORUS gives rise to rich
@@ -638,16 +642,16 @@ that the random quantum fluctuations that gave rise to the cosmic
 microwave background anisotropies (tiny temperature variations in the
 CMB) might also have left a subtle \textbf{imprint at the largest
 scales} due to recursion closure. We discussed earlier the possibility
-of a gigaparsec-scale oscillatory pattern in galaxy distribution​. That
-can be seen as a concrete example: the random primordial fluctuations
-(amplified by inflation in the usual story) could be further modulated
-by the TORUS recursion, leading to a preferred ultra-large scale. The
-result would be an observed pattern (a slight clustering of matter every
-\textasciitilde{}1 Gpc) that we wouldn't expect from inflation alone,
-essentially a \emph{beat} added to the cosmic noise by the toroidal
-boundary condition. Detecting such a beat would be evidence that quantum
-randomness didn't just uniformly spread -- it got molded by an
-overarching structure.
+of a gigaparsec-scale oscillatory pattern in galaxy
+distribution\hspace{0pt}. That can be seen as a concrete example: the
+random primordial fluctuations (amplified by inflation in the usual
+story) could be further modulated by the TORUS recursion, leading to a
+preferred ultra-large scale. The result would be an observed pattern (a
+slight clustering of matter every \textasciitilde1 Gpc) that we wouldn't
+expect from inflation alone, essentially a \emph{beat} added to the
+cosmic noise by the toroidal boundary condition. Detecting such a beat
+would be evidence that quantum randomness didn't just uniformly spread
+-- it got molded by an overarching structure.
 
 Another domain where recursion might amplify quantum effects is in the
 context of \textbf{quantum gravity}. At very high energies (or tiny
@@ -676,20 +680,21 @@ to mind:
   -- essentially, random with a particular simple spectrum. TORUS
   suggests there may be faint \emph{non-random patterns} superposed on
   this, due to recursion. We have already described one such pattern: an
-  oscillation in the matter power spectrum at very large scales​.
-  Generally, any statistically significant deviation from perfect
-  randomness in primordial fluctuations -- for example, a small
-  correlation at a very large scale or an unusual alignment of features
-  -- could hint at recursion effects. Some anomalies have been noted in
-  cosmological data (like a possible large-scale anisotropy or alignment
-  in the CMB, often called the ``axis of evil'' in cosmology folklore),
-  though none are confirmed. TORUS would encourage us to re-examine
-  these with the lens of recursion harmonics. Even if nothing exotic is
-  found, setting upper limits on such effects can constrain how strongly
-  recursion amplifies quantum seeds. The goal would be to quantify: is
-  there an extra coherence in what should be random data that matches a
-  1/13th cycle fraction of the universe's scale? Future surveys and CMB
-  polarization maps might offer increased sensitivity to these patterns.
+  oscillation in the matter power spectrum at very large
+  scales\hspace{0pt}. Generally, any statistically significant deviation
+  from perfect randomness in primordial fluctuations -- for example, a
+  small correlation at a very large scale or an unusual alignment of
+  features -- could hint at recursion effects. Some anomalies have been
+  noted in cosmological data (like a possible large-scale anisotropy or
+  alignment in the CMB, often called the ``axis of evil'' in cosmology
+  folklore), though none are confirmed. TORUS would encourage us to
+  re-examine these with the lens of recursion harmonics. Even if nothing
+  exotic is found, setting upper limits on such effects can constrain
+  how strongly recursion amplifies quantum seeds. The goal would be to
+  quantify: is there an extra coherence in what should be random data
+  that matches a 1/13th cycle fraction of the universe's scale? Future
+  surveys and CMB polarization maps might offer increased sensitivity to
+  these patterns.
 \item
   \textbf{Laboratory-Scale Recursion Resonances:} While TORUS is a
   cosmic-scale theory, if it is true, there might be small

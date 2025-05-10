@@ -1,57 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
+\author{}
 \date{}
 
 \begin{document}
@@ -73,103 +72,100 @@ recursion levels and closure conditions) will be explicitly stated.
 \begin{itemize}
 \item
   \emph{Ricci curvature relates to stress-energy:}
-  Rμν−12R gμν+Λ gμν=8πGc4Tμν,R\_\{\textbackslash{}mu\textbackslash{}nu\}
-  -
-  \textbackslash{}frac\{1\}\{2\}R\textbackslash{},g\_\{\textbackslash{}mu\textbackslash{}nu\}
+  Rμν−12R gμν+Λ gμν=8πGc4Tμν,R\_\{\textbackslash mu\textbackslash nu\} -
+  \textbackslash frac\{1\}\{2\}R\textbackslash,g\_\{\textbackslash mu\textbackslash nu\}
   +
-  \textbackslash{}Lambda\textbackslash{},g\_\{\textbackslash{}mu\textbackslash{}nu\}
-  = \textbackslash{}frac\{8\textbackslash{}pi G\}\{c\^{}4\}
-  T\_\{\textbackslash{}mu\textbackslash{}nu\},Rμν​−21​Rgμν​+Λgμν​=c48πG​Tμν​,
+  \textbackslash Lambda\textbackslash,g\_\{\textbackslash mu\textbackslash nu\}
+  = \textbackslash frac\{8\textbackslash pi G\}\{c\^{}4\}
+  T\_\{\textbackslash mu\textbackslash nu\},Rμν\hspace{0pt}−21\hspace{0pt}Rgμν\hspace{0pt}+Λgμν\hspace{0pt}=c48πG\hspace{0pt}Tμν\hspace{0pt},
 \end{itemize}
 
-where \$R\_\{\textbackslash{}mu\textbackslash{}nu\}\$ is the Ricci
+where \$R\_\{\textbackslash mu\textbackslash nu\}\$ is the Ricci
 curvature tensor, \$R\$ the scalar curvature,
-\$g\_\{\textbackslash{}mu\textbackslash{}nu\}\$ the metric,
-\$\textbackslash{}Lambda\$ the cosmological constant, and
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\$ the stress-energy tensor
+\$g\_\{\textbackslash mu\textbackslash nu\}\$ the metric,
+\$\textbackslash Lambda\$ the cosmological constant, and
+\$T\_\{\textbackslash mu\textbackslash nu\}\$ the stress-energy tensor
 of matter. In compact form we write
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\} + \textbackslash{}Lambda
-g\_\{\textbackslash{}mu\textbackslash{}nu\} =
-\textbackslash{}frac\{8\textbackslash{}pi G\}\{c\^{}4\}
-T\_\{\textbackslash{}mu\textbackslash{}nu\}\$, with
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\} =
-R\_\{\textbackslash{}mu\textbackslash{}nu\} -
-\textbackslash{}frac\{1\}\{2\}R,g\_\{\textbackslash{}mu\textbackslash{}nu\}\$
-the Einstein tensor. This is our starting point​.
+\$G\_\{\textbackslash mu\textbackslash nu\} + \textbackslash Lambda
+g\_\{\textbackslash mu\textbackslash nu\} =
+\textbackslash frac\{8\textbackslash pi G\}\{c\^{}4\}
+T\_\{\textbackslash mu\textbackslash nu\}\$, with
+\$G\_\{\textbackslash mu\textbackslash nu\} =
+R\_\{\textbackslash mu\textbackslash nu\} -
+\textbackslash frac\{1\}\{2\}R,g\_\{\textbackslash mu\textbackslash nu\}\$
+the Einstein tensor. This is our starting point\hspace{0pt}.
 
 \textbf{2. Define a Recursion Hierarchy of Einstein Equations:} TORUS
 posits that \textbf{space-time exists in a hierarchy of 14 layers}
 (dimension 0 through 13), each with its own version of the field
-equations​. We therefore imagine a \emph{stack} of Einstein equations,
-one at each recursion level \$n\$. Denote
-\$G\^{}\{(n)\}\emph{\{\textbackslash{}mu\textbackslash{}nu\}\$ and
-\$T\^{}\{(n)\}}\{\textbackslash{}mu\textbackslash{}nu\}\$ as the
-geometric (Einstein) tensor and stress-energy at level \$n\$. Then for
-each level \$n\$ we have:
+equations\hspace{0pt}. We therefore imagine a \emph{stack} of Einstein
+equations, one at each recursion level \$n\$. Denote
+\$G\^{}\{(n)\}\emph{\{\textbackslash mu\textbackslash nu\}\$ and
+\$T\^{}\{(n)\}}\{\textbackslash mu\textbackslash nu\}\$ as the geometric
+(Einstein) tensor and stress-energy at level \$n\$. Then for each level
+\$n\$ we have:
 
 \begin{itemize}
 \item
   \emph{Einstein equation at level \$n\$:}
-  Gμν(n)+Λ(n)gμν(n)=8πGc4  Tμν(n),n=0,1,2,\ldots{},12.G\^{}\{(n)\}\_\{\textbackslash{}mu\textbackslash{}nu\}
-  + \textbackslash{}Lambda\^{}\{(n)\}
-  g\^{}\{(n)\}\_\{\textbackslash{}mu\textbackslash{}nu\} =
-  \textbackslash{}frac\{8\textbackslash{}pi
-  G\}\{c\^{}4\}\textbackslash{};
-  T\^{}\{(n)\}\_\{\textbackslash{}mu\textbackslash{}nu\},
-  \textbackslash{}quad n =
-  0,1,2,\textbackslash{}dots,12.Gμν(n)​+Λ(n)gμν(n)​=c48πG​Tμν(n)​,n=0,1,2,\ldots{},12.
+  Gμν(n)+Λ(n)gμν(n)=8πGc4  Tμν(n),n=0,1,2,\ldots,12.G\^{}\{(n)\}\_\{\textbackslash mu\textbackslash nu\}
+  + \textbackslash Lambda\^{}\{(n)\}
+  g\^{}\{(n)\}\_\{\textbackslash mu\textbackslash nu\} =
+  \textbackslash frac\{8\textbackslash pi G\}\{c\^{}4\}\textbackslash;
+  T\^{}\{(n)\}\_\{\textbackslash mu\textbackslash nu\},
+  \textbackslash quad n =
+  0,1,2,\textbackslash dots,12.Gμν(n)\hspace{0pt}+Λ(n)gμν(n)\hspace{0pt}=c48πG\hspace{0pt}Tμν(n)\hspace{0pt},n=0,1,2,\ldots,12.
 \end{itemize}
 
-Here we allow a cosmological term \$\textbackslash{}Lambda\^{}\{(n)\}\$
+Here we allow a cosmological term \$\textbackslash Lambda\^{}\{(n)\}\$
 at each level (which could be zero for most levels except possibly one
 representing vacuum energy). For simplicity, we take the coupling
-constant \$\textbackslash{}kappa = 8\textbackslash{}pi G/c\^{}4\$ to be
+constant \$\textbackslash kappa = 8\textbackslash pi G/c\^{}4\$ to be
 the same on all levels (assuming \$G\$ and \$c\$ are universal
-constants)​. Level \$n=0\$ might represent the simplest ``point'' space
-(0D), \$n=3\$ would correspond to a 3D spatial world, \$n=4\$ to our 4D
-space-time, and so on up to \$n=12\$ representing the
+constants)\hspace{0pt}. Level \$n=0\$ might represent the simplest
+``point'' space (0D), \$n=3\$ would correspond to a 3D spatial world,
+\$n=4\$ to our 4D space-time, and so on up to \$n=12\$ representing the
 highest-dimensional layer before closure. Each equation lives on its own
 manifold with metric
-\$g\^{}\{(n)\}\_\{\textbackslash{}mu\textbackslash{}nu\}\$.
+\$g\^{}\{(n)\}\_\{\textbackslash mu\textbackslash nu\}\$.
 
 \textbf{3. Apply the Recursion Operator -- Adding a Dimension:} The crux
 of TORUS is that \emph{each level feeds into the next}. A
-\textbf{recursion operator} \$\textbackslash{}mathcal\{R\}\$ maps the
-fields at level \$n\$ to level \$n+1\$. Symbolically​:
+\textbf{recursion operator} \$\textbackslash mathcal\{R\}\$ maps the
+fields at level \$n\$ to level \$n+1\$. Symbolically\hspace{0pt}:
 
 \begin{itemize}
 \item
-  \emph{Recursion mapping:} \$\textbackslash{}mathcal\{R\} :
-  \textbackslash{}big(g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(n)\},
-  \textbackslash{}Phi\^{}\{(n)\}\textbackslash{}big)
-  ;\textbackslash{}mapsto;
-  \textbackslash{}big(g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(n+1)\},
-  \textbackslash{}Phi\^{}\{(n+1)\}\textbackslash{}big),\$
+  \emph{Recursion mapping:} \$\textbackslash mathcal\{R\} :
+  \textbackslash big(g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(n)\},
+  \textbackslash Phi\^{}\{(n)\}\textbackslash big)
+  ;\textbackslash mapsto;
+  \textbackslash big(g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(n+1)\},
+  \textbackslash Phi\^{}\{(n+1)\}\textbackslash big),\$
 \end{itemize}
 
-where \$g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(n)\}\$ is the
-metric at level \$n\$ and \$\textbackslash{}Phi\^{}\{(n)\}\$ represents
+where \$g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(n)\}\$ is the
+metric at level \$n\$ and \$\textbackslash Phi\^{}\{(n)\}\$ represents
 any other fields at that level (for example, electromagnetic potentials
 or other degrees of freedom that emerge). In practical terms, going from
 level \$n\$ to \$n+1\$ often means introducing an \emph{extra spatial
 dimension}. A simple analogy is Kaluza's 5D theory: starting from 4D
 general relativity, adding a 5th dimension (with appropriate symmetry)
 naturally produces Einstein's 4D gravity \textbf{plus} Maxwell's
-electromagnetic field equations in 4D​. In Kaluza's case, the metric
-\$g\^{}\{(5D)\}\emph{\{AB\}\$ in 5D can be written to include the 4D
-metric \$g\^{}\{(4D)\}}\{\textbackslash{}mu\textbackslash{}nu\}\$, a 4D
-vector \$A\_\{\textbackslash{}mu\}\$ (which turns out to be the
+electromagnetic field equations in 4D\hspace{0pt}. In Kaluza's case, the
+metric \$g\^{}\{(5D)\}\emph{\{AB\}\$ in 5D can be written to include the
+4D metric \$g\^{}\{(4D)\}}\{\textbackslash mu\textbackslash nu\}\$, a 4D
+vector \$A\_\{\textbackslash mu\}\$ (which turns out to be the
 electromagnetic potential), and an extra scalar. TORUS generalizes this
-idea: each recursive application of \$\textbackslash{}mathcal\{R\}\$
-adds a new dimension and corresponding fields.
+idea: each recursive application of \$\textbackslash mathcal\{R\}\$ adds
+a new dimension and corresponding fields.
 
 \begin{itemize}
 \item
-  For instance, \$\textbackslash{}mathcal\{R\}\$ acting on a 4D
-  spacetime
-  \$(g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(4D)\})\$ might
+  For instance, \$\textbackslash mathcal\{R\}\$ acting on a 4D spacetime
+  \$(g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(4D)\})\$ might
   produce a 5D spacetime whose metric contains the original
-  \$g\_\{\textbackslash{}mu\textbackslash{}nu\}\$ and new off-diagonal
+  \$g\_\{\textbackslash mu\textbackslash nu\}\$ and new off-diagonal
   components corresponding to an electromagnetic potential. Further
   recursion could add more dimensions and fields (potentially those
   corresponding to the weak and strong forces, as we discuss later).
@@ -190,45 +186,46 @@ depends only on fundamental constants (ℏ, λ) and therefore embeds
 recursion, the Einstein equation at level \$n\$ is not isolated -- it
 receives corrections from higher levels. In TORUS we say each term in
 Einstein's equation is ``dressed'' by contributions from all other
-recursion layers​. Effectively, if we are examining physics at a given
-level (say our 4D world), the presence of the full 14-layer stack means
-the simple equation \$G\_\{\textbackslash{}mu\textbackslash{}nu\} =
-\textbackslash{}kappa T\_\{\textbackslash{}mu\textbackslash{}nu\}\$ is
-modified by additional terms coming from the embedding of that 4D layer
-in higher dimensions. Formally, one can \textbf{absorb all higher-level
-effects into modified tensors labeled "(rec)"} (for ``recursive'')​:
+recursion layers\hspace{0pt}. Effectively, if we are examining physics
+at a given level (say our 4D world), the presence of the full 14-layer
+stack means the simple equation
+\$G\_\{\textbackslash mu\textbackslash nu\} = \textbackslash kappa
+T\_\{\textbackslash mu\textbackslash nu\}\$ is modified by additional
+terms coming from the embedding of that 4D layer in higher dimensions.
+Formally, one can \textbf{absorb all higher-level effects into modified
+tensors labeled "(rec)"} (for ``recursive'')\hspace{0pt}:
 
 \begin{itemize}
 \item
   \emph{Recursion-corrected field equation (general form):}
-  Gμν(rec)+Λrec  gμν=8πGc4  Tμν(rec).G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}
+  Gμν(rec)+Λrec  gμν=8πGc4  Tμν(rec).G\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}
   +
-  \textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\textbackslash{};g\_\{\textbackslash{}mu\textbackslash{}nu\}
-  = \textbackslash{}frac\{8\textbackslash{}pi
-  G\}\{c\^{}4\}\textbackslash{};T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}.Gμν(rec)​+Λrec​gμν​=c48πG​Tμν(rec)​.
+  \textbackslash Lambda\_\{\textbackslash text\{rec\}\}\textbackslash;g\_\{\textbackslash mu\textbackslash nu\}
+  = \textbackslash frac\{8\textbackslash pi
+  G\}\{c\^{}4\}\textbackslash;T\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}.Gμν(rec)\hspace{0pt}+Λrec\hspace{0pt}gμν\hspace{0pt}=c48πG\hspace{0pt}Tμν(rec)\hspace{0pt}.
 \end{itemize}
 
 Here
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}\$
+\$G\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}\$
 means the \textbf{Einstein curvature including recursion corrections},
-\$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$ is an
+\$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$ is an
 \textbf{emergent cosmological term} coming from recursive effects, and
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}\$
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}\$
 is the \textbf{effective stress-energy including all higher-level
-contributions}​. This single 4D equation is the \emph{effective result}
-of the entire tower of equations. It has the same \emph{form} as
-Einstein's equation, but every part of it has been renormalized by the
-recursion. In particular,
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}\$
+contributions}\hspace{0pt}. This single 4D equation is the
+\emph{effective result} of the entire tower of equations. It has the
+same \emph{form} as Einstein's equation, but every part of it has been
+renormalized by the recursion. In particular,
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}\$
 can include exotic components (like effective stresses from higher
 dimensions that manifest as fields in 4D), and
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{\textbackslash{}text\{(rec)\}\}\$
+\$G\_\{\textbackslash mu\textbackslash nu\}\^{}\{\textbackslash text\{(rec)\}\}\$
 can include modifications to geometry (for example, additional curvature
 terms or new degrees of freedom induced by extra dimensions).
 
 \textbf{6. Write the Recursion-Modified Einstein Equation Explicitly:}
 For clarity, we rewrite the above in words. The recursion-modified
-equation states​:
+equation states\hspace{0pt}:
 
 \begin{itemize}
 \item
@@ -238,27 +235,27 @@ equation states​:
 \end{itemize}
 
 In explicit form:
-Gμν(rec)+Λrec gμν=8πGc4 Tμν(rec).G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}
+Gμν(rec)+Λrec gμν=8πGc4 Tμν(rec).G\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}
 +
-\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\textbackslash{},g\_\{\textbackslash{}mu\textbackslash{}nu\}
-= \textbackslash{}frac\{8\textbackslash{}pi
-G\}\{c\^{}4\}\textbackslash{},T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}.Gμν(rec)​+Λrec​gμν​=c48πG​Tμν(rec)​.
+\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\textbackslash,g\_\{\textbackslash mu\textbackslash nu\}
+= \textbackslash frac\{8\textbackslash pi
+G\}\{c\^{}4\}\textbackslash,T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}.Gμν(rec)\hspace{0pt}+Λrec\hspace{0pt}gμν\hspace{0pt}=c48πG\hspace{0pt}Tμν(rec)\hspace{0pt}.
 
 This equation is the centerpiece of TORUS's gravitational theory. It
 \textbf{extends General Relativity to a multi-layer system}. The term
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}\$
+\$G\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}\$
 means that our usual Einstein tensor
-\$G\_\{\textbackslash{}mu\textbackslash{}nu\}\$ may get additional terms
+\$G\_\{\textbackslash mu\textbackslash nu\}\$ may get additional terms
 from recursion (for example, an \emph{antisymmetric} part leading to
 electromagnetism, as we will see in A.2). Likewise,
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}\$
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}\$
 includes not just normal matter and energy, but possibly contributions
 from fields emerging at other layers. An intuitive way to think of this
 is: \emph{the stress-energy at one level can act as a source for gravity
 at another level}, and vice versa, through the linking recursion. Each
 level's equation provides \textbf{boundary conditions or source terms
-for the next}​. This interdependence is what we mean by ``structured
-recursion'' modifying spacetime curvature.
+for the next}\hspace{0pt}. This interdependence is what we mean by
+``structured recursion'' modifying spacetime curvature.
 
 \textbf{7. Impose the 13-Step Closure Condition:} TORUS Theory requires
 that after 13 recursive steps, we return to the starting point (0D to
@@ -268,12 +265,12 @@ equivalent to level 0}. Therefore:
 \begin{itemize}
 \item
   \emph{Closure (boundary) conditions:}
-  \$g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(13)\}
-  \textbackslash{}equiv
-  g\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(0)\}\$ and
-  \$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(13)\}
-  \textbackslash{}equiv
-  T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(0)\}\$​.
+  \$g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(13)\}
+  \textbackslash equiv
+  g\_\{\textbackslash mu\textbackslash nu\}\^{}\{(0)\}\$ and
+  \$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(13)\}
+  \textbackslash equiv
+  T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(0)\}\$\hspace{0pt}.
 \end{itemize}
 
 In other words, the 14th equation in the tower must identically match
@@ -282,22 +279,22 @@ every solution of the Einstein equations will satisfy. It means the
 initial conditions and the final outcome of one full recursion loop are
 the same. \emph{Only certain discrete choices of metrics and
 stress-energy distributions will allow this closure}. If you start with
-some \$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(0)\}\$, you
-must end up with the identical
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(13)\}\$ after
-evolving through the equations at levels 1,2,...,12. Thus, \textbf{the
-recursion imposes a quantization or selection rule on allowed
-solutions}​. In effect, the space of solutions to Einstein's equations
-is filtered: non-recursive general relativity permits many solutions,
-but TORUS only permits those that can self-consistently embed in a
-higher-dimensional loop and come back to themselves.
+some \$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(0)\}\$, you must
+end up with the identical
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(13)\}\$ after evolving
+through the equations at levels 1,2,...,12. Thus, \textbf{the recursion
+imposes a quantization or selection rule on allowed
+solutions}\hspace{0pt}. In effect, the space of solutions to Einstein's
+equations is filtered: non-recursive general relativity permits many
+solutions, but TORUS only permits those that can self-consistently embed
+in a higher-dimensional loop and come back to themselves.
 
 \begin{itemize}
 \item
   \emph{Quantization of parameters:} If a parameter in the solution (say
-  a certain mass or charge, or the value of \$\textbackslash{}Lambda\$)
+  a certain mass or charge, or the value of \$\textbackslash Lambda\$)
   were ``wrong,'' the recursion might not close (you'd get
-  \$T\^{}\{(13)\} \textbackslash{}neq T\^{}\{(0)\}\$). Those solutions
+  \$T\^{}\{(13)\} \textbackslash neq T\^{}\{(0)\}\$). Those solutions
   are disallowed as unphysical in TORUS. This is analogous to how only
   certain standing wave modes fit into a closed cavity (the boundary
   conditions quantize the modes). Here, the \textbf{closure of the
@@ -317,26 +314,26 @@ beyond classical GR:
   repeat every 13 levels and thus wouldn't satisfy \$g\^{}\{(13)\} =
   g\^{}\{(0)\}\$. TORUS therefore acts like a selection principle,
   picking out only those space-time geometries that can form part of a
-  repeating, closed system​. This inherently could lead to a kind of
-  natural \emph{quantization} of spacetime configurations (only discrete
-  sets of spacetimes are allowed, analogous to allowed energy levels in
-  quantum systems).
+  repeating, closed system\hspace{0pt}. This inherently could lead to a
+  kind of natural \emph{quantization} of spacetime configurations (only
+  discrete sets of spacetimes are allowed, analogous to allowed energy
+  levels in quantum systems).
 \item
   \textbf{Cosmological Constant Tuning:} A concrete example is the
   \textbf{cosmological constant problem}. In general relativity,
-  \$\textbackslash{}Lambda\$ could, in principle, be huge due to vacuum
+  \$\textbackslash Lambda\$ could, in principle, be huge due to vacuum
   energy, yet observations find it to be very small. In TORUS, if one
-  level has a vacuum energy (a \$\textbackslash{}Lambda\$ term in
-  \$T\_\{\textbackslash{}mu\textbackslash{}nu\}\$), the recursion might
+  level has a vacuum energy (a \$\textbackslash Lambda\$ term in
+  \$T\_\{\textbackslash mu\textbackslash nu\}\$), the recursion might
   force other levels to compensate. It's conceivable that
-  \$\textbackslash{}Lambda\$ at different recursion layers alternates in
+  \$\textbackslash Lambda\$ at different recursion layers alternates in
   sign or magnitude such that the \emph{net effect in the closed loop
   cancels out or nearly so}. In fact, TORUS suggests that the
   contributions from all 14 layers to the effective
-  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$ might sum
-  to a tiny value​. Essentially, the universe ``balances its books''
-  over a full cycle, potentially explaining why our observed
-  \$\textbackslash{}Lambda\$ is nonzero but very small -- the large
+  \$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$ might sum to
+  a tiny value\hspace{0pt}. Essentially, the universe ``balances its
+  books'' over a full cycle, potentially explaining why our observed
+  \$\textbackslash Lambda\$ is nonzero but very small -- the large
   contributions from Planck-scale physics could be offset by large
   opposite contributions from another layer, leaving a small residual.
 \item
@@ -344,14 +341,15 @@ beyond classical GR:
   identified, the universe has no true ``boundary'' or external initial
   condition -- it is a self-contained, self-referential system. The
   starting point (perhaps analogous to a Big Bang singularity in naive
-  cosmology) is avoided because the end loops back to the beginning​.
-  This means the universe can be finite yet unbounded (much like a torus
-  topology in space, here we have a toroidal topology in the \emph{space
-  of dimensions}). Philosophically, this is satisfying: it removes the
-  need for an arbitrary set of initial conditions at the beginning of
-  time, since the end of the cycle provides those initial conditions.
-  Mathematically, it implies certain global constraints (topological
-  identifications) on the solution.
+  cosmology) is avoided because the end loops back to the
+  beginning\hspace{0pt}. This means the universe can be finite yet
+  unbounded (much like a torus topology in space, here we have a
+  toroidal topology in the \emph{space of dimensions}). Philosophically,
+  this is satisfying: it removes the need for an arbitrary set of
+  initial conditions at the beginning of time, since the end of the
+  cycle provides those initial conditions. Mathematically, it implies
+  certain global constraints (topological identifications) on the
+  solution.
 \end{itemize}
 
 In summary, \textbf{the recursion-modified Einstein equations} are a
@@ -359,8 +357,8 @@ tower of Einstein's equations across 14 nested dimensions, with each
 level influencing the next, and a periodic identification after the 13th
 step. When condensed into a single 4D description, they modify the
 Einstein tensor, stress-energy tensor, and cosmological term to include
-the cumulative effects of all recursion layers​. The result is a
-self-consistent framework where gravity in our universe is not a
+the cumulative effects of all recursion layers\hspace{0pt}. The result
+is a self-consistent framework where gravity in our universe is not a
 standalone 4D phenomenon, but part of a larger, closed recursive
 structure. We have derived the form of this modification and highlighted
 the key assumption (13-level closure) that leads to quantization of
@@ -381,105 +379,104 @@ like an electromagnetic field tensor.
 
 \textbf{1. Emergence of an Antisymmetric Field from Recursion:} Consider
 the effect of applying the recursion operator
-\$\textbackslash{}mathcal\{R\}\$ to go from a 4-dimensional spacetime
+\$\textbackslash mathcal\{R\}\$ to go from a 4-dimensional spacetime
 (level \$n\$) to a 5-dimensional spacetime (level \$n+1\$). As
 discussed, new metric components can appear. Specifically, in 5D one can
-have mixed components \$g\_\{5\textbackslash{}mu\}\$ (where
-\$\textbackslash{}mu\$ indexes the original 4 dimensions and 5 is the
-new dimension). These mixed components can be interpreted as the
-components of a 4D vector field \$A\_\{\textbackslash{}mu\}\$ (the
-electromagnetic potential). In classical Kaluza-Klein theory, this is
-exactly how the electromagnetic field arises: the 5D vacuum Einstein
-equations imply that the field
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\} =
-\textbackslash{}partial\_\textbackslash{}mu A\_\textbackslash{}nu -
-\textbackslash{}partial\_\textbackslash{}nu A\_\textbackslash{}mu\$
+have mixed components \$g\_\{5\textbackslash mu\}\$ (where
+\$\textbackslash mu\$ indexes the original 4 dimensions and 5 is the new
+dimension). These mixed components can be interpreted as the components
+of a 4D vector field \$A\_\{\textbackslash mu\}\$ (the electromagnetic
+potential). In classical Kaluza-Klein theory, this is exactly how the
+electromagnetic field arises: the 5D vacuum Einstein equations imply
+that the field \$F\_\{\textbackslash mu\textbackslash nu\} =
+\textbackslash partial\_\textbackslash mu A\_\textbackslash nu -
+\textbackslash partial\_\textbackslash nu A\_\textbackslash mu\$
 satisfies Maxwell's equations in
-4D​file-tdxxgkswnq7smddbs393uj​file-tdxxgkswnq7smddbs393uj. TORUS
-extends this idea across \emph{multiple} recursion steps. By the time we
-have applied \$\textbackslash{}mathcal\{R\}\$ enough to include a
+4D\hspace{0pt}file-tdxxgkswnq7smddbs393uj\hspace{0pt}file-tdxxgkswnq7smddbs393uj.
+TORUS extends this idea across \emph{multiple} recursion steps. By the
+time we have applied \$\textbackslash mathcal\{R\}\$ enough to include a
 certain extra dimension (let's call it the ``electromagnetic layer''),
 the \textbf{recursion-corrected Einstein equation includes an
 antisymmetric part} in the stress-energy or geometry.
 
 Through a detailed derivation (given in the TORUS mathematical
 foundations), one finds that \textbf{at a particular recursion level an
-antisymmetric tensor \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$
-naturally arises}​. This tensor comes from the \emph{recursive
-stress-energy corrections}. Intuitively, what happens is that some
-portion of the energy-momentum at one level, when viewed from the
-perspective of a lower level, looks like a field with no rest mass and
-with two indices -- i.e. a force field similar to electromagnetism. In
-formulas, within the full recursion-modified
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}\$
+antisymmetric tensor \$F\_\{\textbackslash mu\textbackslash nu\}\$
+naturally arises}\hspace{0pt}. This tensor comes from the
+\emph{recursive stress-energy corrections}. Intuitively, what happens is
+that some portion of the energy-momentum at one level, when viewed from
+the perspective of a lower level, looks like a field with no rest mass
+and with two indices -- i.e. a force field similar to electromagnetism.
+In formulas, within the full recursion-modified
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}\$
 one can identify a term that is antisymmetric:
-\$T\_\{{[}\textbackslash{}mu\textbackslash{}nu{]}\} \textbackslash{}neq
+\$T\_\{{[}\textbackslash mu\textbackslash nu{]}\} \textbackslash neq
 0\$. This antisymmetric piece is separate from the usual symmetric
 matter stress-energy. We relabel this piece as something proportional to
 an electromagnetic field tensor
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$.
+\$F\_\{\textbackslash mu\textbackslash nu\}\$.
 
 \begin{itemize}
 \item
   \textbf{Key identification:}
-  \$F\_\{\textbackslash{}mu\textbackslash{}nu\} ;\textbackslash{}equiv;
-  \textbackslash{}Lambda\_\{\textbackslash{}text\{rec\},{[}\textbackslash{}mu\textbackslash{}nu{]}\}\$
-  at the relevant recursion level​. Here
-  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}{[}\textbackslash{}mu\textbackslash{}nu{]}\}\$
+  \$F\_\{\textbackslash mu\textbackslash nu\} ;\textbackslash equiv;
+  \textbackslash Lambda\_\{\textbackslash text\{rec\},{[}\textbackslash mu\textbackslash nu{]}\}\$
+  at the relevant recursion level\hspace{0pt}. Here
+  \$\textbackslash Lambda\_\{\textbackslash text\{rec\}{[}\textbackslash mu\textbackslash nu{]}\}\$
   denotes the \emph{antisymmetric part} of the recursion-induced
   cosmological/stress tensor. Essentially, the recursion adds a small
   term
-  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\},{[}\textbackslash{}mu\textbackslash{}nu{]}\}\$
+  \$\textbackslash Lambda\_\{\textbackslash text\{rec\},{[}\textbackslash mu\textbackslash nu{]}\}\$
   to the Einstein equation which is antisymmetric in
-  \$(\textbackslash{}mu,\textbackslash{}nu)\$. By definition, such a
-  term does not affect the symmetric Einstein tensor (since
-  \$G\_\{\textbackslash{}mu\textbackslash{}nu\}\$ is symmetric), but it
+  \$(\textbackslash mu,\textbackslash nu)\$. By definition, such a term
+  does not affect the symmetric Einstein tensor (since
+  \$G\_\{\textbackslash mu\textbackslash nu\}\$ is symmetric), but it
   represents a new field. We call this
-  \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$.
+  \$F\_\{\textbackslash mu\textbackslash nu\}\$.
 \end{itemize}
 
 \textbf{2. Satisfying Homogeneous Maxwell Equations:} Now, given
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ from above, we can ask:
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ from above, we can ask:
 what equations does it obey? Remarkably, the recursion consistency
 conditions ensure that this emergent
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ is
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ is
 \textbf{divergence-free} (for indices arranged appropriately). In index
 notation, it turns out that
-\$\textbackslash{}nabla\^{}\{\textbackslash{}mu\}
-F\_\{\textbackslash{}mu\textbackslash{}nu\} = 0\$​. This is exactly the
-source-free Maxwell equation
-\$\textbackslash{}partial\^{}\textbackslash{}mu
-F\_\{\textbackslash{}mu\textbackslash{}nu\} = 0\$, which encapsulates
+\$\textbackslash nabla\^{}\{\textbackslash mu\}
+F\_\{\textbackslash mu\textbackslash nu\} = 0\$\hspace{0pt}. This is
+exactly the source-free Maxwell equation
+\$\textbackslash partial\^{}\textbackslash mu
+F\_\{\textbackslash mu\textbackslash nu\} = 0\$, which encapsulates
 Gauss's law for magnetism (no magnetic monopoles) and Faraday's law of
 induction, in covariant form. In other words, the structure of the
 recursion-corrected Einstein equations automatically yields the
 \emph{Bianchi identity}
-\$\textbackslash{}nabla\_\{{[}\textbackslash{}alpha\}F\_\{\textbackslash{}beta\textbackslash{}gamma{]}\}=0\$
+\$\textbackslash nabla\_\{{[}\textbackslash alpha\}F\_\{\textbackslash beta\textbackslash gamma{]}\}=0\$
 and the absence of monopoles, because
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ came from a curl-like
-term in the higher-dimensional potential​. The \emph{free-space Maxwell
-equations} are satisfied by this
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$:
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ came from a curl-like term
+in the higher-dimensional potential\hspace{0pt}. The \emph{free-space
+Maxwell equations} are satisfied by this
+\$F\_\{\textbackslash mu\textbackslash nu\}\$:
 
 \begin{itemize}
 \item
-  \$\textbackslash{}nabla\^{}\textbackslash{}mu
-  F\_\{\textbackslash{}mu\textbackslash{}nu\} = 0,\$ which in 3-vector
-  language corresponds to \$\textbackslash{}nabla\textbackslash{}cdot
-  \textbackslash{}mathbf\{B\} = 0\$ (no monopoles) and
-  \$\textbackslash{}frac\{\textbackslash{}partial
-  \textbackslash{}mathbf\{B\}\}\{\textbackslash{}partial t\} +
-  \textbackslash{}nabla \textbackslash{}times
-  \textbackslash{}mathbf\{E\} = 0\$ (Faraday's law), and
+  \$\textbackslash nabla\^{}\textbackslash mu
+  F\_\{\textbackslash mu\textbackslash nu\} = 0,\$ which in 3-vector
+  language corresponds to \$\textbackslash nabla\textbackslash cdot
+  \textbackslash mathbf\{B\} = 0\$ (no monopoles) and
+  \$\textbackslash frac\{\textbackslash partial
+  \textbackslash mathbf\{B\}\}\{\textbackslash partial t\} +
+  \textbackslash nabla \textbackslash times \textbackslash mathbf\{E\} =
+  0\$ (Faraday's law), and
 \item
-  \$\textbackslash{}nabla\_\{{[}\textbackslash{}alpha\}F\_\{\textbackslash{}beta\textbackslash{}gamma{]}\}
+  \$\textbackslash nabla\_\{{[}\textbackslash alpha\}F\_\{\textbackslash beta\textbackslash gamma{]}\}
   = 0,\$ which is automatically true if
-  \$F\_\{\textbackslash{}mu\textbackslash{}nu\} =
-  \textbackslash{}partial\_\textbackslash{}mu A\_\textbackslash{}nu -
-  \textbackslash{}partial\_\textbackslash{}nu A\_\textbackslash{}mu\$
-  for some potential \$A\_\textbackslash{}mu\$. These are exactly the
+  \$F\_\{\textbackslash mu\textbackslash nu\} =
+  \textbackslash partial\_\textbackslash mu A\_\textbackslash nu -
+  \textbackslash partial\_\textbackslash nu A\_\textbackslash mu\$ for
+  some potential \$A\_\textbackslash mu\$. These are exactly the
   homogeneous Maxwell equations (the ones that do not involve charge or
-  current)​.
+  current)\hspace{0pt}.
 \end{itemize}
 
 To reiterate, \textbf{we have not inserted Maxwell's equations by hand}.
@@ -488,80 +485,80 @@ stress-energy be symmetric (aside from permitted antisymmetric field
 components) and conserved across layers. Any antisymmetric portion
 behaves like a field with no sources at that level (sources, if present,
 would reside in the symmetric part and couple to
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ in the usual way). Thus,
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ in the usual way). Thus,
 \emph{classical electromagnetism appears as a natural byproduct of
-recursion-modified curvature}​.
+recursion-modified curvature}\hspace{0pt}.
 
 \textbf{3. Introduction of the Electromagnetic Potential:} Because
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ is antisymmetric and
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ is antisymmetric and
 divergence-free, we can invoke the classical result that it must be
-derivable from a potential \$A\_\textbackslash{}mu\$. We define an
-electromagnetic four-potential \$A\_\textbackslash{}mu\$ such that:
+derivable from a potential \$A\_\textbackslash mu\$. We define an
+electromagnetic four-potential \$A\_\textbackslash mu\$ such that:
 
 \begin{itemize}
 \item
-  \$F\_\{\textbackslash{}mu\textbackslash{}nu\} =
-  \textbackslash{}partial\_\textbackslash{}mu A\_\textbackslash{}nu -
-  \textbackslash{}partial\_\textbackslash{}nu A\_\textbackslash{}mu.\$
+  \$F\_\{\textbackslash mu\textbackslash nu\} =
+  \textbackslash partial\_\textbackslash mu A\_\textbackslash nu -
+  \textbackslash partial\_\textbackslash nu A\_\textbackslash mu.\$
 \end{itemize}
 
 This automatically guarantees
-\$\textbackslash{}nabla\_\{{[}\textbackslash{}alpha\}F\_\{\textbackslash{}beta\textbackslash{}gamma{]}\}=0\$
+\$\textbackslash nabla\_\{{[}\textbackslash alpha\}F\_\{\textbackslash beta\textbackslash gamma{]}\}=0\$
 (since any field defined as a curl of a potential has no net curl of its
-own). The existence of \$A\_\textbackslash{}mu\$ was hinted at already
-by the presence of \$g\_\{5\textbackslash{}mu\}\$ in the metric upon
-adding a 5th dimension. Here we are formalizing it: \textbf{there exists
-a potential field \$A\_\textbackslash{}mu\$ in the 4D sense, arising
-from the 5th-dimensional metric components}​. Now, having
-\$A\_\textbackslash{}mu\$ allows us to identify the emergent field with
+own). The existence of \$A\_\textbackslash mu\$ was hinted at already by
+the presence of \$g\_\{5\textbackslash mu\}\$ in the metric upon adding
+a 5th dimension. Here we are formalizing it: \textbf{there exists a
+potential field \$A\_\textbackslash mu\$ in the 4D sense, arising from
+the 5th-dimensional metric components}\hspace{0pt}. Now, having
+\$A\_\textbackslash mu\$ allows us to identify the emergent field with
 classical electromagnetism. The field strength
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ and potential
-\$A\_\textbackslash{}mu\$ we found satisfy all of Maxwell's equations in
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ and potential
+\$A\_\textbackslash mu\$ we found satisfy all of Maxwell's equations in
 free space:
 
 \begin{itemize}
 \item
-  \$\textbackslash{}nabla \textbackslash{}cdot
-  \textbackslash{}mathbf\{E\} = 0\$ (no free charge in this derivation,
-  since we looked at free-space case),
+  \$\textbackslash nabla \textbackslash cdot \textbackslash mathbf\{E\}
+  = 0\$ (no free charge in this derivation, since we looked at
+  free-space case),
 \item
-  \$\textbackslash{}nabla \textbackslash{}times
-  \textbackslash{}mathbf\{E\} + \textbackslash{}partial
-  \textbackslash{}mathbf\{B\}/\textbackslash{}partial t = 0\$,
+  \$\textbackslash nabla \textbackslash times \textbackslash mathbf\{E\}
+  + \textbackslash partial
+  \textbackslash mathbf\{B\}/\textbackslash partial t = 0\$,
 \item
-  \$\textbackslash{}nabla \textbackslash{}cdot
-  \textbackslash{}mathbf\{B\} = 0\$,
+  \$\textbackslash nabla \textbackslash cdot \textbackslash mathbf\{B\}
+  = 0\$,
 \item
-  \$\textbackslash{}nabla \textbackslash{}times
-  \textbackslash{}mathbf\{B\} - \textbackslash{}partial
-  \textbackslash{}mathbf\{E\}/\textbackslash{}partial t = 0\$ (the last
-  one comes from \$\textbackslash{}nabla\^{}\textbackslash{}mu
-  F\_\{\textbackslash{}mu\textbackslash{}nu\}=0\$ interpreted in space
-  and time components, giving no electric current as well).
+  \$\textbackslash nabla \textbackslash times \textbackslash mathbf\{B\}
+  - \textbackslash partial
+  \textbackslash mathbf\{E\}/\textbackslash partial t = 0\$ (the last
+  one comes from \$\textbackslash nabla\^{}\textbackslash mu
+  F\_\{\textbackslash mu\textbackslash nu\}=0\$ interpreted in space and
+  time components, giving no electric current as well).
 \end{itemize}
 
 In a more complete treatment, one could incorporate charged sources at
 some recursion level (for example, an electron's presence would add a
-source term \$J\^{}\textbackslash{}nu\$ to
-\$\textbackslash{}nabla\^{}\textbackslash{}mu
-F\_\{\textbackslash{}mu\textbackslash{}nu\} = \textbackslash{}mu\_0
-J\_\textbackslash{}nu\$). TORUS can accommodate that by letting some of
+source term \$J\^{}\textbackslash nu\$ to
+\$\textbackslash nabla\^{}\textbackslash mu
+F\_\{\textbackslash mu\textbackslash nu\} = \textbackslash mu\_0
+J\_\textbackslash nu\$). TORUS can accommodate that by letting some of
 the antisymmetric field carry momentum between levels (introducing what
 looks like charge conservation across layers). But for the scope of this
 derivation, the key point stands: \textbf{the geometry of recursion
-yields a field \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ that
-obeys Maxwell's equations}​.
+yields a field \$F\_\{\textbackslash mu\textbackslash nu\}\$ that obeys
+Maxwell's equations}\hspace{0pt}.
 
 \textbf{4. Electromagnetism as a \$U(1)\$ Gauge Field of Recursion:} We
 now interpret the result. In modern terms, an antisymmetric tensor
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ that satisfies those
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ that satisfies those
 equations is the field strength of a \$U(1)\$ gauge field
 (electromagnetism). TORUS Theory thus predicts that at a certain
 recursion stage (often cited as the ``third recursion level'' in TORUS
 documentation), there will appear an emergent \$U(1)\$ symmetry
-associated with this field​. In other words, the requirement of
-recursion invariance gives rise to invariance under a phase rotation of
-\$A\_\textbackslash{}mu\$, which is the gauge symmetry of
+associated with this field\hspace{0pt}. In other words, the requirement
+of recursion invariance gives rise to invariance under a phase rotation
+of \$A\_\textbackslash mu\$, which is the gauge symmetry of
 electromagnetism. This is deeply analogous to Kaluza-Klein theory's
 unification of gravity and electromagnetism via an extra dimension, but
 here it happens in a structured, recursive manner for a universe with
@@ -569,33 +566,33 @@ many layers.
 
 It is worth noting that this mechanism \emph{automatically} incorporates
 electromagnetic field energy into the stress-energy tensor. The
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}\$
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}\$
 includes contributions from
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ (since an
-electromagnetic field has an energy-momentum associated with it). The
-emergence of \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ thus also
-means the emergence of \textbf{radiation energy density, pressure, and
-stresses} in the effective 4D world -- exactly as if electromagnetic
-fields were present. This shows the self-consistency of the approach:
-the recursive Einstein equations don't just give the field equations for
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$; they also account for
-\$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$'s effect on curvature
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ (since an electromagnetic
+field has an energy-momentum associated with it). The emergence of
+\$F\_\{\textbackslash mu\textbackslash nu\}\$ thus also means the
+emergence of \textbf{radiation energy density, pressure, and stresses}
+in the effective 4D world -- exactly as if electromagnetic fields were
+present. This shows the self-consistency of the approach: the recursive
+Einstein equations don't just give the field equations for
+\$F\_\{\textbackslash mu\textbackslash nu\}\$; they also account for
+\$F\_\{\textbackslash mu\textbackslash nu\}\$'s effect on curvature
 (which would be present in
-\$T\_\{\textbackslash{}mu\textbackslash{}nu\}\^{}\{(\textbackslash{}text\{rec\})\}\$).
+\$T\_\{\textbackslash mu\textbackslash nu\}\^{}\{(\textbackslash text\{rec\})\}\$).
 
 In summary, we have derived that \textbf{Maxwell's equations arise
 naturally from the recursive structure of spacetime}. By extending
 Einstein's equations one level up in dimension and insisting on
 recursion closure, we obtained a divergence-free antisymmetric field
-tensor \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$, identified it
-with the electromagnetic field, and showed it satisfies the correct
-field equations​. Thus, classical electromagnetism is not an independent
-ingredient in TORUS but a \emph{consequence} of the geometry of
-recursion. In effect, the \textbf{\$U(1)\$ gauge field}
+tensor \$F\_\{\textbackslash mu\textbackslash nu\}\$, identified it with
+the electromagnetic field, and showed it satisfies the correct field
+equations\hspace{0pt}. Thus, classical electromagnetism is not an
+independent ingredient in TORUS but a \emph{consequence} of the geometry
+of recursion. In effect, the \textbf{\$U(1)\$ gauge field}
 (electromagnetism) is embedded in the theory's recursive gravitational
-framework​. We will next see how other gauge symmetries (like \$SU(2)\$
-and \$SU(3)\$) similarly emerge from internal symmetries of the
-recursion.
+framework\hspace{0pt}. We will next see how other gauge symmetries (like
+\$SU(2)\$ and \$SU(3)\$) similarly emerge from internal symmetries of
+the recursion.
 
 \textbf{A.3 Proof of Recursion-Induced Gauge Symmetries (U(1), SU(2),
 SU(3))}
@@ -607,48 +604,48 @@ In conventional physics, we postulate internal symmetries (like the
 \$U(1)\$ of electromagnetism or the \$SU(3)\$ of quantum chromodynamics)
 because they lead to conserved quantities and forces. In TORUS, these
 symmetries emerge as a necessity for the 14-level recursion to be
-self-consistent​. We will present clear arguments for how each of the
-main gauge groups -- \$U(1)\$, \$SU(2)\$, and \$SU(3)\$ -- arises from
-the structure of recursion. In essence, \textbf{recursion invariants
-become gauge invariants} in 4D.
+self-consistent\hspace{0pt}. We will present clear arguments for how
+each of the main gauge groups -- \$U(1)\$, \$SU(2)\$, and \$SU(3)\$ --
+arises from the structure of recursion. In essence, \textbf{recursion
+invariants become gauge invariants} in 4D.
 
 \begin{itemize}
 \item
   \textbf{U(1) from Phase Recursion (Electromagnetism):} At the
   \textbf{base level (0D)} of the recursion, TORUS introduces a
-  fundamental coupling (call it \$\textbackslash{}alpha\$) which can be
+  fundamental coupling (call it \$\textbackslash alpha\$) which can be
   thought of as a complex number -- this encapsulates the idea that even
   at the point-like origin, there is a phase angle that can be defined.
   The requirement that the entire 0D--13D cycle is self-consistent means
   that if we were to start the cycle with a slightly different phase for
   this complex coupling, the physics must come out the same at the end
-  of the cycle (otherwise the recursion wouldn't close)​. This is
-  essentially a \textbf{global phase invariance} of the full system:
-  rotating the initial phase by some angle \$\textbackslash{}theta\$
-  does not change the closed recursion. By Noether's theorem, a
-  continuous symmetry like this implies a conserved quantity -- here it
-  implies something akin to electric charge conservation (since phase
-  rotations in quantum mechanics relate to electromagnetic \$U(1)\$
-  charge). When we ``unfold'' this symmetry into the 4D physical world,
-  it manifests as the familiar \textbf{local \$U(1)\$ gauge symmetry} of
-  electromagnetism​. In other words, because the TORUS recursion forbids
-  any absolute reference for the phase of \$\textbackslash{}alpha\$
-  (only differences between layers matter), nature enjoys an arbitrary
-  local phase choice -- which is exactly the freedom one has in
-  electrodynamics to shift the phase of the electron's wavefunction and
-  introduce a compensating electromagnetic potential. The gauge field
-  (\$A\_\textbackslash{}mu\$) that we identified in A.2 is the mediator
-  that ensures this symmetry (phase shifts) does not physically change
-  the system. \textbf{Thus, \$U(1)\$ emerges from the invariance of the
-  recursion under a complex phase rotation}. Mathematically, one can say
-  the condition \$e\^{}\{i\textbackslash{}theta\}\$ initial phase shift
-  being harmless leads to a conserved current
-  \$J\^{}\textbackslash{}mu\$ and a gauge field
-  \$A\_\textbackslash{}mu\$ to uphold local invariance. TORUS explicitly
-  ties this to the fact that the \textbf{0D coupling
-  \$\textbackslash{}alpha\$ appears in a phase} and the recursion
-  closure demands \$\textbackslash{}alpha\$ return to the same value
-  after 13 steps unless a phase rotation is compensated by a field​.
+  of the cycle (otherwise the recursion wouldn't close)\hspace{0pt}.
+  This is essentially a \textbf{global phase invariance} of the full
+  system: rotating the initial phase by some angle
+  \$\textbackslash theta\$ does not change the closed recursion. By
+  Noether's theorem, a continuous symmetry like this implies a conserved
+  quantity -- here it implies something akin to electric charge
+  conservation (since phase rotations in quantum mechanics relate to
+  electromagnetic \$U(1)\$ charge). When we ``unfold'' this symmetry
+  into the 4D physical world, it manifests as the familiar \textbf{local
+  \$U(1)\$ gauge symmetry} of electromagnetism\hspace{0pt}. In other
+  words, because the TORUS recursion forbids any absolute reference for
+  the phase of \$\textbackslash alpha\$ (only differences between layers
+  matter), nature enjoys an arbitrary local phase choice -- which is
+  exactly the freedom one has in electrodynamics to shift the phase of
+  the electron's wavefunction and introduce a compensating
+  electromagnetic potential. The gauge field (\$A\_\textbackslash mu\$)
+  that we identified in A.2 is the mediator that ensures this symmetry
+  (phase shifts) does not physically change the system. \textbf{Thus,
+  \$U(1)\$ emerges from the invariance of the recursion under a complex
+  phase rotation}. Mathematically, one can say the condition
+  \$e\^{}\{i\textbackslash theta\}\$ initial phase shift being harmless
+  leads to a conserved current \$J\^{}\textbackslash mu\$ and a gauge
+  field \$A\_\textbackslash mu\$ to uphold local invariance. TORUS
+  explicitly ties this to the fact that the \textbf{0D coupling
+  \$\textbackslash alpha\$ appears in a phase} and the recursion closure
+  demands \$\textbackslash alpha\$ return to the same value after 13
+  steps unless a phase rotation is compensated by a field\hspace{0pt}.
   This is a proof-of-concept that the mere existence of the closed
   recursion yields electromagnetism's gauge symmetry.
 \item
@@ -658,51 +655,52 @@ become gauge invariants} in 4D.
   fields can no longer be described by a single complex number; instead,
   they organize into multiplets. TORUS predicts a \textbf{twofold
   degeneracy in the recursion field at a certain stage}, meaning the
-  field can be seen as a doublet of two components of equal status​.
-  This is analogous to having an
-  isospin-\$\textbackslash{}frac\{1\}\{2\}\$ pair of states.
+  field can be seen as a doublet of two components of equal
+  status\hspace{0pt}. This is analogous to having an
+  isospin-\$\textbackslash frac\{1\}\{2\}\$ pair of states.
   Additionally, at that same stage there is still a phase-like symmetry
   (related to hypercharge). In group theory terms, TORUS finds an
   internal symmetry of the recursion fields is \textbf{\$SU(2)
-  \textbackslash{}times U(1)\$} at that
-  level​file-hcxavre4uvjpqgfuwskcc3. We interpret \$SU(2)\$ as the
-  \textbf{weak isospin} symmetry and the extra \$U(1)\$ as the
+  \textbackslash times U(1)\$} at that
+  level\hspace{0pt}file-hcxavre4uvjpqgfuwskcc3. We interpret \$SU(2)\$
+  as the \textbf{weak isospin} symmetry and the extra \$U(1)\$ as the
   \textbf{weak hypercharge} symmetry of the Standard Model. The ``spin
   recursion layers'' refers to the fact that a 360° rotation at one
   layer might not return the system to its initial state -- much like a
   spin-½ particle requiring 720° for a full return. In recursion terms,
   one could have a situation where after one full 13-step cycle the
-  state flips sign (an analogy to a phase of \$\textbackslash{}pi\$,
-  i.e. a minus sign)​. This would imply a 2-cycle closure (26 steps to
-  come back fully) -- a direct analog of a spin-½ representation in
-  which the fundamental group is a double cover. While TORUS chooses the
-  simplest closure (no sign flip per cycle) for the bulk of its
-  framework, the existence of a two-component field at the electroweak
-  layer inherently brings in \$SU(2)\$ symmetry. \textbf{Thus, the
-  \$SU(2)\$ gauge symmetry emerges from the recursion's two-level
-  (doublet) structure} at that stage, effectively a ``mirror'' or
-  ``spin'' symmetry in the internal space of the recursion​. Once this
-  symmetry is present in the high-energy recursion, the usual physics of
-  gauge theory can take over: as the universe's recursion progresses
-  (equivalent to energy lowering or spontaneous symmetry breaking in
-  normal terms), one of the combined \$SU(2)\textbackslash{}times U(1)\$
-  symmetries breaks. TORUS attributes this to a \textbf{recursion
-  harmonic acquiring a nonzero expectation} -- essentially a built-in
-  ``Higgs mechanism'' where one of the recursion fields takes a constant
-  value, breaking the symmetry​. The result is that \$SU(2)\_L
-  \textbackslash{}times U(1)\emph{Y\$ breaks down to the remaining
-  \$U(1)}\{\textbackslash{}text\{em\}\}\$ (electromagnetism), yielding
+  state flips sign (an analogy to a phase of \$\textbackslash pi\$, i.e.
+  a minus sign)\hspace{0pt}. This would imply a 2-cycle closure (26
+  steps to come back fully) -- a direct analog of a spin-½
+  representation in which the fundamental group is a double cover. While
+  TORUS chooses the simplest closure (no sign flip per cycle) for the
+  bulk of its framework, the existence of a two-component field at the
+  electroweak layer inherently brings in \$SU(2)\$ symmetry.
+  \textbf{Thus, the \$SU(2)\$ gauge symmetry emerges from the
+  recursion's two-level (doublet) structure} at that stage, effectively
+  a ``mirror'' or ``spin'' symmetry in the internal space of the
+  recursion\hspace{0pt}. Once this symmetry is present in the
+  high-energy recursion, the usual physics of gauge theory can take
+  over: as the universe's recursion progresses (equivalent to energy
+  lowering or spontaneous symmetry breaking in normal terms), one of the
+  combined \$SU(2)\textbackslash times U(1)\$ symmetries breaks. TORUS
+  attributes this to a \textbf{recursion harmonic acquiring a nonzero
+  expectation} -- essentially a built-in ``Higgs mechanism'' where one
+  of the recursion fields takes a constant value, breaking the
+  symmetry\hspace{0pt}. The result is that \$SU(2)\_L
+  \textbackslash times U(1)\emph{Y\$ breaks down to the remaining
+  \$U(1)}\{\textbackslash text\{em\}\}\$ (electromagnetism), yielding
   three massive gauge bosons (\$W\^{}+, W\^{}-, Z\^{}0\$) and one
-  massless photon, exactly as in the electroweak theory​. All of these
-  details (like the values of coupling constants and the mixing angle)
-  emerge from the recursion structure -- for example, the ratio of how
-  the recursion fields split between the two components can determine
-  the Weinberg angle of mixing​. The important takeaway is that
-  \textbf{TORUS provides a group-theoretic proof that an \$SU(2)\$
-  symmetry must exist given a twofold recursion degeneracy} and that
-  including a phase symmetry alongside yields the electroweak gauge
-  group, which then follows the pattern of symmetry breaking consistent
-  with observation.
+  massless photon, exactly as in the electroweak theory\hspace{0pt}. All
+  of these details (like the values of coupling constants and the mixing
+  angle) emerge from the recursion structure -- for example, the ratio
+  of how the recursion fields split between the two components can
+  determine the Weinberg angle of mixing\hspace{0pt}. The important
+  takeaway is that \textbf{TORUS provides a group-theoretic proof that
+  an \$SU(2)\$ symmetry must exist given a twofold recursion degeneracy}
+  and that including a phase symmetry alongside yields the electroweak
+  gauge group, which then follows the pattern of symmetry breaking
+  consistent with observation.
 \item
   \textbf{SU(3) from Topological Folding Patterns (Color Charge):} At
   yet another recursion layer (corresponding to the quantum
@@ -710,8 +708,8 @@ become gauge invariants} in 4D.
   exhibits a \textbf{threefold symmetry}. Concretely, TORUS predicts
   that the field variables at that level can be grouped into three
   identical copies -- one might imagine the field ``folding'' into three
-  channels or a triple-valued degree of freedom​. Invariance under
-  interchange or rotation of these three components is exactly the
+  channels or a triple-valued degree of freedom\hspace{0pt}. Invariance
+  under interchange or rotation of these three components is exactly the
   symmetry group \$SU(3)\$. This is identified with the \textbf{color
   symmetry} of the strong nuclear force. In simpler terms, just as we
   saw a doublet leading to \$SU(2)\$, here a triplet leads to \$SU(3)\$.
@@ -722,27 +720,27 @@ become gauge invariants} in 4D.
   (red, green, blue in QCD terms) which are identical except for labels.
   TORUS asserts that at ``recursion level 3'' (here meaning the layer
   where the third internal degree appears, not to be confused with
-  3-dimensional space) the equations reveal an \$SU(3)\$ gauge field​.
-  By writing down the recursion analog of Yang--Mills equations, one
-  indeed finds an eight-component field strength (characteristic of
-  \$SU(3)\$ with 8 gluons) emerging naturally​. This provides a
-  theoretical derivation: \textbf{the strong force gauge symmetry
-  \$SU(3)\_c\$ arises from the requirement that the threefold split in
-  the recursion field be symmetric}. If the recursion did not respect an
-  \$SU(3)\$ symmetry at that stage, the three components would not
-  remain identical after a full cycle, violating the recursion
-  invariance (one component might end up differing, breaking the
-  closure). Therefore, consistency enforces the \$SU(3)\$ symmetry​. As
-  with \$SU(2)\$, once this symmetry is present, the standard
-  consequences follow: there will be gauge bosons (which we identify as
-  gluons) mediating interactions among particles that carry this
-  threefold ``color'' charge. TORUS not only produces the qualitative
-  existence of \$SU(3)\$, but also the quantitative structure (the
-  number of generators = 8, etc.) and even hints that confinement and
-  other strong force features could be explained by the finite closure
-  of the recursion (for instance, color might be trapped in certain
-  combinations because the recursion boundary conditions disallow
-  isolated ``open'' color lines).
+  3-dimensional space) the equations reveal an \$SU(3)\$ gauge
+  field\hspace{0pt}. By writing down the recursion analog of Yang--Mills
+  equations, one indeed finds an eight-component field strength
+  (characteristic of \$SU(3)\$ with 8 gluons) emerging
+  naturally\hspace{0pt}. This provides a theoretical derivation:
+  \textbf{the strong force gauge symmetry \$SU(3)\_c\$ arises from the
+  requirement that the threefold split in the recursion field be
+  symmetric}. If the recursion did not respect an \$SU(3)\$ symmetry at
+  that stage, the three components would not remain identical after a
+  full cycle, violating the recursion invariance (one component might
+  end up differing, breaking the closure). Therefore, consistency
+  enforces the \$SU(3)\$ symmetry\hspace{0pt}. As with \$SU(2)\$, once
+  this symmetry is present, the standard consequences follow: there will
+  be gauge bosons (which we identify as gluons) mediating interactions
+  among particles that carry this threefold ``color'' charge. TORUS not
+  only produces the qualitative existence of \$SU(3)\$, but also the
+  quantitative structure (the number of generators = 8, etc.) and even
+  hints that confinement and other strong force features could be
+  explained by the finite closure of the recursion (for instance, color
+  might be trapped in certain combinations because the recursion
+  boundary conditions disallow isolated ``open'' color lines).
 \end{itemize}
 
 To sum up, TORUS Theory inherently contains the seeds of all three
@@ -757,39 +755,40 @@ fundamental gauge symmetries. We have shown:
 \item
   \$SU(2)\$ (weak isospin) emerges from a \textbf{doublet structure} in
   the recursion -- effectively a ``two-state'' symmetry in the internal
-  degrees of freedom​. The necessity of the recursion being symmetric
-  when these two states are exchanged (or rotated into each other) gives
-  \$SU(2)\$. A concomitant phase symmetry gives \$U(1)\_Y\$, and the
-  interplay between the two in the recursion mirrors the electroweak
-  unification and its breaking​.
+  degrees of freedom\hspace{0pt}. The necessity of the recursion being
+  symmetric when these two states are exchanged (or rotated into each
+  other) gives \$SU(2)\$. A concomitant phase symmetry gives
+  \$U(1)\_Y\$, and the interplay between the two in the recursion
+  mirrors the electroweak unification and its breaking\hspace{0pt}.
 \item
   \$SU(3)\$ (color charge) emerges from a \textbf{triplet or threefold
-  repetition} in the recursion structure​. The invariance under
-  permutation of the three components yields an \$SU(3)\$ symmetry,
-  corresponding exactly to the symmetry of quark color charge. The
-  recursion formalism produces the correct field equations for an
+  repetition} in the recursion structure\hspace{0pt}. The invariance
+  under permutation of the three components yields an \$SU(3)\$
+  symmetry, corresponding exactly to the symmetry of quark color charge.
+  The recursion formalism produces the correct field equations for an
   \$SU(3)\$ gauge field (with 8 self-interacting field components),
   demonstrating that the strong force is encoded in the theory's
-  algebraic closure​.
+  algebraic closure\hspace{0pt}.
 \end{itemize}
 
 It is important to note that in TORUS these are not separate postulates
 but deeply related. In fact, at a certain high level of the recursion
 (around the 11-dimensional stage, as the theory suggests), these
-separate symmetries unify into one combined symmetry​. One can imagine
-that in the highest layers, there is a single unified ``rotation'' that
-affects all components -- only when you descend to lower layers do these
-rotations appear distinct (just as in grand unified theories an
-\$SU(5)\$ might break into \$SU(3)\textbackslash{}times
-SU(2)\textbackslash{}times U(1)\$). TORUS achieves this \emph{without}
-requiring a separate Higgs field for symmetry breaking -- the breaking
-is a natural result of the recursion structure ``freezing out'' some
-degrees as it closes​. The result is an elegant picture: \textbf{the
-gauge symmetries of the Standard Model are a shadow of the deeper
-recursion symmetry.} We have provided the reasoning and proof sketches
-for each, rooted in group theory and recursion conditions, confirming
-that TORUS's recursive framework mandates the existence of \$U(1)\$,
-\$SU(2)\$, and \$SU(3)\$ gauge invariances in our 4D physics.
+separate symmetries unify into one combined symmetry\hspace{0pt}. One
+can imagine that in the highest layers, there is a single unified
+``rotation'' that affects all components -- only when you descend to
+lower layers do these rotations appear distinct (just as in grand
+unified theories an \$SU(5)\$ might break into
+\$SU(3)\textbackslash times SU(2)\textbackslash times U(1)\$). TORUS
+achieves this \emph{without} requiring a separate Higgs field for
+symmetry breaking -- the breaking is a natural result of the recursion
+structure ``freezing out'' some degrees as it closes\hspace{0pt}. The
+result is an elegant picture: \textbf{the gauge symmetries of the
+Standard Model are a shadow of the deeper recursion symmetry.} We have
+provided the reasoning and proof sketches for each, rooted in group
+theory and recursion conditions, confirming that TORUS's recursive
+framework mandates the existence of \$U(1)\$, \$SU(2)\$, and \$SU(3)\$
+gauge invariances in our 4D physics.
 
 \textbf{A.4 Derivation of Quantum Mechanics from Recursion Dynamics}
 
@@ -812,358 +811,365 @@ we usually consider an observer as external. TORUS, by contrast,
 emphasizes that \emph{observers are inside the system} and their
 measurements are additional interactions. Suppose at each recursion step
 the state of the ``observer'' can impart a small influence or phase
-shift on the physical state​. Denote the observer's state influence by
-an operator \$\textbackslash{}hat\{O\}\$ or a phase
-\$\textbackslash{}phi\_m\$ per recursion step, where \$m\$ indexes the
+shift on the physical state\hspace{0pt}. Denote the observer's state
+influence by an operator \$\textbackslash hat\{O\}\$ or a phase
+\$\textbackslash phi\_m\$ per recursion step, where \$m\$ indexes the
 observer's state (this could be thought of as, say, how an observation
 choice might affect the system). For the recursion to close consistently
 after 13 steps, the total added phase from the observer must be an
-integer multiple of \$2\textbackslash{}pi\$. If it were not, the state
+integer multiple of \$2\textbackslash pi\$. If it were not, the state
 after 13 steps would not match the initial state, ruining the
-self-consistency​. This yields a \textbf{quantization condition for the
-observer's effect:} \$\textbackslash{}phi\_m \textbackslash{}cdot 13 =
-2\textbackslash{}pi \textbackslash{}ell\$ for some integer
-\$\textbackslash{}ell\$​. In other words, the observer can only
-contribute a phase of \$\textbackslash{}frac\{2\textbackslash{}pi
-\textbackslash{}ell\}\{13\}\$ per step. We can identify
-\$\textbackslash{}ell\$ (or the corresponding \$m\$) as an integer that
-characterizes the observer's influence. This is defined in TORUS as the
-\textbf{Observer-State Quantum Number (OSQN)}​. Essentially, \$m\$
-counts how many \$2\textbackslash{}pi/13\$ increments of phase the
-observer adds over a full cycle. The requirement \$\textbackslash{}ell\$
-be integer means \$m\$ is quantized (it can be 0,1,2,... up to 12, if we
-consider distinct values mod 13). If \$m\$ were, say, 6.5
-(half-integer), that would imply after 13 steps a phase of \$6.5
-\textbackslash{}times 2\textbackslash{}pi \textbackslash{}approx
-13\textbackslash{}pi\$ which is a minus sign overall -- not identity,
-meaning the cycle would actually close only after doubling (26 steps)​.
-TORUS excludes that case for fundamental recursion (preferring the
-minimal closure), hence \$m\$ must be integer​. This is a profound
-result: it shows how \emph{the act of including an observer leads to a
-discrete spectrum of allowed influences}. In physical terms, it's akin
-to saying the observer can only exchange whole quanta of action with the
-system for it to remain consistent. This derivation of an OSQN \$m\$ is
-directly analogous to deriving a quantum number from a periodic boundary
-condition​. It establishes that \textbf{quantization is necessary for
-stability} -- a system plus observer that wasn't quantized would
-``leak'' or disrupt the cycle. Thus, TORUS incorporates the observer and
-finds that the combined system's evolution operator has eigenvalues that
-must be roots of unity (just as in quantum mechanics a wavefunction's
-phase evolution must be single-valued up to \$2\textbackslash{}pi\$).
+self-consistency\hspace{0pt}. This yields a \textbf{quantization
+condition for the observer's effect:} \$\textbackslash phi\_m
+\textbackslash cdot 13 = 2\textbackslash pi \textbackslash ell\$ for
+some integer \$\textbackslash ell\$\hspace{0pt}. In other words, the
+observer can only contribute a phase of
+\$\textbackslash frac\{2\textbackslash pi \textbackslash ell\}\{13\}\$
+per step. We can identify \$\textbackslash ell\$ (or the corresponding
+\$m\$) as an integer that characterizes the observer's influence. This
+is defined in TORUS as the \textbf{Observer-State Quantum Number
+(OSQN)}\hspace{0pt}. Essentially, \$m\$ counts how many
+\$2\textbackslash pi/13\$ increments of phase the observer adds over a
+full cycle. The requirement \$\textbackslash ell\$ be integer means
+\$m\$ is quantized (it can be 0,1,2,... up to 12, if we consider
+distinct values mod 13). If \$m\$ were, say, 6.5 (half-integer), that
+would imply after 13 steps a phase of \$6.5 \textbackslash times
+2\textbackslash pi \textbackslash approx 13\textbackslash pi\$ which is
+a minus sign overall -- not identity, meaning the cycle would actually
+close only after doubling (26 steps)\hspace{0pt}. TORUS excludes that
+case for fundamental recursion (preferring the minimal closure), hence
+\$m\$ must be integer\hspace{0pt}. This is a profound result: it shows
+how \emph{the act of including an observer leads to a discrete spectrum
+of allowed influences}. In physical terms, it's akin to saying the
+observer can only exchange whole quanta of action with the system for it
+to remain consistent. This derivation of an OSQN \$m\$ is directly
+analogous to deriving a quantum number from a periodic boundary
+condition\hspace{0pt}. It establishes that \textbf{quantization is
+necessary for stability} -- a system plus observer that wasn't quantized
+would ``leak'' or disrupt the cycle. Thus, TORUS incorporates the
+observer and finds that the combined system's evolution operator has
+eigenvalues that must be roots of unity (just as in quantum mechanics a
+wavefunction's phase evolution must be single-valued up to
+\$2\textbackslash pi\$).
 
 In summary of this part, \textbf{the inclusion of observer-state
 feedback forces the system into quantized states}, labeled by an integer
 \$m\$ (OSQN) which is conserved. This is conceptually similar to how
 requiring a wavefunction to be single-valued on a circle yields
 quantized angular momentum. Here the ``circle'' is the 13-step recursion
-loop, and \$m\$ is like a winding number​. We see that the act of
-measurement or observation in a recursive universe is not a continuous
-free parameter -- it comes in discrete, allowed increments.
+loop, and \$m\$ is like a winding number\hspace{0pt}. We see that the
+act of measurement or observation in a recursive universe is not a
+continuous free parameter -- it comes in discrete, allowed increments.
 
 \textbf{Derivation of the Schrödinger Equation (Non-Relativistic Quantum
 Mechanics):} Now we connect to the standard quantum equations. Consider
 a particle of mass \$m\$ moving under a potential
-\$V(\textbackslash{}mathbf\{r\})\$. Classically, its dynamics are given
+\$V(\textbackslash mathbf\{r\})\$. Classically, its dynamics are given
 by Newton or the Hamiltonian equations. Quantum mechanically, it is
 described by the \textbf{Schrödinger equation}:
 
-i ℏ ∂Ψ(r,t)∂t=−ℏ22m∇2Ψ(r,t)+V(r) Ψ(r,t).i\textbackslash{},\textbackslash{}hbar\textbackslash{},\textbackslash{}frac\{\textbackslash{}partial
-\textbackslash{}Psi(\textbackslash{}mathbf\{r\},t)\}\{\textbackslash{}partial
+i ℏ ∂Ψ(r,t)∂t=−ℏ22m∇2Ψ(r,t)+V(r) Ψ(r,t).i\textbackslash,\textbackslash hbar\textbackslash,\textbackslash frac\{\textbackslash partial
+\textbackslash Psi(\textbackslash mathbf\{r\},t)\}\{\textbackslash partial
 t\} =
--\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\^{}2
-\textbackslash{}Psi(\textbackslash{}mathbf\{r\},t) +
-V(\textbackslash{}mathbf\{r\})\textbackslash{},\textbackslash{}Psi(\textbackslash{}mathbf\{r\},t).iℏ∂t∂Ψ(r,t)​=−2mℏ2​∇2Ψ(r,t)+V(r)Ψ(r,t).
+-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\^{}2
+\textbackslash Psi(\textbackslash mathbf\{r\},t) +
+V(\textbackslash mathbf\{r\})\textbackslash,\textbackslash Psi(\textbackslash mathbf\{r\},t).iℏ∂t∂Ψ(r,t)\hspace{0pt}=−2mℏ2\hspace{0pt}∇2Ψ(r,t)+V(r)Ψ(r,t).
 
 TORUS aims to \emph{derive} this equation from recursion. The approach
-is to postulate that the wavefunction \$\textbackslash{}Psi\$ is not
-just a function on a single spacetime, but has components across
-recursion layers:
-\$\textbackslash{}Psi\^{}\{(n)\}(\textbackslash{}mathbf\{r\},t)\$ is the
-wavefunction at recursion level \$n\$. At the lowest level (say \$n=3\$
-corresponding to 3D space), \$\textbackslash{}Psi\^{}\{(3)\}\$ is the
-physical wavefunction we observe. But it might be influenced by
-\$\textbackslash{}Psi\^{}\{(4)\}, \textbackslash{}Psi\^{}\{(5)\}, ...\$
-on higher layers through a weak coupling. We then write a
+is to postulate that the wavefunction \$\textbackslash Psi\$ is not just
+a function on a single spacetime, but has components across recursion
+layers: \$\textbackslash Psi\^{}\{(n)\}(\textbackslash mathbf\{r\},t)\$
+is the wavefunction at recursion level \$n\$. At the lowest level (say
+\$n=3\$ corresponding to 3D space), \$\textbackslash Psi\^{}\{(3)\}\$ is
+the physical wavefunction we observe. But it might be influenced by
+\$\textbackslash Psi\^{}\{(4)\}, \textbackslash Psi\^{}\{(5)\}, ...\$ on
+higher layers through a weak coupling. We then write a
 \textbf{recursion-modified Schrödinger equation} that includes a
-coupling term between \$\textbackslash{}Psi\^{}\{(n)\}\$ and
-\$\textbackslash{}Psi\^{}\{(n+1)\}\$​file-tdxxgkswnq7smddbs393uj. The
-simplest such modification is:
+coupling term between \$\textbackslash Psi\^{}\{(n)\}\$ and
+\$\textbackslash Psi\^{}\{(n+1)\}\$\hspace{0pt}file-tdxxgkswnq7smddbs393uj.
+The simplest such modification is:
 
 \begin{itemize}
 \item
   \emph{Recursion-modified Schrödinger equation:}
-  i ℏ ∂Ψ(n)∂t=−ℏ22m∇n2Ψ(n)+V(n)(r) Ψ(n)+γ(Ψ(n+1)−Ψ(n)).i\textbackslash{},\textbackslash{}hbar\textbackslash{},\textbackslash{}frac\{\textbackslash{}partial
-  \textbackslash{}Psi\^{}\{(n)\}\}\{\textbackslash{}partial t\} =
-  -\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-  \textbackslash{}Psi\^{}\{(n)\} +
-  V\^{}\{(n)\}(\textbackslash{}mathbf\{r\})\textbackslash{},\textbackslash{}Psi\^{}\{(n)\}
+  i ℏ ∂Ψ(n)∂t=−ℏ22m∇n2Ψ(n)+V(n)(r) Ψ(n)+γ(Ψ(n+1)−Ψ(n)).i\textbackslash,\textbackslash hbar\textbackslash,\textbackslash frac\{\textbackslash partial
+  \textbackslash Psi\^{}\{(n)\}\}\{\textbackslash partial t\} =
+  -\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+  \textbackslash Psi\^{}\{(n)\} +
+  V\^{}\{(n)\}(\textbackslash mathbf\{r\})\textbackslash,\textbackslash Psi\^{}\{(n)\}
   +
-  \textbackslash{}gamma\textbackslash{}big(\textbackslash{}Psi\^{}\{(n+1)\}
+  \textbackslash gamma\textbackslash big(\textbackslash Psi\^{}\{(n+1)\}
   -
-  \textbackslash{}Psi\^{}\{(n)\}\textbackslash{}big).iℏ∂t∂Ψ(n)​=−2mℏ2​∇n2​Ψ(n)+V(n)(r)Ψ(n)+γ(Ψ(n+1)−Ψ(n)).
+  \textbackslash Psi\^{}\{(n)\}\textbackslash big).iℏ∂t∂Ψ(n)\hspace{0pt}=−2mℏ2\hspace{0pt}∇n2\hspace{0pt}Ψ(n)+V(n)(r)Ψ(n)+γ(Ψ(n+1)−Ψ(n)).
 \end{itemize}
 
-Here \$\textbackslash{}nabla\_n\^{}2\$ is the Laplacian in the spatial
+Here \$\textbackslash nabla\_n\^{}2\$ is the Laplacian in the spatial
 geometry of level \$n\$ (for \$n=3\$ it's ordinary
-\$\textbackslash{}nabla\^{}2\$ in 3D space; for higher \$n\$ there could
+\$\textbackslash nabla\^{}2\$ in 3D space; for higher \$n\$ there could
 be extra tiny dimensions but let's assume similar form), and
-\$\textbackslash{}gamma\$ is a small coupling constant with units of
-energy that measures how strongly adjacent layers influence each other​.
-The term \$\textbackslash{}gamma(\textbackslash{}Psi\^{}\{(n+1)\} -
-\textbackslash{}Psi\^{}\{(n)\})\$ is essentially a difference operator
+\$\textbackslash gamma\$ is a small coupling constant with units of
+energy that measures how strongly adjacent layers influence each
+other\hspace{0pt}. The term
+\$\textbackslash gamma(\textbackslash Psi\^{}\{(n+1)\} -
+\textbackslash Psi\^{}\{(n)\})\$ is essentially a difference operator
 across the recursion dimension -- it says the wavefunction's time
 evolution on layer \$n\$ is affected by the ``next'' layer. If
-\$\textbackslash{}gamma=0\$, this reduces to independent Schrödinger
-equations on each layer. For \$\textbackslash{}gamma \textbackslash{}neq
+\$\textbackslash gamma=0\$, this reduces to independent Schrödinger
+equations on each layer. For \$\textbackslash gamma \textbackslash neq
 0\$, the layers are linked. This is analogous to a stack of coupled
-oscillators or a ``tight-binding'' chain in the space of \$n\$​.
+oscillators or a ``tight-binding'' chain in the space of
+\$n\$\hspace{0pt}.
 
 Now apply the \textbf{stationary state ansatz} (looking for solutions of
 definite energy \$E\$). We write
-\$\textbackslash{}Psi\^{}\{(n)\}(\textbackslash{}mathbf\{r\},t) =
-\textbackslash{}psi\^{}\{(n)\}(\textbackslash{}mathbf\{r\})e\^{}\{-iEt/\textbackslash{}hbar\}\$
-and similarly \$\textbackslash{}Psi\^{}\{(n+1)\} =
-\textbackslash{}psi\^{}\{(n+1)\} e\^{}\{-iEt/\textbackslash{}hbar\}\$​.
-Plugging this into the equation cancels the time dependence on both
-sides, yielding a time-independent form:
+\$\textbackslash Psi\^{}\{(n)\}(\textbackslash mathbf\{r\},t) =
+\textbackslash psi\^{}\{(n)\}(\textbackslash mathbf\{r\})e\^{}\{-iEt/\textbackslash hbar\}\$
+and similarly \$\textbackslash Psi\^{}\{(n+1)\} =
+\textbackslash psi\^{}\{(n+1)\}
+e\^{}\{-iEt/\textbackslash hbar\}\$\hspace{0pt}. Plugging this into the
+equation cancels the time dependence on both sides, yielding a
+time-independent form:
 
-−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ (ψ(n+1)−ψ(n))=E ψ(n).-\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-\textbackslash{}psi\^{}\{(n)\} + V\^{}\{(n)\}
-\textbackslash{}psi\^{}\{(n)\} +
-\textbackslash{}gamma\textbackslash{},(\textbackslash{}psi\^{}\{(n+1)\}
-- \textbackslash{}psi\^{}\{(n)\}) =
-E\textbackslash{},\textbackslash{}psi\^{}\{(n)\}.−2mℏ2​∇n2​ψ(n)+V(n)ψ(n)+γ(ψ(n+1)−ψ(n))=Eψ(n).​file-tdxxgkswnq7smddbs393uj​
+−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ (ψ(n+1)−ψ(n))=E ψ(n).-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+\textbackslash psi\^{}\{(n)\} + V\^{}\{(n)\}
+\textbackslash psi\^{}\{(n)\} +
+\textbackslash gamma\textbackslash,(\textbackslash psi\^{}\{(n+1)\} -
+\textbackslash psi\^{}\{(n)\}) =
+E\textbackslash,\textbackslash psi\^{}\{(n)\}.−2mℏ2\hspace{0pt}∇n2\hspace{0pt}ψ(n)+V(n)ψ(n)+γ(ψ(n+1)−ψ(n))=Eψ(n).\hspace{0pt}file-tdxxgkswnq7smddbs393uj\hspace{0pt}
 
 This can be rearranged to:
 
-−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ ψ(n+1)=(E+γ) ψ(n),-\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-\textbackslash{}psi\^{}\{(n)\} + V\^{}\{(n)\}
-\textbackslash{}psi\^{}\{(n)\} +
-\textbackslash{}gamma\textbackslash{},\textbackslash{}psi\^{}\{(n+1)\} =
-(E +
-\textbackslash{}gamma)\textbackslash{},\textbackslash{}psi\^{}\{(n)\},−2mℏ2​∇n2​ψ(n)+V(n)ψ(n)+γψ(n+1)=(E+γ)ψ(n),
+−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ ψ(n+1)=(E+γ) ψ(n),-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+\textbackslash psi\^{}\{(n)\} + V\^{}\{(n)\}
+\textbackslash psi\^{}\{(n)\} +
+\textbackslash gamma\textbackslash,\textbackslash psi\^{}\{(n+1)\} = (E
++
+\textbackslash gamma)\textbackslash,\textbackslash psi\^{}\{(n)\},−2mℏ2\hspace{0pt}∇n2\hspace{0pt}ψ(n)+V(n)ψ(n)+γψ(n+1)=(E+γ)ψ(n),
 
 or equivalently
 
-−ℏ22m∇n2ψ(n)+V(n)ψ(n)=(E+γ−γ) ψ(n)−γ ψ(n+1),-\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-\textbackslash{}psi\^{}\{(n)\} + V\^{}\{(n)\}
-\textbackslash{}psi\^{}\{(n)\} = (E + \textbackslash{}gamma -
-\textbackslash{}gamma)\textbackslash{},\textbackslash{}psi\^{}\{(n)\} -
-\textbackslash{}gamma\textbackslash{},\textbackslash{}psi\^{}\{(n+1)\},−2mℏ2​∇n2​ψ(n)+V(n)ψ(n)=(E+γ−γ)ψ(n)−γψ(n+1),
+−ℏ22m∇n2ψ(n)+V(n)ψ(n)=(E+γ−γ) ψ(n)−γ ψ(n+1),-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+\textbackslash psi\^{}\{(n)\} + V\^{}\{(n)\}
+\textbackslash psi\^{}\{(n)\} = (E + \textbackslash gamma -
+\textbackslash gamma)\textbackslash,\textbackslash psi\^{}\{(n)\} -
+\textbackslash gamma\textbackslash,\textbackslash psi\^{}\{(n+1)\},−2mℏ2\hspace{0pt}∇n2\hspace{0pt}ψ(n)+V(n)ψ(n)=(E+γ−γ)ψ(n)−γψ(n+1),
 
 but it's more useful to consider the set of equations for all
-\$n=0,\textbackslash{}dots,12\$ together. We have \textbf{13 coupled
+\$n=0,\textbackslash dots,12\$ together. We have \textbf{13 coupled
 equations} (because at \$n=13\$ we impose
-\$\textbackslash{}psi\^{}\{(13)\} = \textbackslash{}psi\^{}\{(0)\}\$ due
-to closure)​. This is analogous to a particle on a ring of 13 sites in
-the recursion dimension. Such a system only has solutions for certain
-allowed \$E\$ values -- in fact it is a finite difference analog of a
-wave equation along the recursion dimension.
+\$\textbackslash psi\^{}\{(13)\} = \textbackslash psi\^{}\{(0)\}\$ due
+to closure)\hspace{0pt}. This is analogous to a particle on a ring of 13
+sites in the recursion dimension. Such a system only has solutions for
+certain allowed \$E\$ values -- in fact it is a finite difference analog
+of a wave equation along the recursion dimension.
 
 To solve the coupled system, we try a mode of the form
-\$\textbackslash{}psi\^{}\{(n+1)\} = \textbackslash{}omega
-,\textbackslash{}psi\^{}\{(n)\}\$, i.e. assume the wavefunction changes
-by a constant factor \$\textbackslash{}omega\$ when moving one step in
-\$n\$​. After 13 steps, \$\textbackslash{}psi\^{}\{(13)\} =
-\textbackslash{}omega\^{}\{13\}\textbackslash{}psi\^{}\{(0)\}\$, but
-closure requires \$\textbackslash{}psi\^{}\{(13)\} =
-\textbackslash{}psi\^{}\{(0)\}\$. Therefore we must have
-\$\textbackslash{}omega\^{}\{13\} = 1\$, meaning
-\$\textbackslash{}omega\$ is a 13th root of unity:
+\$\textbackslash psi\^{}\{(n+1)\} = \textbackslash omega
+,\textbackslash psi\^{}\{(n)\}\$, i.e. assume the wavefunction changes
+by a constant factor \$\textbackslash omega\$ when moving one step in
+\$n\$\hspace{0pt}. After 13 steps, \$\textbackslash psi\^{}\{(13)\} =
+\textbackslash omega\^{}\{13\}\textbackslash psi\^{}\{(0)\}\$, but
+closure requires \$\textbackslash psi\^{}\{(13)\} =
+\textbackslash psi\^{}\{(0)\}\$. Therefore we must have
+\$\textbackslash omega\^{}\{13\} = 1\$, meaning \$\textbackslash omega\$
+is a 13th root of unity:
 
-ωk=e2πik/13,k=0,1,2,\ldots{},12.\textbackslash{}omega\_k =
-e\^{}\{2\textbackslash{}pi i k/13\}, \textbackslash{}qquad k =
-0,1,2,\textbackslash{}dots,12.ωk​=e2πik/13,k=0,1,2,\ldots{},12.​
+ωk=e2πik/13,k=0,1,2,\ldots,12.\textbackslash omega\_k =
+e\^{}\{2\textbackslash pi i k/13\}, \textbackslash qquad k =
+0,1,2,\textbackslash dots,12.ωk\hspace{0pt}=e2πik/13,k=0,1,2,\ldots,12.\hspace{0pt}
 
 This is exactly the earlier result that the phase advance per recursion
-must be quantized. Now, plugging \$\textbackslash{}psi\^{}\{(n+1)\} =
-\textbackslash{}omega \textbackslash{}psi\^{}\{(n)\}\$ into the
+must be quantized. Now, plugging \$\textbackslash psi\^{}\{(n+1)\} =
+\textbackslash omega \textbackslash psi\^{}\{(n)\}\$ into the
 time-independent recursion Schrödinger equation, we get:
 
-−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ ω ψ(n)=E ψ(n).-\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-\textbackslash{}psi\^{}\{(n)\} + V\^{}\{(n)\}
-\textbackslash{}psi\^{}\{(n)\} +
-\textbackslash{}gamma\textbackslash{},\textbackslash{}omega\textbackslash{},\textbackslash{}psi\^{}\{(n)\}
+−ℏ22m∇n2ψ(n)+V(n)ψ(n)+γ ω ψ(n)=E ψ(n).-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+\textbackslash psi\^{}\{(n)\} + V\^{}\{(n)\}
+\textbackslash psi\^{}\{(n)\} +
+\textbackslash gamma\textbackslash,\textbackslash omega\textbackslash,\textbackslash psi\^{}\{(n)\}
 =
-E\textbackslash{},\textbackslash{}psi\^{}\{(n)\}.−2mℏ2​∇n2​ψ(n)+V(n)ψ(n)+γωψ(n)=Eψ(n).
+E\textbackslash,\textbackslash psi\^{}\{(n)\}.−2mℏ2\hspace{0pt}∇n2\hspace{0pt}ψ(n)+V(n)ψ(n)+γωψ(n)=Eψ(n).
 
-Bring the \$\textbackslash{}gamma \textbackslash{}omega
-\textbackslash{}psi\^{}\{(n)\}\$ to the RHS:
+Bring the \$\textbackslash gamma \textbackslash omega
+\textbackslash psi\^{}\{(n)\}\$ to the RHS:
 
-−ℏ22m∇n2ψ(n)+V(n)ψ(n)=(E−γ ω) ψ(n).-\textbackslash{}frac\{\textbackslash{}hbar\^{}2\}\{2m\}\textbackslash{}nabla\_n\^{}2
-\textbackslash{}psi\^{}\{(n)\} + V\^{}\{(n)\}
-\textbackslash{}psi\^{}\{(n)\} = (E -
-\textbackslash{}gamma\textbackslash{},\textbackslash{}omega)\textbackslash{},\textbackslash{}psi\^{}\{(n)\}.−2mℏ2​∇n2​ψ(n)+V(n)ψ(n)=(E−γω)ψ(n).​
+−ℏ22m∇n2ψ(n)+V(n)ψ(n)=(E−γ ω) ψ(n).-\textbackslash frac\{\textbackslash hbar\^{}2\}\{2m\}\textbackslash nabla\_n\^{}2
+\textbackslash psi\^{}\{(n)\} + V\^{}\{(n)\}
+\textbackslash psi\^{}\{(n)\} = (E -
+\textbackslash gamma\textbackslash,\textbackslash omega)\textbackslash,\textbackslash psi\^{}\{(n)\}.−2mℏ2\hspace{0pt}∇n2\hspace{0pt}ψ(n)+V(n)ψ(n)=(E−γω)ψ(n).\hspace{0pt}
 
-Comparing with the standard form \$H\textbackslash{}psi =
-E'\textbackslash{}psi\$, we see the effective eigenvalue on the RHS is
-\$E' = E - \textbackslash{}gamma \textbackslash{}omega\$. Or rearranging
+Comparing with the standard form \$H\textbackslash psi =
+E'\textbackslash psi\$, we see the effective eigenvalue on the RHS is
+\$E' = E - \textbackslash gamma \textbackslash omega\$. Or rearranging
 signs a bit as in the derivation:
 
-(E+γ(1−ω)) ψ(n)=E′ψ(n),(E + \textbackslash{}gamma(1 -
-\textbackslash{}omega))\textbackslash{},\textbackslash{}psi\^{}\{(n)\} =
-E'\textbackslash{}psi\^{}\{(n)\},(E+γ(1−ω))ψ(n)=E′ψ(n),
+(E+γ(1−ω)) ψ(n)=E′ψ(n),(E + \textbackslash gamma(1 -
+\textbackslash omega))\textbackslash,\textbackslash psi\^{}\{(n)\} =
+E'\textbackslash psi\^{}\{(n)\},(E+γ(1−ω))ψ(n)=E′ψ(n),
 
-with \$E' = E + \textbackslash{}gamma(1-\textbackslash{}omega)\$​. For a
-given base energy \$E\$, the presence of the recursion coupling
-\$\textbackslash{}gamma\$ and a nontrivial phase
-\$\textbackslash{}omega\$ shifts the allowed eigenvalue. The
-quantization \$\textbackslash{}omega\^{}\{13\}=1\$ means that
-\$\textbackslash{}omega\$ can take 13 discrete values. If we required
-the wavefunction to be strictly identical on all layers
-(\$\textbackslash{}omega=1\$), we'd get \$E'=E\$ as the only solution.
-But if \$\textbackslash{}omega \textbackslash{}neq 1\$, one finds
-distinct branches. In fact, because physical states should be
-single-valued after the full recursion, one typically selects the
-fundamental mode \$\textbackslash{}omega=1\$ for a stable solution​.
-Modes with \$\textbackslash{}omega \textbackslash{}neq 1\$ correspond to
-the wavefunction picking up a nontrivial phase around the recursion loop
--- one might interpret these as excited ``recursion modes'' or simply
-note that they would correspond to a form of oscillation between
-layers​. Those could conceivably be related to new quantum numbers or
-sectors (for example, an \$\textbackslash{}omega = -1\$ mode would mean
-the state is antiperiodic, reminiscent of a fermionic behavior under a
-360° rotation).
+with \$E' = E +
+\textbackslash gamma(1-\textbackslash omega)\$\hspace{0pt}. For a given
+base energy \$E\$, the presence of the recursion coupling
+\$\textbackslash gamma\$ and a nontrivial phase \$\textbackslash omega\$
+shifts the allowed eigenvalue. The quantization
+\$\textbackslash omega\^{}\{13\}=1\$ means that \$\textbackslash omega\$
+can take 13 discrete values. If we required the wavefunction to be
+strictly identical on all layers (\$\textbackslash omega=1\$), we'd get
+\$E'=E\$ as the only solution. But if \$\textbackslash omega
+\textbackslash neq 1\$, one finds distinct branches. In fact, because
+physical states should be single-valued after the full recursion, one
+typically selects the fundamental mode \$\textbackslash omega=1\$ for a
+stable solution\hspace{0pt}. Modes with \$\textbackslash omega
+\textbackslash neq 1\$ correspond to the wavefunction picking up a
+nontrivial phase around the recursion loop -- one might interpret these
+as excited ``recursion modes'' or simply note that they would correspond
+to a form of oscillation between layers\hspace{0pt}. Those could
+conceivably be related to new quantum numbers or sectors (for example,
+an \$\textbackslash omega = -1\$ mode would mean the state is
+antiperiodic, reminiscent of a fermionic behavior under a 360°
+rotation).
 
 The crucial point is that \textbf{the requirement of 13-step periodicity
-imposes \$\textbackslash{}omega\^{}\{13\}=1\$}, a quantization condition
+imposes \$\textbackslash omega\^{}\{13\}=1\$}, a quantization condition
 exactly analogous to requiring a particle's wavefunction on a ring of
-circumference \$L\$ satisfy \$\textbackslash{}psi(x+L) =
-\textbackslash{}psi(x)\$, which yields \$p =
-\textbackslash{}frac\{2\textbackslash{}pi \textbackslash{}hbar
-n\}\{L\}\$ quantized momentum​. In TORUS, the ``ring'' is the closed
+circumference \$L\$ satisfy \$\textbackslash psi(x+L) =
+\textbackslash psi(x)\$, which yields \$p =
+\textbackslash frac\{2\textbackslash pi \textbackslash hbar n\}\{L\}\$
+quantized momentum\hspace{0pt}. In TORUS, the ``ring'' is the closed
 recursion and the quantized ``momentum'' is the phase advance per step.
 This shows that \emph{discrete quantum numbers (like \$n\$) arise
 because the recursion dimension is compact and periodic}. Thus we have
 essentially derived that \textbf{energy levels split and become
-discrete} when recursion is taken into account​. If we set
-\$\textbackslash{}gamma\$ related to some fundamental scale (perhaps
+discrete} when recursion is taken into account\hspace{0pt}. If we set
+\$\textbackslash gamma\$ related to some fundamental scale (perhaps
 extremely small, tied to the cosmological constant or Planck scale), the
 shifts might be tiny -- which is good, because in everyday quantum
 mechanics we don't notice exotic effects. But the mere presence of
-\$\textbackslash{}gamma\$ and the periodic boundary yields quantization.
+\$\textbackslash gamma\$ and the periodic boundary yields quantization.
 
 Therefore, the Schrödinger equation (with its quantized solutions) is
 not an independent axiom in TORUS but an emergent, effective
 description: it appears once we incorporate the self-similar recursion
-and apply it to classical equations​. In fact, approaches like
-scale-relativity have shown that adding fractal or recursive structures
-to space-time yields the Schrödinger equation​. TORUS's derivation is in
-line with those findings: \emph{quantum wave behavior is a manifestation
-of deeper geometric recursion}. We have explicitly shown how an extra
-term in the wave equation leads to a root-of-unity condition, hence
-quantization of phase and energy.
+and apply it to classical equations\hspace{0pt}. In fact, approaches
+like scale-relativity have shown that adding fractal or recursive
+structures to space-time yields the Schrödinger equation\hspace{0pt}.
+TORUS's derivation is in line with those findings: \emph{quantum wave
+behavior is a manifestation of deeper geometric recursion}. We have
+explicitly shown how an extra term in the wave equation leads to a
+root-of-unity condition, hence quantization of phase and energy.
 
 \textbf{Derivation of the Dirac Equation (Relativistic Quantum
 Mechanics):} Finally, we address the Dirac equation, which governs
 fermions (like electrons) and integrates special relativity with quantum
 principles. The Dirac equation in free form is:
 
-i ℏ γμ∂μψ−mc ψ=0,i\textbackslash{},\textbackslash{}hbar\textbackslash{},\textbackslash{}gamma\^{}\textbackslash{}mu
-\textbackslash{}partial\_\textbackslash{}mu \textbackslash{}psi - m
-c\textbackslash{},\textbackslash{}psi = 0,iℏγμ∂μ​ψ−mcψ=0,
+i ℏ γμ∂μψ−mc ψ=0,i\textbackslash,\textbackslash hbar\textbackslash,\textbackslash gamma\^{}\textbackslash mu
+\textbackslash partial\_\textbackslash mu \textbackslash psi - m
+c\textbackslash,\textbackslash psi = 0,iℏγμ∂μ\hspace{0pt}ψ−mcψ=0,
 
-with \$\textbackslash{}psi\$ a 4-component spinor and
-\$\textbackslash{}gamma\^{}\textbackslash{}mu\$ the Dirac gamma
-matrices. To derive this from TORUS, we consider that at the 4D level
-where Dirac lives, the constants \$c\$ (speed of light) and
-\$\textbackslash{}hbar\$ are already present (they appear by the time we
-have space-time and quantum behavior). We also consider spinor
-structure, which in TORUS would come from requiring a two-valued
-representation under rotations (like the SU(2) discussion above). The
-key new feature in recursion is that there could be a small coupling to
-higher dimensions (for example, a 5D or 6D effect coupling into the
-Dirac equation as a tiny perturbation). We therefore \textbf{augment the
-Dirac equation with a recursion term}. According to the TORUS framework
-documentation, the modified Dirac equation can be written as​:
+with \$\textbackslash psi\$ a 4-component spinor and
+\$\textbackslash gamma\^{}\textbackslash mu\$ the Dirac gamma matrices.
+To derive this from TORUS, we consider that at the 4D level where Dirac
+lives, the constants \$c\$ (speed of light) and \$\textbackslash hbar\$
+are already present (they appear by the time we have space-time and
+quantum behavior). We also consider spinor structure, which in TORUS
+would come from requiring a two-valued representation under rotations
+(like the SU(2) discussion above). The key new feature in recursion is
+that there could be a small coupling to higher dimensions (for example,
+a 5D or 6D effect coupling into the Dirac equation as a tiny
+perturbation). We therefore \textbf{augment the Dirac equation with a
+recursion term}. According to the TORUS framework documentation, the
+modified Dirac equation can be written as\hspace{0pt}:
 
 \begin{itemize}
 \item
   \emph{Recursion-modified Dirac equation:}
-  i ℏ γμ∂μψ−mc ψ+δM ψ=0.i\textbackslash{},\textbackslash{}hbar\textbackslash{},\textbackslash{}gamma\^{}\textbackslash{}mu
-  \textbackslash{}partial\_\textbackslash{}mu \textbackslash{}psi - m
-  c\textbackslash{},\textbackslash{}psi + \textbackslash{}delta
-  M\textbackslash{},\textbackslash{}psi = 0.iℏγμ∂μ​ψ−mcψ+δMψ=0.
+  i ℏ γμ∂μψ−mc ψ+δM ψ=0.i\textbackslash,\textbackslash hbar\textbackslash,\textbackslash gamma\^{}\textbackslash mu
+  \textbackslash partial\_\textbackslash mu \textbackslash psi - m
+  c\textbackslash,\textbackslash psi + \textbackslash delta
+  M\textbackslash,\textbackslash psi = 0.iℏγμ∂μ\hspace{0pt}ψ−mcψ+δMψ=0.
 \end{itemize}
 
-Here \$\textbackslash{}delta M,\textbackslash{}psi\$ represents a small
+Here \$\textbackslash delta M,\textbackslash psi\$ represents a small
 additional term (with dimensions of mass or energy) arising from
-recursion coupling​. One way to think of \$\textbackslash{}delta M\$ is
-as an effective mass correction or mixing between the fermion field on
-one layer and something on another layer (for instance, layer 6 which
-might involve thermodynamic degrees of freedom could feed a tiny bit
-into the particle's equation). The exact form of \$\textbackslash{}delta
-M\$ could be complex, but in the simplest case it might be proportional
-to \$\textbackslash{}psi\$ itself (like an extra scalar mass term) or
-something like \$\textbackslash{}delta
-M(\textbackslash{}psi\^{}\{(4D)\}, \textbackslash{}psi\^{}\{(6D)\})\$
-indicating it couples the 4D spinor to a 6D version of itself​.
+recursion coupling\hspace{0pt}. One way to think of
+\$\textbackslash delta M\$ is as an effective mass correction or mixing
+between the fermion field on one layer and something on another layer
+(for instance, layer 6 which might involve thermodynamic degrees of
+freedom could feed a tiny bit into the particle's equation). The exact
+form of \$\textbackslash delta M\$ could be complex, but in the simplest
+case it might be proportional to \$\textbackslash psi\$ itself (like an
+extra scalar mass term) or something like \$\textbackslash delta
+M(\textbackslash psi\^{}\{(4D)\}, \textbackslash psi\^{}\{(6D)\})\$
+indicating it couples the 4D spinor to a 6D version of
+itself\hspace{0pt}.
 
-If we set \$\textbackslash{}delta M = 0\$, we recover the standard Dirac
-equation: \$i\textbackslash{}hbar
-\textbackslash{}gamma\^{}\textbackslash{}mu
-\textbackslash{}partial\_\textbackslash{}mu \textbackslash{}psi - m
-c,\textbackslash{}psi = 0\$​. So any acceptable solution in TORUS must
-reduce to ordinary Dirac in regimes where recursion effects are
-negligible. This is an important consistency check. TORUS analytical
+If we set \$\textbackslash delta M = 0\$, we recover the standard Dirac
+equation: \$i\textbackslash hbar
+\textbackslash gamma\^{}\textbackslash mu
+\textbackslash partial\_\textbackslash mu \textbackslash psi - m
+c,\textbackslash psi = 0\$\hspace{0pt}. So any acceptable solution in
+TORUS must reduce to ordinary Dirac in regimes where recursion effects
+are negligible. This is an important consistency check. TORUS analytical
 work has shown that including such a term does not break Lorentz
 invariance or the internal spinor symmetry; the Dirac algebra
-(anticommutation of \$\textbackslash{}gamma\^{}\textbackslash{}mu\$,
+(anticommutation of \$\textbackslash gamma\^{}\textbackslash mu\$,
 existence of conserved currents like
-\$\textbackslash{}bar\textbackslash{}psi
-\textbackslash{}gamma\^{}\textbackslash{}mu \textbackslash{}psi\$) still
-holds to a very high degree​. Essentially, the recursion coupling
-\$\textbackslash{}delta M\$ is like adding a tiny perturbation that is
-invariant under the necessary symmetries (perhaps proportional to the
-identity in spinor space, which would commute with gamma matrices and
-preserve Lorentz symmetry).
+\$\textbackslash bar\textbackslash psi
+\textbackslash gamma\^{}\textbackslash mu \textbackslash psi\$) still
+holds to a very high degree\hspace{0pt}. Essentially, the recursion
+coupling \$\textbackslash delta M\$ is like adding a tiny perturbation
+that is invariant under the necessary symmetries (perhaps proportional
+to the identity in spinor space, which would commute with gamma matrices
+and preserve Lorentz symmetry).
 
 Now, why must the Dirac equation emerge at all? One argument is that by
 the time we have included up to the \$n=4\$ or \$n=5\$ recursion level
-(which introduced \$c\$ and \$\textbackslash{}hbar\$ and the \$SU(2)\$
+(which introduced \$c\$ and \$\textbackslash hbar\$ and the \$SU(2)\$
 spin symmetry), the form of the wave equation for a spin-½ particle is
 constrained. TORUS shows that as soon as we demand \textbf{first-order
 time and space derivatives} (to avoid second-order ones which would give
 Klein-Gordon for spin-0) and incorporate the existence of spinor
-solutions, the only equation that fits is the Dirac equation​. In other
-words, the recursion framework ``knows'' about the need for a linear
-relativistic equation. If one attempted a different form, one would
-break the recursive symmetry or the ability to close the cycle. By
-deriving the modified Eq. (above) and then taking
-\$\textbackslash{}delta M \textbackslash{}to 0\$, TORUS recovers the
-exact Dirac equation​. This is a strong consistency test: it means the
-theory can produce fermionic behavior from its own structure, rather
+solutions, the only equation that fits is the Dirac
+equation\hspace{0pt}. In other words, the recursion framework ``knows''
+about the need for a linear relativistic equation. If one attempted a
+different form, one would break the recursive symmetry or the ability to
+close the cycle. By deriving the modified Eq. (above) and then taking
+\$\textbackslash delta M \textbackslash to 0\$, TORUS recovers the exact
+Dirac equation\hspace{0pt}. This is a strong consistency test: it means
+the theory can produce fermionic behavior from its own structure, rather
 than having to import the Dirac equation from experiment as a separate
 postulate.
 
-What about \$\textbackslash{}delta M\$? This term is very intriguing. It
+What about \$\textbackslash delta M\$? This term is very intriguing. It
 suggests possible small violations of standard Dirac behavior. For
-example, if \$\textbackslash{}delta M\$ is effectively a tiny shift in
+example, if \$\textbackslash delta M\$ is effectively a tiny shift in
 mass, then a particle's mass might slightly differ depending on
 recursion effects (perhaps varying with cosmic time or environment very
-subtly). Or \$\textbackslash{}delta M\$ could couple left- and
+subtly). Or \$\textbackslash delta M\$ could couple left- and
 right-handed components differently, giving a tiny source of parity
 violation beyond the weak interaction. The TORUS analysis speculates
-that if \$\textbackslash{}delta M\$ connects the 4D spinor with, say, a
+that if \$\textbackslash delta M\$ connects the 4D spinor with, say, a
 6D state related to entropy or cosmology, it could produce extremely
 tiny time-dependent mass terms or interactions, but \textbf{heavily
 suppressed by the huge scale separation} between, e.g., microscopic and
-cosmological layers​. This means no known experiment would have noticed
-it -- consistent with all current data (for instance, no one has seen an
-electron mass changing with time). It becomes a potential prediction: in
-extreme conditions, maybe a slight deviation from Dirac's predictions
-could appear due to recursion.
+cosmological layers\hspace{0pt}. This means no known experiment would
+have noticed it -- consistent with all current data (for instance, no
+one has seen an electron mass changing with time). It becomes a
+potential prediction: in extreme conditions, maybe a slight deviation
+from Dirac's predictions could appear due to recursion.
 
 In conclusion, TORUS provides a unified perspective: \textbf{the
 Schrödinger and Dirac equations are not independent laws but outcomes of
 the recursive structure of reality}. By including the observer and
 insisting on closed self-referential dynamics, we got quantization
 (discrete eigenstates) and the form of the Schrödinger equation with a
-quantization condition \$\{\textbackslash{}omega\^{}\{13\}=1\}\$​. By
-further requiring relativistic consistency and spin, we arrived at the
-Dirac equation (with possibly a small recursive correction)​. All of
-this was achieved without assuming the ``weird'' principles of quantum
-mechanics upfront -- instead, they emerged from deeper logical
+quantization condition
+\$\{\textbackslash omega\^{}\{13\}=1\}\$\hspace{0pt}. By further
+requiring relativistic consistency and spin, we arrived at the Dirac
+equation (with possibly a small recursive correction)\hspace{0pt}. All
+of this was achieved without assuming the ``weird'' principles of
+quantum mechanics upfront -- instead, they emerged from deeper logical
 requirements (recursion symmetry, algebraic closure, inclusion of the
 observer).
 
@@ -1177,10 +1183,10 @@ in agreement with known physics where it should be, while also offering
 possible explanations for mysteries (like quantization and unity of
 forces) that in conventional physics are imposed rather than explained.
 The true test of these derived equations lies in whether tiny deviations
-(such as the \$\textbackslash{}delta M\$ term in Dirac or small
-recursive perturbations in Maxwell's laws) can be detected
-experimentally in extreme regimes. TORUS provides a framework to
-anticipate such effects​, but that goes beyond the scope of this purely
+(such as the \$\textbackslash delta M\$ term in Dirac or small recursive
+perturbations in Maxwell's laws) can be detected experimentally in
+extreme regimes. TORUS provides a framework to anticipate such
+effects\hspace{0pt}, but that goes beyond the scope of this purely
 derivation-focused appendix. Here we have established the foundation:
 the \textbf{Recursive Unified Framework} mathematically leads to
 Einstein's, Maxwell's, and Schrödinger/Dirac's equations as natural

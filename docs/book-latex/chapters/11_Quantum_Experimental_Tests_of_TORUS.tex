@@ -1,57 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
+\author{}
 \date{}
 
 \begin{document}
@@ -123,14 +122,14 @@ cyclic universe (OSQN §2.2). Essentially, only certain tiny
 observer-induced perturbations are permitted -- preventing any gross
 violation of quantum laws while still allowing the subtle coherence
 variations predicted above. (One can imagine an operator
-\$\textbackslash{}hat\{M\}\$ for OSQN with eigenvalues \$m\$:
-\$\textbackslash{}hat\{M\}\textbar{}\textbackslash{}Psi\textbackslash{}rangle
-= m\textbar{}\textbackslash{}Psi\textbackslash{}rangle\$. Without an
-observation, \$\textbackslash{}hat\{M\}\$ commutes with the system's
-Hamiltonian and \$m\$ stays fixed; a measurement acts like a ladder
-operator \$O\^{}+\$ that raises \$m\$ by one unit when an observer
-becomes entangled with the system (OSQN §3.1). We will see later how
-these ladder operations manifest in experiments.)}
+\$\textbackslash hat\{M\}\$ for OSQN with eigenvalues \$m\$:
+\$\textbackslash hat\{M\}\textbackslash Psi\textbackslash rangle =
+m\textbackslash Psi\textbackslash rangle\$. Without an observation,
+\$\textbackslash hat\{M\}\$ commutes with the system's Hamiltonian and
+\$m\$ stays fixed; a measurement acts like a ladder operator \$O\^{}+\$
+that raises \$m\$ by one unit when an observer becomes entangled with
+the system (OSQN §3.1). We will see later how these ladder operations
+manifest in experiments.)}
 
 \textbf{Experimental Setups and Observable Effects: Testing such small
 effects is challenging but increasingly feasible. Modern quantum optics
@@ -357,7 +356,7 @@ For instance, if the vacuum energy density is altered by
 higher-dimensional effects, the Lamb shift or an electron's gyromagnetic
 ratio might differ by an extra tiny fraction from the textbook value.
 Similarly, well-measured quantities like scattering amplitudes or the
-value of the fine-structure constant \$\textbackslash{}alpha\$ could
+value of the fine-structure constant \$\textbackslash alpha\$ could
 carry a minute ``recursion correction.'' We can think of this as TORUS
 adding a very weak new interaction or a slight variation in fundamental
 constants that only becomes noticeable at extreme precision. In fact,
@@ -378,13 +377,13 @@ transition frequency in hydrogen (or in hydrogenic ions, or muonium)
 might reveal a consistent offset of a few Hz from the QED value (after
 accounting for all known effects), indicating an extra energy
 contribution from recursion fields. Or, the effective fine-structure
-constant \$\textbackslash{}alpha\$ might appear slightly different in
+constant \$\textbackslash alpha\$ might appear slightly different in
 strong-field or high-frequency experiments if recursion-induced fields
-contribute (to date, tests of \$\textbackslash{}alpha\$ variation have
+contribute (to date, tests of \$\textbackslash alpha\$ variation have
 found nothing, but TORUS allows room at still finer levels). Another
 intriguing case is the muon's anomalous magnetic moment \$g-2\$: the
 ongoing Muon \$g-2\$ experiment has reported a small discrepancy
-(\textasciitilde{}\$10\^{}\{-9\}\$ relative) with the Standard Model.
+(\textasciitilde\$10\^{}\{-9\}\$ relative) with the Standard Model.
 While this is often attributed to possible new particles, one could
 speculate that recursion effects (perhaps involving an OSQN-related term
 in the muon's quantum equations) might induce a tiny shift in \$g-2\$.
@@ -490,44 +489,41 @@ Box)}
 
 \textbf{\emph{In TORUS's algebraic framework, the observer's influence
 is treated with ladder operators much like those for other quantum
-numbers.} We introduce an operator \$\textbackslash{}hat\{M\}\$ for the
+numbers.} We introduce an operator \$\textbackslash hat\{M\}\$ for the
 Observer-State Quantum Number. Its eigenvalues \$m\$ label the state of
 observer involvement. The act of observation raises \$m\$ by one.
 Formally, one defines raising and lowering operators \$O\^{}+\$ and
-\$O\^{}-\$ that act on the extended state (system + observer): if
-\$\textbar{} \textbackslash{}Psi\_m \textbackslash{}rangle\$ denotes a
-state with OSQN \$m\$, then
-\$O\^{}+\textbar{}\textbackslash{}Psi\_m\textbackslash{}rangle
-\textbackslash{}propto
-\textbar{}\textbackslash{}Psi\_\{m+1\}\textbackslash{}rangle\$ and
-\$O\^{}-\textbar{}\textbackslash{}Psi\_\{m\}\textbackslash{}rangle
-\textbackslash{}propto
-\textbar{}\textbackslash{}Psi\_\{m-1\}\textbackslash{}rangle\$ (OSQN
-§3.2). These operators obey commutation relations analogous to those of
-the quantum harmonic oscillator: for example,
-\${[}\textbackslash{}hat\{M\}, O\^{}+{]} = +,O\^{}+\$ and
-\${[}\textbackslash{}hat\{M\}, O\^{}-{]} = -,O\^{}-\$ (meaning
-\$O\^{}+\$ raises the OSQN by +1, and \$O\^{}-\$ lowers it by 1) (OSQN
-§3.1). This ladder structure implies discrete ``steps'' of observer
-involvement. Spectroscopically, if OSQN truly exists, transitions in a
-quantum system could be accompanied by changes in \$m\$. Normally,
-adding an observer doesn't factor into energy level calculations, but
-with OSQN each change in \$m\$ could carry a tiny energy penalty or
-shift set by the recursion framework. In practical terms, this means
-that when a system transitions while being observed, it might end in a
-slightly different state (with a different \$m\$) than the same
-transition unobserved. The \emph{selection rules} would then extend to
-include \$\textbackslash{}Delta m\$ (change in observer-state) in
-addition to, say, \$\textbackslash{}Delta l\$ or \$\textbackslash{}Delta
-s\$ for angular momentum. For example, an atomic spectral line might
-split or shift depending on whether the emission was observed, akin to
-how an external field causes Zeeman or Stark splitting -- except here
-the ``field'' is the act of observation itself. Any such OSQN-dependent
+\$O\^{}-\$ that act on the extended state (system + observer): if \$
+\textbackslash Psi\_m \textbackslash rangle\$ denotes a state with OSQN
+\$m\$, then \$O\^{}+\textbackslash Psi\_m\textbackslash rangle
+\textbackslash propto \textbackslash Psi\_\{m+1\}\textbackslash rangle\$
+and \$O\^{}-\textbackslash Psi\_\{m\}\textbackslash rangle
+\textbackslash propto \textbackslash Psi\_\{m-1\}\textbackslash rangle\$
+(OSQN §3.2). These operators obey commutation relations analogous to
+those of the quantum harmonic oscillator: for example,
+\${[}\textbackslash hat\{M\}, O\^{}+{]} = +,O\^{}+\$ and
+\${[}\textbackslash hat\{M\}, O\^{}-{]} = -,O\^{}-\$ (meaning \$O\^{}+\$
+raises the OSQN by +1, and \$O\^{}-\$ lowers it by 1) (OSQN §3.1). This
+ladder structure implies discrete ``steps'' of observer involvement.
+Spectroscopically, if OSQN truly exists, transitions in a quantum system
+could be accompanied by changes in \$m\$. Normally, adding an observer
+doesn't factor into energy level calculations, but with OSQN each change
+in \$m\$ could carry a tiny energy penalty or shift set by the recursion
+framework. In practical terms, this means that when a system transitions
+while being observed, it might end in a slightly different state (with a
+different \$m\$) than the same transition unobserved. The
+\emph{selection rules} would then extend to include
+\$\textbackslash Delta m\$ (change in observer-state) in addition to,
+say, \$\textbackslash Delta l\$ or \$\textbackslash Delta s\$ for
+angular momentum. For example, an atomic spectral line might split or
+shift depending on whether the emission was observed, akin to how an
+external field causes Zeeman or Stark splitting -- except here the
+``field'' is the act of observation itself. Any such OSQN-dependent
 spectral feature would be extremely small, but its pattern (extra lines
 or tiny shifts only manifesting under observation) would be a clear
 fingerprint of the ladder-operator mechanism at work. In summary, the
-OSQN ladder operators \$O\^{}\textbackslash{}pm\$ provide a formal way
-to quantify and calculate these subtle differences: each application of
+OSQN ladder operators \$O\^{}\textbackslash pm\$ provide a formal way to
+quantify and calculate these subtle differences: each application of
 \$O\^{}+\$ when an observer interacts could add a slight upward tick in
 energy or phase, cumulatively producing measurable effects if one
 reaches the necessary precision. TORUS's prediction is that these
@@ -557,7 +553,7 @@ TORUS-calculated recursion effect. In that case, TORUS would become
 highly relevant -- it offers a framework where such an anomaly is not
 just random but arises naturally from the inclusion of the observer or
 recursion fields. Likewise, discovering an unexpected difference in two
-precise measurements of \$\textbackslash{}alpha\$ (under different
+precise measurements of \$\textbackslash alpha\$ (under different
 conditions), or observing a tiny frequency-dependent tweak in the
 Casimir force, or detecting a ``forbidden'' spectral line only during
 measurement, would each be potential breakthroughs. Any one of these

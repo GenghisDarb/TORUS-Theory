@@ -1,57 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-
+\author{}
 \date{}
 
 \begin{document}
@@ -89,25 +88,24 @@ value.
 energy is not a mysterious new substance but an emergent effect of the
 recursion structure. The model introduces an additional term in
 Einstein's field equations, often denoted
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{}, arising
-from higher-dimensional feedback in the 14-layer recursion. In essence,
+Λ\textless sub\textgreater rec\textless/sub\textgreater, arising from
+higher-dimensional feedback in the 14-layer recursion. In essence,
 higher-dimensional curvature and stress-energy feed into 4D spacetime as
 a subtle extra source of gravity (or effective fluid). This
 recursion-induced term can mimic a cosmological constant without
 invoking any new 4D field or exotic energy component. Crucially,
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} in TORUS
-is not a fixed parameter tuned by hand; it emerges from boundary
-conditions that close the recursion cycle, linking the largest cosmic
-scale (13D) back to the 0D origin. This means TORUS offers a potential
-explanation for why dark energy has the small value it does -- it's
-determined by the self-consistent recursion between the universe's
-smallest and largest scales, rather than being an unexplained constant
-of nature.
+Λ\textless sub\textgreater rec\textless/sub\textgreater{} in TORUS is
+not a fixed parameter tuned by hand; it emerges from boundary conditions
+that close the recursion cycle, linking the largest cosmic scale (13D)
+back to the 0D origin. This means TORUS offers a potential explanation
+for why dark energy has the small value it does -- it's determined by
+the self-consistent recursion between the universe's smallest and
+largest scales, rather than being an unexplained constant of nature.
 
 \textbf{Predicted Deviations from ΛCDM:} Because TORUS's ``dark energy''
 stems from dynamic higher-dimensional processes, it need not be
 perfectly constant over time (a potential
-``Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} drift'')
+``Λ\textless sub\textgreater rec\textless/sub\textgreater{} drift'')
 (Predictive Framework §3.1). The theory predicts slight deviations in
 the cosmic expansion history compared to a pure ΛCDM model. In
 quantitative terms, TORUS expects the dark energy equation-of-state to
@@ -125,12 +123,12 @@ in the acceleration rate that current observations only hint at.
 
 Notably, TORUS offers a possible resolution to the \textbf{Hubble
 tension}, the ongoing discrepancy between the Hubble constant
-(H\textless{}sub\textgreater{}0\textless{}/sub\textgreater{}) inferred
-from the early universe (CMB data) and the value measured via local
-distance indicators. If recursion fields influence cosmic expansion
-differently at different scales or epochs, they could naturally cause a
-slight scale-dependent shift in
-H\textless{}sub\textgreater{}0\textless{}/sub\textgreater{}, potentially
+(H\textless sub\textgreater0\textless/sub\textgreater) inferred from the
+early universe (CMB data) and the value measured via local distance
+indicators. If recursion fields influence cosmic expansion differently
+at different scales or epochs, they could naturally cause a slight
+scale-dependent shift in
+H\textless sub\textgreater0\textless/sub\textgreater, potentially
 bridging the gap between early- and late-universe measurements. In
 summary, rather than a perfectly featureless acceleration, TORUS paints
 a picture of a dark energy effect with a faint ``heartbeat'' or trend
@@ -174,29 +172,29 @@ expansion rate become detectable. Key approaches include:
   gravity. Even if the background expansion looks like ΛCDM, TORUS's
   modified gravity (via recursion) could alter how fast galaxies and
   clusters form and clump together. One key indicator is the parameter
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}, which
-  quantifies the amplitude of matter clustering on 8
-  \emph{h}\textless{}sup\textgreater{}--1\textless{}/sup\textgreater{}
-  Mpc scales and is measured by cosmic shear (weak lensing) surveys.
+  S\textless sub\textgreater8\textless/sub\textgreater, which quantifies
+  the amplitude of matter clustering on 8
+  \emph{h}\textless sup\textgreater--1\textless/sup\textgreater{} Mpc
+  scales and is measured by cosmic shear (weak lensing) surveys.
   Intriguingly, there is already a mild
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tension --
+  S\textless sub\textgreater8\textless/sub\textgreater{} tension --
   lensing surveys (e.g. KiDS, DES) find slightly less clustering (lower
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}) than
-  predicted by Planck CMB results under ΛCDM. TORUS provides a framework
-  where the recursion-induced extra gravity term could manifest as a
-  subtle lensing shear effect that suppresses the growth of structure on
+  S\textless sub\textgreater8\textless/sub\textgreater) than predicted
+  by Planck CMB results under ΛCDM. TORUS provides a framework where the
+  recursion-induced extra gravity term could manifest as a subtle
+  lensing shear effect that suppresses the growth of structure on
   certain scales, offering a possible explanation for this discrepancy.
   Future surveys will clarify this: LSST and Euclid will measure the
   growth rate and clustering amplitude to unprecedented accuracy,
   tracking structure formation from early times to now. If they confirm
   a persistent deviation -- for example, a scale-dependent growth rate
-  or an S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}
-  value that remains significantly lower than ΛCDM predicts (say, by
-  \textgreater{}5\% even with improving precision) -- it could be a
+  or an S\textless sub\textgreater8\textless/sub\textgreater{} value
+  that remains significantly lower than ΛCDM predicts (say, by
+  \textgreater5\% even with improving precision) -- it could be a
   signature of TORUS's extra gravity influence. Conversely, if structure
   growth and clustering amplitude perfectly match the ΛCDM predictions
-  as observational uncertainties shrink (within \textasciitilde{}1\%),
-  it would constrain or rule out any need for a recursion-based
+  as observational uncertainties shrink (within \textasciitilde1\%), it
+  would constrain or rule out any need for a recursion-based
   modification in the dark energy or gravity sector (Predictive
   Framework §3.2).
 \item
@@ -212,17 +210,17 @@ expansion rate become detectable. Key approaches include:
   cross-check on cosmic expansion. TORUS predicts only slight deviations
   in light versus gravitational-wave propagation (e.g. possibly a tiny
   dispersion or a different distance--redshift behavior if
-  Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{}
-  interacts with gravity waves), but fundamentally the
-  distance--redshift relation for sirens should reflect the same
-  expansion history. If multiple independent probes (light,
-  gravitational waves, etc.) all converge on an expansion history that
-  is ever so slightly inconsistent with ΛCDM yet consistent with a
-  TORUS-type varying dark energy, it will strengthen the case that the
-  deviation is real. For example, a subtle redshift-dependent drift in
-  the expansion rate \textbf{H}(z) measured by future gravitational-wave
-  sirens, lining up with the pattern expected from recursion dynamics,
-  would be compelling evidence in TORUS's favor.
+  Λ\textless sub\textgreater rec\textless/sub\textgreater{} interacts
+  with gravity waves), but fundamentally the distance--redshift relation
+  for sirens should reflect the same expansion history. If multiple
+  independent probes (light, gravitational waves, etc.) all converge on
+  an expansion history that is ever so slightly inconsistent with ΛCDM
+  yet consistent with a TORUS-type varying dark energy, it will
+  strengthen the case that the deviation is real. For example, a subtle
+  redshift-dependent drift in the expansion rate \textbf{H}(z) measured
+  by future gravitational-wave sirens, lining up with the pattern
+  expected from recursion dynamics, would be compelling evidence in
+  TORUS's favor.
 \end{itemize}
 
 \textbf{Falsifiability Criteria:} TORUS's recursive dark energy idea
@@ -256,7 +254,7 @@ Signatures}
 The Cosmic Microwave Background (CMB) is the faint afterglow of the Big
 Bang -- electromagnetic radiation left over from the time the universe
 became transparent, about 380,000 years after its origin. It permeates
-the sky at a temperature of \textasciitilde{}2.73 K and has a nearly
+the sky at a temperature of \textasciitilde2.73 K and has a nearly
 uniform blackbody spectrum. Tiny fluctuations (temperature variations of
 only one part in 100,000) in the CMB encode information about the
 universe's initial conditions, composition, and early development.
@@ -331,7 +329,7 @@ confirmation of TORUS's cosmological component.
 recursion model yields several distinct predictions that upcoming
 observations can verify. First, it predicts a slight drift in the
 effective cosmological constant
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} over time,
+Λ\textless sub\textgreater rec\textless/sub\textgreater{} over time,
 rather than a perfectly unchanging dark energy density. Second, it
 forecasts tiny periodic \textbf{w}(z) oscillations in the dark energy's
 equation-of-state around --1 as the universe evolves. Third, TORUS
@@ -342,12 +340,12 @@ correlation ``echo'' in the distribution of galaxies -- a subtle excess
 clustering at distances of order 1--2 Gpc (a recursion harmonic
 imprint). Fifth, it expects subtle anomalies in cosmic shear
 measurements (such as the current
-S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tension from
-weak lensing) to persist, as recursion-induced gravity effects slightly
-slow structure growth. Each of these predictions has a corresponding
-null scenario (no drift, no oscillation, random CMB patterns, no LSS
-echo, no lensing anomalies) and thus can be \textbf{falsified} if
-observations fail to find the hinted signals.
+S\textless sub\textgreater8\textless/sub\textgreater{} tension from weak
+lensing) to persist, as recursion-induced gravity effects slightly slow
+structure growth. Each of these predictions has a corresponding null
+scenario (no drift, no oscillation, random CMB patterns, no LSS echo, no
+lensing anomalies) and thus can be \textbf{falsified} if observations
+fail to find the hinted signals.
 
 \textbf{Observational Strategies:} Testing these ideas involves digging
 into CMB data with new precision and looking for cross-signatures in
@@ -423,8 +421,8 @@ claim that the largest observable scales of the universe bear the
 imprint of the recursion cycle. To support TORUS, we would want to see
 continued evidence of CMB anomalies and potentially new discoveries of
 associated patterns. For instance, finding that the CMB quadrupole power
-is low at a confidence well beyond random chance (say \textless{}0.1\%
-probability of being a fluke, corresponding to a \textgreater{}2.0 μK
+is low at a confidence well beyond random chance (say \textless0.1\%
+probability of being a fluke, corresponding to a \textgreater2.0 μK
 deficit in the quadrupole amplitude) and that a certain axis is
 consistently picked out by multiple datasets would be a ``dramatic
 confirmation'' of TORUS's cosmology. Even more convincing would be
@@ -468,7 +466,7 @@ inflation) modulated by known effects like baryon acoustic oscillations.
 On the largest scales, the ΛCDM expectation is that correlations become
 very weak: beyond a few hundred megaparsecs, the distribution of
 galaxies approaches uniformity, with no preferred scale (except the
-\textasciitilde{}100 Mpc BAO feature) or special alignment. Essentially,
+\textasciitilde100 Mpc BAO feature) or special alignment. Essentially,
 ΛCDM treats the universe at gigaparsec scales as statistically
 homogeneous and isotropic (aside from the small clumping quantified by
 the power spectrum).
@@ -488,7 +486,7 @@ the distribution of matter.
 
 The theory suggests there could be a slight excess correlation or
 ``echo'' of structure at a very large scale, perhaps at roughly half the
-universe's diameter (\textasciitilde{}5--10 gigaparsecs). In the power
+universe's diameter (\textasciitilde5--10 gigaparsecs). In the power
 spectrum of density fluctuations, this would appear as a tiny bump or
 oscillation at a corresponding wave number (on the order of \emph{k}
 \textasciitilde{} 10\^{}--3 h/Mpc or smaller, since 2π/\emph{k}
@@ -503,15 +501,15 @@ is why it has not been obvious in existing surveys (Predictive Framework
 would be revolutionary.
 
 To put it in perspective, the known BAO feature is a peak in the
-correlation function at \textasciitilde{}100 Mpc, arising from sound
-waves in the primordial plasma. TORUS's predicted effect is like a far
-grander BAO -- at \textasciitilde{}1000 Mpc -- arising from the topology
-of spacetime itself rather than any standard physical scale of
+correlation function at \textasciitilde100 Mpc, arising from sound waves
+in the primordial plasma. TORUS's predicted effect is like a far grander
+BAO -- at \textasciitilde1000 Mpc -- arising from the topology of
+spacetime itself rather than any standard physical scale of
 perturbation. Its amplitude is on the order of 10\^{}--4, far smaller
 than the BAO peak, so detecting it is a formidable challenge.
 Nevertheless, there have been some tantalizing but unconfirmed hints in
 the past -- for instance, controversial claims of quasi-periodic spacing
-of quasar clusters on \textasciitilde{}0.5 Gpc scales. TORUS would
+of quasar clusters on \textasciitilde0.5 Gpc scales. TORUS would
 interpret such hints as possibly related phenomena, though it predicts
 any real fundamental scale would likely be a bit larger (comparable to
 the horizon size) and would require more data to verify.
@@ -542,12 +540,12 @@ on unprecedented scales:
   subtle excess clustering signal around the gigaparsec scale. For
   example, after Euclid's data are analyzed, we might see that instead
   of the correlation function monotonically tending to zero, it has a
-  tiny secondary peak at \textasciitilde{}1 Gpc. Similarly, the power
+  tiny secondary peak at \textasciitilde1 Gpc. Similarly, the power
   spectrum \emph{P(k)} might show a slight ripple at \emph{k} ≈ 6 ×
   10\^{}--4 Mpc⁻¹ (roughly corresponding to a 1 Gpc wavelength). Such a
   signal would be faint, but it is within reach: the sheer number of
   galaxy pairs at those distances in these surveys is enormous, so even
-  a \textasciitilde{}10\^{}--4-level correlation might be statistically
+  a \textasciitilde10\^{}--4-level correlation might be statistically
   detectable.
 \item
   \textbf{21 cm and Radio Surveys:} The Square Kilometre Array (SKA)
@@ -592,7 +590,7 @@ clear target: a gigaparsec-scale correlation or oscillation in the
 matter distribution. The upcoming generation of surveys is the first
 with the capability to definitively confirm or refute this prediction. A
 positive detection -- say Euclid reports a small but significant bump in
-the correlation function at \textasciitilde{}1 Gpc -- would be a
+the correlation function at \textasciitilde1 Gpc -- would be a
 groundbreaking discovery. It would indicate a departure from the
 assumption of pure statistical homogeneity on the largest scales,
 pointing toward new physics. If that bump matches the scale predicted by
@@ -609,17 +607,16 @@ say, 500 Mpc, and the power spectrum shows no unexpected wiggles other
 than the well-understood BAOs -- then TORUS's prediction of recursion
 harmonics is not realized in nature. Suppose Euclid and LSST find that
 any correlation at 1 Gpc is below, for example, the 10\^{}--5 level,
-much smaller than TORUS's expected \textasciitilde{}10\^{}--4 signal;
-that would essentially falsify this aspect of TORUS or force a major
-revision (perhaps the recursion coupling is far weaker than initially
-thought, or the model's implementation of the boundary conditions was
-incorrect). TORUS would then have to survive on its other merits, but
-its distinctive cosmological imprint would be absent, favoring the
-simpler ΛCDM view that the universe has no large-scale surprises.
-Additionally, if no sign of preferred orientations is found in the
-distribution of superclusters or voids (and the universe looks isotropic
-out to the horizon), then the idea of a recursion-aligned axis would be
-undermined.
+much smaller than TORUS's expected \textasciitilde10\^{}--4 signal; that
+would essentially falsify this aspect of TORUS or force a major revision
+(perhaps the recursion coupling is far weaker than initially thought, or
+the model's implementation of the boundary conditions was incorrect).
+TORUS would then have to survive on its other merits, but its
+distinctive cosmological imprint would be absent, favoring the simpler
+ΛCDM view that the universe has no large-scale surprises. Additionally,
+if no sign of preferred orientations is found in the distribution of
+superclusters or voids (and the universe looks isotropic out to the
+horizon), then the idea of a recursion-aligned axis would be undermined.
 
 In summary, the large-scale structure tests offer a high-risk,
 high-reward scenario for TORUS. The theory dares to predict a new cosmic
