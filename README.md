@@ -1,7 +1,6 @@
 # TORUS Theory 📚
 
-A unified, recursion-based framework that integrates gravity, quantum mechanics, and observer-state dynamics into a single mathematical architecture.  
-This repository contains the book manuscript, peer-review papers, validation suites, and laboratory protocols that collectively define and test **TORUS Theory**.
+TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional χ-β harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---
 
