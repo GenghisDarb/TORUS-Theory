@@ -1,56 +1,57 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\author{}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
 \date{}
 
 \begin{document}
@@ -85,9 +86,9 @@ interferometer) and clear falsifiability criteria.
     \textbf{Arrival Time Analysis:} Measure the arrival times or phase
     shifts of these bands across the detector network. In TORUS,
     higher-frequency waves may travel at slightly different speeds than
-    lower-frequency waves, causing a measurable timing
-    offset\hspace{0pt}. Compare the arrival times after accounting for
-    known effects (instrument delays, plasma dispersion, etc.).
+    lower-frequency waves, causing a measurable timing offset​. Compare
+    the arrival times after accounting for known effects (instrument
+    delays, plasma dispersion, etc.).
   \item
     \textbf{Cross-Detector Verification:} If multiple observatories
     (e.g. LIGO Hanford and Virgo) detect the event, cross-correlate
@@ -95,18 +96,18 @@ interferometer) and clear falsifiability criteria.
     \textbf{frequency-dependent lag}---where high-frequency components
     arrive consistently later (or earlier) than expected---would
     indicate a refractive index in ``spacetime medium,'' supporting
-    TORUS's prediction of vacuum dispersion\hspace{0pt}.
+    TORUS's prediction of vacuum dispersion​.
   \item
     \textbf{Threshold for Detection:} Current LIGO/Virgo observations
     show no significant dispersion, constraining any speed variation to
-    below \textasciitilde10\^{}−15 of the speed of light for
-    \textasciitilde100 Hz waves. Future detectors will improve this.
+    below \textasciitilde{}10\^{}−15 of the speed of light for
+    \textasciitilde{}100 Hz waves. Future detectors will improve this.
     \textbf{Falsifiability:} If next-generation data (e.g. a
     high-frequency burst observed by LIGO-Virgo or the upcoming Einstein
     Telescope) shows \textbf{no dispersion down to the
     \$10\^{}\{-16\}\$--\$10\^{}\{-21\}\$ level} (fractional speed
     difference) over cosmological distances, then TORUS's dispersion
-    effect is ruled out or forced to extremely small values\hspace{0pt}.
+    effect is ruled out or forced to extremely small values​.
     Conversely, detecting even a minute frequency-dependent arrival
     delay (beyond instrumental/systematic error) would \emph{confirm} a
     TORUS-specific deviation.
@@ -115,7 +116,7 @@ interferometer) and clear falsifiability criteria.
   \textbf{Polarization Anomaly Procedure:} TORUS also predicts a tiny
   \textbf{third polarization mode} or polarization rotation for
   gravitational waves, beyond the standard ``plus'' and ``cross'' tensor
-  polarizations\hspace{0pt}. To test this:
+  polarizations​. To test this:
 
   \begin{enumerate}
   \def\labelenumi{\alph{enumi}.}
@@ -133,10 +134,9 @@ interferometer) and clear falsifiability criteria.
     of two modes. A TORUS-induced \textbf{longitudinal or scalar
     component} might manifest as an anomalous signal portion (for
     instance, a faint signal in one detector that does not match the
-    expected plus/cross pattern from the others)\hspace{0pt}. Also
-    monitor whether the polarization angle rotates slowly as the wave
-    propagates (a possible TORUS effect causing polarization
-    mixing\hspace{0pt}).
+    expected plus/cross pattern from the others)​. Also monitor whether
+    the polarization angle rotates slowly as the wave propagates (a
+    possible TORUS effect causing polarization mixing​).
   \item
     \textbf{Instrumental Calibration:} Calibrate each detector's
     response carefully using known binary inspiral waveforms (which
@@ -149,43 +149,43 @@ interferometer) and clear falsifiability criteria.
     consistently across multiple events (e.g. a small signal component
     in phase across detectors, or a slight deviation in waveforms that
     recurs). \textbf{Threshold:} Aim to detect polarization fractions at
-    the \textasciitilde0.1\% level of the main signal. Current
+    the \textasciitilde{}0.1\% level of the main signal. Current
     non-detections already constrain any third mode to be \textbf{≪1\%}
-    of the signal amplitude\hspace{0pt}. If improved analyses (with LIGO
-    A+/Voyager upgrades or LISA's space-based detectors) find \emph{no
-    trace} of polarization anomalies at the 0.1\% level or below,
-    TORUS's predicted extra mode is effectively falsified\hspace{0pt}.
-    If a tiny unexpected polarization signal is observed (above noise
-    and systematic uncertainties), it would provide strong evidence for
-    TORUS's recursion-based gravity.
+    of the signal amplitude​. If improved analyses (with LIGO A+/Voyager
+    upgrades or LISA's space-based detectors) find \emph{no trace} of
+    polarization anomalies at the 0.1\% level or below, TORUS's
+    predicted extra mode is effectively falsified​. If a tiny unexpected
+    polarization signal is observed (above noise and systematic
+    uncertainties), it would provide strong evidence for TORUS's
+    recursion-based gravity.
   \end{enumerate}
 \end{itemize}
 
 \textbf{Recommended Observatories:} \emph{Immediate:} use Advanced LIGO
 and Virgo (plus KAGRA) for current tests, which can already set bounds
 on dispersion by comparing high-frequency vs low-frequency content
-arrival times\hspace{0pt}. \emph{Near-term:} the LISA mission (launch
-\textasciitilde2030s) will target lower-frequency gravitational waves
+arrival times​. \emph{Near-term:} the LISA mission (launch
+\textasciitilde{}2030s) will target lower-frequency gravitational waves
 from massive black hole mergers; while its frequency band is lower, its
 observation of very distant events (billions of light-years) provides a
-long baseline to accumulate any small dispersion effect\hspace{0pt}.
-LISA's data, together with pulsar timing arrays for ultra-low-frequency
-waves, can test TORUS dispersion over a broad spectrum. Meanwhile,
-next-generation ground observatories (Einstein Telescope, Cosmic
-Explorer) will extend high-frequency sensitivity and detect waves from
-further out, tightening polarization and dispersion limits. By comparing
-results across these platforms (ground high-frequency, space
-low-frequency), we can confirm any frequency-dependent propagation speed
-or polarization rotation. \textbf{Falsifiability Thresholds:} TORUS's
-gravitational sector is falsifiable by a \emph{null result}: for
-example, if after a decade of LISA and advanced detector observations
-the speed of gravity is confirmed frequency-independent to one part in
-10\^{}\textless sup\textgreater16\textless/sup\textgreater--10\^{}\textless sup\textgreater21\textless/sup\textgreater{}
+long baseline to accumulate any small dispersion effect​. LISA's data,
+together with pulsar timing arrays for ultra-low-frequency waves, can
+test TORUS dispersion over a broad spectrum. Meanwhile, next-generation
+ground observatories (Einstein Telescope, Cosmic Explorer) will extend
+high-frequency sensitivity and detect waves from further out, tightening
+polarization and dispersion limits. By comparing results across these
+platforms (ground high-frequency, space low-frequency), we can confirm
+any frequency-dependent propagation speed or polarization rotation.
+\textbf{Falsifiability Thresholds:} TORUS's gravitational sector is
+falsifiable by a \emph{null result}: for example, if after a decade of
+LISA and advanced detector observations the speed of gravity is
+confirmed frequency-independent to one part in
+10\^{}\textless{}sup\textgreater{}16\textless{}/sup\textgreater{}--10\^{}\textless{}sup\textgreater{}21\textless{}/sup\textgreater{}
 and no polarization anomalies are seen at the \$10\^{}\{-3\}\$ level or
 better, TORUS's modified gravity predictions would be conclusively
-disconfirmed\hspace{0pt}. On the other hand, any confirmed deviation --
-even tiny -- in these gravitational wave tests would be groundbreaking
-evidence in favor of TORUS, distinguishing it from standard relativity.
+disconfirmed​. On the other hand, any confirmed deviation -- even tiny
+-- in these gravitational wave tests would be groundbreaking evidence in
+favor of TORUS, distinguishing it from standard relativity.
 
 \textbf{D.2: Quantum Experimental Validation Procedures}
 
@@ -204,9 +204,9 @@ TORUS effects.
   \textbf{Observer-Influenced Quantum Coherence Tests:} TORUS integrates
   the \emph{observer's state} into physical law, suggesting even a
   non-interacting observer or measuring device could introduce a tiny
-  decoherence in a quantum
-  system\hspace{0pt}file-s1eraip4yrdlj8flr4yrv1. To probe this
-  unconventional idea, two complementary experiments are recommended:
+  decoherence in a quantum system​file-s1eraip4yrdlj8flr4yrv1. To probe
+  this unconventional idea, two complementary experiments are
+  recommended:
 \end{itemize}
 
 \textbf{(a) Entangled Qubit Decohesion Protocol:} Use entangled
@@ -247,28 +247,27 @@ beyond standard entanglement behavior.
   difference} is expected in B's state as long as B was not directly
   interacted with. TORUS, however, predicts a minute loss of coherence
   in B when A was measured, because the ``observer-state'' fed back
-  through the recursion might subtly decohere B\hspace{0pt}. Look for a
-  small reduction in B's coherence (e.g. a slight drop in purity or
-  fringe contrast) in Condition 1 relative to Condition 2.
+  through the recursion might subtly decohere B​. Look for a small
+  reduction in B's coherence (e.g. a slight drop in purity or fringe
+  contrast) in Condition 1 relative to Condition 2.
 \item
   \textbf{Sensitivity and Calibration:} These effects, if they exist,
   are expected to be extremely small (on the order of parts-per-million
-  changes)\hspace{0pt}. Use a large sample of entangled pairs and
-  repeated runs to accumulate statistics. Calibrate the system by
-  deliberately adding known small decoherence (e.g. introducing a weak
-  laser noise source) to verify the measurement can detect changes at
-  \$10\^{}\{-6\}\$ levels. All environmental parameters (temperature,
-  vibrations, stray fields) should be monitored; any trial with anomaly
-  in environment is discarded. A \textbf{null result} (no observed
-  difference in B's state down to the experimental sensitivity limit)
-  will constrain the magnitude of any observer-induced effect. If
-  experiments show no coherence difference under observer vs.
-  no-observer conditions at, say, the \$10\^{}\{-8\}\$ relative level,
-  then TORUS's observer-state influence is falsified in that
-  regime\hspace{0pt}. If a statistically significant, repeatable
-  difference \emph{is} found (however small), it would revolutionize
-  quantum foundations by confirming an observer-induced coherence
-  effect\hspace{0pt}.
+  changes)​. Use a large sample of entangled pairs and repeated runs to
+  accumulate statistics. Calibrate the system by deliberately adding
+  known small decoherence (e.g. introducing a weak laser noise source)
+  to verify the measurement can detect changes at \$10\^{}\{-6\}\$
+  levels. All environmental parameters (temperature, vibrations, stray
+  fields) should be monitored; any trial with anomaly in environment is
+  discarded. A \textbf{null result} (no observed difference in B's state
+  down to the experimental sensitivity limit) will constrain the
+  magnitude of any observer-induced effect. If experiments show no
+  coherence difference under observer vs. no-observer conditions at,
+  say, the \$10\^{}\{-8\}\$ relative level, then TORUS's observer-state
+  influence is falsified in that regime​. If a statistically
+  significant, repeatable difference \emph{is} found (however small), it
+  would revolutionize quantum foundations by confirming an
+  observer-induced coherence effect​.
 \end{enumerate}
 
 \textbf{(b) Interference ``Which-Path'' Test:} A variation on the above
@@ -297,7 +296,7 @@ observation affects interference:
   measuring/recording information, it should not affect the interference
   at all. TORUS predicts a tiny \textbf{reduction in interference
   visibility} simply due to the presence of the observation device (i.e.
-  the system ``knows'' it could be observed)\hspace{0pt}.
+  the system ``knows'' it could be observed)​.
 \item
   \textbf{Calibration:} Ensure the physical presence of the detector
   (even if inactive) doesn't introduce classical disturbances like air
@@ -356,26 +355,26 @@ observation affects interference:
     According to TORUS, at extremely small gaps the modified vacuum
     structure might cause the force to deviate slightly -- for example,
     not fall off as quickly as predicted or show an unexpected slight
-    oscillatory behavior with distance\hspace{0pt}. Continuously record
-    force vs. distance data with fine resolution.
+    oscillatory behavior with distance​. Continuously record force vs.
+    distance data with fine resolution.
   \item
     \textbf{Material Variation:} Repeat the measurements with different
     plate materials or geometries (plate-plate vs. sphere-plate) and
     check for any unexpected dependence on material or configuration.
     TORUS's recursion fields might interact differently with different
-    boundary conditions\hspace{0pt}. Standard theory predicts only
-    geometry and distance matter (aside from well-understood material
-    corrections); any new dependence could be a TORUS signature.
+    boundary conditions​. Standard theory predicts only geometry and
+    distance matter (aside from well-understood material corrections);
+    any new dependence could be a TORUS signature.
   \item
     \textbf{Data Analysis:} Compare the high-precision data to the QED
     Casimir formula. Look for a \textbf{systematic deviation} exceeding
     the experimental uncertainty. For instance, a measured force that is
     consistently 0.01\%--0.1\% stronger or weaker than expected at the
-    shortest distances would be a potential indicator of TORUS
-    effects\hspace{0pt}. Ensure systematic errors are ruled out: perform
-    null tests (no force expected) by, say, retracting the plates and
-    confirming the sensor reads zero, and check that no spurious
-    electrostatic charges are building up.
+    shortest distances would be a potential indicator of TORUS effects​.
+    Ensure systematic errors are ruled out: perform null tests (no force
+    expected) by, say, retracting the plates and confirming the sensor
+    reads zero, and check that no spurious electrostatic charges are
+    building up.
   \item
     \textbf{Vacuum Fluctuation Metrics:} In parallel with force
     measurements, monitor related quantities like the effective pressure
@@ -384,10 +383,10 @@ observation affects interference:
     energy changes). Additionally, high-quality factor cavities can be
     used: TORUS predicts possibly slight shifts in cavity
     electromagnetic mode frequencies or added ``vacuum noise'' in a
-    confined vacuum region\hspace{0pt}. So, as a complementary test,
-    measure if a microwave or optical cavity's resonant frequency
-    changes anomalously when two mirrors are brought very close, beyond
-    what standard theory predicts.
+    confined vacuum region​. So, as a complementary test, measure if a
+    microwave or optical cavity's resonant frequency changes anomalously
+    when two mirrors are brought very close, beyond what standard theory
+    predicts.
   \item
     \textbf{Calibration and Controls:} All measurements must account for
     known backgrounds. Calibrate distance measurements (e.g. via
@@ -400,25 +399,24 @@ observation affects interference:
     \textbf{Outcome Evaluation:} If the Casimir force conforms to QED
     predictions at all tested scales (within, say, one part in
     \$10\^{}5\$ or better), then TORUS's predicted vacuum correction is
-    constrained to below that level\hspace{0pt}. This means the theory's
-    parameter for vacuum recursion effect must be very small or zero.
-    If, however, a reproducible deviation is measured -- e.g. an extra
-    force component or distance-dependent anomaly at the
-    \$10\^{}\{-5\}\$ level or lower -- and cannot be explained by
-    experimental error or standard physics, it would be strong evidence
-    that the vacuum is ``structured'' by the TORUS recursion
-    (essentially revealing a new tiny component in the vacuum
-    energy)\hspace{0pt}. Even a slight discrepancy would be
-    groundbreaking: it would indicate an incomplete understanding of
-    vacuum physics and hint at TORUS's higher-dimensional influence
-    emerging in precise QED tests.
+    constrained to below that level​. This means the theory's parameter
+    for vacuum recursion effect must be very small or zero. If, however,
+    a reproducible deviation is measured -- e.g. an extra force
+    component or distance-dependent anomaly at the \$10\^{}\{-5\}\$
+    level or lower -- and cannot be explained by experimental error or
+    standard physics, it would be strong evidence that the vacuum is
+    ``structured'' by the TORUS recursion (essentially revealing a new
+    tiny component in the vacuum energy)​. Even a slight discrepancy
+    would be groundbreaking: it would indicate an incomplete
+    understanding of vacuum physics and hint at TORUS's
+    higher-dimensional influence emerging in precise QED tests.
   \end{enumerate}
 \item
   \textbf{Vacuum Fluctuation (Lamb Shift) Measurements:} Another
   laboratory probe involves atomic physics. TORUS suggests that if the
   vacuum is modified, atomic transition frequencies or spontaneous
-  emission rates could be affected by an extremely small
-  amount\hspace{0pt}. For completeness, we recommend:
+  emission rates could be affected by an extremely small amount​. For
+  completeness, we recommend:
 
   \begin{enumerate}
   \def\labelenumi{\alph{enumi}.}
@@ -429,8 +427,8 @@ observation affects interference:
     advanced spectrometers or frequency combs to measure transition
     frequencies to many decimal places. If TORUS's vacuum effect exists,
     there might be a consistent offset (e.g. a few parts in
-    10\^{}\textless sup\textgreater6\textless/sup\textgreater) in
-    certain energy levels compared to standard theory\hspace{0pt}.
+    10\^{}\textless{}sup\textgreater{}6\textless{}/sup\textgreater{}) in
+    certain energy levels compared to standard theory​.
   \item
     \textbf{Casimir-Polder force tests:} Measure forces on atoms near
     surfaces (atom-surface van der Waals/Casimir-Polder forces) at
@@ -486,11 +484,11 @@ unusual correlations or patterns in the cosmic microwave background
   constant Λ) with equation-of-state w ≈ --1 (exactly --1 for a true
   constant), causing accelerated expansion. TORUS, by contrast, predicts
   that what we call dark energy is an \emph{emergent recursion effect}
-  and might \textbf{vary slightly over time or space}\hspace{0pt}.
-  Specifically, TORUS's higher-dimensional feedback could make the dark
-  energy density or its equation-of-state (w) deviate from exactly --1
-  by a small amount, potentially oscillating or evolving slowly with
-  cosmic time\hspace{0pt}. To test this:
+  and might \textbf{vary slightly over time or space}​. Specifically,
+  TORUS's higher-dimensional feedback could make the dark energy density
+  or its equation-of-state (w) deviate from exactly --1 by a small
+  amount, potentially oscillating or evolving slowly with cosmic time​.
+  To test this:
 
   \begin{itemize}
   \item
@@ -498,8 +496,8 @@ unusual correlations or patterns in the cosmic microwave background
     distance measurements to map the expansion history in fine detail.
     The \emph{Euclid} satellite (launched 2023) will measure
     \textbf{baryon acoustic oscillations (BAO)} and galaxy clustering up
-    to redshift z \textasciitilde2, and the Rubin Observatory's
-    \textbf{LSST} (starting surveys \textasciitilde2025) will discover
+    to redshift z \textasciitilde{}2, and the Rubin Observatory's
+    \textbf{LSST} (starting surveys \textasciitilde{}2025) will discover
     thousands of \textbf{Type Ia supernovae} out to high z. These are
     ``standard rulers'' and ``standard candles'' that give the
     distance-redshift relationship. \textbf{Method:} Fit the distance
@@ -510,33 +508,32 @@ unusual correlations or patterns in the cosmic microwave background
     at early times? TORUS would be supported if we find an
     equation-of-state parameter w that is not exactly --1 but perhaps
     \textbf{w = --1 ± 0.01}, or evidence that w changes with redshift (a
-    slight trend or oscillation)\hspace{0pt}. For example, a finding
-    that w = --0.98 today and maybe --1.05 at redshift 2 (with high
-    significance) would indicate a time-varying dark energy, aligning
-    with TORUS's prediction of a ``heartbeat'' in cosmic
-    acceleration\hspace{0pt}.
+    slight trend or oscillation)​. For example, a finding that w =
+    --0.98 today and maybe --1.05 at redshift 2 (with high significance)
+    would indicate a time-varying dark energy, aligning with TORUS's
+    prediction of a ``heartbeat'' in cosmic acceleration​.
   \item
     \textbf{Hubble Constant and High-z vs Low-z Tension:} TORUS offers a
     possible resolution to the current \textbf{Hubble tension} -- the
     discrepancy between the Hubble constant \$H\_0\$ measured from the
-    early universe (CMB) and late universe (supernovae)\hspace{0pt}. If
-    TORUS is correct, the effective \$H\_0\$ might differ depending on
-    scale or epoch. Strategy: measure \$H\_0\$ independently with new
-    methods (e.g. gravitational wave standard sirens, described below)
-    and see if there's a systematic trend. A slight increase or decrease
-    of the inferred expansion rate at late times versus early times
-    beyond what ΛCDM with constant dark energy would allow could signal
-    TORUS effects\hspace{0pt}.
+    early universe (CMB) and late universe (supernovae)​. If TORUS is
+    correct, the effective \$H\_0\$ might differ depending on scale or
+    epoch. Strategy: measure \$H\_0\$ independently with new methods
+    (e.g. gravitational wave standard sirens, described below) and see
+    if there's a systematic trend. A slight increase or decrease of the
+    inferred expansion rate at late times versus early times beyond what
+    ΛCDM with constant dark energy would allow could signal TORUS
+    effects​.
   \item
-    \textbf{Success Criteria:} By \textasciitilde2030, missions like
+    \textbf{Success Criteria:} By \textasciitilde{}2030, missions like
     \emph{Euclid}, \emph{LSST}, and the upcoming \textbf{Nancy Grace
     Roman Space Telescope} will constrain w to within ±0.01 or better.
     If all these data show \textbf{w = --1.000 (±0.005)} with no hint of
     evolution, then dark energy behaves as a true constant,
-    contradicting TORUS's prediction of variability\hspace{0pt}. If
-    instead a statistically significant deviation or evolution in w is
-    observed (even a few percent change over time), it would strongly
-    favor TORUS's model over ΛCDM. \textbf{Falsifiability:} TORUS can be
+    contradicting TORUS's prediction of variability​. If instead a
+    statistically significant deviation or evolution in w is observed
+    (even a few percent change over time), it would strongly favor
+    TORUS's model over ΛCDM. \textbf{Falsifiability:} TORUS can be
     falsified in this area if the expansion history is measured to be
     perfectly consistent with ΛCDM across all epochs (no additional
     dynamics). On the other hand, \textbf{confirmation} would come from
@@ -546,18 +543,18 @@ unusual correlations or patterns in the cosmic microwave background
   \end{itemize}
 \item
   \textbf{Growth of Cosmic Structure (Dark Matter and
-  S\textless sub\textgreater8\textless/sub\textgreater):} TORUS modifies
-  gravity at large scales via the extra recursion term, which could
-  impact how structures (galaxies, clusters) form and cluster. One
+  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}):} TORUS
+  modifies gravity at large scales via the extra recursion term, which
+  could impact how structures (galaxies, clusters) form and cluster. One
   effect is on the parameter
-  S\textless sub\textgreater8\textless/sub\textgreater{} (which measures
-  the amplitude of matter clustering on 8 Mpc scales) and the growth
-  rate of cosmic structure. Currently, there's a mild tension: lensing
-  surveys find the universe slightly less clumpy (lower
-  S\textless sub\textgreater8\textless/sub\textgreater) than the value
-  inferred from the CMB assuming ΛCDM. TORUS predicts a possible
+  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} (which
+  measures the amplitude of matter clustering on 8 Mpc scales) and the
+  growth rate of cosmic structure. Currently, there's a mild tension:
+  lensing surveys find the universe slightly less clumpy (lower
+  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}) than the
+  value inferred from the CMB assuming ΛCDM. TORUS predicts a possible
   \textbf{suppression of structure growth} on certain scales due to its
-  modified gravity\hspace{0pt}. To test this:
+  modified gravity​. To test this:
 
   \begin{itemize}
   \item
@@ -573,22 +570,22 @@ unusual correlations or patterns in the cosmic microwave background
     redshift-dependent differences. TORUS might manifest as a slight
     change in how clustering increases from early times to now -- for
     instance, structures growing a bit slower on very large scales
-    (\textasciitilde100 Mpc and above) than in ΛCDM, due to an extra
+    (\textasciitilde{}100 Mpc and above) than in ΛCDM, due to an extra
     effective pressure or modified gravity from recursion.
   \item
     \textbf{Testing
-    S\textless sub\textgreater8\textless/sub\textgreater{} Tension:}
-    LSST and Euclid will independently measure
-    S\textless sub\textgreater8\textless/sub\textgreater{} to high
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}
+    Tension:} LSST and Euclid will independently measure
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} to high
     precision. If they confirm that
-    S\textless sub\textgreater8\textless/sub\textgreater{} is indeed
-    lower than the Planck CMB-based prediction (and not due to
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} is
+    indeed lower than the Planck CMB-based prediction (and not due to
     measurement error), this could be interpreted as TORUS's effect
     suppressing growth (acting like a slight extra repulsion or lesser
-    gravity on those scales)\hspace{0pt}. Conversely, if improved data
-    show no discrepancy
-    (S\textless sub\textgreater8\textless/sub\textgreater{} aligns with
-    ΛCDM after all), then TORUS doesn't gain support there.
+    gravity on those scales)​. Conversely, if improved data show no
+    discrepancy
+    (S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} aligns
+    with ΛCDM after all), then TORUS doesn't gain support there.
   \item
     \textbf{Redshift-Space Distortions:} Measure the growth rate of
     structure using galaxy redshift surveys (which reveal how fast
@@ -604,9 +601,9 @@ unusual correlations or patterns in the cosmic microwave background
     confirmation that \textbf{the universe is less clumpy on certain
     scales than ΛCDM predicts} (beyond statistical fluctuations)---and
     especially if this matches a TORUS-derived model, it boosts TORUS's
-    credibility\hspace{0pt}. If instead the data show that structure
-    formation is perfectly in line with ΛCDM and general relativity when
-    accounting for ordinary dark matter, it limits TORUS's influence.
+    credibility​. If instead the data show that structure formation is
+    perfectly in line with ΛCDM and general relativity when accounting
+    for ordinary dark matter, it limits TORUS's influence.
     \textbf{Falsifiability:} A universe that is observationally
     indistinguishable from ΛCDM in both expansion and structure growth
     leaves no room for the extra TORUS terms, essentially falsifying the
@@ -618,11 +615,11 @@ unusual correlations or patterns in the cosmic microwave background
   carry an imprint of the 14-dimensional recursion. This could appear as
   subtle \textbf{anisotropies or harmonics in the Cosmic Microwave
   Background (CMB)} beyond what standard inflationary cosmology
-  predicts\hspace{0pt}. Notably, the CMB observed by WMAP and Planck has
-  some anomalous features (often considered statistical flukes), such as
-  the \textbf{``Axis of Evil''} alignment of low multipoles and a
-  slightly low power in the quadrupole moment. TORUS suggests these may
-  be real effects of the universe's topology. To investigate:
+  predicts​. Notably, the CMB observed by WMAP and Planck has some
+  anomalous features (often considered statistical flukes), such as the
+  \textbf{``Axis of Evil''} alignment of low multipoles and a slightly
+  low power in the quadrupole moment. TORUS suggests these may be real
+  effects of the universe's topology. To investigate:
 
   \begin{itemize}
   \item
@@ -632,47 +629,45 @@ unusual correlations or patterns in the cosmic microwave background
     CMB polarization with unprecedented precision. Large-angle
     polarization (E-mode polarization from the surface of last
     scattering and reionization) provides an independent check on
-    anomalies seen in temperature maps\hspace{0pt}. \textbf{Method:}
-    Examine if features like the low-ℓ alignments or power deficits
-    appear in polarization as well. If TORUS is correct that these
-    anomalies have a cosmic origin, the polarization data should exhibit
-    them too (since the underlying geometry would affect both
-    temperature and polarization). For example, if the quadrupole and
-    octupole of the temperature map are aligned along a particular axis
-    in space, the polarization E-mode maps should show a corresponding
-    pattern or preferred axis\hspace{0pt}. Detection of the same ``Axis
-    of Evil'' in polarization (with high statistical significance) would
-    be a major sign that the anomaly is real physics, not a chance
-    alignment or data quirk\hspace{0pt}. TORUS predicts that these
-    large-scale anisotropies will \emph{persist} and even sharpen with
-    better data\hspace{0pt}. On the other hand, if polarization maps
-    come out perfectly isotropic (no odd alignments), it would indicate
-    the temperature anomalies were likely just flukes or systematics,
-    undermining TORUS's prediction here\hspace{0pt}.
+    anomalies seen in temperature maps​. \textbf{Method:} Examine if
+    features like the low-ℓ alignments or power deficits appear in
+    polarization as well. If TORUS is correct that these anomalies have
+    a cosmic origin, the polarization data should exhibit them too
+    (since the underlying geometry would affect both temperature and
+    polarization). For example, if the quadrupole and octupole of the
+    temperature map are aligned along a particular axis in space, the
+    polarization E-mode maps should show a corresponding pattern or
+    preferred axis​. Detection of the same ``Axis of Evil'' in
+    polarization (with high statistical significance) would be a major
+    sign that the anomaly is real physics, not a chance alignment or
+    data quirk​. TORUS predicts that these large-scale anisotropies will
+    \emph{persist} and even sharpen with better data​. On the other
+    hand, if polarization maps come out perfectly isotropic (no odd
+    alignments), it would indicate the temperature anomalies were likely
+    just flukes or systematics, undermining TORUS's prediction here​.
   \item
     \textbf{Cross-Correlation of CMB with Large-Scale Structure:} If the
     universe has a preferred orientation or a cell-like recursion
     structure, it might simultaneously affect the CMB and the
     distribution of matter. We can test this by comparing all-sky galaxy
-    surveys with CMB maps\hspace{0pt}. For example, using the full-sky
-    galaxy catalog from LSST or Euclid, check if the galaxy distribution
-    shows an asymmetry: perhaps one hemisphere has a slightly higher
-    density of superclusters, or there's an axis along which structures
-    align. \textbf{Method:} Perform a \textbf{statistical anisotropy
-    search}: look for a common axis that maximizes differences in galaxy
+    surveys with CMB maps​. For example, using the full-sky galaxy
+    catalog from LSST or Euclid, check if the galaxy distribution shows
+    an asymmetry: perhaps one hemisphere has a slightly higher density
+    of superclusters, or there's an axis along which structures align.
+    \textbf{Method:} Perform a \textbf{statistical anisotropy search}:
+    look for a common axis that maximizes differences in galaxy
     clustering or flows, and see if it matches the CMB's anomalous axis.
     Also compute the cross-correlation between the CMB temperature
     fluctuations and the density of distant galaxies on large scales.
     TORUS would predict a \textbf{correlation between the CMB
     ``hot/cold'' spots and the pattern of matter distribution} if both
-    are influenced by the same recursion geometry\hspace{0pt}. For
-    instance, the plane along which the CMB quadrupole is weakest might
-    be the plane dividing a slightly higher-density half of the local
-    universe from a lower-density half\hspace{0pt}. If analyses find
-    that the CMB's weird features have a counterpart in galaxy data (a
-    very specific, unlikely coincidence under random isotropy), that
-    would strongly point to a common cause like TORUS's toroidal
-    universe model\hspace{0pt}.
+    are influenced by the same recursion geometry​. For instance, the
+    plane along which the CMB quadrupole is weakest might be the plane
+    dividing a slightly higher-density half of the local universe from a
+    lower-density half​. If analyses find that the CMB's weird features
+    have a counterpart in galaxy data (a very specific, unlikely
+    coincidence under random isotropy), that would strongly point to a
+    common cause like TORUS's toroidal universe model​.
   \item
     \textbf{Large-Scale Structure ``Harmonics'':} Beyond anisotropy,
     TORUS implies the universe might have a characteristic
@@ -682,35 +677,34 @@ unusual correlations or patterns in the cosmic microwave background
     of matter and CMB at the largest scales. \textbf{Method:} Examine
     the CMB power spectrum at low multipoles (ℓ \textasciitilde{} 2--10)
     for any sinusoidal modulation or cutoff. Planck saw hints of a power
-    deficit at ℓ\textless30; TORUS would attribute this to the
+    deficit at ℓ\textless{}30; TORUS would attribute this to the
     universe's finite recursion scale damping fluctuations above a
-    certain size\hspace{0pt}. Future data (including re-analysis of
-    Planck with better methods, or a future CMB mission) could firm up
-    if there's a small oscillation in the low-ℓ spectrum. Similarly,
-    look at the 3D galaxy power spectrum on gigaparsec scales for tiny
-    wiggles or drops in power. If a specific scale related to the
-    ``closure'' scale of the 13D recursion appears as a gently reduced
-    power or repeating bump in the spectra, it would be a signature of
-    what we might call \textbf{recursion harmonics}\hspace{0pt}.
+    certain size​. Future data (including re-analysis of Planck with
+    better methods, or a future CMB mission) could firm up if there's a
+    small oscillation in the low-ℓ spectrum. Similarly, look at the 3D
+    galaxy power spectrum on gigaparsec scales for tiny wiggles or drops
+    in power. If a specific scale related to the ``closure'' scale of
+    the 13D recursion appears as a gently reduced power or repeating
+    bump in the spectra, it would be a signature of what we might call
+    \textbf{recursion harmonics}​.
   \item
     \textbf{Success and Falsification:} Detection of any
     \textbf{consistent large-scale anomaly} that standard cosmology
     struggles to explain---but TORUS explicitly anticipates---would be a
     huge win for TORUS. For example, if CMB-S4 finds that the
     probability of the observed quadrupole alignment being a fluke is
-    \textless0.1\% (making it effectively confirmed) and LSST finds an
+    \textless{}0.1\% (making it effectively confirmed) and LSST finds an
     aligned anisotropy in galaxy clustering along the same axis, this
     combined evidence would strongly support the idea that a cosmic
-    recursion structure exists\hspace{0pt}. On the flip side, if
-    improved observations show the CMB is isotropic (no Axis of Evil in
+    recursion structure exists​. On the flip side, if improved
+    observations show the CMB is isotropic (no Axis of Evil in
     polarization, anomalies ``disappear'') and the galaxy distribution
     is statistically isotropic as well, then TORUS's prediction of a
-    recursion imprint is falsified\hspace{0pt}. In that case, the theory
-    would have no evidence of the cosmic harmonics it claimed. The
-    \textbf{absence} of any new features in the CMB or large-scale
-    structure (beyond what inflation and ΛCDM predict) would mean the
-    universe doesn't exhibit the telltale signs of recursion,
-    disfavoring TORUS.
+    recursion imprint is falsified​. In that case, the theory would have
+    no evidence of the cosmic harmonics it claimed. The \textbf{absence}
+    of any new features in the CMB or large-scale structure (beyond what
+    inflation and ΛCDM predict) would mean the universe doesn't exhibit
+    the telltale signs of recursion, disfavoring TORUS.
   \end{itemize}
 \end{itemize}
 
@@ -736,7 +730,7 @@ long-term. This roadmap ensures that near-term tests guide the theory's
 development (or falsification) and that resources are allocated
 efficiently toward the most telling experiments. We categorize
 priorities as \textbf{Immediate (now -- 3 years)}, \textbf{Near-Term
-(next \textasciitilde10 years)}, and \textbf{Long-Term (beyond 10
+(next \textasciitilde{}10 years)}, and \textbf{Long-Term (beyond 10
 years)}, with recommended milestones and success criteria for each
 stage. Each tier covers gravitational wave, quantum, and cosmological
 domains, reflecting TORUS's breadth. Achieving these milestones will
@@ -756,9 +750,9 @@ it. Below is the schedule with key goals:
     merger events (using methods described in D.1) and polarization mode
     searches using the network's multiple detectors. \textbf{Milestone:}
     Within 3 years, produce published limits on gravitational wave
-    dispersion at the \textasciitilde\$10\^{}\{-15\}\$ level and on any
-    non-GR polarization components at the \textasciitilde0.1\% level
-    from current data. \textbf{Success criteria:} Detection of an
+    dispersion at the \textasciitilde{}\$10\^{}\{-15\}\$ level and on
+    any non-GR polarization components at the \textasciitilde{}0.1\%
+    level from current data. \textbf{Success criteria:} Detection of an
     anomaly in any event (even at low significance) would prompt
     immediate follow-up; a null result refines TORUS parameters and
     informs needed sensitivity for next steps.
@@ -790,12 +784,12 @@ it. Below is the schedule with key goals:
     growth is emerging. \textbf{Milestone:} Release a first ``TORUS
     cosmology test'' paper comparing known CMB anomalies to galaxy
     distributions, and update the Hubble constant and
-    S\textless sub\textgreater8\textless/sub\textgreater{} tensions with
-    latest data to gauge if they lean toward TORUS-friendly values.
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tensions
+    with latest data to gauge if they lean toward TORUS-friendly values.
     \textbf{Measurable success:} Identification of a statistically
     significant CMB alignment with large-scale structure, or a
     persisting
-    Hubble/S\textless sub\textgreater8\textless/sub\textgreater{}
+    Hubble/S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}
     tension in line with TORUS predictions, would be an encouraging
     sign. The absence of any anomalies will be noted as tightening
     constraints.
@@ -808,25 +802,24 @@ it. Below is the schedule with key goals:
     \emph{Gravitational Waves:} \textbf{Next-generation detectors} and
     extended networks come online. \textbf{LIGO and Virgo upgrades} (to
     A+ sensitivity and addition of LIGO-India) will improve detection
-    rates and high-frequency sensitivity. Around \textasciitilde2030,
+    rates and high-frequency sensitivity. Around \textasciitilde{}2030,
     \textbf{LISA} is expected to launch, opening a new low-frequency
     window. Also, projects like the \textbf{Einstein Telescope} and
     \textbf{Cosmic Explorer} may begin construction.
     \textbf{Milestones:} By the mid-2020s, achieve an order of magnitude
     better constraint on dispersion (e.g.
     \$10\^{}\{-17\}\$--\$10\^{}\{-18\}\$ level) from combined LIGO/Virgo
-    runs. By \textasciitilde2030, have LISA observe several binary
+    runs. By \textasciitilde{}2030, have LISA observe several binary
     mergers of supermassive black holes and compare arrival times of
     their waveforms' peaks across frequencies (aim to detect or
     constrain dispersive delay over millions of km baseline).
-    \textbf{Success criteria:} If by \textasciitilde2030 no dispersion
+    \textbf{Success criteria:} If by \textasciitilde{}2030 no dispersion
     is seen at the \$10\^{}\{-20\}\$ level and no third polarization to
     0.01\%, TORUS's gravitational component is under serious strain;
-    these would be published as null results setting new
-    limits\hspace{0pt}. Alternatively, a confirmed tiny dispersion in
-    LISA's observations or an anomalous polarization angle observed
-    between detectors would constitute a major discovery supporting
-    TORUS.
+    these would be published as null results setting new limits​.
+    Alternatively, a confirmed tiny dispersion in LISA's observations or
+    an anomalous polarization angle observed between detectors would
+    constitute a major discovery supporting TORUS.
   \item
     \emph{Quantum Experiments:} \textbf{Scale up and innovate} based on
     immediate results. If observer-induced effects were hinted at,
@@ -840,9 +833,9 @@ it. Below is the schedule with key goals:
     advanced apparatus: e.g. a dedicated Casimir experiment in space (to
     eliminate seismic noise and further reduce error), or improved
     cavity experiments with ultrastable lasers. \textbf{Milestones:}
-    Within \textasciitilde5--7 years, reach sensitivity to coherence
+    Within \textasciitilde{}5--7 years, reach sensitivity to coherence
     changes below 1 part in
-    10\^{}\textless sup\textgreater7\textless/sup\textgreater{} and
+    10\^{}\textless{}sup\textgreater{}7\textless{}/sup\textgreater{} and
     Casimir force precision down to 0.01\% level. By 10 years, either
     detect a reproducible anomaly or constrain the TORUS quantum
     corrections to below 10\^{}−7 (for coherence) and below 10\^{}−5
@@ -856,29 +849,29 @@ it. Below is the schedule with key goals:
   \item
     \emph{Cosmological Surveys:} The latter 2020s will be a golden era
     for surveys. \textbf{Euclid} (due to provide first results
-    \textasciitilde2026) and \textbf{LSST} (full survey
-    \textasciitilde2025--2035) will deliver massive data on cosmic
+    \textasciitilde{}2026) and \textbf{LSST} (full survey
+    \textasciitilde{}2025--2035) will deliver massive data on cosmic
     expansion and structure. \textbf{CMB-S4} and possibly a mid-decade
     CMB polarization mission will improve CMB large-scale measurements.
-    \textbf{Milestones:} By \textasciitilde2027, pin down the dark
+    \textbf{Milestones:} By \textasciitilde{}2027, pin down the dark
     energy equation-of-state to ±0.01 and check for any redshift
-    evolution. By \textasciitilde2030, either find evidence of w ≠ --1
-    or conclude it's constant to within \textasciitilde1\%\hspace{0pt}.
-    Also by \textasciitilde2030, resolve the
-    S\textless sub\textgreater8\textless/sub\textgreater{} tension
-    (either it persists at \textgreater3σ or is explained by improved
-    data)\hspace{0pt}. Examine CMB polarization for definitively
-    confirming or refuting the Axis of Evil alignment\hspace{0pt}.
-    \textbf{Success criteria:} A confirmed variation in dark energy
-    (even slight), a confirmed persistent
-    S\textless sub\textgreater8\textless/sub\textgreater{} anomaly, or a
-    CMB polarization-axis detection would each be a ``win'' for TORUS,
-    to be reported in high-profile publications as potential evidence of
-    new physics. Conversely, if surveys show \emph{no} deviations --
-    e.g. w = --1.000 ± 0.003, structure formation exactly as ΛCDM, and
-    no CMB anomalies -- then by 2030 TORUS's cosmological predictions
-    would be largely falsified or forced into the realm of undetectably
-    small effects.
+    evolution. By \textasciitilde{}2030, either find evidence of w ≠ --1
+    or conclude it's constant to within \textasciitilde{}1\%​. Also by
+    \textasciitilde{}2030, resolve the
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tension
+    (either it persists at \textgreater{}3σ or is explained by improved
+    data)​. Examine CMB polarization for definitively confirming or
+    refuting the Axis of Evil alignment​. \textbf{Success criteria:} A
+    confirmed variation in dark energy (even slight), a confirmed
+    persistent
+    S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} anomaly,
+    or a CMB polarization-axis detection would each be a ``win'' for
+    TORUS, to be reported in high-profile publications as potential
+    evidence of new physics. Conversely, if surveys show \emph{no}
+    deviations -- e.g. w = --1.000 ± 0.003, structure formation exactly
+    as ΛCDM, and no CMB anomalies -- then by 2030 TORUS's cosmological
+    predictions would be largely falsified or forced into the realm of
+    undetectably small effects.
   \item
     \emph{Cross-Domain Synthesis:} In this period, it will be important
     to \textbf{synthesize results} across domains. For instance, if a
@@ -905,7 +898,7 @@ it. Below is the schedule with key goals:
     \$10\^{}\{-22\}\$ level (perhaps via comparing light vs.
     gravitational-wave arrival from distant events or pulsar signals)
     and definitively confirm or rule out any polarization beyond GR to
-    \textless0.01\% precision. If TORUS effects have not been seen by
+    \textless{}0.01\% precision. If TORUS effects have not been seen by
     this point, gravitational wave observations will have essentially
     confirmed that spacetime propagation is exactly per General
     Relativity across a huge frequency range, leaving little room for
@@ -932,20 +925,20 @@ it. Below is the schedule with key goals:
     probe the cosmos even further. A dedicated \textbf{CMB spectral
     mission} or a space-based large-aperture telescope might search for
     the slight power spectrum oscillations that a recursion ``cell
-    size'' would imprint\hspace{0pt}. \textbf{SKA (Square Kilometre
-    Array)} will map hydrogen to unprecedented distances, possibly
-    detecting features in the matter distribution at very large scales.
-    If TORUS is still viable, one might even propose a specialized
-    mission to directly measure the geometry of the universe on the
-    largest scales (for instance, an all-sky 21-cm survey out to the
-    cosmic horizon). \textbf{Milestone:} By \textasciitilde2040, have
-    either a positive identification of a recursion-scale effect (like a
-    cutoff or periodicity in correlations at a particular scale) or
-    conclude that the universe shows no signs of a topological boundary
-    up to the observable limit. Additionally, if dark energy variability
-    is hinted, a \textbf{next-generation supernova survey} or
-    gravitational wave siren catalogue could pin down its time variation
-    with great precision to confirm TORUS's pattern.
+    size'' would imprint​. \textbf{SKA (Square Kilometre Array)} will
+    map hydrogen to unprecedented distances, possibly detecting features
+    in the matter distribution at very large scales. If TORUS is still
+    viable, one might even propose a specialized mission to directly
+    measure the geometry of the universe on the largest scales (for
+    instance, an all-sky 21-cm survey out to the cosmic horizon).
+    \textbf{Milestone:} By \textasciitilde{}2040, have either a positive
+    identification of a recursion-scale effect (like a cutoff or
+    periodicity in correlations at a particular scale) or conclude that
+    the universe shows no signs of a topological boundary up to the
+    observable limit. Additionally, if dark energy variability is
+    hinted, a \textbf{next-generation supernova survey} or gravitational
+    wave siren catalogue could pin down its time variation with great
+    precision to confirm TORUS's pattern.
   \item
     \emph{Theory Refinement or Sunset:} The long-term roadmap isn't just
     about more experiments, but also decision points. If by the late
@@ -971,40 +964,40 @@ expected timeframe, and what outcome would support or refute TORUS:
   \emph{Gravitational Wave Dispersion:} Test to \$10\^{}\{-16\}\$ (5
   yrs) and \$10\^{}\{-21\}\$ (10+ yrs) accuracy. \textbf{Support TORUS
   if} dispersion is detected at any level; \textbf{falsified if} no
-  dispersion at \$\textless10\^{}\{-21\}\$ (waves propagate exactly at
-  c)\hspace{0pt}.
+  dispersion at \$\textless{}10\^{}\{-21\}\$ (waves propagate exactly at
+  c)​.
 \item
   \emph{Extra Polarization Mode:} Test to 0.1\% (now), 0.01\% (10 yrs).
   \textbf{Support if} a third polarization or waveform anomaly observed;
-  \textbf{falsified if} none above 0.01\%\hspace{0pt}.
+  \textbf{falsified if} none above 0.01\%​.
 \item
   \emph{Observer-Induced Decoherence:} Test to
-  \$\textbackslash sim10\^{}\{-6\}\$ (now) and \$10\^{}\{-8\}\$ (10 yrs)
-  in coherence change. \textbf{Support if} any statistically significant
-  loss of coherence without direct interaction; \textbf{falsified if} no
-  effect at \$10\^{}\{-8\}\$ level (or lower)\hspace{0pt}.
+  \$\textbackslash{}sim10\^{}\{-6\}\$ (now) and \$10\^{}\{-8\}\$ (10
+  yrs) in coherence change. \textbf{Support if} any statistically
+  significant loss of coherence without direct interaction;
+  \textbf{falsified if} no effect at \$10\^{}\{-8\}\$ level (or lower)​.
 \item
   \emph{Casimir Force Anomaly:} Measure to 1\% (now) and 0.01\% (10
   yrs). \textbf{Support if} force deviates by
-  \textgreater\$10\^{}\{-5\}\$ of expected\hspace{0pt};
-  \textbf{falsified if} agreement persists to \$\textless10\^{}\{-6\}\$.
+  \textgreater{}\$10\^{}\{-5\}\$ of expected​; \textbf{falsified if}
+  agreement persists to \$\textless{}10\^{}\{-6\}\$.
 \item
   \emph{Dark Energy w Variation:} Determine w to ±0.01. \textbf{Support
   if} w ≠ --1 or evolves beyond error; \textbf{falsified if} w = --1.000
-  ± 0.005 constant\hspace{0pt}.
+  ± 0.005 constant​.
 \item
   \emph{Structure Growth
-  (S\textless sub\textgreater8\textless/sub\textgreater):} Resolve
-  S\textless sub\textgreater8\textless/sub\textgreater{} tension.
-  \textbf{Support if} lowered
-  S\textless sub\textgreater8\textless/sub\textgreater{} confirmed (sign
-  of modulated gravity)\hspace{0pt}; \textbf{falsified if} no
-  discrepancy with ΛCDM.
+  (S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}):}
+  Resolve S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}
+  tension. \textbf{Support if} lowered
+  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} confirmed
+  (sign of modulated gravity)​; \textbf{falsified if} no discrepancy
+  with ΛCDM.
 \item
   \emph{CMB/Large-Scale Anomalies:} High-confidence detection of Axis of
   Evil in polarization or matter distribution. \textbf{Support if}
-  anomalies confirmed and correlated\hspace{0pt}; \textbf{falsified if}
-  CMB is isotropic to statistical limits\hspace{0pt}.
+  anomalies confirmed and correlated​; \textbf{falsified if} CMB is
+  isotropic to statistical limits​.
 \end{itemize}
 
 These milestones ensure that TORUS remains firmly testable. By adhering
