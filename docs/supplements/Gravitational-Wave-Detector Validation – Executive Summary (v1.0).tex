@@ -54,6 +54,10 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% Wrap all longtable environments in resizebox to prevent overflow
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
 
 \date{}
 

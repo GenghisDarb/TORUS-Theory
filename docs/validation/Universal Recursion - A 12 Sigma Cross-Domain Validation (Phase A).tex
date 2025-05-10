@@ -7,6 +7,11 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
 
+% Wrap all longtable environments in resizebox to prevent overflow
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
+
 \title{Universal $\chi$-Recursion: A 12-$\sigma$ Cross-Domain Validation (Phase A)}
 \author{Bradley Peter and Halcyon}
 \date{\today}
