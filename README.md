@@ -33,7 +33,7 @@ The following canonical documents are available in DOCX, TEX, and PDF formats:
 ### Supplements
 - [Dimensional Constants Interrelation in TORUS Theory (0D–13D) – Formal Derivation and Closure (PDF,DOCX,TEX)](docs/supplements/Dimensional%20Constants%20Interrelation%20in%20TORUS%20Theory%20(0D%E2%80%9313D)%20%E2%80%93%20Formal%20Derivation%20and%20Closure.pdf)
 - [Gravitational-Wave-Detector Validation – Executive Summary (v1.0) (PDF,DOCX,TEX)](docs/supplements/Gravitational-Wave-Detector%20Validation%20%E2%80%93%20Executive%20Summary%20(v1.0).pdf)
-- [Hyper-Recursive Algebra in TORUS Theory (PDF)](docs/supplements/Hyper-Recursive%20Algebra%20in%20TORUS%20Theory.pdf)
+- [Hyper-Recursive Algebra in TORUS Theory (PDF,DOCX,TEX)](docs/supplements/Hyper-Recursive%20Algebra%20in%20TORUS%20Theory.pdf)
 - [Resolving the Black Hole Entropy and Information Paradox via TORUS Structured Recursion (PDF,DOCX,TEX)](docs/supplements/Resolving%20the%20Black%20Hole%20Entropy%20and%20Information%20Paradox%20via%20TORUS%20Structured%20Recursion.pdf)
 - [Topology of the Torus‑of‑Tori, chi-beta‑Function, and the Projection‑Angle Theorem (PDF,DOCX,TEX)](docs/supplements/Topology%20of%20the%20Torus%E2%80%91of%E2%80%91Tori,%20chi-beta%E2%80%91Function,%20and%20the%20Projection%E2%80%91Angle%20Theorem.pdf)
 
