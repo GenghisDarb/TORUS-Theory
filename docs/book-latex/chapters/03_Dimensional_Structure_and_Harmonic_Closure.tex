@@ -51,6 +51,12 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
 
 \date{}
 
@@ -79,73 +85,73 @@ and the key concept or constant each introduces:
 \item
   \textbf{1D (Temporal Quantum)} -- The fundamental time quantum (Planck
   time
-  \emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} ≈
-  5.39×10\^{}−44 s), defining the smallest meaningful unit of time. This
+  \emph{t\subscript{P}} ≈
+  5.39×10\superscript{−44} s), defining the smallest meaningful unit of time. This
   is the first step after 0D, essentially the tick of the ``universe's
   clock.''
 \item
   \textbf{2D (Spatial Quantum)} -- The fundamental length quantum
   (Planck length
-  \emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} ≈
-  1.616×10\^{}−35 m), the smallest unit of length​. Space emerges at
+  \emph{ℓ\subscript{P}} ≈
+  1.616×10\superscript{−35} m), the smallest unit of length​. Space emerges at
   this level, and
-  \emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} is
+  \emph{ℓ\subscript{P}} is
   related to
-  \emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} by
+  \emph{t\subscript{P}} by
   the speed of light
-  (ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} =
-  \emph{c}·t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{},
+  (ℓ\subscript{P} =
+  \emph{c}·t\subscript{P},
   ensuring consistent space-time units).
 \item
   \textbf{3D (Mass--Energy Unit)} -- The fundamental mass/energy scale
   (Planck mass
-  \emph{m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} ≈
-  2.176×10\^{}−8 kg, or \textasciitilde{}1.22×10\^{}19 GeV/c²)​. Here
+  \emph{m\subscript{P}} ≈
+  2.176×10\superscript{−8} kg, or \textasciitilde{}1.22×10\superscript{19} GeV/c²)​. Here
   gravity and quantum effects balance for a particle. It anchors the
   transition from quantum-dominated physics to gravity-dominated physics
   at the single-particle scale.
 \item
   \textbf{4D (Space--Time Link)} -- The invariant speed of light
-  \emph{c} (≈ 3.0×10\^{}8 m/s)​. This constant links space and time (1D
+  \emph{c} (≈ 3.0×10\superscript{8} m/s)​. This constant links space and time (1D
   and 2D), enforcing relativity. By including \emph{c}, TORUS builds
   Einstein's light-speed connection into the recursion, ensuring
   causality is respected from here onward.
 \item
   \textbf{5D (Quantum Action)} -- Planck's constant \emph{h} (≈
-  6.626×10\^{}−34 J·s)​. This introduces quantum action and
+  6.626×10\superscript{−34} J·s)​. This introduces quantum action and
   wave-particle duality (energy comes in quanta E = hν). The 5D layer
   anchors quantum mechanics in the recursion hierarchy, marking the
   scale at which classical physics gives way to quantum behavior.
 \item
   \textbf{6D (Thermal Energy Unit)} -- Boltzmann's constant
-  \emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}} (≈
-  1.380649×10\^{}−23 J/K)​. This constant links energy to temperature (E
-  = k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}·T),
+  \emph{k\subscript{B}} (≈
+  1.380649×10\superscript{−23} J/K)​. This constant links energy to temperature (E
+  = k\subscript{B}·T),
   introducing thermodynamics and statistical mechanics into the
   framework. By 6D, the concept of temperature and entropy emerges,
   bridging microscopic energy levels to thermal energy.
 \item
   \textbf{7D (Macro-Particle Count)} -- Avogadro's number
-  \emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}} (≈
-  6.022×10\^{}23 mol\^{}−1)​. This large dimensionless number represents
+  \emph{N\subscript{A}} (≈
+  6.022×10\superscript{23} mol\superscript{−1})​. This large dimensionless number represents
   a standard count of particles (per mole). Including
-  \emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}}
+  \emph{N\subscript{A}}
   incorporates chemistry and bulk matter scales: it's the step where the
   recursion transitions from single particles to collections of
   particles.
 \item
   \textbf{8D (Collective Scale Constant)} -- The ideal gas constant
   \emph{R} (≈ 8.314 J/mol·K)​. \emph{R =
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}·k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}},
+  N\subscript{A}·k\subscript{B}},
   so it combines the 7D and 6D constants into a macroscopic energy scale
   per mole per degree​. TORUS treats \emph{R} as a fundamental constant
   to ensure a seamless link between microscopic thermal energy and
   macroscopic thermodynamic behavior (one mole of particles carrying
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T each
+  k\subscript{B}T each
   yields \emph{R}T total)​.
 \item
   \textbf{9D (Gravity Constant)} -- Newton's gravitational constant
-  \emph{G} (≈ 6.674×10\^{}−11 m³/kg·s²)​. This introduces gravity's
+  \emph{G} (≈ 6.674×10\superscript{−11} m³/kg·s²)​. This introduces gravity's
   strength at large scales. \emph{G} ties into the lower-dimensional
   constants via Planck units, ensuring that gravity consistently
   interlocks with quantum scales​. In TORUS, \emph{G} is not a free
@@ -155,8 +161,8 @@ and the key concept or constant each introduces:
   the lower layers)​.
 \item
   \textbf{10D (Ultimate Temperature)} -- Planck temperature
-  \emph{T\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} (≈
-  1.4168×10\^{}32 K)​. This is the highest meaningful temperature/energy
+  \emph{T\subscript{P}} (≈
+  1.4168×10\superscript{32} K)​. This is the highest meaningful temperature/energy
   density, where all particle motion energy is at the Planck scale. It
   marks an extreme limit: essentially the temperature of a universe at
   the brink of a ``Big Bang'' reset. TORUS posits that reaching this
@@ -166,40 +172,40 @@ and the key concept or constant each introduces:
 \item
   \textbf{11D (Unified Coupling)} -- A dimensionless unified force
   coupling
-  (α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{}
+  (α\subscript{unified}
   \textasciitilde{} 1)​. By this stage, TORUS assumes all fundamental
   forces (electromagnetic, weak, strong, and gravity) converge to
   roughly equal strength.
-  α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{} is
+  α\subscript{unified} is
   an order-1 number providing a normalization point that \emph{closes
   the loop of force strengths} which began at 0D with a small α. In
   other words, the running couplings of forces reach unity here,
   completing their evolution through the hierarchy​.
 \item
   \textbf{12D (Cosmic Length)} -- A characteristic cosmic length scale
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} (on
-  the order of 4.4×10\^{}26 m, roughly the radius of the observable
+  \emph{L\subscript{U}} (on
+  the order of 4.4×10\superscript{26} m, roughly the radius of the observable
   universe)​. This represents the maximum spatial extent of the current
   recursion cycle. It mirrors the 2D Planck length at the opposite
   extreme of scale, ensuring the spatial domain ``wraps around.'' In
   TORUS,
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} is
+  \emph{L\subscript{U}} is
   not arbitrarily chosen; it emerges from the model's closure
   conditions, and it closely matches the observed universe size.
 \item
   \textbf{13D (Cosmic Time)} -- A characteristic cosmic time scale
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} (on
-  the order of 4.35×10\^{}17 s, about 13.8 billion years)​. This
+  \emph{T\subscript{U}} (on
+  the order of 4.35×10\superscript{17} s, about 13.8 billion years)​. This
   corresponds to the age of the universe -- the total duration of the
   0D--13D cycle. It serves as the temporal ``capstone'' of the
   hierarchy: after this time elapses, the recursion is complete and, in
   the TORUS view, the cycle feeds back to 0D to start anew. Notably,
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} and
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} are
+  \emph{L\subscript{U}} and
+  \emph{T\subscript{U}} are
   related by \emph{c} (since light travels one
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} in
+  \emph{L\subscript{U}} in
   one
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}),
+  \emph{T\subscript{U}}),
   ensuring that the size and age of the universe are consistent with one
   another​.
 \end{itemize}
@@ -220,7 +226,7 @@ model:
   some fundamental constant or physical domain would be missing, leaving
   a ``gap'' in the chain. For example, a 12-stage cycle might have no
   place for a constant like
-  \emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}} or
+  \emph{k\subscript{B}} or
   \emph{R}, thereby failing to bridge between quantum scales and
   thermodynamic/macroscopic scales​. Such a gap means the recursion
   couldn't close properly -- mathematically, the attempt to feed 12D
@@ -258,8 +264,8 @@ finished tune, with no missing beats.
 Crucially, the 14-dimensional scheme isn't just mathematically elegant;
 it also aligns with reality. The \textbf{final scale outputs of the 13D
 layer naturally correspond to observed cosmic parameters} -- for
-instance, TORUS predicts a 13D time on the order of 10\^{}10 years and a
-12D length on the order of 10\^{}26 m, which are indeed the observed age
+instance, TORUS predicts a 13D time on the order of 10\superscript{10} years and a
+12D length on the order of 10\superscript{26} m, which are indeed the observed age
 and horizon radius of our universe​. These values \emph{fall out} of the
 theory by requiring the loop to close, rather than being put in by hand.
 Had the number of layers been wrong, one would expect a serious mismatch
@@ -277,8 +283,8 @@ that ensures internal consistency and a closed topology​.
 Each dimension in the TORUS hierarchy is characterized by a
 \textbf{fundamental constant} that ``anchors'' that layer of reality. We
 identified these constants above (α for 0D,
-t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} for 1D,
-ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} for 2D, ...
+t\subscript{P} for 1D,
+ℓ\subscript{P} for 2D, ...
 G for 9D, etc.), but now we delve into their physical significance and
 how they interrelate. The guiding principle is that \textbf{each
 constant defines a natural scale for its dimension, and these scales are
@@ -298,7 +304,7 @@ as the foundation stones of each dimension, TORUS ensures that each
 level of the hierarchy corresponds to a familiar piece of physics. For
 example, 4D uses \emph{c} to anchor the relationship between space and
 time, 6D uses
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}} to
+\emph{k\subscript{B}} to
 anchor the relationship between energy and temperature, and 9D uses
 \emph{G} to anchor the emergence of gravity. These are the same
 constants that appear in classical physics equations, now arranged in a
@@ -323,16 +329,16 @@ marks the introduction of a new physical domain:
 \item
   At 1D and 2D, the Planck time and length define the smallest units of
   the fabric of spacetime.
-  \emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} is
+  \emph{t\subscript{P}} is
   the scale at which time cannot be subdivided further without quantum
   gravitational effects, and
-  \emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
+  \emph{ℓ\subscript{P}}
   likewise for space. These two are tightly linked: \textbf{special
   relativity demands that space and time scales agree}, and indeed the
   Planck length is exactly the distance light travels in one Planck time
-  (ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} =
+  (ℓ\subscript{P} =
   \emph{c} ·
-  t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{})​. This
+  t\subscript{P})​. This
   relation is not just a numerical coincidence; it's built into TORUS to
   guarantee that the emergence of 1D time and 2D space yields a
   consistent space-time pair. In other words, \emph{c} (4D) acts as a
@@ -341,34 +347,34 @@ marks the introduction of a new physical domain:
 \item
   At 3D, the Planck mass (or energy) appears. Unlike time and length,
   the mass scale is \emph{derived} from a combination of other
-  constants: m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
+  constants: m\subscript{P}
   is defined via gravity (\emph{G}), quantum action (\emph{ħ}, related
   to \emph{h}), and \emph{c}. Specifically,
-  m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} is set by
+  m\subscript{P} is set by
   the relation
-  G·m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}²/(\emph{ħ}
+  G·m\subscript{P}²/(\emph{ħ}
   \emph{c}) = 1, which is the classic Planck mass condition making it
   the scale where gravitational energy
-  (\textasciitilde{}m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}\emph{c}²)
+  (\textasciitilde{}m\subscript{P}\emph{c}²)
   and quantum energy
-  (\textasciitilde{}ħ/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{})
+  (\textasciitilde{}ħ/t\subscript{P})
   are equal. In TORUS, this is not just a definition -- it's a
   \textbf{consistency requirement}. Once 1D, 2D, 4D, and 5D constants
-  (t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{},
-  ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}, \emph{c},
+  (t\subscript{P},
+  ℓ\subscript{P}, \emph{c},
   \emph{h}) are set, the value of \emph{G} (9D) must be such that this
   combination equals unity​, thereby \emph{determining}
-  m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}. In
+  m\subscript{P}. In
   effect,
-  \emph{m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} and
+  \emph{m\subscript{P}} and
   \emph{G} are solved together to fit with the lower dimensions. The
   physical meaning is that at the 3D scale, a single particle's gravity
   is as strong as its quantum effects -- an anchor point where our usual
   separation of ``quantum vs gravity'' breaks down. TORUS takes the
   observed gravitational constant and shows it indeed yields a Planck
-  mass of \textasciitilde{}2×10\^{}−8 kg, which matches this required
+  mass of \textasciitilde{}2×10\superscript{−8} kg, which matches this required
   balance. The fact that nature's actual \emph{G} produces the expected
-  m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} is a
+  m\subscript{P} is a
   strong consistency check for TORUS​ -- it means the ``anchor'' was
   placed correctly.
 \item
@@ -379,8 +385,8 @@ marks the introduction of a new physical domain:
   there is a maximum signal speed and unifies the concepts of space and
   time into spacetime. This carries through all higher dimensions (e.g.,
   at 12D and 13D, where
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} = c
-  · T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} ensures
+  \emph{L\subscript{U} = c
+  · T\subscript{U}} ensures
   cosmic space and time correspond​).
 \item
   The 5D constant \emph{h} (Planck's constant) anchors the quantum
@@ -394,24 +400,24 @@ marks the introduction of a new physical domain:
   to energy, complementing how \emph{c} connected time to space.
 \item
   The 6D constant
-  \emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}
+  \emph{k\subscript{B}}
   (Boltzmann's constant) is like a switch that turns on
   \textbf{thermodynamics}. It links microscopic energy (joules) to
   temperature (kelvins), essentially providing a bridge between the
   microscopic world of particles and the macroscopic notion of heat and
   temperature. Physically, introducing
-  \emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}
+  \emph{k\subscript{B}}
   means that by this level, the recursion has accumulated enough degrees
   of freedom to talk about statistical ensembles and entropy. In TORUS,
   6D marks where a single particle's energy (set by 5D \emph{h} and some
   frequency) can be interpreted as thermal energy
-  *k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T in an
+  *k\subscript{B}T in an
   ensemble. Thus,
-  \emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}
+  \emph{k\subscript{B}}
   anchors the concept of temperature in the unified framework.
 \item
   The 7D constant
-  \emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}}
+  \emph{N\subscript{A}}
   (Avogadro's number) may seem out of place in a theory of
   ``fundamental'' physics -- after all, it's basically a counting unit
   -- but it plays a crucial role. By including a standard large number
@@ -419,8 +425,8 @@ marks the introduction of a new physical domain:
   matter}. At 7D, the framework gains the ability to measure quantities
   in moles, connecting the atomic scale to the human scale (grams of
   material).
-  \emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}}
-  anchors the idea that \$6.022\textbackslash{}times10\^{}\{23\}\$ atoms
+  \emph{N\subscript{A}}
+  anchors the idea that \$6.022\textbackslash{}times10\superscript{23}\$ atoms
   of carbon-12 make up 12 grams, etc., letting TORUS seamlessly move
   from single-particle physics to chemistry and materials. This is a
   striking inclusion (most theories of everything ignore chemistry), but
@@ -430,17 +436,17 @@ marks the introduction of a new physical domain:
 \item
   The 8D constant \emph{R} (ideal gas constant) might at first glance be
   considered redundant, since \emph{R =
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}·k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}.
+  N\subscript{A}·k\subscript{B}}.
   However, TORUS treats 8D as its own layer to \textbf{solidify the
   macro-micro link}. \emph{R} has a fixed value (8.314 J/mol·K) that
   connects energy per particle to energy per mole. By explicitly
   anchoring 8D with \emph{R}, TORUS ensures that when you move from a
   description in terms of individual particles (using
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}) to a
+  k\subscript{B}) to a
   description in terms of moles of particles (using R), there is no
   inconsistency -- it's built into the hierarchy. One mole of particles
   each carrying
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T energy
+  k\subscript{B}T energy
   yields R·T total energy, exactly, by definition. Including \emph{R} as
   a fundamental constant is ``purposeful: it ensures that the passage
   from microscopic to macroscopic is seamless''​. In other words, 8D
@@ -469,23 +475,23 @@ marks the introduction of a new physical domain:
   to transition into truly cosmic regimes.
 \item
   The 10D constant
-  \emph{T\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
+  \emph{T\subscript{P}}
   (Planck temperature) represents the extreme energy density of the
   universe when all matter and forces unify. Physically, this is around
-  10\^{}32 K, at which point quantum gravitational effects become
+  10\superscript{32} K, at which point quantum gravitational effects become
   unavoidable. In the TORUS narrative, 10D is the threshold where the
   recursion has ``heated up'' as much as possible​. If we take the
   smallest time (1D) and pump in the quantum of action (5D) and convert
-  it to thermal energy (6D), we indeed get on the order of 10\^{}32 K​.
+  it to thermal energy (6D), we indeed get on the order of 10\superscript{32} K​.
   It's remarkable that combining fundamental constants from much lower
   dimensions
-  (t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}, h,
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}) naturally
+  (t\subscript{P}, h,
+  k\subscript{B}) naturally
   yields this Planck temperature -- it shows the \textbf{harmonic
   alignment} of scales: the highest temperature in nature emerges from
   the foundational constants set at the beginning of the
-  cycle​file-7xdkvhtkz7nra1yajocm9w. In TORUS,
-  \emph{T\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} is
+  cycle​. In TORUS,
+  \emph{T\subscript{P}} is
   the anchor for the unification energy scale. It signals the point at
   which forces like the electromagnetic and nuclear forces would unify
   with gravity (in conventional terms, near the Grand Unification /
@@ -495,13 +501,13 @@ marks the introduction of a new physical domain:
   play.
 \item
   The 11D constant
-  α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{}
+  α\subscript{unified}
   (unified coupling \textasciitilde{}1) is an anchor in the
   \textbf{force-unification domain}. By making this an explicit
   constant, TORUS asserts that by the 11th level, the strengths of the
   fundamental forces converge. In standard physics, running coupling
   constants (like the QED, weak, and strong couplings) seem to approach
-  each other at high energy (\textasciitilde{}10\^{}16 GeV) but don't
+  each other at high energy (\textasciitilde{}10\superscript{16} GeV) but don't
   all become exactly equal without some new physics. TORUS in effect
   provides that new physics by having a structured recursion: the
   unified coupling of order unity at 11D is the capstone that
@@ -513,7 +519,7 @@ marks the introduction of a new physical domain:
   value (on the order of 1) that all force strengths hit together. The
   significance is profound: it means TORUS doesn't just unify scales, it
   unifies interactions, at least in terms of coupling strength. With
-  α\textless{}sub\textgreater{}unified\textless{}/sub\textgreater{}
+  α\subscript{unified}
   \textasciitilde{} 1, the theory has an internal consistency check: it
   must reproduce known low-energy couplings (like α\_em = 1/137 at 0D)
   when ``unwinding'' the recursion, and indeed it does so by
@@ -521,42 +527,43 @@ marks the introduction of a new physical domain:
   Grand Unification point.
 \item
   The 12D and 13D constants
-  (\emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
+  (\emph{L\subscript{U}}
   and
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}})
+  \emph{T\subscript{U}})
   serve as \textbf{cosmological anchors}. They essentially set the scale
   of the entire universe in space and time.
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} is
-  of order 10\^{}26 m (tens of billions of light years) and
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
-  \textasciitilde{}10\^{}17 s (billions of years). These numbers are
+  \emph{L\subscript{U}} is
+  of order 10\superscript{26} m (tens of billions of light years) and
+  \emph{T\subscript{U}}
+  \textasciitilde{}10\superscript{17} s (billions of years). These numbers are
   chosen (or rather, derived) such that they satisfy the recursion
   closure and match observations. Their significance is that the
   universe is \emph{finite yet unbounded} in this model -- finite in
   extent and duration (given by these values), but without edge or
   beginning, since beyond 13D one wraps around. Physically,
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
+  \emph{T\subscript{U}}
   anchors the \textbf{age of the universe} (or one cycle of it), and
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
+  \emph{L\subscript{U}}
   anchors the \textbf{size of the observable universe}. The relationship
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} = c
-  · T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} holds
+  \emph{L\subscript{U} = c
+  · T\subscript{U}} holds
   by definition​, ensuring that the horizon distance corresponds to the
   light travel distance over the universe's age (which is exactly what
   we observe in cosmic horizons). These constants tie back to earlier
   ones in subtle ways: for instance,
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} is
-  related to the Hubble parameter and thus to \emph{G} and the density
+  \emph{T\subscript{U}}
+  is related to the Hubble parameter and thus to \emph{G} and the density
   of the universe via the Friedmann equation​; it turns out that the
   chosen
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
+  \emph{T\subscript{U}}
   makes dimensionless ratios like
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
+  \emph{T\subscript{U}/t\subscript{P}}
   come out to enormously large but structured numbers (on the order of
-  10\^{}60) that can be factorized into products of fundamental
+  10\superscript{60}) that can be factorized into products of fundamental
   constants. The
-  \emph{L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} and
-  \emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
+  \emph{L\subscript{U}}
+  and
+  \emph{T\subscript{U}}
   anchors thereby also encode the so-called ``large number''
   coincidences (e.g., why is the universe so old compared to atomic
   timescales?) as a consequence of the recursion closure.
@@ -569,35 +576,35 @@ closure} -- by the time we reach 13D and loop back, all introduced
 constants must mesh together consistently. This imposes numerous
 relationships among them, many of which reduce in the appropriate limits
 to known physics formulas. We've already mentioned several:
-ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} =
-c·t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{},
-G·m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}²/(ħc) = 1,
+ℓ\subscript{P} =
+c·t\subscript{P}​,
+G·m\subscript{P}²/(ħc) = 1,
 R =
-N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}·k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{},
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} =
-c·T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}. These are
+N\subscript{A}·k\subscript{B},
+L\subscript{U} =
+c·T\subscript{U}. These are
 examples of \textbf{harmonic relations} ensuring continuity between
 layers. A few highlights:
 
 \begin{itemize}
 \item
   The space-time link
-  ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} =
-  c·t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}​ ensures
+  ℓ\subscript{P} =
+  c·t\subscript{P}​ ensures
   that the smallest length and time units conform to relativity.
   Plugging in the numbers
-  (t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-  \textasciitilde{}5.39×10\^{}−44 s, c \textasciitilde{}3×10\^{}8 m/s)
+  (t\subscript{P}
+  \textasciitilde{}5.39×10\superscript{−44} s, c \textasciitilde{}3×10\superscript{8} m/s)
   indeed gives
-  ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-  \textasciitilde{}1.62×10\^{}−35 m, matching the known Planck length.
+  ℓ\subscript{P}
+  \textasciitilde{}1.62×10\superscript{−35} m, matching the known Planck length.
   TORUS didn't have to adjust anything here -- by choosing \emph{c} as
   4D, it automatically aligns 1D and 2D.
 \item
   The Planck mass consistency condition
-  G·m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}²/(ħc) =
+  G·m\subscript{P}²/(ħc) =
   1​ we discussed -- this ties 9D (G) and 3D
-  (m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}) together
+  (m\subscript{P}) together
   with 4D and 5D (c and ħ). In TORUS, if one sets the values at 1D, 2D,
   4D, 5D from known physics, this equation \emph{predicts} what G (9D)
   must be. The prediction matches the measured G, which is a nontrivial
@@ -607,41 +614,41 @@ layers. A few highlights:
   chosen, it's determined by lower anchors​. That's what we mean by the
   constants serving as anchors -- they lock each other into place. If,
   for instance, G were different, the whole tower of derived quantities
-  (m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}, etc.)
+  (m\subscript{P}, etc.)
   would shift and the cycle might not close.
 \item
   The thermal constants have their own linked trio:
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{} ×
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{} = R
+  N\subscript{A} ×
+  k\subscript{B} = R
   exactly, by definition. TORUS includes R explicitly to emphasize the
   smooth transition from microscopic to macroscopic thermodynamics​.
   With 6D and 7D given, 8D is mathematically determined. This relation
   basically says: one mole of particles with energy
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T each has
+  k\subscript{B}T each has
   total energy R·T. The inclusion of R as an ``anchor'' was initially
   debatable (since it's a composite constant), but TORUS uses it to pin
   down the fact that when you hit the mole scale, nothing new or
   inconsistent appears -- it's already anticipated by the previous
   constants​. This again reduces free parameters: you can't choose an
   arbitrary value for R; it must equal
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}·k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}
+  N\subscript{A}·k\subscript{B}
   (and in SI units it does, by how the units are set).
 \item
   Using the quantum and thermal constants together gives the Planck
   temperature: set a characteristic oscillation time of
-  t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} (1
+  t\subscript{P} (1
   oscillation per
-  t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}), energy E
+  t\subscript{P}), energy E
   = hν (with ν =
-  1/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}), and
+  1/t\subscript{P}), and
   equate that to
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T. Solving
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}T =
-  h/(t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}) yields
-  T ≈ 6.6×10\^{}−34 J·s / (5.39×10\^{}−44 s · 1.38×10\^{}−23 J/K) ≈
-  8.9×10\^{}31 K​. This is essentially
-  \emph{T\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} (≈
-  1.4×10\^{}32 K)​. In other words, \emph{without ever invoking Planck
+  k\subscript{B}T. Solving
+  k\subscript{B}T =
+  h/(t\subscript{P}) yields
+  T ≈ 6.6×10\superscript{−34} J·s / (5.39×10\superscript{−44} s · 1.38×10\superscript{−23} J/K) ≈
+  8.9×10\superscript{31} K​. This is essentially
+  \emph{T\subscript{P}} (≈
+  1.4×10\superscript{32} K)​. In other words, \emph{without ever invoking Planck
   temperature explicitly}, one gets it by combining lower-level
   constants. TORUS points to this as a ``harmonic check'' -- the highest
   energy thermal motion emerges naturally from the smallest time and
@@ -655,14 +662,14 @@ layers. A few highlights:
   would kick in.
 \item
   Finally, the cosmic parameters:
-  L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} = c ·
-  T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} is a
+  L\subscript{U} = c ·
+  T\subscript{U} is a
   straightforward relation ensuring the universe's size and age are in
   sync​. But beyond that, TORUS connects 13D back to earlier layers
   through cosmology. For instance, the age
-  T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} is related
+  T\subscript{U} is related
   to the Hubble constant H₀ (roughly H₀ \textasciitilde{}
-  1/T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}) and the
+  1/T\subscript{U}) and the
   critical density ρ of the universe via the Friedmann equation H₀²
   \textasciitilde{} Gρ​. In TORUS, because ρ itself depends on things
   like particle masses (3D), temperature of the CMB (which in turn ties
@@ -670,15 +677,15 @@ layers. A few highlights:
   essentially a big equation that must be satisfied for the loop to
   close. One striking result is when you express the cosmic age in terms
   of Planck time:
-  T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-  ≈ 8×10\^{}60​. Rather than treat this \textasciitilde{}\$10\^{}60\$ as
+  T\subscript{U}/t\subscript{P}
+  ≈ 8×10\superscript{60}​. Rather than treat this \textasciitilde{}\$10\superscript{60}\$ as
   a mysterious huge number, TORUS decomposes it into factors that come
-  from the various layers​. For example, one way to factor 8×10\^{}60 is
-  (10\^{}2) × (10\^{}38) × (10\^{}20)​. Here 10\^{}2 \textasciitilde{}
-  1/α (the inverse of the 0D coupling), 10\^{}38 is on the order of the
+  from the various layers​. For example, one way to factor 8×10\superscript{60} is
+  (10\superscript{2}) × (10\superscript{38}) × (10\superscript{20})​. Here 10\superscript{2} \textasciitilde{}
+  1/α (the inverse of the 0D coupling), 10\superscript{38} is on the order of the
   inverse gravitational coupling between elementary particles (ratio of
   electromagnetic to gravitational force strength for a proton is
-  \textasciitilde{}10\^{}38), and 10\^{}20 might relate to the number of
+  \textasciitilde{}10\superscript{38}), and 10\superscript{20} might relate to the number of
   particles or entropy in certain volumes​. The exact factorization
   isn't unique, but \emph{the point is the same}: the enormous number
   linking the cosmos to the quantum becomes a product of more
@@ -750,9 +757,9 @@ because the closure condition is like a resonance condition -- only
 certain ``frequencies'' of recurrence will close perfectly, similar to
 how only certain notes form a consonant chord. Indeed, one can imagine
 an abstract recursion operator \textbf{R} that advances the system by
-one dimension; the closure condition is \textbf{R\^{}N = I} (the Nth
+one dimension; the closure condition is \textbf{R\superscript{N} = I} (the Nth
 power of the operator returns you to the identity state)​. For TORUS, N
-= 14 (or 13, depending on whether one counts the 0D step), so R\^{}14 ≈
+= 14 (or 13, depending on whether one counts the 0D step), so R\superscript{14} ≈
 I. This is like saying a \textbf{full cycle is a symmetry of the system}
 -- the system is invariant after going through all dimensions. In
 practical terms, if X(0D) represents some initial configuration, then
@@ -932,8 +939,8 @@ of ``advancing one full recursion cycle.''
 In conventional physics, one often notices bizarrely large or small
 dimensionless numbers -- for example, the ratio of the electric force to
 gravitational force between two protons is
-\textasciitilde{}10\^{}36-10\^{}38, or the age of the universe in Planck
-times is \textasciitilde{}10\^{}60. These seem like unrelated facts of
+\textasciitilde{}10\superscript{36}-10\superscript{38}, or the age of the universe in Planck
+times is \textasciitilde{}10\superscript{60}. These seem like unrelated facts of
 nature. TORUS suggests that such numbers are \emph{not arbitrary}, but
 are byproducts of the interlocking constants. Through the lens of TORUS,
 many of these ratios become products or powers of fundamental constants,
@@ -943,21 +950,21 @@ some examples in the previous section:
 \begin{itemize}
 \item
   The relation
-  ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} =
-  c·t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
+  ℓ\subscript{P} =
+  c·t\subscript{P}
   harmonizes the units of length and time. It ensures that the
   fundamental spacetime scales are tuned such that the speed of light is
   the conversion factor. A consequence is that the ratio
-  ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
+  ℓ\subscript{P}/t\subscript{P}
   is exactly \emph{c}, a fixed value in any unit system. This is a
   simple harmonization -- it's expected due to relativity, but TORUS
   adopts it as a foundational requirement, not something incidental.
 \item
   The combination G, ħ, and c yielding
-  m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} is another
+  m\subscript{P} is another
   harmonization: G, ħ, c are very different kinds of constants, yet
   nature's particular values make the dimensionless combination
-  G·m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}²/(ħc)
+  G·m\subscript{P}²/(ħc)
   equal to 1​. In a universe with slightly different values, this might
   not have been a nice unity; TORUS however mandates it (thus
   ``harmonizing'' gravity with quantum mechanics). The result is that
@@ -966,14 +973,14 @@ some examples in the previous section:
   yield clean results rather than awkward residual factors.
 \item
   In the thermal domain, the fact that
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{} ×
-  k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{} = R
+  N\subscript{A} ×
+  k\subscript{B} = R
   exactly is a perfect harmonization by definition. But beyond that,
   consider combining the 7D and 3D constants:
-  N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{} ·
-  m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
+  N\subscript{A} ·
+  m\subscript{P}
   (Avogadro's number times Planck mass) gives
-  \textasciitilde{}1.3×10\^{}16 kg​, which intriguingly is on the order
+  \textasciitilde{}1.3×10\superscript{16} kg​, which intriguingly is on the order
   of the mass of a small asteroid. That might be a coincidence, but
   another combination -- one mole of protons has mass \textasciitilde{}1
   gram -- is not coincidence but by design of units. Still, TORUS
@@ -984,43 +991,43 @@ some examples in the previous section:
   An especially impressive harmonization is how the \textbf{extremes of
   scale multiply or relate to give moderate values}. Consider the age of
   the universe versus the Planck time:
-  T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-  \textasciitilde{} 8×10\^{}60. If this were just a random huge number,
-  one might shrug. But TORUS factorizes this: 8×10\^{}60 ≈ (10\^{}2) ×
-  (10\^{}38) × (10\^{}20)​. Each factor has a physical meaning: 10\^{}2
+  T\subscript{U}/t\subscript{P}
+  \textasciitilde{} 8×10\superscript{60}. If this were just a random huge number,
+  one might shrug. But TORUS factorizes this: 8×10\superscript{60} ≈ (10\superscript{2}) ×
+  (10\superscript{38}) × (10\superscript{20})​. Each factor has a physical meaning: 10\superscript{2}
   is \textasciitilde{}137, close to 1/α (the 0D coupling's inverse)​;
-  10\^{}38 is in the ballpark of the ratio of electromagnetic to
+  10\superscript{38} is in the ballpark of the ratio of electromagnetic to
   gravitational coupling for typical particles (since gravity is
-  \textasciitilde{}10\^{}38 times weaker)​file-dntqyencmysw58ppksryzd;
-  10\^{}20 might relate to number of particles or entropy in a large
+  \textasciitilde{}10\superscript{38} times weaker)​file-dntqyencmysw58ppksryzd;
+  10\superscript{20} might relate to number of particles or entropy in a large
   system. The exact interpretation can vary, but the point remains --
   these large dimensionless numbers decompose into \textbf{products of
   fundamental ratios} rather than being sui generis. TORUS thereby
   \textbf{demystifies large numbers}: they're harmonics of the smaller
   numbers. In music, this is like hearing a very low bass note and
   realizing it's actually a combination of higher-frequency harmonics
-  you already know. By showing that a huge number like 10\^{}60 can come
-  from α\^{}−1 (\textasciitilde{}10\^{}2) times other known quantities,
+  you already know. By showing that a huge number like 10\superscript{60} can come
+  from α\superscript{−1} (\textasciitilde{}10\superscript{2}) times other known quantities,
   TORUS suggests the cosmic scale is in resonance with the quantum
   scales​.
 \item
   Another example: take the Planck temperature
-  (\textasciitilde{}10\^{}32 K) and compare it to the coldest meaningful
+  (\textasciitilde{}10\superscript{32} K) and compare it to the coldest meaningful
   cosmological temperature (like the cosmic microwave background
   \textasciitilde{}3 K, or the effective ``temperature'' corresponding
   to the cosmological constant which is extremely low). These ratios are
-  enormous (10\^{}31 or more), but again one can express them in terms
+  enormous (10\superscript{31} or more), but again one can express them in terms
   of fundamental constants. TORUS implies that if you multiply or divide
   certain extremes, you land back on known constants. A playful example:
-  if you multiply the Planck length (\textasciitilde{}10\^{}−35 m) by
-  the radius of the observable universe (\textasciitilde{}10\^{}26 m),
-  you get \textasciitilde{}10\^{}−9 m, which is a nanometer scale --
+  if you multiply the Planck length (\textasciitilde{}10\superscript{−35} m) by
+  the radius of the observable universe (\textasciitilde{}10\superscript{26} m),
+  you get \textasciitilde{}10\superscript{−9} m, which is a nanometer scale --
   roughly the size of a molecule. While this specific product has units
   of area (and might not have deep significance), it's illustrative: the
-  extremes bracket the middle. Similarly, Planck time (10\^{}−43 s)
-  times the age of the universe (\textasciitilde{}10\^{}17 s) is
-  \textasciitilde{}10\^{}−26 (in units of s\^{}2), and the square root
-  of that (\textasciitilde{}10\^{}−13 s) corresponds to the timescale of
+  extremes bracket the middle. Similarly, Planck time (10\superscript{−43} s)
+  times the age of the universe (\textasciitilde{}10\superscript{17} s) is
+  \textasciitilde{}10\superscript{−26} (in units of s\superscript{2}), and the square root
+  of that (\textasciitilde{}10\superscript{−13} s) corresponds to the timescale of
   nuclear reactions (on the order of femtoseconds). These kinds of
   ``coincidences'' begin to look like \emph{the universe's constants are
   tuned to connect scales}.
@@ -1032,21 +1039,21 @@ order 1 (or simple known numbers) when the full set of layers is
 considered}​. In other words, if you plug all 14 constants into some
 consistency formula, you should get a neat number. An example given in
 the documents is expressing
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} in terms of
-t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}, α, and
+T\subscript{U} in terms of
+t\subscript{P}, α, and
 possibly other constants:
 TUtP=κ α−n,\textbackslash{}frac\{T\_U\}\{t\_P\} =
-\textbackslash{}kappa\textbackslash{},\textbackslash{}alpha\^{}\{-n\},tP​TU​​=κα−n,
+\textbackslash{}kappa\textbackslash{},\textbackslash{}alpha\superscript{\{-n\}},tP​TU​​=κα−n,
 with n an integer 1 or 2, and κ a factor
-\textasciitilde{}10\^{}56--10\^{}60 to be explained by other layers​. If
-n=1, α\^{}−1 \textasciitilde{}137, then κ might be
-\textasciitilde{}10\^{}58 or so, which itself could break down into
+\textasciitilde{}10\superscript{56}--10\superscript{60} to be explained by other layers​. If
+n=1, α\superscript{−1} \textasciitilde{}137, then κ might be
+\textasciitilde{}10\superscript{58} or so, which itself could break down into
 things like
-(m\textless{}sub\textgreater{}Planck\textless{}/sub\textgreater{}/m\textless{}sub\textgreater{}proton\textless{}/sub\textgreater{})
+(m\subscript{Planck}/m\subscript{proton})
 etc. The exact formula is less important than the principle: \textbf{the
 enormous range between
-t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} and
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} is accounted
+t\subscript{P} and
+T\subscript{U} is accounted
 for by multiplying together the contributions of each layer of
 reality}​file-dntqyencmysw58ppksryzd. Each layer adds a factor (some
 large, some small) and by 13D, the product of all those factors is the
@@ -1065,8 +1072,8 @@ one could in principle calculate it from the other constants if TORUS's
 formulas are accurate. That makes the theory highly falsifiable -- a
 slight deviation in any of these harmonized relations could be checked
 by precision measurements (e.g., if the actual
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-isn't exactly α\^{}−1 times other factors as predicted, TORUS would be
+T\subscript{U}/t\subscript{P}
+isn't exactly α\superscript{−1} times other factors as predicted, TORUS would be
 off).
 
 \textbf{Dimensional Invariance and Unification}
@@ -1081,7 +1088,7 @@ dimension 13 times, and everything looks as it started​.
 
 One way this manifests is through the scaling laws. If you imagine
 ``zooming out'' from 0D to 13D, you've increased scale by an enormous
-factor (roughly 10\^{}60 in time, etc.). Dimensional invariance implies
+factor (roughly 10\superscript{60} in time, etc.). Dimensional invariance implies
 that if you were to then zoom out further from that 13D state (into what
 would conceptually be 14D, which is 0D of the next cycle), you see the
 same structure reappear. This is a bit like a fractal or a cyclic
@@ -1093,11 +1100,11 @@ fundamental forces or the shape of certain equations doesn't change from
 one cycle to the next.
 
 A concrete example of a kind of invariance is the relationship
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} = c ·
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}. This holds
+L\subscript{U} = c ·
+T\subscript{U}. This holds
 true in our current cycle. If a new cycle begins, presumably the new
-``L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}'' and
-``T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}'' of that
+``L\subscript{U}'' and
+``T\subscript{U}'' of that
 next universe would also obey the same relation (possibly with the same
 values if every cycle is identical, or at least determined by the same
 physics). In that sense, the law ``light defines the horizon'' is
@@ -1169,9 +1176,9 @@ original equation.
 To illustrate \textbf{dimensional invariance supporting unification}:
 consider that once the lower-dimensional constants (like α, c, h, etc.)
 are set, the higher-dimensional constants (G,
-T\textless{}sub\textgreater{}P\textless{}/sub\textgreater{},
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{},
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}) are no
+T\subscript{P},
+L\subscript{U},
+T\subscript{U}) are no
 longer free but are determined by the closure requirement​. This means
 there is effectively one unified framework determining all of them,
 rather than separate domains (e.g., cosmology versus quantum mechanics)
@@ -1213,22 +1220,22 @@ moving between regimes -- it's invariant in form).
 
 \textbf{Illustrative example of harmonized invariance:} Suppose we take
 the Planck length
-ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{} and the
+ℓ\subscript{P} and the
 observable universe radius
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}. The ratio
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/ℓ\textless{}sub\textgreater{}P\}
-is \textasciitilde{}10\^{}61. TORUS would say this 10\^{}61 is not an
-arbitrary figure; it could be seen as (some combination of α\^{}−1,
-N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}, etc.). Now
+L\subscript{U}. The ratio
+L\subscript{U}/ℓ\subscript{P}
+is \textasciitilde{}10\superscript{61}. TORUS would say this 10\superscript{61} is not an
+arbitrary figure; it could be seen as (some combination of α\superscript{−1},
+N\subscript{A}, etc.). Now
 consider time:
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-\textasciitilde{}8×10\^{}60, which is similarly structured.
+T\subscript{U}/t\subscript{P}
+\textasciitilde{}8×10\superscript{60}, which is similarly structured.
 Interestingly, the fact that
-L\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
+L\subscript{U}/ℓ\subscript{P}
 and
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}/t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}
-are of the same order (\textasciitilde{}10\^{}60) is itself a
-harmonization (it basically comes from c being order 10\^{}8 and one
+T\subscript{U}/t\subscript{P}
+are of the same order (\textasciitilde{}10\superscript{60}) is itself a
+harmonization (it basically comes from c being order 10\superscript{8} and one
 extra factor, but still). This ensures that the \textbf{space-time
 aspect of the universe is scale-invariant}: the number of Planck lengths
 across the universe is about the same as the number of Planck times in
@@ -1246,7 +1253,7 @@ Finally, TORUS's numeric harmonies lead to \textbf{testable
 predictions}. Because everything is tied together, measuring one
 constant to higher precision could predict a very remote parameter. For
 instance, if TORUS had an exact formula for
-T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} in terms of
+T\subscript{U} in terms of
 α, G, etc., and we measure those more precisely, we'd ``predict'' the
 universe's age and could compare it to astrophysical observations. Or
 vice versa: improved cosmological measurements could tell us if, say,

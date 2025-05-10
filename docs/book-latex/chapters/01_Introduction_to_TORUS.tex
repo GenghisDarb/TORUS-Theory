@@ -51,6 +51,12 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
 
 \date{}
 
@@ -349,8 +355,7 @@ forces and phenomena.
 
 \textbf{1D -- Temporal Layer (Quantum of Time):} At the first recursion
 step, TORUS introduces the dimension of \textbf{time}. The Planck time
-\emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
-(\textasciitilde{}5.39×10\^{}−44 s) emerges as the fundamental unit of
+$t\subscript{P}$ (\textasciitilde{}5.39×10\^{}−44 s) emerges as the fundamental unit of
 time. This is the smallest meaningful ``tick'' of the clock in the model
 -- below this scale, the concept of time as we know it loses definition.
 By defining a minimum time interval, TORUS sets a quantum of time which
@@ -362,17 +367,16 @@ that the age of the universe ties into fundamental constants.
 \textbf{2D -- Spatial Layer (Quantum of Length):} Next, TORUS introduces
 \textbf{space} (one spatial degree of freedom, conceptually). The Planck
 length
-\emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
-(\textasciitilde{}1.616×10\^{}−35 m) is defined as the fundamental unit
+$\ell\subscript{P}$ (\textasciitilde{}1.616×10\^{}−35 m) is defined as the fundamental unit
 of length. This corresponds to the scale at which classical ideas of
 distance likely break down into quantum ``foam.'' By having
-\emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} in
+$\ell\subscript{P}$ in
 the framework, TORUS establishes the grain of space itself. Now we have
 both a fundamental time and a fundamental length -- together these form
 the basis of a spacetime structure in the recursion. Notably, at this
 stage the constants are set such that
-\emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} and
-\emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} are
+$\ell\subscript{P}$ and
+$t\subscript{P}$ are
 related through the next constant (the speed of light) to preserve
 consistency (so that light can traverse one Planck length in one Planck
 time, as we'll see at 4D).
@@ -380,18 +384,17 @@ time, as we'll see at 4D).
 \textbf{3D -- Mass-Energy Layer (Quantum of Mass):} The third layer
 brings in \textbf{mass} (or equivalently energy, via \emph{E = mc²}).
 TORUS uses the Planck mass
-\emph{m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
-(\textasciitilde{}2.18×10\^{}−8 kg, about 22 micrograms) as the
+$m\subscript{P}$ (\textasciitilde{}2.18×10\^{}−8 kg, about 22 micrograms) as the
 fundamental mass unit. This mass scale is remarkable: though tiny by
 everyday standards (about the mass of a grain of dust), it is huge
 compared to elementary particles, and it marks roughly the scale at
 which quantum gravitational effects become noticeable. By introducing
-\emph{m\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}},
+$m\subscript{P}$,
 TORUS bridges quantum units to something almost tangible -- it provides
 a link between microscopic particles and macroscopic mass. The Planck
 mass combines the earlier constants
-(\emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}},
-\emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}, and
+($\ell\subscript{P}$,
+$t\subscript{P}$, and
 later \emph{c} and \emph{ℏ}) and is defined such that gravitational and
 quantum effects are equally strong at this scale. With 0D, 1D, 2D, and
 3D, TORUS has now established the basic units of time, length, and mass
@@ -458,23 +461,22 @@ within one coherent sequence.
 \textbf{7D -- Thermodynamic Scale (Boltzmann's Constant):} The seventh
 layer moves into the statistical and thermodynamic domain. Here
 \textbf{Boltzmann's constant}
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}
-(\textasciitilde{}1.38×10\^{}−23 J/K) is brought into the framework.
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}} links
+$k\subscript{B}$ (\textasciitilde{}1.38×10\^{}−23 J/K) is brought into the framework.
+$k\subscript{B}$ links
 energy to temperature (it essentially defines what we mean by a
 temperature change in terms of energy). By including
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}},
+$k\subscript{B}$,
 TORUS incorporates the laws of thermodynamics and statistical mechanics
 into the unified theory. This is a distinctive feature -- most
 ``fundamental'' theories don't explicitly feature
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}},
+$k\subscript{B}$,
 treating thermodynamics as emergent. TORUS, however, places it as a
 cornerstone constant, recognizing that the behavior of large collections
 of particles (entropy, heat, etc.) must ultimately be compatible with
 fundamental physics. With 7D, concepts like entropy and the arrow of
 time can start to be addressed within the same recursive schema that
 handles forces. Practically, having
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}} in
+$k\subscript{B}$ in
 the recursion means that when TORUS's equations are applied at scales
 involving huge numbers of particles, they will reproduce classical
 thermodynamic behavior by design.
@@ -484,20 +486,19 @@ thermodynamic behavior by design.
 macroscopic physics. TORUS introduces the \textbf{ideal gas constant}
 \emph{R} (\textasciitilde{}8.314 J/(mol·K)), which is essentially the
 product of Avogadro's number
-\emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}}
-(\textasciitilde{}6.022×10\^{}23) and
-*k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}. By doing
+$N\subscript{A}$ (\textasciitilde{}6.022×10\^{}23) and
+$k\subscript{B}$. By doing
 so, it implicitly brings
-\emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}} into
+$N\subscript{A}$ into
 the fold, signifying the transition from single-particle physics to
 mole-scale (macroscopic) quantities.
-\emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}} is
+$N\subscript{A}$ is
 the number of atoms in a mole of substance, a huge dimensionless number
 bridging atomic and human scales. In TORUS, this step ensures that there
 is no gap between the quantum world of individual particles and the bulk
 behavior of matter -- one flows naturally into the other. The presence
 of \emph{R} (and thus
-\emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}}) in
+$N\subscript{A}$) in
 the fundamental constants means TORUS can directly account for
 quantities like the energy per mole or the relationship between
 microscopic energy scales and everyday amounts of substance. By 8D, the
@@ -552,22 +553,21 @@ feeds into the next constants.
 \textbf{11D -- Cosmic Length Scale (Hubble Radius):} The eleventh layer
 adds a fundamental length at the cosmic scale, typically taken as the
 \textbf{Hubble radius}
-\emph{R\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}}
-(\textasciitilde{}4.4×10\^{}26 m, about 46 billion light years). The
+$R\subscript{H}$ (\textasciitilde{}4.4×10\^{}26 m, about 46 billion light years). The
 Hubble radius is roughly the size of the observable universe -- the
 distance at which cosmic expansion would reach light speed. By making
 this a defined constant in the recursion, TORUS ties spatial dimensions
 on the largest scale into the framework. Together, 10D and 11D specify
 the characteristic size and mass of the universe in fundamental terms.
 The ratio of
-\emph{R\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}} to
-the Planck length, for example, is an immensely large dimensionless
+$R\subscript{H}$ to
+$\ell\subscript{P}$, for example, is an immensely large dimensionless
 number (\textasciitilde{}10\^{}61). TORUS does not treat that as a
 coincidental gap but as something to be generated by the product of all
 the intermediate recursion steps. Introducing
-\emph{R\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}}
+$R\subscript{H}$
 ensures that length scales are now covered from
-\emph{ℓ\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}
+$\ell\subscript{P}$
 (\textasciitilde{}10\^{}−35 m) all the way up to
 \textasciitilde{}10\^{}26 m -- a span of \textasciitilde{}61 orders of
 magnitude -- all within the theory's own constants. In effect, TORUS now
@@ -576,25 +576,24 @@ contains the universe in its parameter set.
 \textbf{12D -- Cosmic Time/Entropy Scale:} The twelfth layer introduces
 a cosmic \textbf{time scale} and/or \textbf{entropy scale}. In practice,
 this is often taken to be the \textbf{Hubble time}
-\emph{t\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}}
-(\textasciitilde{}4.35×10\^{}17 s, about 13.8 billion years), which is
+$t\subscript{H}$ (\textasciitilde{}4.35×10\^{}17 s, about 13.8 billion years), which is
 on the order of the age of the universe. It can also be associated with
 the total entropy of the universe (a huge dimensionless number on the
 order of 10\^{}103 in Boltzmann's constant units). By including
-\emph{t\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}}
+$t\subscript{H}$
 (nearly equivalent to the universe's current age) in the recursion,
 TORUS explicitly accounts for the temporal extent of the cosmos as a
 built-in quantity. This has profound implications: it means the arrow of
 time on the largest scale (and the amount of disorder in the universe)
 is anchored to the same foundational cycle that gave us the Planck time
 at 1D. In TORUS, the fact that
-\emph{t\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}} is so
+$t\subscript{H}$ is so
 enormous compared to
-\emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} is
+$t\subscript{P}$ is
 not an accident -- it will be related through the recursion to the
 product of constants introduced in previous layers. Additionally,
 incorporating the total entropy
-\emph{S\textless{}sub\textgreater{}univ\textless{}/sub\textgreater{}}
+$S\subscript{univ}$
 (if treated as part of 12D) means that even the thermodynamic state of
 the cosmos (all the particle degrees of freedom that exist) is part of
 the unified description. This again underscores TORUS's completeness:
@@ -605,9 +604,8 @@ universe's statistical state.
 The final layer, 13D, represents the capstone constant that closes the
 recursive loop. TORUS identifies this with the \textbf{age of the
 universe}
-\emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}
-(≈13.8 billion years, roughly equal to
-\emph{t\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}}), or
+$T\subscript{U}$ (≈13.8 billion years, roughly equal to
+$t\subscript{H}$), or
 more generally with the largest-scale factor or ``ultimate''
 cosmological parameter of the universe. This stage is the culmination of
 the recursion -- it's where the output of the entire hierarchy is fed
@@ -636,10 +634,10 @@ recursion -- each level provides the necessary conditions for the next,
 forming a logical progression. Notably, by assigning a rightful place to
 every fundamental constant (including those often neglected in
 unification theories, like
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}},
-\emph{N\textless{}sub\textgreater{}A\textless{}/sub\textgreater{}},
-\emph{R\textless{}sub\textgreater{}H\textless{}/sub\textgreater{}},
-\emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}}),
+$k\subscript{B}$,
+$N\subscript{A}$,
+$R\subscript{H}$,
+$T\subscript{U}$),
 TORUS achieves a truly \textbf{comprehensive unification}. Gravity is
 included (via \emph{G}), quantum mechanics is included (via ℏ), the
 gauge forces are implicitly included (the electromagnetic coupling
@@ -656,13 +654,13 @@ dimensionless numbers in physics should \textbf{not} be random. Instead,
 they should satisfy specific relationships mandated by the recursion.
 For instance, TORUS predicts a relationship between the age of the
 universe
-\emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{}} and
+$T\subscript{U}$ and
 the Planck time
-\emph{t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}}, tied
+$t\subscript{P}$, tied
 together by the fine-structure constant α (the 0D coupling). In
 qualitative terms, TORUS asserts that the enormous ratio
-\emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} /
-t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} (on the
+$T\subscript{U} /
+t\subscript{P}$ (on the
 order of 10\^{}60) is fixed by a product of fundamental couplings -- it
 might equal, say, a power of α\^{}−1 (\textasciitilde{}137) times a
 small integer or specific factor (the exact formula emerges from the
@@ -681,8 +679,8 @@ cosmological parameter is not independent but must fit the recursion's
 relations. This means that TORUS can be \textbf{falsified}: if precision
 experiments or observations find a violation of the predicted
 relationships among constants (for example, if the actual
-\emph{T\textless{}sub\textgreater{}U\textless{}/sub\textgreater{} /
-t\textless{}sub\textgreater{}P\textless{}/sub\textgreater{}} differs
+$T\subscript{U} /
+t\subscript{P}$ differs
 from the required combination of α and other constants beyond allowed
 uncertainty), then TORUS would break down. Conversely, if future data
 confirm an exact relation (e.g. a particular combination of constants

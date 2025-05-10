@@ -51,6 +51,12 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
 
 \date{}
 
@@ -89,13 +95,13 @@ value.
 energy is not a mysterious new substance but an emergent effect of the
 recursion structure. The model introduces an additional term in
 Einstein's field equations, often denoted
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{}, arising
+Λ\subscript{rec}, arising
 from higher-dimensional feedback in the 14-layer recursion. In essence,
 higher-dimensional curvature and stress-energy feed into 4D spacetime as
 a subtle extra source of gravity (or effective fluid). This
 recursion-induced term can mimic a cosmological constant without
 invoking any new 4D field or exotic energy component. Crucially,
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} in TORUS
+Λ\subscript{rec} in TORUS
 is not a fixed parameter tuned by hand; it emerges from boundary
 conditions that close the recursion cycle, linking the largest cosmic
 scale (13D) back to the 0D origin. This means TORUS offers a potential
@@ -107,7 +113,7 @@ of nature.
 \textbf{Predicted Deviations from ΛCDM:} Because TORUS's ``dark energy''
 stems from dynamic higher-dimensional processes, it need not be
 perfectly constant over time (a potential
-``Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} drift'')
+``Λ\subscript{rec} drift'')
 (Predictive Framework §3.1). The theory predicts slight deviations in
 the cosmic expansion history compared to a pure ΛCDM model. In
 quantitative terms, TORUS expects the dark energy equation-of-state to
@@ -125,12 +131,12 @@ in the acceleration rate that current observations only hint at.
 
 Notably, TORUS offers a possible resolution to the \textbf{Hubble
 tension}, the ongoing discrepancy between the Hubble constant
-(H\textless{}sub\textgreater{}0\textless{}/sub\textgreater{}) inferred
+(H\subscript{0}) inferred
 from the early universe (CMB data) and the value measured via local
 distance indicators. If recursion fields influence cosmic expansion
 differently at different scales or epochs, they could naturally cause a
 slight scale-dependent shift in
-H\textless{}sub\textgreater{}0\textless{}/sub\textgreater{}, potentially
+H\subscript{0}, potentially
 bridging the gap between early- and late-universe measurements. In
 summary, rather than a perfectly featureless acceleration, TORUS paints
 a picture of a dark energy effect with a faint ``heartbeat'' or trend
@@ -174,14 +180,14 @@ expansion rate become detectable. Key approaches include:
   gravity. Even if the background expansion looks like ΛCDM, TORUS's
   modified gravity (via recursion) could alter how fast galaxies and
   clusters form and clump together. One key indicator is the parameter
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}, which
+  S\subscript{8}, which
   quantifies the amplitude of matter clustering on 8
-  \emph{h}\textless{}sup\textgreater{}--1\textless{}/sup\textgreater{}
+  \emph{h}\superscript{--1}
   Mpc scales and is measured by cosmic shear (weak lensing) surveys.
   Intriguingly, there is already a mild
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tension --
+  S\subscript{8} tension --
   lensing surveys (e.g. KiDS, DES) find slightly less clustering (lower
-  S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}) than
+  S\subscript{8}) than
   predicted by Planck CMB results under ΛCDM. TORUS provides a framework
   where the recursion-induced extra gravity term could manifest as a
   subtle lensing shear effect that suppresses the growth of structure on
@@ -190,7 +196,7 @@ expansion rate become detectable. Key approaches include:
   growth rate and clustering amplitude to unprecedented accuracy,
   tracking structure formation from early times to now. If they confirm
   a persistent deviation -- for example, a scale-dependent growth rate
-  or an S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{}
+  or an S\subscript{8}
   value that remains significantly lower than ΛCDM predicts (say, by
   \textgreater{}5\% even with improving precision) -- it could be a
   signature of TORUS's extra gravity influence. Conversely, if structure
@@ -212,7 +218,7 @@ expansion rate become detectable. Key approaches include:
   cross-check on cosmic expansion. TORUS predicts only slight deviations
   in light versus gravitational-wave propagation (e.g. possibly a tiny
   dispersion or a different distance--redshift behavior if
-  Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{}
+  Λ\subscript{rec}
   interacts with gravity waves), but fundamentally the
   distance--redshift relation for sirens should reflect the same
   expansion history. If multiple independent probes (light,
@@ -331,7 +337,7 @@ confirmation of TORUS's cosmological component.
 recursion model yields several distinct predictions that upcoming
 observations can verify. First, it predicts a slight drift in the
 effective cosmological constant
-Λ\textless{}sub\textgreater{}rec\textless{}/sub\textgreater{} over time,
+Λ\subscript{rec} over time,
 rather than a perfectly unchanging dark energy density. Second, it
 forecasts tiny periodic \textbf{w}(z) oscillations in the dark energy's
 equation-of-state around --1 as the universe evolves. Third, TORUS
@@ -342,7 +348,7 @@ correlation ``echo'' in the distribution of galaxies -- a subtle excess
 clustering at distances of order 1--2 Gpc (a recursion harmonic
 imprint). Fifth, it expects subtle anomalies in cosmic shear
 measurements (such as the current
-S\textless{}sub\textgreater{}8\textless{}/sub\textgreater{} tension from
+S\subscript{8} tension from
 weak lensing) to persist, as recursion-induced gravity effects slightly
 slow structure growth. Each of these predictions has a corresponding
 null scenario (no drift, no oscillation, random CMB patterns, no LSS

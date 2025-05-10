@@ -51,6 +51,12 @@
 \def\fps@figure{htbp}
 \makeatother
 
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
 
 \date{}
 
@@ -84,7 +90,7 @@ which anchors that layer's physics and connects it to neighboring
 layers​. For example, the speed of light \emph{c} serves as the anchor
 at the 4D layer (ensuring time and space units link consistently), and
 Boltzmann's constant
-\emph{k\textless{}sub\textgreater{}B\textless{}/sub\textgreater{}}
+\emph{k\subscript{B}}
 anchors the 6D layer (tying energy to temperature)​. These anchors act
 like \emph{bridge pillars} in the recursive framework: they fix each
 level's scale and ensure that moving up or down the hierarchy is
@@ -136,7 +142,7 @@ mathematical terms. HRA extends conventional algebra into the realm of
 provides the ``language'' for TORUS's recursion operator and the 14-step
 cycle, ensuring that after 13 successive operations the algebra returns
 to the starting point (capturing the closure
-\$\textbackslash{}mathcal\{R\}\^{}\{14\} = \textbackslash{}mathbb\{I\}\$
+\$\mathcal{R}^{14} = \mathbb{I}\$
 condition)​. Hyper-recursive algebra introduces specialized operators
 and invariants that remain consistent across all layers of the
 recursion, reflecting the dimensional harmonics and cyclic symmetry of
@@ -379,9 +385,9 @@ reformulated in TORUS to include recursion effects. Instead of separate,
 scale-specific laws, TORUS introduces \textbf{modified field equations
 that incorporate extra terms or constraints from other layers of the
 recursion}​. For instance, the Einstein field equation in TORUS gains
-additional terms \$\textbackslash{}Delta
-G\_\{\textbackslash{}mu\textbackslash{}nu\}\$ and
-\$\textbackslash{}Delta T\_\{\textbackslash{}mu\textbackslash{}nu\}\$
+additional terms \$\Delta
+G_{\mu\nu}\$ and
+\$\Delta T_{\mu\nu}\$
 representing influences from the quantum and higher-dimensional layers
 on spacetime curvature​. These might be negligibly small under normal
 conditions (thus recovering classical General Relativity when recursion
@@ -390,21 +396,21 @@ inside black holes or near the Big Bang -- preventing singularities by
 providing feedback that smooths out infinite curvature​. Similarly, one
 can derive how Maxwell's equations emerge at the 4D level from
 recursion-imposed conditions at higher levels​, or how the Schrödinger
-equation (with quantization \$\textbackslash{}hbar\$) can result from a
-recursion symmetry (the requirement that after a full cycle, phase is
-consistent, yielding energy levels)​. The contextual significance is
-that \emph{all forces and dynamics are unified in one framework}:
-gravity, electromagnetism, etc., are not independent -- their field
-equations are tied together by the recursion. A \emph{recursive field
-equation} thus encodes cross-scale coupling: it's like each traditional
-equation has been upgraded with terms that whisper information from the
-rest of the universe. The result is a set of \textbf{self-consistent,
-interlocking equations} that could, in principle, be solved together to
-give a complete picture of a recursively structured cosmos. Solving
-these recursive field equations is challenging, but they yield rich
-insights -- for example, demonstrating how classical fields might be
-just different facets of one recursion-connected field observed at
-different layers (hints of a true unified field).
+equation (with quantization \$\hbar\$) can result from a recursion
+symmetry (the requirement that after a full cycle, phase is consistent,
+yielding energy levels)​. The contextual significance is that \emph{all
+forces and dynamics are unified in one framework}: gravity,
+electromagnetism, etc., are not independent -- their field equations are
+tied together by the recursion. A \emph{recursive field equation} thus
+encodes cross-scale coupling: it's like each traditional equation has
+been upgraded with terms that whisper information from the rest of the
+universe. The result is a set of \textbf{self-consistent, interlocking
+equations} that could, in principle, be solved together to give a
+complete picture of a recursively structured cosmos. Solving these
+recursive field equations is challenging, but they yield rich insights
+-- for example, demonstrating how classical fields might be just
+different facets of one recursion-connected field observed at different
+layers (hints of a true unified field).
 
 \textbf{Structured recursion:} The central organizing principle of TORUS
 Theory, referring to the universe's arrangement into \textbf{repeating,
