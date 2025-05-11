@@ -38,8 +38,8 @@ The following canonical documents are available in DOCX, TEX, and PDF formats:
 - [Topology of the Torus‑of‑Tori, chi-beta‑Function, and the Projection‑Angle Theorem (PDF,DOCX,TEX)](docs/supplements/Topology%20of%20the%20Torus%E2%80%91of%E2%80%91Tori,%20chi-beta%E2%80%91Function,%20and%20the%20Projection%E2%80%91Angle%20Theorem.pdf)
 
 ### Validation Data
-- Ladder validation data (Phase A): [`data/ladder/ladder_phaseA.csv`](data/ladder/ladder_phaseA.csv)
-- Ladder validation data (Phase B): [`data/ladder/ladder_phaseB.csv`](data/ladder/ladder_phaseB.csv)
+- Ladder fit data (CODATA): [`data/ladder/ladder_fit_multiCODATA.csv`](data/ladder/ladder_fit_multiCODATA.csv)
+- RMS fit results: [`data/ladder/ladder_fit_rms_multi.txt`](data/ladder/ladder_fit_rms_multi.txt)
 
 ### Validation
 - [Universal Recursion - A 12 Sigma Cross-Domain Validation (Phase A) (PDF,DOCX,TEX)](docs/validation/Universal%20Recursion%20-%20A%2012%20Sigma%20Cross-Domain%20Validation%20(Phase%20A).pdf)

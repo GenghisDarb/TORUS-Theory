@@ -3,7 +3,7 @@
 This directory contains the ladder validation data files used for cross-domain validation in TORUS Theory.
 
 ## Files
-- `ladder_phaseA.csv`: Phase A ladder validation data (see file for details)
-- `ladder_phaseB.csv`: Phase B ladder validation data (see file for details)
+- `ladder_fit_multiCODATA.csv`: Phase A/B ladder fit data (CODATA)
+- `ladder_fit_rms_multi.txt`: RMS fit results for ladder validation
 
-Replace or update these files as needed for new validation datasets. This README will always reflect the current contents of this directory.
+Update or add files as needed for new validation datasets. This README always reflects the current contents of this directory.
