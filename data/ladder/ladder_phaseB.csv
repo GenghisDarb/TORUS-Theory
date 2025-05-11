@@ -1,0 +1,11 @@
+# Ladder Validation Data: Phase B
+
+This file is a placeholder for ladder validation data for Phase B. Replace this file with the actual data in CSV format.
+
+Example columns:
+- step
+- value
+- uncertainty
+
+Example row:
+1, 0.456, 0.007
