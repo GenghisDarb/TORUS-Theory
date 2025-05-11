@@ -1,0 +1,30 @@
+# Fdb version 3
+["xdvipdfmx"] 1746871600 "minimal_test.xdv" "minimal_test.pdf" "minimal_test" 1746871600
+  "minimal_test.xdv" 1746871600 1540 b0b7298e7615609a1c0f7ad5ef25af2e "xelatex"
+  (generated)
+  "minimal_test.pdf"
+["xelatex"] 1746871600 "minimal_test.tex" "minimal_test.xdv" "minimal_test" 1746871600
+  "/etc/texmf/web2c/texmf.cnf" 1746787558 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/codespace/.texlive2019/texmf-var/web2c/xetex/xelatex.fmt" 1746856742 4644327 72077367bd382e321d7a70bd97279767 ""
+  "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1580683321 20023 e427dd9e17e239bf926ef3aab67fe35e ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1580683321 8446 9874cccac5fee462272c582807dbbf56 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd" 1580683321 2431 b6cead9f069ed55f4fba0c637aa047b6 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xdvipdfmx.def" 1580854751 24128 c4ebbe7ec59ef4686329b8f63a49f10b ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
+  "minimal_test.aux" 1746871600 8 a94a2480d3289e625eea47cd1b285758 "xelatex"
+  "minimal_test.tex" 1746868733 168 a6119549e28166dc8a52845b7c6d0c52 ""
+  (generated)
+  "minimal_test.log"
+  "minimal_test.xdv"
+  "minimal_test.aux"

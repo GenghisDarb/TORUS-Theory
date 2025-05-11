@@ -10,7 +10,7 @@ TORUS Theory extends standard gauge theory by embedding every field and interact
 |------|-----------|
 | `docs/book-docx-fixed/` | Canonical DOCX: all edits here; legacy `docs/book/` retained for historical diff only |
 | `docs/book/frontmatter/` | `00_Preface.docx`, `Table_of_Contents.docx` |
-| `docs/book/chapters/`   | 15 chapter DOCX files (`01_…` – `15_…`) |
+| `docs/book/chapters/` | 15 chapter DOCX files (`01_…` – `15_…`) |
 | `docs/book/appendices/` | Appendices A–E (`A_…` – `E_…`) |
 | `docs/papers/` | Stand-alone research papers & monographs |
 | `docs/validation/` | Phase-A/B cross-domain validation `.tex` + detector executive summary |
@@ -46,7 +46,7 @@ The following canonical documents are available in DOCX, TEX, and PDF formats:
 
 ---
 
-## 🛠 Getting started
+## 🛠️ Getting started
 
 ```bash
 git clone https://github.com/GenghisDarb/TORUS-Theory.git
