@@ -22,6 +22,11 @@ jobs:
         run: scripts/audit_and_regen_docx.sh
       - name: Convert DOCX → LaTeX
         run: scripts/convert_docx_to_tex.sh
+      - name: Defensive cleanup for submodule and rebase before push
+        run: |
+          git rm -rf --cached data/interferometer/upstream/GWDetectorZoo 2>/dev/null || true
+          rm -rf data/interferometer/upstream/GWDetectorZoo 2>/dev/null || true
+          git pull --rebase || exit 1
       - name: Commit updated .tex mirror
         run: |
           git config user.name  "docx-sync-bot"
