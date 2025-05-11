@@ -1,63 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-% --- BEGIN EQUATION FORMATTING FIXES ---
-% Replace HTML-like sub/sup tags with LaTeX math mode
-\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
-\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
-% Usage: $A\subscript{B}$ or $A\superscript{B}$
-% --- END EQUATION FORMATTING FIXES ---
-
+\author{}
 \date{}
 
 \begin{document}
@@ -78,8 +71,8 @@ Theory directly addresses this gap by bringing the observer \emph{into}
 the formalism of the universe, rather than leaving it outside. In TORUS
 (Topologically Organized Recursion of Universal Systems), an
 \emph{observer-state} refers to the physical and informational state of
-an observer treated as part of the system's state itself​. In other
-words, the observer is encoded within the recursive structure of
+an observer treated as part of the system's state itself\hspace{0pt}. In
+other words, the observer is encoded within the recursive structure of
 reality, rather than being an add-on or afterthought.
 
 Under TORUS Theory's recursive framework, every physical configuration
@@ -94,11 +87,11 @@ definite state, TORUS posits that the universe's recursive dynamics
 naturally incorporate that process. Each observer can be treated as an
 additional element in the system's state vector, with their own degrees
 of freedom (such as their knowledge or measurement record) influencing
-and being influenced by the physical variables​. This built-in treatment
-removes the mystery: the act of observation is no longer an external
-wavefunction ``collapse'' imposed from outside, but rather a \emph{state
-update} that the combined system+observer undergoes as part of its
-evolution.
+and being influenced by the physical variables\hspace{0pt}. This
+built-in treatment removes the mystery: the act of observation is no
+longer an external wavefunction ``collapse'' imposed from outside, but
+rather a \emph{state update} that the combined system+observer undergoes
+as part of its evolution.
 
 To appreciate why this observer inclusion is revolutionary, it helps to
 contrast it with the historical struggles of physics. In the Copenhagen
@@ -113,12 +106,13 @@ state. The ``observer-state'' in TORUS is effectively the \textbf{state
 of awareness or information} that an observer has about a system,
 elevated to a formal property of that system. This concept is quantified
 in TORUS by an \emph{Observer-State Quantum Number (OSQN)}, a discrete
-value that labels the combined system+observer configuration​. Just as
-we label particles with charges or spins, TORUS labels the involvement
-of an observer with a quantum number. An observer's state remains fixed
-(the OSQN stays the same) as long as they gain no new information, and
-it jumps to a new value when the observer makes a measurement and their
-knowledge changes​. In essence, TORUS provides a bookkeeping device to
+value that labels the combined system+observer
+configuration\hspace{0pt}. Just as we label particles with charges or
+spins, TORUS labels the involvement of an observer with a quantum
+number. An observer's state remains fixed (the OSQN stays the same) as
+long as they gain no new information, and it jumps to a new value when
+the observer makes a measurement and their knowledge
+changes\hspace{0pt}. In essence, TORUS provides a bookkeeping device to
 track the inclusion of the observer within the system's state --
 something absent in prior frameworks.
 
@@ -169,17 +163,18 @@ existence far away shouldn't affect the system's coherence.
 TORUS Theory offers a subtle but profound twist on this conventional
 wisdom: it suggests that the state of an observer can influence a
 quantum system's coherence \textbf{even without a direct interaction},
-due to the overarching recursive connectivity of the universe​. Because
-TORUS incorporates observer-states into the fundamental description, the
-presence of an ``observer link'' in the system introduces an additional
-element in the system's phase relationships. In practical terms, this
-means that whether or not a system is being observed (or is \emph{able}
-to be observed) might slightly alter how long it stays coherent or how
-it interferes with itself. Crucially, this influence is extremely small
-and respects all ordinary physical limits -- it does not allow any sort
-of instant communication or violation of causality. Instead, it
-manifests as a tiny bias or shift in the interference behavior, a
-byproduct of the universe's self-referential accounting for observers.
+due to the overarching recursive connectivity of the
+universe\hspace{0pt}. Because TORUS incorporates observer-states into
+the fundamental description, the presence of an ``observer link'' in the
+system introduces an additional element in the system's phase
+relationships. In practical terms, this means that whether or not a
+system is being observed (or is \emph{able} to be observed) might
+slightly alter how long it stays coherent or how it interferes with
+itself. Crucially, this influence is extremely small and respects all
+ordinary physical limits -- it does not allow any sort of instant
+communication or violation of causality. Instead, it manifests as a tiny
+bias or shift in the interference behavior, a byproduct of the
+universe's self-referential accounting for observers.
 
 One way to illustrate this is with thought experiments that compare
 scenarios with and without an active observer. Consider a classic
@@ -194,15 +189,15 @@ quantum theory says this is equivalent to having no detector at all
 (coherence should be unchanged). TORUS predicts a subtle difference: the
 very presence of a measurement apparatus -- an observer-state waiting in
 the wings -- could cause a tiny reduction in the fringe contrast of the
-interference pattern​. The logic is that the detector+observer, by
-virtue of being part of the total system state, imposes an additional
-boundary condition on the quantum wave. It's as if the electron's
-wavefunction \emph{knows} that a which-path observation \emph{could}
-happen, and this knowledge slightly perturbs the phase alignment. The
-effect would be incredibly small -- for instance, TORUS calculations
-suggest on the order of one part in a million reduction in interference
-visibility in such a scenario​ -- but in principle measurable with
-sufficiently sensitive equipment.
+interference pattern\hspace{0pt}. The logic is that the
+detector+observer, by virtue of being part of the total system state,
+imposes an additional boundary condition on the quantum wave. It's as if
+the electron's wavefunction \emph{knows} that a which-path observation
+\emph{could} happen, and this knowledge slightly perturbs the phase
+alignment. The effect would be incredibly small -- for instance, TORUS
+calculations suggest on the order of one part in a million reduction in
+interference visibility in such a scenario\hspace{0pt} -- but in
+principle measurable with sufficiently sensitive equipment.
 
 Another scenario involves \textbf{quantum entanglement} and distant
 observers. Suppose two particles are entangled such that their
@@ -221,12 +216,12 @@ behavioral change depending on whether its entangled partner was
 observed or not. For example, TORUS predicts a minute change in the
 decoherence rate or interference capability of particle B if particle A
 has been observed by an observer-state, compared to if neither had been
-observed​. In effect, the act of observation inserts a faint "echo" in
-the overall system -- particle B plus the now-entangled observer-state
-of A's measurer -- which could slightly alter B's coherence. This
-doesn't enable any messaging between A and B's labs (no outright
-violation of locality), but it's a subtle statistical signature that an
-observer has joined the system at A's end.
+observed\hspace{0pt}. In effect, the act of observation inserts a faint
+"echo" in the overall system -- particle B plus the now-entangled
+observer-state of A's measurer -- which could slightly alter B's
+coherence. This doesn't enable any messaging between A and B's labs (no
+outright violation of locality), but it's a subtle statistical signature
+that an observer has joined the system at A's end.
 
 These proposed influences of observer-states on coherence are
 empirically bold. They imply that truly \emph{isolated} quantum systems
@@ -238,19 +233,20 @@ testable sense of small corrections to quantum behavior. To test these
 ideas, physicists could perform \textbf{ultra-sensitive interference
 experiments}. For instance, in a double-slit experiment, one could
 introduce a detector that isn't actively measuring and look for the
-predicted \$10\^{}\{-6\}\$-level changes in the interference pattern​.
-Similarly, one could prepare entangled pairs and measure one member with
-varying detection settings, while monitoring the other for any tiny
-change in its state evolution. If such experiments observe a
-statistically significant deviation -- say a slight drop in coherence in
-cases where a partner was observed versus when it wasn't -- it would
-lend credence to TORUS's notion of observer-state influence. If no such
-effect is found even at extreme sensitivities, it puts constraints on
-TORUS or indicates that any observer-related recursion effects are even
-smaller than predicted (or nonexistent). Either outcome is
-scientifically valuable: TORUS is making itself falsifiable in the
+predicted \$10\^{}\{-6\}\$-level changes in the interference
+pattern\hspace{0pt}. Similarly, one could prepare entangled pairs and
+measure one member with varying detection settings, while monitoring the
+other for any tiny change in its state evolution. If such experiments
+observe a statistically significant deviation -- say a slight drop in
+coherence in cases where a partner was observed versus when it wasn't --
+it would lend credence to TORUS's notion of observer-state influence. If
+no such effect is found even at extreme sensitivities, it puts
+constraints on TORUS or indicates that any observer-related recursion
+effects are even smaller than predicted (or nonexistent). Either outcome
+is scientifically valuable: TORUS is making itself falsifiable in the
 quantum domain by staking a claim that observation has a quantitative,
-if subtle, physical signature beyond standard quantum theory​.
+if subtle, physical signature beyond standard quantum
+theory\hspace{0pt}.
 
 It is worth noting that known quantum phenomena already hint at the
 special role of observation. The \textbf{quantum Zeno effect}, for
@@ -260,11 +256,11 @@ prevent it from decaying as quickly as it would otherwise). Standard
 quantum physics can account for this through continuous measurement
 theory, but TORUS offers a broader context: if observer-states are part
 of the dynamics, then any \emph{interaction of knowledge} with a system
-can alter its evolution​. From a TORUS perspective, the Zeno effect is a
-natural consequence of recursive feedback -- the system constantly
-entangles with an observer-state at each check, nudging the system's
-unitary evolution in a way that inhibits change. This is a strong
-analogy to how TORUS envisions observer influence in general:
+can alter its evolution\hspace{0pt}. From a TORUS perspective, the Zeno
+effect is a natural consequence of recursive feedback -- the system
+constantly entangles with an observer-state at each check, nudging the
+system's unitary evolution in a way that inhibits change. This is a
+strong analogy to how TORUS envisions observer influence in general:
 \emph{observation is a physical act}, and even when we aren't explicitly
 measuring something, the mere capacity for an observer to know can
 impose boundary conditions on the universe's wavefunction. In sum, TORUS
@@ -305,49 +301,50 @@ observer's state becomes entangled with the system and then
 \emph{settles} into a stable configuration. To see how TORUS resolves
 the measurement problem, consider a simple measurement scenario through
 the TORUS lens. Imagine an electron prepared in a superposition of
-spin-up (\$!\textbackslash{}uparrow\textbackslash{}rangle\$) and
-spin-down (\$!\textbackslash{}downarrow\textbackslash{}rangle\$). There
-is an observer (which could be a physicist or a measuring device) ready
-to measure the spin. Initially, before measurement, we can describe the
+spin-up (\$!\textbackslash uparrow\textbackslash rangle\$) and spin-down
+(\$!\textbackslash downarrow\textbackslash rangle\$). There is an
+observer (which could be a physicist or a measuring device) ready to
+measure the spin. Initially, before measurement, we can describe the
 combined state as something like:
 
-∣Ψinitial⟩=12(∣spin~up⟩⊗∣Ounaware⟩+∣spin~down⟩⊗∣Ounaware⟩),\textbackslash{}Psi\_\{\textbackslash{}text\{initial\}\}\textbackslash{}rangle
+∣Ψinitial⟩=12(∣spin~up⟩⊗∣Ounaware⟩+∣spin~down⟩⊗∣Ounaware⟩),\textbackslash Psi\_\{\textbackslash text\{initial\}\}\textbackslash rangle
 =
-\textbackslash{}frac\{1\}\{\textbackslash{}sqrt\{2\}\}\textbackslash{}Big(\textbackslash{}text\{spin
-up\}\textbackslash{}rangle \textbackslash{}otimes
-O\_\{\textbackslash{}text\{unaware\}\}\textbackslash{}rangle +
-\textbackslash{}text\{spin down\}\textbackslash{}rangle
-\textbackslash{}otimes
-O\_\{\textbackslash{}text\{unaware\}\}\textbackslash{}rangle\textbackslash{}Big),∣Ψinitial​⟩=2​1​(∣spin~up⟩⊗∣Ounaware​⟩+∣spin~down⟩⊗∣Ounaware​⟩),
+\textbackslash frac\{1\}\{\textbackslash sqrt\{2\}\}\textbackslash Big(\textbackslash text\{spin
+up\}\textbackslash rangle \textbackslash otimes
+O\_\{\textbackslash text\{unaware\}\}\textbackslash rangle +
+\textbackslash text\{spin down\}\textbackslash rangle
+\textbackslash otimes
+O\_\{\textbackslash text\{unaware\}\}\textbackslash rangle\textbackslash Big),∣Ψinitial\hspace{0pt}⟩=2\hspace{0pt}1\hspace{0pt}(∣spin~up⟩⊗∣Ounaware\hspace{0pt}⟩+∣spin~down⟩⊗∣Ounaware\hspace{0pt}⟩),
 
 meaning the electron is in superposition and the observer \$O\$ is in a
-state of not yet knowing the spin (we label that state ``unaware'')​. In
-TORUS terms, the observer-state quantum number \$m\$ would be at some
-baseline (say \$m=0\$) before the measurement, indicating no new
-information has been gained yet​. Now the measurement interaction occurs
--- the electron's spin becomes correlated with the observer's measuring
-device or brain. Quantum mechanically, the combined state would evolve
-into an entangled form:
+state of not yet knowing the spin (we label that state
+``unaware'')\hspace{0pt}. In TORUS terms, the observer-state quantum
+number \$m\$ would be at some baseline (say \$m=0\$) before the
+measurement, indicating no new information has been gained
+yet\hspace{0pt}. Now the measurement interaction occurs -- the
+electron's spin becomes correlated with the observer's measuring device
+or brain. Quantum mechanically, the combined state would evolve into an
+entangled form:
 
-∣Ψfinal⟩=12(∣spin~up⟩⊗∣O↑⟩+∣spin~down⟩⊗∣O↓⟩),\textbackslash{}Psi\_\{\textbackslash{}text\{final\}\}\textbackslash{}rangle
+∣Ψfinal⟩=12(∣spin~up⟩⊗∣O↑⟩+∣spin~down⟩⊗∣O↓⟩),\textbackslash Psi\_\{\textbackslash text\{final\}\}\textbackslash rangle
 =
-\textbackslash{}frac\{1\}\{\textbackslash{}sqrt\{2\}\}\textbackslash{}Big(\textbackslash{}text\{spin
-up\}\textbackslash{}rangle \textbackslash{}otimes
-O\_\{\textbackslash{}uparrow\}\textbackslash{}rangle +
-\textbackslash{}text\{spin down\}\textbackslash{}rangle
-\textbackslash{}otimes
-O\_\{\textbackslash{}downarrow\}\textbackslash{}rangle\textbackslash{}Big),∣Ψfinal​⟩=2​1​(∣spin~up⟩⊗∣O↑​⟩+∣spin~down⟩⊗∣O↓​⟩),
+\textbackslash frac\{1\}\{\textbackslash sqrt\{2\}\}\textbackslash Big(\textbackslash text\{spin
+up\}\textbackslash rangle \textbackslash otimes
+O\_\{\textbackslash uparrow\}\textbackslash rangle +
+\textbackslash text\{spin down\}\textbackslash rangle
+\textbackslash otimes
+O\_\{\textbackslash downarrow\}\textbackslash rangle\textbackslash Big),∣Ψfinal\hspace{0pt}⟩=2\hspace{0pt}1\hspace{0pt}(∣spin~up⟩⊗∣O↑\hspace{0pt}⟩+∣spin~down⟩⊗∣O↓\hspace{0pt}⟩),
 
-where \$O\_\{\textbackslash{}uparrow\}\textbackslash{}rangle\$ denotes
-the observer having recorded/observed ``spin up'' and
-\$O\_\{\textbackslash{}downarrow\}\textbackslash{}rangle\$ denotes the
+where \$O\_\{\textbackslash uparrow\}\textbackslash rangle\$ denotes the
+observer having recorded/observed ``spin up'' and
+\$O\_\{\textbackslash downarrow\}\textbackslash rangle\$ denotes the
 observer having observed ``spin down.'' At this point, in each branch of
 the superposition, the observer's state is different -- they have
-different knowledge in the two branches​. Correspondingly, TORUS would
-say the OSQN (observer-state quantum number) has \emph{changed} from its
-initial value; the system+observer is now in an eigenstate labeled by a
-new observer-state number (say \$m=1\$) in each branch, reflecting that
-an observation has taken place​.
+different knowledge in the two branches\hspace{0pt}. Correspondingly,
+TORUS would say the OSQN (observer-state quantum number) has
+\emph{changed} from its initial value; the system+observer is now in an
+eigenstate labeled by a new observer-state number (say \$m=1\$) in each
+branch, reflecting that an observation has taken place\hspace{0pt}.
 
 From the standpoint of fundamental physics, what has happened is that
 the act of measurement has been internalized into the quantum
@@ -366,18 +363,19 @@ condition: the entire system tends toward a configuration that
 \emph{closes the loop} of recursion. The only way to close the loop
 (i.e. to have the 0D → \ldots{} → 13D cycle return to a consistent 0D
 state) is for the ambiguity to resolve -- effectively, one branch of the
-above superposition must be selected as the realized one​. In plainer
-terms, including the observer in the quantum state forces the universe
-to ``make up its mind'' because an observer cannot be in a coherent
-superposition of definitively different knowledge states without
-destabilizing the recursive consistency. TORUS suggests that what we
-call wavefunction collapse is actually this \textbf{stabilization
-process}: the moment when the observer-state locks in to a single
-eigenstate (with a definite outcome recorded), thereby anchoring reality
-for that measurement. The other branch (the outcome not seen) is simply
-not realized in our unified recursion; it effectively vanishes as a
-physical possibility because the observer's state changed and that
-change is now part of the universal state going forward.
+above superposition must be selected as the realized one\hspace{0pt}. In
+plainer terms, including the observer in the quantum state forces the
+universe to ``make up its mind'' because an observer cannot be in a
+coherent superposition of definitively different knowledge states
+without destabilizing the recursive consistency. TORUS suggests that
+what we call wavefunction collapse is actually this
+\textbf{stabilization process}: the moment when the observer-state locks
+in to a single eigenstate (with a definite outcome recorded), thereby
+anchoring reality for that measurement. The other branch (the outcome
+not seen) is simply not realized in our unified recursion; it
+effectively vanishes as a physical possibility because the observer's
+state changed and that change is now part of the universal state going
+forward.
 
 This resolution has important empirical and philosophical implications.
 First, it demystifies the role of the observer: observers are just
@@ -398,7 +396,7 @@ though fundamentally it was a unitary entanglement process. This is in
 line with modern decoherence theory, but TORUS goes a step further by
 saying the \textbf{observer's knowledge has a quantum number} that
 changed value during the process, formally marking the ``before'' and
-``after'' of a measurement​.
+``after'' of a measurement\hspace{0pt}.
 
 What about multiple observers or more complex measurements? TORUS
 indicates a recursive hierarchy of observations. Consider a \emph{nested
@@ -467,24 +465,25 @@ has a physical fingerprint.
 \begin{quote}
 \textbf{2 Observer-Recursion Automorphism Tower ⇒ SU(3) × SU(2) ×
 U(1)}\\
-Starting from the 14 χ--β ladder generators gig\_igi​ satisfying
-{[}gi,gj{]}=χ\^{}ijk gk{[}g\_i,g\_j{]}=\textbackslash{}widehat\{\textbackslash{}chi\}\_\{ijk\}\textbackslash{},g\_k{[}gi​,gj​{]}=χ​ijk​gk​,
+Starting from the 14 χ--β ladder generators gig\_igi\hspace{0pt}
+satisfying
+{[}gi,gj{]}=χ\^{}ijk gk{[}g\_i,g\_j{]}=\textbackslash widehat\{\textbackslash chi\}\_\{ijk\}\textbackslash,g\_k{[}gi\hspace{0pt},gj\hspace{0pt}{]}=χ\hspace{0pt}ijk\hspace{0pt}gk\hspace{0pt},
 we compute the full automorphism group in \emph{Mathematica}:
 
-Aut⟨gi⟩  =  Inn ⁣(Aut1⟨gi⟩)→n→fixedsu(3)  ⊕  su(2)  ⊕  u(1).\textbackslash{}mathrm\{Aut\}\textbackslash{}bigl\textbackslash{}langle
-g\_i\textbackslash{}bigr\textbackslash{}rangle\textbackslash{};=\textbackslash{};
-\textbackslash{}mathrm\{Inn\}\textbackslash{}!\textbackslash{}Bigl(\textbackslash{}mathrm\{Aut\}\^{}1\textbackslash{}langle
-g\_i\textbackslash{}rangle\textbackslash{}Bigr)
-\textbackslash{}xrightarrow{[}n\textbackslash{}to\textbackslash{}text\{fixed\}{]}\{\}
-\textbackslash{}mathfrak\{su\}(3)\textbackslash{};\textbackslash{}oplus\textbackslash{};\textbackslash{}mathfrak\{su\}(2)\textbackslash{};\textbackslash{}oplus\textbackslash{};\textbackslash{}mathfrak\{u\}(1).Aut⟨gi​⟩=Inn(Aut1⟨gi​⟩)n→fixed​su(3)⊕su(2)⊕u(1).
+Aut⟨gi⟩  =  Inn ⁣(Aut1⟨gi⟩)→n→fixedsu(3)  ⊕  su(2)  ⊕  u(1).\textbackslash mathrm\{Aut\}\textbackslash bigl\textbackslash langle
+g\_i\textbackslash bigr\textbackslash rangle\textbackslash;=\textbackslash;
+\textbackslash mathrm\{Inn\}\textbackslash!\textbackslash Bigl(\textbackslash mathrm\{Aut\}\^{}1\textbackslash langle
+g\_i\textbackslash rangle\textbackslash Bigr)
+\textbackslash xrightarrow{[}n\textbackslash to\textbackslash text\{fixed\}{]}\{\}
+\textbackslash mathfrak\{su\}(3)\textbackslash;\textbackslash oplus\textbackslash;\textbackslash mathfrak\{su\}(2)\textbackslash;\textbackslash oplus\textbackslash;\textbackslash mathfrak\{u\}(1).Aut⟨gi\hspace{0pt}⟩=Inn(Aut1⟨gi\hspace{0pt}⟩)n→fixed\hspace{0pt}su(3)⊕su(2)⊕u(1).
 \end{quote}
 
 The first fixed point of the inner-automorphism tower separates into
 
 \begin{quote}
-\{λa\}a=18⊂su(3),\{σb\}b=13⊂su(2),Y∈u(1),\textbackslash{}\{\textbackslash{}lambda\_a\textbackslash{}\}\_\{a=1\}\^{}\{8\}\textbackslash{}subset\textbackslash{}mathfrak\{su\}(3),\textbackslash{}qquad
-\textbackslash{}\{\textbackslash{}sigma\_b\textbackslash{}\}\_\{b=1\}\^{}\{3\}\textbackslash{}subset\textbackslash{}mathfrak\{su\}(2),\textbackslash{}qquad
-Y\textbackslash{}in\textbackslash{}mathfrak\{u\}(1),\{λa​\}a=18​⊂su(3),\{σb​\}b=13​⊂su(2),Y∈u(1),
+\{λa\}a=18⊂su(3),\{σb\}b=13⊂su(2),Y∈u(1),\textbackslash\{\textbackslash lambda\_a\textbackslash\}\_\{a=1\}\^{}\{8\}\textbackslash subset\textbackslash mathfrak\{su\}(3),\textbackslash qquad
+\textbackslash\{\textbackslash sigma\_b\textbackslash\}\_\{b=1\}\^{}\{3\}\textbackslash subset\textbackslash mathfrak\{su\}(2),\textbackslash qquad
+Y\textbackslash in\textbackslash mathfrak\{u\}(1),\{λa\hspace{0pt}\}a=18\hspace{0pt}⊂su(3),\{σb\hspace{0pt}\}b=13\hspace{0pt}⊂su(2),Y∈u(1),
 
 which match the Gell-Mann, Pauli, and hypercharge generators of the
 Standard Model. All structure constants are published in
@@ -532,35 +531,36 @@ stable? The mathematics of TORUS impose a strict \textbf{closure
 condition}: after a full 14-step progression through the dimensional
 hierarchy, the system must return to an equivalent state to where it
 began (formally, \$R\^{}\{13\} = I\$ for the recursion operator \$R\$
-acting through 13 spatial layers​). If an observer's influence -- such
-as the knowledge gained from a measurement -- were to throw the system
-out of kilter, this closure would be violated. Imagine if a measurement
-left the observer and system in a limbo, partly in one outcome and
-partly in another; the recursion loop attempting to close on that state
-would encounter a contradiction, like trying to solve a puzzle with
-mismatched pieces. Therefore, for the recursion to complete, the
-presence of an observer forces certain quantization and stabilization
-conditions on the outcomes. In the formal development of TORUS, this is
-exactly how the \textbf{Observer-State Quantum Number} arises: the
-requirement that the combined system+observer returns to itself after a
-full cycle leads to a quantization of the observer's possible effects​.
-We saw a glimpse of this earlier: the observer-induced phase in the
-recursion had to equal an integer multiple of \$2\textbackslash{}pi\$ to
-allow the cycle to close, which effectively meant the observer's state
-contribution (OSQN \$m\$) had to be an integer​. The deeper meaning of
-this is that an observation can't half-happen. The act of observing must
-deposit the universe in one of a set of allowed states that fit neatly
-into the next round of evolution. If a measurement tried to leave the
-system in a superposition of ``observed X'' and ``observed Y'' with no
-resolution, the next recursion step would lack a well-defined starting
-point. TORUS's structure disallows that ambiguity: by the time the
-recursion loop is closing, the system including all observers is in a
-definite eigenstate (with a definite observer-state value corresponding
-to one outcome). In short, the loop \emph{forces the collapse} in a
-deterministic way -- not deterministic as in predicting which outcome
-(the outcome is still probabilistic from the internal viewpoint), but
-deterministic in that \emph{some} single outcome must happen to satisfy
-the self-consistency of the universe.
+acting through 13 spatial layers\hspace{0pt}). If an observer's
+influence -- such as the knowledge gained from a measurement -- were to
+throw the system out of kilter, this closure would be violated. Imagine
+if a measurement left the observer and system in a limbo, partly in one
+outcome and partly in another; the recursion loop attempting to close on
+that state would encounter a contradiction, like trying to solve a
+puzzle with mismatched pieces. Therefore, for the recursion to complete,
+the presence of an observer forces certain quantization and
+stabilization conditions on the outcomes. In the formal development of
+TORUS, this is exactly how the \textbf{Observer-State Quantum Number}
+arises: the requirement that the combined system+observer returns to
+itself after a full cycle leads to a quantization of the observer's
+possible effects\hspace{0pt}. We saw a glimpse of this earlier: the
+observer-induced phase in the recursion had to equal an integer multiple
+of \$2\textbackslash pi\$ to allow the cycle to close, which effectively
+meant the observer's state contribution (OSQN \$m\$) had to be an
+integer\hspace{0pt}. The deeper meaning of this is that an observation
+can't half-happen. The act of observing must deposit the universe in one
+of a set of allowed states that fit neatly into the next round of
+evolution. If a measurement tried to leave the system in a superposition
+of ``observed X'' and ``observed Y'' with no resolution, the next
+recursion step would lack a well-defined starting point. TORUS's
+structure disallows that ambiguity: by the time the recursion loop is
+closing, the system including all observers is in a definite eigenstate
+(with a definite observer-state value corresponding to one outcome). In
+short, the loop \emph{forces the collapse} in a deterministic way -- not
+deterministic as in predicting which outcome (the outcome is still
+probabilistic from the internal viewpoint), but deterministic in that
+\emph{some} single outcome must happen to satisfy the self-consistency
+of the universe.
 
 These \textbf{observer-state loops} are self-reinforcing. Once an
 outcome is selected and an observer-state is updated, that new state
@@ -633,13 +633,13 @@ discourse by providing a concrete mechanism: \emph{recursive gravity} or
 higher-dimensional feedback could be the agent that rapidly decoheres
 big systems. In fact, TORUS predicts that large coherent superpositions
 might suffer slight spontaneous collapses due to the weak influence of
-recursion fields (a kind of built-in Lindblad decoherence term)​.
-Experiments with interferometry of larger and larger objects -- from
-electrons to molecules to micro-crystals -- could thus also test TORUS's
-predictions. If a tiny extra decoherence is observed that increases with
-system complexity (beyond what standard environmental decoherence
-accounts for), it could be a hint of the recursive measurement effect at
-work​.
+recursion fields (a kind of built-in Lindblad decoherence
+term)\hspace{0pt}. Experiments with interferometry of larger and larger
+objects -- from electrons to molecules to micro-crystals -- could thus
+also test TORUS's predictions. If a tiny extra decoherence is observed
+that increases with system complexity (beyond what standard
+environmental decoherence accounts for), it could be a hint of the
+recursive measurement effect at work\hspace{0pt}.
 
 Another major advantage of TORUS's approach is conceptual unity.
 Philosophers of science often critique quantum mechanics interpretations
@@ -700,7 +700,7 @@ that the theory is not only mathematically unifying but also
 the process by which we come to know reality itself. By unifying the
 observer with the observed, TORUS anchors reality in a self-consistent
 loop, suggesting that perhaps the oldest mystery of ``if a tree falls
-with no one listening\ldots{}'' cannot occur in a TORUS universe -- for
+with no one listening\ldots'' cannot occur in a TORUS universe -- for
 there is \emph{always} an observer-state in the cosmic recursion,
 ensuring that every event that happens is recorded in the grand ledger
 of reality.

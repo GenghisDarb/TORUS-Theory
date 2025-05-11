@@ -1,63 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
-% --- BEGIN EQUATION FORMATTING FIXES ---
-% Replace HTML-like sub/sup tags with LaTeX math mode
-\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
-\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
-% Usage: $A\subscript{B}$ or $A\superscript{B}$
-% --- END EQUATION FORMATTING FIXES ---
-
+\author{}
 \date{}
 
 \begin{document}
@@ -71,65 +64,67 @@ ripples in spacetime that travel at the speed of light with \emph{no}
 frequency-dependent dispersion. In vacuum GR, all gravitational wave
 frequencies move at the same speed (exactly \$c\$) and there are only
 two allowed polarization modes -- the so-called ``plus'' and ``cross''
-transverse tensor polarizations​. \textbf{Dispersion} refers to a
-dependence of wave speed on frequency, which standard GR predicts should
-not occur for gravitational waves. \textbf{Polarization} refers to the
-orientation states of the wave's oscillations; GR's massless spin-2
-graviton permits exactly two independent polarization states in four
-dimensions.
+transverse tensor polarizations\hspace{0pt}. \textbf{Dispersion} refers
+to a dependence of wave speed on frequency, which standard GR predicts
+should not occur for gravitational waves. \textbf{Polarization} refers
+to the orientation states of the wave's oscillations; GR's massless
+spin-2 graviton permits exactly two independent polarization states in
+four dimensions.
 
 \textbf{TORUS modifications:} By introducing a \emph{structured
 recursion through 14 dimensions (0D through 13D)}, TORUS Theory adds
 subtle extra terms to the Einstein field equations (via
-higher-dimensional feedback) that alter gravitational wave propagation​.
-These recursion-induced terms lead to two key anomalous effects that
-depart from GR's expectations:
+higher-dimensional feedback) that alter gravitational wave
+propagation\hspace{0pt}. These recursion-induced terms lead to two key
+anomalous effects that depart from GR's expectations:
 
 \begin{itemize}
 \item
   \textbf{Frequency-Dependent Speed (Dispersion):} TORUS predicts that
   gravitational waves may exhibit an extremely tiny frequency-dependent
   speed in vacuum, meaning higher-frequency components travel at a
-  slightly different speed than lower-frequency components​. In
-  practice, a short burst of gravitational waves (for example, from a
+  slightly different speed than lower-frequency components\hspace{0pt}.
+  In practice, a short burst of gravitational waves (for example, from a
   neutron star merger) would not arrive perfectly ``in sync'' for all
   frequencies -- higher-frequency ripples could arrive marginally
   earlier or later than low-frequency ones. Quantitatively, the group
   velocity \$v\_g\$ might differ from \$c\$ by a fractional amount on
   the order of \$10\^{}\{-15\}\$--\$10\^{}\{-14\}\$ over astronomical
-  distances for kilohertz-frequency waves​. (By comparison,
+  distances for kilohertz-frequency waves\hspace{0pt}. (By comparison,
   multi-messenger observations of the neutron star merger GW170817,
   which had an observed gravitational wave and gamma-ray flash, have
   constrained any deviation of gravitational wave speed from \$c\$ to
-  less than about one part in \$10\^{}\{15\}\$​. TORUS suggests a
-  dispersion effect potentially just below that current bound, meaning
-  it could become detectable as instruments improve.) In summary, unlike
-  GR which predicts no dispersion, TORUS's framework implies a
-  \textbf{measurable dispersion} of gravitational waves -- albeit a
-  minute effect -- as a direct consequence of its recursive structure.
+  less than about one part in \$10\^{}\{15\}\$\hspace{0pt}. TORUS
+  suggests a dispersion effect potentially just below that current
+  bound, meaning it could become detectable as instruments improve.) In
+  summary, unlike GR which predicts no dispersion, TORUS's framework
+  implies a \textbf{measurable dispersion} of gravitational waves --
+  albeit a minute effect -- as a direct consequence of its recursive
+  structure.
 \item
   \textbf{Additional Polarization Mode:} Alongside the usual plus and
   cross polarizations of GR, TORUS allows for a possible \textbf{extra
-  polarization} component in gravitational waves​. This would manifest
-  as a weak longitudinal or ``scalar'' polarization mode (sometimes
-  described as a breathing mode) with an amplitude at roughly the
-  \$10\^{}\{-3\}\$ (0.1\%) level relative to the standard tensor modes​.
-  Such a polarization is forbidden in pure GR, which only permits two
-  transverse modes, but extra polarizations can arise in extended
-  gravity theories that include new degrees of freedom (for example,
-  scalar-tensor or vector-tensor theories). In TORUS, the extra mode is
-  tied to the higher-dimensional recursion effects -- essentially, the
-  14D hierarchical structure introduces a small additional degree of
-  freedom in the gravitational field equations. This might be correlated
-  with large-scale geometric features of the recursion (for instance, a
-  dependence on the source's orientation relative to the cosmic 13D
-  recursion axis)​. The net result is that gravitational waves in TORUS
-  could carry a tiny ``footprint'' of the theory's extra structure: a
-  faint polarization component beyond the plus/cross of GR. Detecting an
-  anomalous polarization component in gravitational wave signals would
-  be a striking signature of TORUS's recursive framework, because it
-  would indicate a violation of GR's polarization prediction in exactly
-  the manner (small scalar-longitudinal component) that TORUS permits​.
+  polarization} component in gravitational waves\hspace{0pt}. This would
+  manifest as a weak longitudinal or ``scalar'' polarization mode
+  (sometimes described as a breathing mode) with an amplitude at roughly
+  the \$10\^{}\{-3\}\$ (0.1\%) level relative to the standard tensor
+  modes\hspace{0pt}. Such a polarization is forbidden in pure GR, which
+  only permits two transverse modes, but extra polarizations can arise
+  in extended gravity theories that include new degrees of freedom (for
+  example, scalar-tensor or vector-tensor theories). In TORUS, the extra
+  mode is tied to the higher-dimensional recursion effects --
+  essentially, the 14D hierarchical structure introduces a small
+  additional degree of freedom in the gravitational field equations.
+  This might be correlated with large-scale geometric features of the
+  recursion (for instance, a dependence on the source's orientation
+  relative to the cosmic 13D recursion axis)\hspace{0pt}. The net result
+  is that gravitational waves in TORUS could carry a tiny ``footprint''
+  of the theory's extra structure: a faint polarization component beyond
+  the plus/cross of GR. Detecting an anomalous polarization component in
+  gravitational wave signals would be a striking signature of TORUS's
+  recursive framework, because it would indicate a violation of GR's
+  polarization prediction in exactly the manner (small
+  scalar-longitudinal component) that TORUS permits\hspace{0pt}.
 \end{itemize}
 
 These two deviations -- slight dispersion and an extra polarization --
@@ -142,7 +137,7 @@ absence can falsify or constrain TORUS (as discussed later). The key
 point is that TORUS's recursive unification does not remain a purely
 theoretical construct; it \emph{makes quantitative predictions} about
 gravitational waves that distinguish it from standard physics, ensuring
-the theory can be confronted with observational reality​.
+the theory can be confronted with observational reality\hspace{0pt}.
 
 \textbf{10.2 Experimental Sensitivity with LIGO, Virgo, LISA}
 
@@ -165,39 +160,40 @@ in gravitational wave propagation. For example, the LIGO/Virgo
 observations of binary neutron star merger GW170817 found no significant
 difference between the arrival time of gravitational waves and the
 speed-of-light signal, placing an upper bound on any speed variation of
-order \$10\^{}\{-15\}\$ (fractional) or less​. Similarly, LIGO and Virgo
-data analyses so far have not revealed any dispersion in the waveforms
--- any frequency-dependent arrival time differences are below the
-detection threshold \textasciitilde{}10\^{}(-15)​. They have also looked
-for non-standard polarization components by comparing signals across the
-global detector network. So far, all observed signals have been
-consistent with the two tensor polarizations of GR, with no obvious
-requirement for an extra polarization mode (within current sensitivity
-limits). These results already \textbf{constrain TORUS's effects},
-indicating that if TORUS's predicted dispersion and scalar polarization
-exist, they must be at or below the current detection limits
-(\textasciitilde{}10\^{}−15 in speed fraction, and
-\textasciitilde{}0.1\% in amplitude). The good news for TORUS is that
+order \$10\^{}\{-15\}\$ (fractional) or less\hspace{0pt}. Similarly,
+LIGO and Virgo data analyses so far have not revealed any dispersion in
+the waveforms -- any frequency-dependent arrival time differences are
+below the detection threshold \textasciitilde10\^{}(-15)\hspace{0pt}.
+They have also looked for non-standard polarization components by
+comparing signals across the global detector network. So far, all
+observed signals have been consistent with the two tensor polarizations
+of GR, with no obvious requirement for an extra polarization mode
+(within current sensitivity limits). These results already
+\textbf{constrain TORUS's effects}, indicating that if TORUS's predicted
+dispersion and scalar polarization exist, they must be at or below the
+current detection limits (\textasciitilde10\^{}−15 in speed fraction,
+and \textasciitilde0.1\% in amplitude). The good news for TORUS is that
 these detectors are still improving, and the effects could lie just
-beyond present capabilities​. The strategy for ground interferometers to
-detect TORUS anomalies involves precision timing and waveform analysis:
-by examining high signal-to-noise events and looking for
-frequency-dependent phase shifts (for dispersion) or anomalies in the
-pattern of detector responses (for polarization), any small deviations
-from GR can be teased out. For instance, if a future binary neutron star
-merger signal (``chirp'') shows that the highest-frequency part of the
-waveform arrives slightly earlier or later than expected under
-dispersionless propagation, that would be evidence of gravitational wave
-dispersion. Likewise, with multiple detectors oriented differently (LIGO
-Hanford and Livingston in the US, Virgo in Europe, KAGRA in Asia, etc.),
-the network can decompose the polarization content of incoming waves. A
-consistent residual signal that cannot be explained by a combination of
-plus/cross polarizations -- for example, an in-phase strain seen equally
-by all detectors regardless of orientation -- could indicate the
-presence of a scalar-longitudinal mode. The addition of new detectors
-(like LIGO-India in the near future) will improve the sky coverage and
-polarization sensitivity of the network, increasing the chances of
-catching a tiny polarization anomaly if it exists​.
+beyond present capabilities\hspace{0pt}. The strategy for ground
+interferometers to detect TORUS anomalies involves precision timing and
+waveform analysis: by examining high signal-to-noise events and looking
+for frequency-dependent phase shifts (for dispersion) or anomalies in
+the pattern of detector responses (for polarization), any small
+deviations from GR can be teased out. For instance, if a future binary
+neutron star merger signal (``chirp'') shows that the highest-frequency
+part of the waveform arrives slightly earlier or later than expected
+under dispersionless propagation, that would be evidence of
+gravitational wave dispersion. Likewise, with multiple detectors
+oriented differently (LIGO Hanford and Livingston in the US, Virgo in
+Europe, KAGRA in Asia, etc.), the network can decompose the polarization
+content of incoming waves. A consistent residual signal that cannot be
+explained by a combination of plus/cross polarizations -- for example,
+an in-phase strain seen equally by all detectors regardless of
+orientation -- could indicate the presence of a scalar-longitudinal
+mode. The addition of new detectors (like LIGO-India in the near future)
+will improve the sky coverage and polarization sensitivity of the
+network, increasing the chances of catching a tiny polarization anomaly
+if it exists\hspace{0pt}.
 
 \textbf{Space-Based Interferometer (LISA):} The \textbf{Laser
 Interferometer Space Antenna (LISA)}, planned for launch in the 2030s,
@@ -206,37 +202,37 @@ millions of kilometers, sensitive to lower-frequency gravitational waves
 (millihertz to 0.1 Hz). LISA's enormous baseline and the fact that it
 will observe signals from distant, massive black hole mergers and other
 cosmological sources make it exceptionally well-suited to probe minute
-dispersion effects accumulating over vast distances​. In TORUS's
-context, LISA could provide a decisive test of gravitational wave
-dispersion: even a fractional speed difference of \$10\^{}\{-15\}\$,
-which might be marginal in ground-based detectors observing relatively
-nearby stellar-mass events, could become evident in LISA's observation
-of a supermassive black hole binary merger billions of light years away.
-Over such travel distances, a frequency-dependent speed difference would
-cause a slight distortion in the wave packet -- high-frequency
-components might arrive noticeably earlier (or later) than low-frequency
-ones, leading to a frequency-dependent phase shift in the observed
-waveform. LISA's data analysis will therefore include searches for
-deviations from the expected phase evolution of inspiral signals. If a
-gravitational wave event observed by LISA shows that its waveform cannot
-be simultaneously fit at all frequencies by the assumption of a single
-speed \$c\$, that would signal a \textbf{dispersion} consistent with
-TORUS's prediction​. Additionally, LISA's design (a coherent three-arm
-detector in space) allows it to measure polarization states of passing
-gravitational waves. While LISA alone (with effectively two or three
-interferometer channels) cannot fully distinguish all six possible
-polarization modes in a general metric theory, it can test for the
-presence of modes beyond the two tensor ones by looking at the specific
-pattern of signals in its multiple arms. In combination with ground
-detectors (for sources that produce signals in both bands) or by using
-the fact that a polarization like a scalar mode would produce a
-distinctive breathing pattern on the LISA constellation, LISA could also
-contribute to identifying extra polarization components. In summary,
-LISA offers \textbf{extreme sensitivity to TORUS effects}: its
-long-baseline measurement of wave travel allows detection of tiny
-dispersion over cosmological distances, and its multi-arm configuration
-can cross-check the polarization content of low-frequency gravitational
-waves​.
+dispersion effects accumulating over vast distances\hspace{0pt}. In
+TORUS's context, LISA could provide a decisive test of gravitational
+wave dispersion: even a fractional speed difference of
+\$10\^{}\{-15\}\$, which might be marginal in ground-based detectors
+observing relatively nearby stellar-mass events, could become evident in
+LISA's observation of a supermassive black hole binary merger billions
+of light years away. Over such travel distances, a frequency-dependent
+speed difference would cause a slight distortion in the wave packet --
+high-frequency components might arrive noticeably earlier (or later)
+than low-frequency ones, leading to a frequency-dependent phase shift in
+the observed waveform. LISA's data analysis will therefore include
+searches for deviations from the expected phase evolution of inspiral
+signals. If a gravitational wave event observed by LISA shows that its
+waveform cannot be simultaneously fit at all frequencies by the
+assumption of a single speed \$c\$, that would signal a
+\textbf{dispersion} consistent with TORUS's prediction\hspace{0pt}.
+Additionally, LISA's design (a coherent three-arm detector in space)
+allows it to measure polarization states of passing gravitational waves.
+While LISA alone (with effectively two or three interferometer channels)
+cannot fully distinguish all six possible polarization modes in a
+general metric theory, it can test for the presence of modes beyond the
+two tensor ones by looking at the specific pattern of signals in its
+multiple arms. In combination with ground detectors (for sources that
+produce signals in both bands) or by using the fact that a polarization
+like a scalar mode would produce a distinctive breathing pattern on the
+LISA constellation, LISA could also contribute to identifying extra
+polarization components. In summary, LISA offers \textbf{extreme
+sensitivity to TORUS effects}: its long-baseline measurement of wave
+travel allows detection of tiny dispersion over cosmological distances,
+and its multi-arm configuration can cross-check the polarization content
+of low-frequency gravitational waves\hspace{0pt}.
 
 \textbf{Observational scenarios and signatures:} To concretely
 illustrate, consider a distant binary neutron star or black hole merger
@@ -250,7 +246,7 @@ and find, for example, that the early high-frequency ``chirp'' portion
 of the waveform is fractionally delayed compared to what GR predicts
 when extrapolated from the low-frequency part -- a discrepancy not
 attributable to known matter effects (like dispersion from interstellar
-plasma, which is negligible for gravitational waves)​. This
+plasma, which is negligible for gravitational waves)\hspace{0pt}. This
 \textbf{frequency-dependent arrival lag} would be a hallmark of TORUS.
 Meanwhile, the same event could be observed by a network of ground
 detectors on Earth. If those detectors, with their different
@@ -262,24 +258,24 @@ in all detectors -- that could point to a longitudinal strain component
 affecting all sites equally, consistent with a scalar polarization.
 Seeing such a pattern repeatedly (even at the 0.1\% level in amplitude)
 in multiple independent events would build confidence that a real new
-polarization mode is present​. Both of these signatures -- a slight
-time-frequency distortion of waveforms, and an anomalous polarization
-signal in a network -- are within reach of upcoming experiments. The
-advanced LIGO/Virgo network (with upgrades sometimes termed ``LIGO A+''
-and eventually next-generation observatories like Cosmic Explorer or
-Einstein Telescope) will dramatically improve sensitivity in the coming
-decade, and LISA will open a new observational window. \textbf{TORUS's
-predictions have been framed to be testable by these instruments}: the
-dispersion is predicted to be just beyond current non-detection limits
-(so it \emph{could} appear with the next order-of-magnitude sensitivity
-improvement), and the extra polarization is small but not zero, meaning
-a dedicated search might uncover it if present​. In effect, the
-experimental strategy is clear -- \emph{listen} for any slight
-frequency-dependent arrival effects in gravitational wave chirps and
-\emph{look} for any polarization content beyond GR's two modes. If TORUS
-is correct, then as detectors reach the required precision, they should
-begin to see these tiny deviations emerge against the otherwise precise
-predictions of GR.
+polarization mode is present\hspace{0pt}. Both of these signatures -- a
+slight time-frequency distortion of waveforms, and an anomalous
+polarization signal in a network -- are within reach of upcoming
+experiments. The advanced LIGO/Virgo network (with upgrades sometimes
+termed ``LIGO A+'' and eventually next-generation observatories like
+Cosmic Explorer or Einstein Telescope) will dramatically improve
+sensitivity in the coming decade, and LISA will open a new observational
+window. \textbf{TORUS's predictions have been framed to be testable by
+these instruments}: the dispersion is predicted to be just beyond
+current non-detection limits (so it \emph{could} appear with the next
+order-of-magnitude sensitivity improvement), and the extra polarization
+is small but not zero, meaning a dedicated search might uncover it if
+present\hspace{0pt}. In effect, the experimental strategy is clear --
+\emph{listen} for any slight frequency-dependent arrival effects in
+gravitational wave chirps and \emph{look} for any polarization content
+beyond GR's two modes. If TORUS is correct, then as detectors reach the
+required precision, they should begin to see these tiny deviations
+emerge against the otherwise precise predictions of GR.
 
 \textbf{10.3 Defining Clear Empirical Falsifiability Conditions}
 
@@ -289,13 +285,14 @@ proven wrong by experiment or observation. In other words, there must
 exist a possible outcome that contradicts the theory if the theory is
 false. TORUS Theory explicitly embraces this principle: it is
 constructed to be testable and at risk of falsification, rather than
-being a merely philosophical or uncheckable framework​. By formulating
-concrete predictions (such as the gravitational wave dispersion and
-polarization effects above), TORUS provides clear criteria by which
-nature can refute it. This commitment to empirical accountability not
-only differentiates TORUS from some more speculative ``theories of
-everything,'' but also lends credibility -- it shows that TORUS is
-willing to stake its validity on the outcome of real measurements.
+being a merely philosophical or uncheckable framework\hspace{0pt}. By
+formulating concrete predictions (such as the gravitational wave
+dispersion and polarization effects above), TORUS provides clear
+criteria by which nature can refute it. This commitment to empirical
+accountability not only differentiates TORUS from some more speculative
+``theories of everything,'' but also lends credibility -- it shows that
+TORUS is willing to stake its validity on the outcome of real
+measurements.
 
 In the context of gravitational waves, we can \textbf{define specific
 observational conditions that would falsify TORUS's predictions}. If
@@ -318,8 +315,8 @@ for TORUS in gravitational wave tests:
   \$10\^{}\{-16\}\$ or better. Such an observation would show that any
   vacuum dispersion must be an order of magnitude smaller than TORUS's
   minimum predicted effect (around
-  \$10\^{}\{-14\}\$--\$10\^{}\{-15\}\$)​. In that scenario, the
-  \textbf{absence of dispersion} at the sensitivities where TORUS
+  \$10\^{}\{-14\}\$--\$10\^{}\{-15\}\$)\hspace{0pt}. In that scenario,
+  the \textbf{absence of dispersion} at the sensitivities where TORUS
   expected a signal would directly falsify that aspect of the theory.
   TORUS would either have to significantly revise the recursion model to
   suppress any dispersion, or else the framework in its current form
@@ -327,12 +324,12 @@ for TORUS in gravitational wave tests:
   continue to show no frequency-dependent arrival time differences even
   as our timing measurements reach the
   \$10\^{}\{-16\}\$--\$10\^{}\{-17\}\$ range, it means the TORUS
-  dispersion prediction fails empirically​.
+  dispersion prediction fails empirically\hspace{0pt}.
 \item
   \textbf{No Extra Polarization Observed (Within Tight Limits):} If all
   gravitational wave observations consistently show only the two
   standard tensor polarizations, with no trace of any additional mode
-  even at the \$\textbackslash{}sim10\^{}\{-3\}\$ level or below, then
+  even at the \$\textbackslash sim10\^{}\{-3\}\$ level or below, then
   TORUS's extra polarization prediction is falsified. Concretely,
   imagine that the expanded network of detectors (LIGO, Virgo, KAGRA,
   LIGO-India, and future observatories) examines a large sample of
@@ -345,8 +342,8 @@ for TORUS in gravitational wave tests:
   lack of any detectable signal in polarization channels beyond GR's two
   -- even with 10× to 100× improved sensitivity over current detectors
   -- would indicate that no third mode exists at the level TORUS
-  requires​. Such a finding would be in direct conflict with the
-  theory's prediction of a small but non-zero extra polarization.
+  requires\hspace{0pt}. Such a finding would be in direct conflict with
+  the theory's prediction of a small but non-zero extra polarization.
   Therefore, \textbf{if no anomalous polarization is observed} as
   detector sensitivity and analysis techniques improve (approaching the
   fractional percentage level), TORUS's modified gravity framework would
@@ -358,17 +355,18 @@ survive as a viable theory. The \textbf{``pass/fail'' criteria are
 unambiguous}: TORUS will be \emph{failed} if nature shows (within
 experimental error) that gravitational waves have no dispersion and no
 extra polarization to the precision that encompasses TORUS's predicted
-values​. Notably, this is not an all-or-nothing one-shot test; it's a
-matter of progressively tightening the bounds. With each improvement in
-detector sensitivity, the allowable window for TORUS's effects narrows.
-If after, say, a decade of LISA data and next-generation ground
-observations, the dispersion fraction is constrained at the
-\$10\^{}\{-16\}\$ level and no hint of a third polarization is seen, the
-\textbf{recursive effect is essentially absent} and TORUS would either
-have to abandon those predictions or be considered falsified in its
-current form​. This kind of outcome would mean that the recursion-driven
-modifications at the 9D gravity level are far smaller than posited,
-undermining a key piece of TORUS's unified framework​.
+values\hspace{0pt}. Notably, this is not an all-or-nothing one-shot
+test; it's a matter of progressively tightening the bounds. With each
+improvement in detector sensitivity, the allowable window for TORUS's
+effects narrows. If after, say, a decade of LISA data and
+next-generation ground observations, the dispersion fraction is
+constrained at the \$10\^{}\{-16\}\$ level and no hint of a third
+polarization is seen, the \textbf{recursive effect is essentially
+absent} and TORUS would either have to abandon those predictions or be
+considered falsified in its current form\hspace{0pt}. This kind of
+outcome would mean that the recursion-driven modifications at the 9D
+gravity level are far smaller than posited, undermining a key piece of
+TORUS's unified framework\hspace{0pt}.
 
 By contrast, if the predicted anomalies \emph{are} observed -- even
 marginally at first, and then with increasing confidence -- it would
@@ -378,9 +376,9 @@ up for genuine risk}: it made precise, testable statements that could
 have turned out differently. This willingness to be tested is a hallmark
 of scientific rigor. TORUS is not protected by untestability; it stands
 to gain credibility if experiments agree, and to lose credibility (or be
-discarded) if they don't​. In this way, outlining clear empirical
-falsifiability conditions enhances the theory's standing -- it shows
-that TORUS is formulated in the spirit of empirical science, where
+discarded) if they don't\hspace{0pt}. In this way, outlining clear
+empirical falsifiability conditions enhances the theory's standing -- it
+shows that TORUS is formulated in the spirit of empirical science, where
 nature has the final say. The coming years of gravitational wave
 astronomy thus represent a critical proving ground for TORUS. Either the
 theory's ``fingerprints'' (a slight dispersion and an extra
@@ -395,6 +393,6 @@ wave tests exemplifies the theory's empirical grounding -- it turns the
 profound concepts of a 14-dimensional recursive universe into concrete
 predictions that today's and tomorrow's experiments can confirm or
 refute, which is exactly the standard any theory of everything must meet
-to be taken seriously.​
+to be taken seriously.\hspace{0pt}
 
 \end{document}

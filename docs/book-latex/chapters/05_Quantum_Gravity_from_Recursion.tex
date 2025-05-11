@@ -1,63 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatletter
-
-% --- BEGIN EQUATION FORMATTING FIXES ---
-% Replace HTML-like sub/sup tags with LaTeX math mode
-\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
-\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
-% Usage: $A\subscript{B}$ or $A\superscript{B}$
-% --- END EQUATION FORMATTING FIXES ---
-
+\author{}
 \date{}
 
 \begin{document}
@@ -189,8 +182,8 @@ framework. This contrasts with traditional approaches where one
 ``quantizes'' general relativity (as in loop quantum gravity or string
 theory) or adds gravity into quantum field theory ad hoc. In TORUS, the
 unification happens dynamically through recursion: as the
-0D→1D→\ldots{}→13D hierarchy builds up the universe, gravitational
-effects are imbued with quantum properties from the start.
+0D→1D→\ldots→13D hierarchy builds up the universe, gravitational effects
+are imbued with quantum properties from the start.
 
 The key is that each layer of the recursion carries physical content,
 and the feedback between layers links the quantum and gravitational
@@ -205,7 +198,7 @@ quantum gravitational effects are present as corrections at all scales,
 although they become appreciable only in extreme regimes (like near
 singularities or at cosmic boundaries). The modified Einstein field
 equation in TORUS (derived in Chapter 4) contains extra terms -- labeled
-$\Delta G_{\mu\nu}$ and $\Delta T_{\mu\nu}$ -- that encapsulate influences from other layers of
+ΔG\_μν and ΔT\_μν -- that encapsulate influences from other layers of
 the recursion. In ordinary conditions these terms are negligible, which
 is why classical General Relativity (GR) is so successful in everyday
 gravity tests. But at the Planck scale or in high curvature
@@ -220,9 +213,9 @@ integral relationships must hold (similar to how standing waves quantize
 frequencies on a looped string). These relationships end up connecting
 gravitation to quantum parameters. A striking example is the derived
 relation linking the age of the universe to the Planck time via the
-fine-structure constant $\alpha$. TORUS predicts that after 13 recursion steps,
-the large dimensionless ratio $T_U/t_P$ (age of universe over Planck
-time) is fixed by a simple reciprocal power of $\alpha$. This is an otherwise
+fine-structure constant α. TORUS predicts that after 13 recursion steps,
+the large dimensionless ratio T\_U/t\_P (age of universe over Planck
+time) is fixed by a simple reciprocal power of α. This is an otherwise
 mysterious ``coincidence'' in nature that TORUS turns into a concrete
 quantization rule. It means the vast cosmic time and tiny quantum time
 are harmonically related -- essentially a quantum-gravitational
@@ -427,11 +420,10 @@ angles -- features that standard inflationary cosmology might consider
 statistical flukes. TORUS attributes such large-angle anomalies (like
 the CMB ``axis of evil'') to the universe's topological recursion, and
 it predicts a small oscillation or echo in the galaxy correlation
-function at an extremely large (\textasciitilde{}10 Gpc) scale
-(Predictive Framework §2.4). Upcoming precision maps of the CMB
-polarization (e.g. from LiteBIRD) and deep galaxy surveys will test
-these predictions, looking for the telltale harmonics of a finite,
-toroidal universe.
+function at an extremely large (\textasciitilde10 Gpc) scale (Predictive
+Framework §2.4). Upcoming precision maps of the CMB polarization (e.g.
+from LiteBIRD) and deep galaxy surveys will test these predictions,
+looking for the telltale harmonics of a finite, toroidal universe.
 
 TORUS Theory also ventures into the quantum realm with a bold
 prediction: that a quantum system's coherence can be influenced merely
