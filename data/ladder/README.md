@@ -1,10 +1,9 @@
 # Ladder Validation Data
 
-This directory contains ladder validation datasets for cross-domain recursion tests in TORUS Theory. Each file documents a specific validation ladder, with data and metadata for reproducibility.
+This directory contains the ladder validation data files used for cross-domain validation in TORUS Theory.
 
 ## Files
-- `ladder_phaseA.csv`: Phase A validation ladder data
-- `ladder_phaseB.csv`: Phase B validation ladder data
+- `ladder_phaseA.csv`: Phase A ladder validation data (see file for details)
+- `ladder_phaseB.csv`: Phase B ladder validation data (see file for details)
 
-## Usage
-These files are referenced in the validation plan and are required for automated and manual validation workflows. See `.copilot/validation_tasks.md` for details.
+Replace or update these files as needed for new validation datasets. This README will always reflect the current contents of this directory.
