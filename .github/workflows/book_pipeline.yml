@@ -2,6 +2,8 @@ name: Build & Sync Book
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'docs/book/**/*.docx'
       - '.github/workflows/book_pipeline.yml'
@@ -11,32 +13,43 @@ jobs:
   sync-and-build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository on main branch
+        uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Install Pandoc & LaTeX
+          ref: main
+          submodules: false
+          fetch-depth: 0
+      - name: Debug repository state
+        run: |
+          git status
+          git branch -a
+          if [ -f .gitmodules ]; then cat .gitmodules; else echo ".gitmodules not present"; fi
+      - name: Ensure the repository is on the correct branch
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull origin main
+      - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-full
+          sudo apt-get install -y pandoc texlive-full fonts-lmodern
       - name: Audit and Regenerate DOCX for Native Equations
         run: scripts/audit_and_regen_docx.sh
       - name: Convert DOCX → LaTeX
         run: scripts/convert_docx_to_tex.sh
-      - name: Defensive cleanup for submodule and rebase before push
-        run: |
-          git rm -rf --cached data/interferometer/upstream/GWDetectorZoo 2>/dev/null || true
-          rm -rf data/interferometer/upstream/GWDetectorZoo 2>/dev/null || true
-          git pull --rebase || exit 1
-      - name: Commit updated .tex mirror
+      - name: Commit and push changes
         run: |
           git config user.name  "docx-sync-bot"
           git config user.email "bot@users.noreply.github.com"
           git add docs/book-latex
           git diff --cached --quiet || git commit -m "CI: auto-sync .tex mirror"
-          git push origin HEAD:main
+          git push origin main
+      - name: Cleanup Generated Files
+        run: |
+          rm -rf *.aux *.log *.out *.toc
       - name: Build PDF
         working-directory: docs/book-latex
-        run: latexmk -pdf -silent torus_book.tex
+        run: latexmk -pdf -f -silent torus_book.tex
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
