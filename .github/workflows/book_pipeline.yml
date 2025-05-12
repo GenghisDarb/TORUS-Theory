@@ -32,11 +32,14 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-full fonts-lmodern
+          sudo apt-get install -y pandoc texlive-full fonts-lmodern texlive-xetex texlive-lang-all
       - name: Audit and Regenerate DOCX for Native Equations
         run: scripts/audit_and_regen_docx.sh
       - name: Convert DOCX → LaTeX
         run: scripts/convert_docx_to_tex.sh
+      - name: Clean LaTeX build artifacts
+        run: |
+          git clean -fdX
       - name: Commit and push changes
         run: |
           git config user.name  "docx-sync-bot"
@@ -47,9 +50,16 @@ jobs:
       - name: Cleanup Generated Files
         run: |
           rm -rf *.aux *.log *.out *.toc
+      - name: Cleanup
+        working-directory: docs/book-latex
+        run: rm -f *.aux *.bbl *.blg *.log *.out *.toc
+      - name: Clean LaTeX Auxiliary Files
+        working-directory: docs/book-latex
+        run: latexmk -c
       - name: Build PDF
         working-directory: docs/book-latex
-        run: latexmk -pdf -f -silent torus_book.tex
+        run: |
+          latexmk -pdf -xelatex -f -silent torus_book.tex
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
