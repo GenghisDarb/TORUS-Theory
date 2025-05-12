@@ -59,7 +59,7 @@ jobs:
       - name: Build PDF
         working-directory: docs/book-latex
         run: |
-          latexmk -pdf -xelatex -f -silent torus_book.tex
+          latexmk -pdf -interaction=nonstopmode -file-line-error torus_book.tex
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
