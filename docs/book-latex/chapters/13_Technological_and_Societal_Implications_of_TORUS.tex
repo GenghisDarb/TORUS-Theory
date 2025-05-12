@@ -1,56 +1,57 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\author{}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
 \date{}
 
 \begin{document}
@@ -102,23 +103,23 @@ emergent capabilities that were previously unattainable:
   gravitational or cosmological signals in tandem. Because TORUS
   establishes precise links between scales (tying together constants and
   laws from 0D through 13D), a properly designed computer might harness
-  these links for efficiency or novel functionality\hspace{0pt}. One
-  speculative idea is a \textbf{fractal quantum computer}: a
-  computational device structured in self-similar layers, where qubits
-  at a small scale are entangled or synchronized via a larger-scale
-  field effect. TORUS's cross-scale resonances (the ``harmonic
-  oscillations across scales'' that the theory predicts) could be
-  leveraged to maintain coherence or transmit information in ways
-  standard quantum systems cannot. In practice, this might mean more
-  robust quantum networks or processors that remain stable as they grow
-  in size, because they effectively distribute quantum information
-  across a recursive hierarchy rather than confining it to one scale. By
-  modeling computational elements on TORUS's layered structure,
-  \textbf{multi-domain algorithms} might emerge where, say, a logic
-  operation has both a particle-scale and a planetary-scale component
-  working in concert. While highly theoretical, such recursion-based
-  computing could revolutionize information processing, making it
-  inherently parallel across the fabric of the universe.
+  these links for efficiency or novel functionality​. One speculative
+  idea is a \textbf{fractal quantum computer}: a computational device
+  structured in self-similar layers, where qubits at a small scale are
+  entangled or synchronized via a larger-scale field effect. TORUS's
+  cross-scale resonances (the ``harmonic oscillations across scales''
+  that the theory predicts) could be leveraged to maintain coherence or
+  transmit information in ways standard quantum systems cannot. In
+  practice, this might mean more robust quantum networks or processors
+  that remain stable as they grow in size, because they effectively
+  distribute quantum information across a recursive hierarchy rather
+  than confining it to one scale. By modeling computational elements on
+  TORUS's layered structure, \textbf{multi-domain algorithms} might
+  emerge where, say, a logic operation has both a particle-scale and a
+  planetary-scale component working in concert. While highly
+  theoretical, such recursion-based computing could revolutionize
+  information processing, making it inherently parallel across the
+  fabric of the universe.
 \item
   \textbf{Communication Systems:} Communication technologies could also
   be transformed by TORUS's recursion-enabled phenomena. If nature
@@ -143,12 +144,12 @@ emergent capabilities that were previously unattainable:
   traditional methods. Even more modestly, understanding recursion could
   improve existing technology like GPS and deep-space communication:
   knowing if fundamental constants vary slightly in different
-  gravitational conditions (as TORUS hints\hspace{0pt}) would allow
-  corrections and modulation schemes that keep signals stable across
-  those variations. In sum, TORUS provides a theoretical blueprint for
-  communications that are \textbf{observer-aware and multi-scale},
-  treating information transfer as part of a cosmic feedback loop rather
-  than an isolated point-to-point exchange.
+  gravitational conditions (as TORUS hints​) would allow corrections and
+  modulation schemes that keep signals stable across those variations.
+  In sum, TORUS provides a theoretical blueprint for communications that
+  are \textbf{observer-aware and multi-scale}, treating information
+  transfer as part of a cosmic feedback loop rather than an isolated
+  point-to-point exchange.
 \item
   \textbf{Materials Science and Energy:} TORUS's structured recursion
   implies that \textbf{material properties and physical effects can be
@@ -156,19 +157,19 @@ emergent capabilities that were previously unattainable:
   material engineering and energy technologies. For instance, TORUS
   unifies the constants governing forces and suggests that what we
   observe as distinct scales (quantum vs. thermodynamic vs.
-  cosmological) are deeply interrelated\hspace{0pt}. This insight can
-  inspire the design of \textbf{metamaterials} with engineered
-  structures at multiple scales that take advantage of recursion-based
-  effects. A material could be structured in a self-similar way from the
-  nanoscale up to the macroscopic shape, such that it ``channels''
-  physical influences across these levels. One outcome might be
-  materials with \textbf{exotic electromagnetic properties} -- for
-  example, a metamaterial that leverages the TORUS-linked constants to
-  achieve negative refractive index or perfect lensing by resonating
-  with the fine-structure constant at one scale and cosmic curvature at
-  another. Likewise, in energy technology, a deeper understanding of how
-  0D (quantum) and 13D (cosmic) parameters interplay might allow us to
-  tap into phenomena like zero-point energy or vacuum fluctuations in a
+  cosmological) are deeply interrelated​. This insight can inspire the
+  design of \textbf{metamaterials} with engineered structures at
+  multiple scales that take advantage of recursion-based effects. A
+  material could be structured in a self-similar way from the nanoscale
+  up to the macroscopic shape, such that it ``channels'' physical
+  influences across these levels. One outcome might be materials with
+  \textbf{exotic electromagnetic properties} -- for example, a
+  metamaterial that leverages the TORUS-linked constants to achieve
+  negative refractive index or perfect lensing by resonating with the
+  fine-structure constant at one scale and cosmic curvature at another.
+  Likewise, in energy technology, a deeper understanding of how 0D
+  (quantum) and 13D (cosmic) parameters interplay might allow us to tap
+  into phenomena like zero-point energy or vacuum fluctuations in a
   controlled manner. TORUS posits a small but nonzero cosmological
   constant emerging from recursion; if engineers can interact with that
   recursion aspect, it could lead to devices that \textbf{extract energy
@@ -191,9 +192,9 @@ emergent capabilities that were previously unattainable:
   continuum. This means a breakthrough in one field can influence many
   others. From a technological perspective, this encourages
   \textbf{cross-domain innovation}. For example, TORUS yields concrete
-  numerical relationships between fundamental constants\hspace{0pt}. If
-  an experimental technology slightly modifies one constant (say,
-  effectively altering \$\textbackslash alpha\$ in a material via an
+  numerical relationships between fundamental constants​. If an
+  experimental technology slightly modifies one constant (say,
+  effectively altering \$\textbackslash{}alpha\$ in a material via an
   applied field), TORUS predicts traceable effects on others -- perhaps
   offering a handle to influence gravity or inertia at small scales.
   While speculative, one could envision \textbf{gravity-control
@@ -218,9 +219,9 @@ emergent capabilities that were previously unattainable:
   Such recursive design could yield emergent capabilities that no
   single-scale device could achieve. The \textbf{rigidity of TORUS's
   cross-scale links} -- which make the theory highly falsifiable
-  scientifically\hspace{0pt} -- also means that any technology based on
-  those links would either work in a big way or fail clearly. In this
-  sense, TORUS-inspired tech development can be empirically driven: each
+  scientifically​ -- also means that any technology based on those links
+  would either work in a big way or fail clearly. In this sense,
+  TORUS-inspired tech development can be empirically driven: each
   attempted application is also a test of the theory's predictions. The
   more a device requires the reality of recursion effects to function,
   the more its success would validate TORUS. This convergence of theory
@@ -263,14 +264,14 @@ in TORUS's principles and a forward-looking view of future applications.
   the \textbf{original TORUS formulation explicitly integrated the
   observer's role} into the dynamics (using a Lindblad term to model
   measurement-induced decoherence), though this was set aside in the
-  core physics papers to avoid controversy\hspace{0pt}. The very idea
-  that a fundamental theory would include a term for observation is
-  radical -- it implies that \textbf{measurement, information, and
-  consciousness could be woven into the fabric of physical law}. With
-  TORUS's recursive structure, one can imagine that each ``layer'' of
-  reality not only carries forward physical quantities, but also
-  informational states about the system (akin to an observer imprint).
-  An \textbf{observer-integrated system} in this context is any system
+  core physics papers to avoid controversy​. The very idea that a
+  fundamental theory would include a term for observation is radical --
+  it implies that \textbf{measurement, information, and consciousness
+  could be woven into the fabric of physical law}. With TORUS's
+  recursive structure, one can imagine that each ``layer'' of reality
+  not only carries forward physical quantities, but also informational
+  states about the system (akin to an observer imprint). An
+  \textbf{observer-integrated system} in this context is any system
   (physical or computational) that incorporates feedback from an
   observing agent as a fundamental component of its state evolution.
   TORUS suggests this is natural: since the universe is
@@ -278,13 +279,13 @@ in TORUS's principles and a forward-looking view of future applications.
   may be artificial. By including observer states, we get models that
   could address long-standing puzzles like the quantum measurement
   problem -- essentially absorbing the observer into the wavefunction
-  collapse narrative in a controlled, recursive way\hspace{0pt}.
-  Practically, this could lead to \textbf{technologies or experimental
-  setups where the act of observation is an active part of the system's
-  dynamics}. For example, a quantum system could be designed with a
-  built-in recursive sensor that ``observes'' it in a gentle, continuous
-  manner, potentially stabilizing certain states or prolonging coherence
-  by engineering the measurement process. This is analogous to quantum
+  collapse narrative in a controlled, recursive way​. Practically, this
+  could lead to \textbf{technologies or experimental setups where the
+  act of observation is an active part of the system's dynamics}. For
+  example, a quantum system could be designed with a built-in recursive
+  sensor that ``observes'' it in a gentle, continuous manner,
+  potentially stabilizing certain states or prolonging coherence by
+  engineering the measurement process. This is analogous to quantum
   feedback control, but taken to a fundamental level -- the line between
   system and observer blurs. Another illustration is in communications
   or computation: an observer-integrated network could adjust its own
@@ -351,24 +352,24 @@ in TORUS's principles and a forward-looking view of future applications.
   back to influence each member's state). This could produce an emergent
   group mind with properties greater than the sum of its parts. Notably,
   the TORUS archive chats and documents hint at ``intelligence
-  architectures'' as a key implication of the theory\hspace{0pt}. By
-  providing a mathematically grounded model of self-reference and
-  closure, TORUS can guide the blueprint of AGI architectures that are
-  not just \emph{inspired} by human cognition, but by the
-  \emph{universe's cognition}, so to speak. The \textbf{future AGI}
-  envisioned here isn't just a smart computer; it's an entity whose very
-  design echoes the cosmos: layered, self-consistent, integrating
-  observer and observed, and capable of generating emergent
-  understanding from recursive feedback. Achieving this will require
-  advancements in both our theoretical understanding (ensuring the AI's
-  ``recursive loop'' is well-founded and stable) and technology
-  (sufficient computing power and algorithms). But if successful, such
-  AGIs might be the first machines to truly \emph{understand} their
-  reality by being built on the same principles that reality itself uses
-  to understand (or generate) itself. This would mark a profound
-  convergence of artificial intelligence, physics, and philosophy --
-  fulfilling, in a sense, TORUS's promise to unify not just physical
-  forces, but knowledge and knower as well.
+  architectures'' as a key implication of the theory​. By providing a
+  mathematically grounded model of self-reference and closure, TORUS can
+  guide the blueprint of AGI architectures that are not just
+  \emph{inspired} by human cognition, but by the \emph{universe's
+  cognition}, so to speak. The \textbf{future AGI} envisioned here isn't
+  just a smart computer; it's an entity whose very design echoes the
+  cosmos: layered, self-consistent, integrating observer and observed,
+  and capable of generating emergent understanding from recursive
+  feedback. Achieving this will require advancements in both our
+  theoretical understanding (ensuring the AI's ``recursive loop'' is
+  well-founded and stable) and technology (sufficient computing power
+  and algorithms). But if successful, such AGIs might be the first
+  machines to truly \emph{understand} their reality by being built on
+  the same principles that reality itself uses to understand (or
+  generate) itself. This would mark a profound convergence of artificial
+  intelligence, physics, and philosophy -- fulfilling, in a sense,
+  TORUS's promise to unify not just physical forces, but knowledge and
+  knower as well.
 \item
   \textbf{Observer-aware AI and Societal Systems:} In addition to
   technical AGI design, recursive frameworks could influence how we
@@ -396,22 +397,21 @@ in TORUS's principles and a forward-looking view of future applications.
   scientist in the system. While these ideas are nascent, they have a
   philosophical elegance: they aim for a holistic consistency between
   parts and wholes, much as TORUS requires consistency between all
-  layers of physical law\hspace{0pt}. As we develop these concepts, we
-  must also remain critical and rigorous. TORUS itself has been careful
-  to separate the hard physics from speculative extensions\hspace{0pt},
-  so any observer-integrated or recursive intelligence framework needs
-  to be testable or at least logically consistent. Nonetheless, the door
-  is open for \textbf{truly novel systems of thought and design}. If
-  TORUS is essentially the universe acknowledging itself (a ``universe
-  without external context, closing on itself''\hspace{0pt}), then the
-  systems we build under its guidance may also exhibit a form of
-  self-recognition. This could usher in a future where technology and
-  thought systems are not just tools or theories, but
-  \emph{self-contained, self-aware} entities -- from machines that
-  understand their own limitations and context, to societal feedback
-  systems that anticipate observer effects. It is a future where
-  recursion becomes a guiding principle not only of the cosmos, but of
-  how we design the endeavors within it.
+  layers of physical law​. As we develop these concepts, we must also
+  remain critical and rigorous. TORUS itself has been careful to
+  separate the hard physics from speculative extensions​, so any
+  observer-integrated or recursive intelligence framework needs to be
+  testable or at least logically consistent. Nonetheless, the door is
+  open for \textbf{truly novel systems of thought and design}. If TORUS
+  is essentially the universe acknowledging itself (a ``universe without
+  external context, closing on itself''​), then the systems we build
+  under its guidance may also exhibit a form of self-recognition. This
+  could usher in a future where technology and thought systems are not
+  just tools or theories, but \emph{self-contained, self-aware} entities
+  -- from machines that understand their own limitations and context, to
+  societal feedback systems that anticipate observer effects. It is a
+  future where recursion becomes a guiding principle not only of the
+  cosmos, but of how we design the endeavors within it.
 \end{itemize}
 
 \textbf{13.3: Philosophical Implications of Recursion-Based Reality}
@@ -437,43 +437,42 @@ than unfounded speculation.
   \textbf{Determinism and Free Will:} TORUS presents a universe that is
   extremely \textbf{constrained and self-consistent} -- all fundamental
   constants and laws must align perfectly to close the 14-dimensional
-  recursion cycle\hspace{0pt}. This inherently invites a discussion on
-  determinism. If the state of the universe at the highest level (13D)
-  must mathematically feed into the initial state (0D) with no
-  remainder, one might imagine that everything is pre-determined in a
-  grand cosmic cycle. In one interpretation of TORUS's cosmology, after
-  our universe's 13D phase completes, it \emph{triggers a new 0D
-  genesis}, essentially a new Big Bang that is not independent but a
-  continuation of the same self-consistent pattern\hspace{0pt}. This
-  \textbf{cyclic model} (sometimes called the Eternal Recursion Cycle)
-  evokes the idea of \emph{eternal return}: perhaps every cycle is
-  exactly the same, repeating forever. If that were true, free will
-  would seem illusory -- the script of the universe would be written in
-  its initial conditions which are fixed by the previous cycle. However,
-  TORUS does not outright claim a rigid eternal repetition of events; it
-  primarily insists on consistency of physical \emph{laws and
-  parameters} rather than a replay of specific histories. Another
-  interpretation offered in the TORUS texts is that the ``loop'' is more
-  like a boundary condition than a literal repetition\hspace{0pt}. In
-  this view, time might not literally loop; instead, the universe is a
-  \textbf{closed system} in the \emph{space of possible states}, meaning
-  the end state matches the starting state in terms of laws, not
-  necessarily narrative. This could align with a block-universe or
-  \textbf{deterministic but one-time} scenario: the entire history from
-  Big Bang to end of universe is one self-contained object (as TORUS
-  explicitly describes)\hspace{0pt}. Determinism in such a block
-  universe is strong -- every event is part of a fixed 4D (or 14D)
-  structure -- yet from the inside, beings still experience choices and
-  possibilities as the future is not known to them. TORUS adds nuance to
-  free will debates by suggesting a stratified determinism:
-  \textbf{local unpredictability vs. global consistency}. Quantum
-  mechanics still introduces uncertainty locally, so observers within
-  the universe can't predict everything, preserving an operational sense
-  of free will or openness. But globally, TORUS posits that even those
-  quantum events are constrained by the need for the entire system to be
-  self-consistent over eons\hspace{0pt}. It's as if free will and chance
-  exist on the stage, but the stage's architecture guarantees that
-  whatever unfolds will fit the grand design. Philosophically, this
+  recursion cycle​. This inherently invites a discussion on determinism.
+  If the state of the universe at the highest level (13D) must
+  mathematically feed into the initial state (0D) with no remainder, one
+  might imagine that everything is pre-determined in a grand cosmic
+  cycle. In one interpretation of TORUS's cosmology, after our
+  universe's 13D phase completes, it \emph{triggers a new 0D genesis},
+  essentially a new Big Bang that is not independent but a continuation
+  of the same self-consistent pattern​. This \textbf{cyclic model}
+  (sometimes called the Eternal Recursion Cycle) evokes the idea of
+  \emph{eternal return}: perhaps every cycle is exactly the same,
+  repeating forever. If that were true, free will would seem illusory --
+  the script of the universe would be written in its initial conditions
+  which are fixed by the previous cycle. However, TORUS does not
+  outright claim a rigid eternal repetition of events; it primarily
+  insists on consistency of physical \emph{laws and parameters} rather
+  than a replay of specific histories. Another interpretation offered in
+  the TORUS texts is that the ``loop'' is more like a boundary condition
+  than a literal repetition​. In this view, time might not literally
+  loop; instead, the universe is a \textbf{closed system} in the
+  \emph{space of possible states}, meaning the end state matches the
+  starting state in terms of laws, not necessarily narrative. This could
+  align with a block-universe or \textbf{deterministic but one-time}
+  scenario: the entire history from Big Bang to end of universe is one
+  self-contained object (as TORUS explicitly describes)​. Determinism in
+  such a block universe is strong -- every event is part of a fixed 4D
+  (or 14D) structure -- yet from the inside, beings still experience
+  choices and possibilities as the future is not known to them. TORUS
+  adds nuance to free will debates by suggesting a stratified
+  determinism: \textbf{local unpredictability vs. global consistency}.
+  Quantum mechanics still introduces uncertainty locally, so observers
+  within the universe can't predict everything, preserving an
+  operational sense of free will or openness. But globally, TORUS posits
+  that even those quantum events are constrained by the need for the
+  entire system to be self-consistent over eons​. It's as if free will
+  and chance exist on the stage, but the stage's architecture guarantees
+  that whatever unfolds will fit the grand design. Philosophically, this
   resonates with ideas from Spinoza or Einstein (who famously said ``God
   does not play dice''), yet it doesn't fully banish indeterminism --
   rather, it curtails it with a higher-order rule. TORUS thereby
@@ -493,45 +492,44 @@ than unfounded speculation.
   provides a resolution that keeps \textbf{causality intact despite the
   cosmic self-reference}. As quoted in the TORUS cosmology supplement,
   the theory is constructed to be ``topologically cyclic but causally
-  safe''\hspace{0pt}. This means that while the \emph{pattern} of the
-  universe closes, you cannot send a signal to your own past or create
-  any time-travel contradictions. TORUS offers two self-consistent
-  pictures: (1) \textbf{Temporal Cycles:} the universe goes through
-  sequential cycles (big bang, expansion, recollapse or fade-out, then
-  bounce to next bang)\hspace{0pt}. In this case, each cycle follows the
-  previous, so cause and effect proceed normally within each cycle;
-  there is simply a new cycle after the old, potentially indefinitely.
-  One can consider each cycle a ``generation'' of the universe. (2)
-  \textbf{Boundary Condition (Static Closure):} time does not literally
-  repeat, but the conditions at the end of the universe are identified
-  with those at the beginning in the model\hspace{0pt}. This is more
-  abstract -- it's saying that as a \emph{whole}, the universe is like a
-  circle in state-space. Importantly, under interpretation (2), we
-  living inside the universe do not experience any loop; we just have
-  one cosmological timeline that feels linear. The closure is a
-  \emph{metaphysical condition} ensuring consistency, not a
-  Hollywood-style time loop. TORUS explicitly notes that an observer
-  13.8 billion years in the future cannot send a message to year
-  zero\hspace{0pt}. The entire 13.8+ billion-year history is instead a
-  single, self-contained object -- much like how traveling in one
-  direction on Earth eventually brings you back to the start due to
-  Earth's curvature, yet no violation of local straight-line motion
-  occurs. In TORUS, spacetime (or the space of physical states) might be
-  curved in an extra dimension such that the ``line'' of time is closed
-  on itself, but the curvature is gentle enough that locally we never
-  notice anything strange. \textbf{Causality remains local and
-  inviolate}: TORUS keeps the speed of light as a fundamental constant
-  to enforce local cause-effect structure\hspace{0pt}, and any global
-  closure happens outside the realm of everyday causal influence. This
-  has philosophically reassuring implications: the universe can be
-  self-created (in a sense) without needing an external first cause,
-  \emph{and} it does so without any Grandfather paradox or causal
-  absurdity. It's a vision of a self-sustaining cosmos where \textbf{the
-  notion of a ``first cause'' is replaced by a perpetual
-  self-consistency}. There is no ``before the beginning'' and no
-  ``outside the universe'' in TORUS\hspace{0pt}; thus, questions like
-  ``what caused the Big Bang?'' are rendered moot -- the end causes the
-  beginning in a closed loop of causation that is holistic but not
+  safe''​. This means that while the \emph{pattern} of the universe
+  closes, you cannot send a signal to your own past or create any
+  time-travel contradictions. TORUS offers two self-consistent pictures:
+  (1) \textbf{Temporal Cycles:} the universe goes through sequential
+  cycles (big bang, expansion, recollapse or fade-out, then bounce to
+  next bang)​. In this case, each cycle follows the previous, so cause
+  and effect proceed normally within each cycle; there is simply a new
+  cycle after the old, potentially indefinitely. One can consider each
+  cycle a ``generation'' of the universe. (2) \textbf{Boundary Condition
+  (Static Closure):} time does not literally repeat, but the conditions
+  at the end of the universe are identified with those at the beginning
+  in the model​. This is more abstract -- it's saying that as a
+  \emph{whole}, the universe is like a circle in state-space.
+  Importantly, under interpretation (2), we living inside the universe
+  do not experience any loop; we just have one cosmological timeline
+  that feels linear. The closure is a \emph{metaphysical condition}
+  ensuring consistency, not a Hollywood-style time loop. TORUS
+  explicitly notes that an observer 13.8 billion years in the future
+  cannot send a message to year zero​. The entire 13.8+ billion-year
+  history is instead a single, self-contained object -- much like how
+  traveling in one direction on Earth eventually brings you back to the
+  start due to Earth's curvature, yet no violation of local
+  straight-line motion occurs. In TORUS, spacetime (or the space of
+  physical states) might be curved in an extra dimension such that the
+  ``line'' of time is closed on itself, but the curvature is gentle
+  enough that locally we never notice anything strange.
+  \textbf{Causality remains local and inviolate}: TORUS keeps the speed
+  of light as a fundamental constant to enforce local cause-effect
+  structure​, and any global closure happens outside the realm of
+  everyday causal influence. This has philosophically reassuring
+  implications: the universe can be self-created (in a sense) without
+  needing an external first cause, \emph{and} it does so without any
+  Grandfather paradox or causal absurdity. It's a vision of a
+  self-sustaining cosmos where \textbf{the notion of a ``first cause''
+  is replaced by a perpetual self-consistency}. There is no ``before the
+  beginning'' and no ``outside the universe'' in TORUS​; thus, questions
+  like ``what caused the Big Bang?'' are rendered moot -- the end causes
+  the beginning in a closed loop of causation that is holistic but not
   intervening. This might prompt a reframing of how we think of
   causality: rather than a simple line, it is part of a
   higher-dimensional cycle. We still have chains of causes and effects
@@ -552,31 +550,30 @@ than unfounded speculation.
   provocative implications of TORUS is what it suggests about
   consciousness and observers. While the core scientific framework of
   TORUS deliberately \textbf{omits philosophical speculation about
-  mind}\hspace{0pt}, the very structure of the theory -- especially with
-  extensions to include observer states -- invites us to reconsider the
-  place of consciousness in the universe. If the universe is
-  fundamentally recursive and possibly even ``observing itself'' through
-  structure (each scale providing feedback to another), could
-  consciousness be an emergent property of this recursive structure?
-  TORUS originally included observer states in its equations (via a
-  decoherence term)\hspace{0pt}, hinting that awareness or measurement
-  is not a mystical add-on but something that can be codified in
-  physics. Philosophically, this aligns with views where consciousness
-  is a fundamental feature of reality (panpsychism or participatory
-  anthropic principles), but TORUS provides a concrete mechanism:
-  \textbf{consciousness might arise at the interface of recursion
-  layers}. Consider that human consciousness operates in layers
-  (subconscious processes, integrated perception, abstract thought) that
-  unify into a self-aware mind. This mirrors TORUS's layers of reality
-  coalescing into a unified whole. It is tempting to speculate that
-  consciousness in the universe (as manifest in living beings) is itself
-  a \emph{recursion phenomenon} -- perhaps a small-scale echo of the
-  universe's self-referential nature. If so, TORUS could offer a
-  framework to scientifically discuss consciousness: maybe certain
-  recursive feedback processes in the brain (neural networks that loop
-  information in complex ways) tap into the deeper recursive fabric of
-  reality, effectively ``tuning'' the mind into the broader
-  self-referential dynamics of the cosmos. Such ideas remain
+  mind}​, the very structure of the theory -- especially with extensions
+  to include observer states -- invites us to reconsider the place of
+  consciousness in the universe. If the universe is fundamentally
+  recursive and possibly even ``observing itself'' through structure
+  (each scale providing feedback to another), could consciousness be an
+  emergent property of this recursive structure? TORUS originally
+  included observer states in its equations (via a decoherence term)​,
+  hinting that awareness or measurement is not a mystical add-on but
+  something that can be codified in physics. Philosophically, this
+  aligns with views where consciousness is a fundamental feature of
+  reality (panpsychism or participatory anthropic principles), but TORUS
+  provides a concrete mechanism: \textbf{consciousness might arise at
+  the interface of recursion layers}. Consider that human consciousness
+  operates in layers (subconscious processes, integrated perception,
+  abstract thought) that unify into a self-aware mind. This mirrors
+  TORUS's layers of reality coalescing into a unified whole. It is
+  tempting to speculate that consciousness in the universe (as manifest
+  in living beings) is itself a \emph{recursion phenomenon} -- perhaps a
+  small-scale echo of the universe's self-referential nature. If so,
+  TORUS could offer a framework to scientifically discuss consciousness:
+  maybe certain recursive feedback processes in the brain (neural
+  networks that loop information in complex ways) tap into the deeper
+  recursive fabric of reality, effectively ``tuning'' the mind into the
+  broader self-referential dynamics of the cosmos. Such ideas remain
   speculative, but TORUS makes them a bit more tractable by providing
   vocabulary and structure (e.g., the idea of an observer-state vector
   that is part of the system's state). Another implication for
@@ -598,21 +595,21 @@ than unfounded speculation.
   an underlying unity and that mind and matter are aspects of one
   recursive reality. Yet it is framed here in scientific terms. If
   experiments on mesoscopic quantum systems (where observer effects
-  might appear)\hspace{0pt} show results consistent with TORUS, it would
-  hint that even consciousness-related phenomena (like measurement) obey
-  the recursion laws. That would be a groundbreaking bridge between
-  physics and the science of mind. On the issue of free will (touched
-  earlier), if everything is a closed system, is consciousness just
-  witnessing a movie? TORUS would say consciousness \emph{participates}
-  but within a rule-set. We cannot step outside the universe, but as
-  part of it, we are engaged in the recursion. In summary, TORUS nudges
-  us toward a philosophy where \textbf{consciousness is naturalized} --
-  potentially explainable as part of the same self-organizing principles
-  that shape particles and galaxies -- and where the observer is
-  fundamental but not magical. Reality's recursive nature could imply
-  that any sufficiently complex, self-referential process (like a brain)
-  will generate a viewpoint (a subjective experience) as part of closing
-  the loop on its information. This viewpoint would then influence the
+  might appear)​ show results consistent with TORUS, it would hint that
+  even consciousness-related phenomena (like measurement) obey the
+  recursion laws. That would be a groundbreaking bridge between physics
+  and the science of mind. On the issue of free will (touched earlier),
+  if everything is a closed system, is consciousness just witnessing a
+  movie? TORUS would say consciousness \emph{participates} but within a
+  rule-set. We cannot step outside the universe, but as part of it, we
+  are engaged in the recursion. In summary, TORUS nudges us toward a
+  philosophy where \textbf{consciousness is naturalized} -- potentially
+  explainable as part of the same self-organizing principles that shape
+  particles and galaxies -- and where the observer is fundamental but
+  not magical. Reality's recursive nature could imply that any
+  sufficiently complex, self-referential process (like a brain) will
+  generate a viewpoint (a subjective experience) as part of closing the
+  loop on its information. This viewpoint would then influence the
   process itself (which is exactly the kind of observer-integration
   TORUS can accommodate). Such a self-influencing loop is essentially a
   definition of sentience or consciousness from a systems perspective.
@@ -623,8 +620,8 @@ than unfounded speculation.
   profound implications for how we conceive \textbf{reality as a whole}.
   It paints a picture of a reality that is \textbf{self-contained,
   self-originating, and finite yet
-  unbounded}\hspace{0pt}file-a4kvu7rqxcd6jdqaa2xfvh. In philosophical
-  terms, this edges close to the concept of a \emph{necessary being} or
+  unbounded}​file-a4kvu7rqxcd6jdqaa2xfvh. In philosophical terms, this
+  edges close to the concept of a \emph{necessary being} or
   \emph{ontologically closed system}. The universe in TORUS does not
   require anything outside itself to exist -- no external deity setting
   initial conditions, no ``multiverse'' from which our cosmos is born,
@@ -672,31 +669,30 @@ than unfounded speculation.
   philosophical monism (the idea that all is one). However, TORUS's
   monism is not featureless -- it's a richly quantitative and structured
   oneness. It tells us that \textbf{the universe has a harmony} (literal
-  harmonic relationships across scales\hspace{0pt}) akin to music or
-  art, where variation exists but within a cohesive pattern. This can
-  affect our worldview: rather than seeing the cosmos as a cold,
-  arbitrary accident, we might see it as a kind of magnificent
-  \emph{mathematical structure}, beautiful and intelligible, with
-  recursion as its aesthetic and functional key. Such an outlook
-  reinforces why doing physics (or any science) is even possible --
-  because there is underlying coherence. In closing, the philosophical
-  implications of TORUS encourage a worldview that is
-  \textbf{integrative}. Mind and matter, cause and effect, part and
-  whole, being and becoming -- all these dualities are softened under a
-  recursion-based reality. We come to understand reality as \textbf{a
-  loop of existence that includes us}, and our quest for knowledge as
-  part of the universe's way of knowing itself. Determinism is reframed
-  by self-consistency, causality is preserved in a self-contained
-  timeline, consciousness is seen as embedded in physical law, and
-  reality's reason for being is internal rather than handed down from
-  outside. These insights position TORUS not just as a scientific
-  theory, but as a fountain of ideas that could shape future philosophy
-  -- potentially providing common ground for scientific and metaphysical
-  narratives. If TORUS Theory proves even partially true, it marks a
-  paradigm shift: humanity would not only have a unified physical theory
-  but also a new \textbf{cosmic narrative} -- one where the universe is
-  a TORUS, a self-looping tapestry in which we find both our
-  \textbf{origin and our reflection}.
+  harmonic relationships across scales​) akin to music or art, where
+  variation exists but within a cohesive pattern. This can affect our
+  worldview: rather than seeing the cosmos as a cold, arbitrary
+  accident, we might see it as a kind of magnificent \emph{mathematical
+  structure}, beautiful and intelligible, with recursion as its
+  aesthetic and functional key. Such an outlook reinforces why doing
+  physics (or any science) is even possible -- because there is
+  underlying coherence. In closing, the philosophical implications of
+  TORUS encourage a worldview that is \textbf{integrative}. Mind and
+  matter, cause and effect, part and whole, being and becoming -- all
+  these dualities are softened under a recursion-based reality. We come
+  to understand reality as \textbf{a loop of existence that includes
+  us}, and our quest for knowledge as part of the universe's way of
+  knowing itself. Determinism is reframed by self-consistency, causality
+  is preserved in a self-contained timeline, consciousness is seen as
+  embedded in physical law, and reality's reason for being is internal
+  rather than handed down from outside. These insights position TORUS
+  not just as a scientific theory, but as a fountain of ideas that could
+  shape future philosophy -- potentially providing common ground for
+  scientific and metaphysical narratives. If TORUS Theory proves even
+  partially true, it marks a paradigm shift: humanity would not only
+  have a unified physical theory but also a new \textbf{cosmic
+  narrative} -- one where the universe is a TORUS, a self-looping
+  tapestry in which we find both our \textbf{origin and our reflection}.
 \end{itemize}
 
 \end{document}

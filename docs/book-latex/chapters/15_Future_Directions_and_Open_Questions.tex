@@ -1,56 +1,57 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\author{}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
 \date{}
 
 \begin{document}
@@ -86,19 +87,19 @@ future research can tackle them:
   and forces in the Standard Model. While earlier chapters showed how
   electromagnetism might emerge from recursion, TORUS must also account
   for the weak and strong nuclear forces and their associated gauge
-  symmetries (SU(2) and SU(3))\hspace{0pt}. This means identifying how
-  quarks, leptons, and force carriers fit into the 14-layer recursion
-  cycle. Do the three generations of matter particles correspond to
-  recursion sub-structures? Can electroweak symmetry breaking or quantum
+  symmetries (SU(2) and SU(3))​. This means identifying how quarks,
+  leptons, and force carriers fit into the 14-layer recursion cycle. Do
+  the three generations of matter particles correspond to recursion
+  sub-structures? Can electroweak symmetry breaking or quantum
   chromodynamics (QCD) confinement be derived from a recursion step?
   These questions remain open, and answering them will require
   constructing detailed models within TORUS that reproduce the full
   Standard Model. Early hints (such as the idea that Yang--Mills
   equations might gain recursion terms) suggest this integration is
   feasible, but explicit constructions are needed to firmly establish
-  Standard Model physics in the TORUS framework\hspace{0pt}.
-  Successfully doing so would demonstrate that TORUS truly unifies
-  \emph{all} known forces and particles under its recursive structure.
+  Standard Model physics in the TORUS framework​. Successfully doing so
+  would demonstrate that TORUS truly unifies \emph{all} known forces and
+  particles under its recursive structure.
 \item
   \textbf{Dynamic Recursion and Uniqueness of the Cycle:} The current
   formulation of TORUS treats the 14-dimensional recursion structure as
@@ -109,70 +110,69 @@ future research can tackle them:
   fundamental constants ``locked in'' to the values we see by some
   process, or if multiple self-consistent recursion solutions might
   exist (raising the specter of a multiverse of TORUS-type universes
-  with different constants)\hspace{0pt}. Ideally, TORUS would predict
-  that only one set of constants yields a stable closed recursion,
-  thereby explaining why our universe's parameters are what they are.
-  Demonstrating this requires a deeper stability analysis of the
-  recursion: if the cycle of dimensions were perturbed, does it
-  naturally converge back to the 0D--13D loop? Preliminary reasoning in
-  Chapter 13 indicated that a 13D closure is stable, but this needs to
-  be developed into a full stability theory\hspace{0pt}. Future research
-  should formalize the \emph{recursion dynamics} by perhaps modeling a
-  time-dependent approach to the fixed-point cycle or exploring
-  recursion in slightly different settings to see if any alternative
-  cycles could exist. Showing that the 14-layer TORUS cycle is an
-  attractor -- the only robust solution -- would greatly strengthen the
-  theory. If instead multiple recursion closures are mathematically
-  possible, TORUS would need to explain why nature selected this
-  particular one, or whether other universes (with different cycles)
-  might be possible in principle. Addressing this challenge will likely
-  involve advanced mathematical tools and perhaps computer simulations
-  of how a hypothetical high-dimensional system might settle into a
-  TORUS-like state.
+  with different constants)​. Ideally, TORUS would predict that only one
+  set of constants yields a stable closed recursion, thereby explaining
+  why our universe's parameters are what they are. Demonstrating this
+  requires a deeper stability analysis of the recursion: if the cycle of
+  dimensions were perturbed, does it naturally converge back to the
+  0D--13D loop? Preliminary reasoning in Chapter 13 indicated that a 13D
+  closure is stable, but this needs to be developed into a full
+  stability theory​. Future research should formalize the
+  \emph{recursion dynamics} by perhaps modeling a time-dependent
+  approach to the fixed-point cycle or exploring recursion in slightly
+  different settings to see if any alternative cycles could exist.
+  Showing that the 14-layer TORUS cycle is an attractor -- the only
+  robust solution -- would greatly strengthen the theory. If instead
+  multiple recursion closures are mathematically possible, TORUS would
+  need to explain why nature selected this particular one, or whether
+  other universes (with different cycles) might be possible in
+  principle. Addressing this challenge will likely involve advanced
+  mathematical tools and perhaps computer simulations of how a
+  hypothetical high-dimensional system might settle into a TORUS-like
+  state.
 \item
   \textbf{Mathematical Rigor and Theoretical Validation:} As an emerging
   Unified Theory of Everything, TORUS must undergo intense scrutiny and
   be put on firmer mathematical ground. Many derivations in this book
   have been presented at a conceptual level; turning them into rigorous
-  proofs is a key challenge ahead\hspace{0pt}. For example, claims such
-  as ``the 13D recursion yields a stable closure'' or ``adding recursion
-  terms to Maxwell's equations reproduces exactly the observed laws''
-  need to be backed by formal derivations and peer-reviewed
-  publications. Future work should develop the full mathematical
-  formalism of TORUS -- likely starting from a 14-dimensional action or
-  Lagrangian that encapsulates the recursive coupling between
-  layers\hspace{0pt}. By varying such an action, one could derive the
-  modified field equations (like the recursion-corrected Einstein
-  equations introduced in Chapter 6) in a rigorous way, and prove
-  properties such as energy conservation across the cycle or the absence
-  of anomalies. Establishing a solid algebraic and geometric foundation
-  is part of this effort: TORUS introduces novel algebraic structures
-  (recursion operators, cross-dimensional fields) that need to be
-  defined precisely. This may involve drawing on techniques from
-  algebraic topology or extended Lie algebras to ensure that the cycle
-  of 14 dimensions is self-consistent and closed\hspace{0pt}. In tandem,
-  \emph{validation} means confronting TORUS with what is already known.
-  The theory should be presented to the scientific community through
-  publications and workshops, inviting experts to poke holes and ask
-  hard questions. Indeed, the TORUS team plans dedicated papers for this
-  purpose -- for instance, a comparative review that situates TORUS next
-  to general relativity, string theory, and loop quantum gravity,
-  addressing likely criticisms point by point\hspace{0pt}. Such a
-  document could take a Q\&A form, answering concerns like ``Why
-  introduce a new constant like the ideal gas constant \$R\$ as
-  fundamental?'' or ``How is TORUS different from just using Planck
-  units and assuming a cyclic universe?'' By engaging with critiques
-  openly and rigorously, the theory can be improved. In summary, one
-  major challenge is to \textbf{prove} and \textbf{publish} the claims
-  of TORUS in full detail, thereby moving it from a promising outline to
-  an academically solid theory. This includes developing computation
-  tools or simulations (for example, solving the recursion-modified
-  cosmological equations to see how structure formation is
-  affected\hspace{0pt}) and checking consistency with precision tests
-  (such as ensuring the theory's corrections in the solar system remain
-  within observational limits\hspace{0pt}). Meeting this challenge will
-  not only bolster confidence in TORUS but is also necessary for the
-  broader physics community to take the theory seriously.
+  proofs is a key challenge ahead​. For example, claims such as ``the
+  13D recursion yields a stable closure'' or ``adding recursion terms to
+  Maxwell's equations reproduces exactly the observed laws'' need to be
+  backed by formal derivations and peer-reviewed publications. Future
+  work should develop the full mathematical formalism of TORUS -- likely
+  starting from a 14-dimensional action or Lagrangian that encapsulates
+  the recursive coupling between layers​. By varying such an action, one
+  could derive the modified field equations (like the
+  recursion-corrected Einstein equations introduced in Chapter 6) in a
+  rigorous way, and prove properties such as energy conservation across
+  the cycle or the absence of anomalies. Establishing a solid algebraic
+  and geometric foundation is part of this effort: TORUS introduces
+  novel algebraic structures (recursion operators, cross-dimensional
+  fields) that need to be defined precisely. This may involve drawing on
+  techniques from algebraic topology or extended Lie algebras to ensure
+  that the cycle of 14 dimensions is self-consistent and closed​. In
+  tandem, \emph{validation} means confronting TORUS with what is already
+  known. The theory should be presented to the scientific community
+  through publications and workshops, inviting experts to poke holes and
+  ask hard questions. Indeed, the TORUS team plans dedicated papers for
+  this purpose -- for instance, a comparative review that situates TORUS
+  next to general relativity, string theory, and loop quantum gravity,
+  addressing likely criticisms point by point​. Such a document could
+  take a Q\&A form, answering concerns like ``Why introduce a new
+  constant like the ideal gas constant \$R\$ as fundamental?'' or ``How
+  is TORUS different from just using Planck units and assuming a cyclic
+  universe?'' By engaging with critiques openly and rigorously, the
+  theory can be improved. In summary, one major challenge is to
+  \textbf{prove} and \textbf{publish} the claims of TORUS in full
+  detail, thereby moving it from a promising outline to an academically
+  solid theory. This includes developing computation tools or
+  simulations (for example, solving the recursion-modified cosmological
+  equations to see how structure formation is affected​) and checking
+  consistency with precision tests (such as ensuring the theory's
+  corrections in the solar system remain within observational limits​).
+  Meeting this challenge will not only bolster confidence in TORUS but
+  is also necessary for the broader physics community to take the theory
+  seriously.
 \item
   \textbf{Integration with Quantum Principles:} TORUS Theory
   intriguingly straddles the classical and quantum domains -- it
@@ -182,10 +182,10 @@ future research can tackle them:
   classical geometric mechanism, or is it inherently quantum in
   character? In our current formulation, we wrote recursion corrections
   as if adding deterministic terms to field equations, but one could ask
-  if the recursion operator \$\textbackslash mathcal\{R\}\$ itself
+  if the recursion operator \$\textbackslash{}mathcal\{R\}\$ itself
   should be a quantum operator that can exist in superposition or have
-  uncertainty\hspace{0pt}. Clarifying this is a challenge that will
-  likely determine how TORUS connects to quantum gravity research. One
+  uncertainty​. Clarifying this is a challenge that will likely
+  determine how TORUS connects to quantum gravity research. One
   possibility is that TORUS can be rephrased as a kind of
   \textbf{quantum recursion}, where each layer's fields are operators
   and the closure condition has to hold in a quantum sense (perhaps
@@ -203,23 +203,22 @@ future research can tackle them:
   the universe, might be naturally incorporated into the theory's state.
   Indeed, a speculative extension of TORUS introduces an
   \emph{Observer-State Quantum Number (OSQN)} to quantify the observer's
-  influence on quantum systems\hspace{0pt}. This would be a radical
-  shift from standard quantum mechanics, positing that even without
-  direct measurement, the mere structure of having an ``observer''
-  present could slightly alter a quantum system's behavior. Developing
-  this idea requires new theory (to embed observer states into the
-  recursion loop) and is controversial -- so much so that the TORUS team
-  has considered postponing an observer-focused extension to avoid
-  distracting from the core theory\hspace{0pt}. Nonetheless, it remains
-  a fascinating future direction. Whether via OSQN or other means,
-  integrating quantum principles fully into TORUS (and vice versa,
-  integrating TORUS ideas into quantum theory) is a grand challenge.
-  Success here could connect TORUS to ongoing quantum gravity programs
-  and even to quantum information science (seeing recursion as a form of
-  cosmic quantum error correction or self-referential quantum code,
-  perhaps). But until a clear framework is established, the exact
-  interplay between recursion and quantum uncertainty is an open
-  theoretical question.
+  influence on quantum systems​. This would be a radical shift from
+  standard quantum mechanics, positing that even without direct
+  measurement, the mere structure of having an ``observer'' present
+  could slightly alter a quantum system's behavior. Developing this idea
+  requires new theory (to embed observer states into the recursion loop)
+  and is controversial -- so much so that the TORUS team has considered
+  postponing an observer-focused extension to avoid distracting from the
+  core theory​. Nonetheless, it remains a fascinating future direction.
+  Whether via OSQN or other means, integrating quantum principles fully
+  into TORUS (and vice versa, integrating TORUS ideas into quantum
+  theory) is a grand challenge. Success here could connect TORUS to
+  ongoing quantum gravity programs and even to quantum information
+  science (seeing recursion as a form of cosmic quantum error correction
+  or self-referential quantum code, perhaps). But until a clear
+  framework is established, the exact interplay between recursion and
+  quantum uncertainty is an open theoretical question.
 \item
   \textbf{Explaining Remaining Mysteries of the Universe:} Finally, any
   unified theory must grapple with the outstanding puzzles that current
@@ -227,64 +226,64 @@ future research can tackle them:
   like the matter-antimatter asymmetry, the origin of cosmic initial
   conditions, and the nature of dark matter and dark energy. These
   topics were not deeply addressed in earlier chapters and remain
-  challenges for future research\hspace{0pt}. For example, our universe
-  has far more matter than antimatter -- could the TORUS recursion
-  inherently favor matter over antimatter? Perhaps certain recursion
-  boundary conditions break charge-parity (CP) symmetry in just the
-  right way to leave a small excess of matter\hspace{0pt}. This is
-  speculative, but if TORUS can naturally incorporate CP-violating
-  phases when connecting 13D back to 0D, it might provide an elegant
-  explanation for baryogenesis (matter creation) without needing ad-hoc
-  mechanisms. Similarly, \emph{dark matter} might find an explanation
-  within TORUS. One idea is that what we call dark matter effects (extra
-  gravitational attraction in galaxies) might not come from invisible
-  particles at all, but from \textbf{recursion-induced curvature} --
-  essentially, higher-dimensional influences mimicking dark matter
-  gravity\hspace{0pt}. Alternatively, if dark matter is particulate,
-  TORUS might constrain what it could be (for instance, a stable remnant
-  of some intermediate recursion layer that doesn't interact via
-  electromagnetism\hspace{0pt}). Future theoretical work should flesh
-  out these possibilities: does the recursion predict any new particle
-  species or persistent fields that could serve as dark matter? Or can
-  it modify gravity in a way that eliminates the need for dark matter?
-  Likewise, the \emph{initial conditions} of the universe -- why the Big
-  Bang had the conditions it did -- might be answered if the end of the
-  previous 13D cycle deterministically sets up the next 0D state. TORUS
-  implies a cosmic loop, but the details of a transition from 13D (end
-  of a universe) to 0D (birth of a new cycle) are still nebulous. Is
-  there a violent ``big bounce'' at 13D where the universe recycles, and
-  if so, what does TORUS say about that high-density state? Future
-  research might connect TORUS with inflationary cosmology or propose an
-  alternative to inflation that fits the recursive narrative. These
-  endeavors are challenging, as they venture into speculative territory.
-  Yet, TORUS provides a framework that encourages exploring such ideas
-  within one coherent model. In summary, there are numerous
-  \emph{phenomenological} mysteries that TORUS has yet to illuminate.
-  Tackling them will be an important test of whether the theory is not
-  just unifying in structure but also sufficiently rich to account for
-  all of reality's known quirks.
+  challenges for future research​. For example, our universe has far
+  more matter than antimatter -- could the TORUS recursion inherently
+  favor matter over antimatter? Perhaps certain recursion boundary
+  conditions break charge-parity (CP) symmetry in just the right way to
+  leave a small excess of matter​. This is speculative, but if TORUS can
+  naturally incorporate CP-violating phases when connecting 13D back to
+  0D, it might provide an elegant explanation for baryogenesis (matter
+  creation) without needing ad-hoc mechanisms. Similarly, \emph{dark
+  matter} might find an explanation within TORUS. One idea is that what
+  we call dark matter effects (extra gravitational attraction in
+  galaxies) might not come from invisible particles at all, but from
+  \textbf{recursion-induced curvature} -- essentially,
+  higher-dimensional influences mimicking dark matter gravity​.
+  Alternatively, if dark matter is particulate, TORUS might constrain
+  what it could be (for instance, a stable remnant of some intermediate
+  recursion layer that doesn't interact via electromagnetism​). Future
+  theoretical work should flesh out these possibilities: does the
+  recursion predict any new particle species or persistent fields that
+  could serve as dark matter? Or can it modify gravity in a way that
+  eliminates the need for dark matter? Likewise, the \emph{initial
+  conditions} of the universe -- why the Big Bang had the conditions it
+  did -- might be answered if the end of the previous 13D cycle
+  deterministically sets up the next 0D state. TORUS implies a cosmic
+  loop, but the details of a transition from 13D (end of a universe) to
+  0D (birth of a new cycle) are still nebulous. Is there a violent ``big
+  bounce'' at 13D where the universe recycles, and if so, what does
+  TORUS say about that high-density state? Future research might connect
+  TORUS with inflationary cosmology or propose an alternative to
+  inflation that fits the recursive narrative. These endeavors are
+  challenging, as they venture into speculative territory. Yet, TORUS
+  provides a framework that encourages exploring such ideas within one
+  coherent model. In summary, there are numerous \emph{phenomenological}
+  mysteries that TORUS has yet to illuminate. Tackling them will be an
+  important test of whether the theory is not just unifying in structure
+  but also sufficiently rich to account for all of reality's known
+  quirks.
 \end{itemize}
 
 To meet the above challenges, a structured research program for TORUS is
 envisioned. The creators of TORUS plan to pursue multiple parallel
 efforts to advance the theory. One crucial step is writing an
 \textbf{in-depth formal paper} detailing all the mathematical
-derivations behind TORUS\hspace{0pt}. This ``math foundation'' paper
-would present, for example, the 14-dimensional master equation or action
-principle from which the recursion-corrected Einstein and field
-equations can be derived, and prove key theorems (such as why exactly 14
-layers are required for consistency). Another planned effort is a
-\textbf{comparative review and critique response} document\hspace{0pt}.
-This would systematically compare TORUS to existing theories (expanding
-on the comparisons we touched on in Chapter 6 and Chapter 14) and
-address potential criticisms head-on. By simulating a dialogue with
-skeptics, such a paper ensures that TORUS is internally consistent and
-clears up possible misconceptions (for instance, clarifying how energy
-is conserved across cycles or why TORUS isn't just a reformulation of
+derivations behind TORUS​. This ``math foundation'' paper would present,
+for example, the 14-dimensional master equation or action principle from
+which the recursion-corrected Einstein and field equations can be
+derived, and prove key theorems (such as why exactly 14 layers are
+required for consistency). Another planned effort is a
+\textbf{comparative review and critique response} document​. This would
+systematically compare TORUS to existing theories (expanding on the
+comparisons we touched on in Chapter 6 and Chapter 14) and address
+potential criticisms head-on. By simulating a dialogue with skeptics,
+such a paper ensures that TORUS is internally consistent and clears up
+possible misconceptions (for instance, clarifying how energy is
+conserved across cycles or why TORUS isn't just a reformulation of
 earlier cyclic models). Finally, TORUS researchers may prepare
 \textbf{topic-specific supplements} focusing on particularly novel
-aspects\hspace{0pt}. One optional supplement could delve into the role
-of information and observers in TORUS, formalizing the OSQN concept in a
+aspects​. One optional supplement could delve into the role of
+information and observers in TORUS, formalizing the OSQN concept in a
 rigorous, testable way once the core theory is established. Another
 supplement might focus on cosmology, exploring TORUS's implications for
 the early universe and late-time acceleration in detail, and seeing how
@@ -312,18 +311,18 @@ resolve them:
   incorporates all fundamental interactions. At present, the integration
   of gravity and electromagnetism via recursion is well outlined, but
   the inclusion of the weak and strong nuclear forces is an outstanding
-  gap\hspace{0pt}. The challenge is to show that at certain recursion
-  layers, the equations of the electroweak theory and quantum
-  chromodynamics \emph{naturally} emerge. One theoretical issue is how
-  symmetry breaking (like the Higgs mechanism in the Standard Model)
-  would manifest in the recursive framework. Does the 3D→4D transition
-  or some other layer produce an effect analogous to the Higgs field
-  giving masses to W and Z bosons? Similarly, can the confinement of
-  quarks inside hadrons be seen as a recursion consequence at, say, the
-  level where spatial dimensions increase (perhaps 2D to 3D)? Without
-  answers, TORUS remains incomplete. Prioritizing this area means
-  developing a version of TORUS that includes non-Abelian gauge fields
-  in the higher-dimensional equations. For example, one might extend the
+  gap​. The challenge is to show that at certain recursion layers, the
+  equations of the electroweak theory and quantum chromodynamics
+  \emph{naturally} emerge. One theoretical issue is how symmetry
+  breaking (like the Higgs mechanism in the Standard Model) would
+  manifest in the recursive framework. Does the 3D→4D transition or some
+  other layer produce an effect analogous to the Higgs field giving
+  masses to W and Z bosons? Similarly, can the confinement of quarks
+  inside hadrons be seen as a recursion consequence at, say, the level
+  where spatial dimensions increase (perhaps 2D to 3D)? Without answers,
+  TORUS remains incomplete. Prioritizing this area means developing a
+  version of TORUS that includes non-Abelian gauge fields in the
+  higher-dimensional equations. For example, one might extend the
   recursion-modified Einstein field equations to include Yang--Mills
   fields for SU(2) and SU(3) and then attempt to solve the recursion
   closure conditions with those in place. This is mathematically
@@ -349,30 +348,30 @@ resolve them:
   theoretical issue to nail down. We hypothesize that if you slightly
   disturb the values of constants or the recursion relations, the system
   would settle back into the 14-layer equilibrium (making our universe's
-  constants a stable attractor)\hspace{0pt}. Demonstrating this might
-  require analyzing small perturbations in the recursion equations and
-  showing they damp out over the cycle. Both existence \emph{and}
-  uniqueness of the recursion solution are critical outstanding
-  questions. Addressing them will require advanced mathematical work:
-  constructing a high-dimensional phase space or potential function for
-  the recursion and proving it has a unique minimum corresponding to the
-  observed constants. Tools from nonlinear dynamics or fixed-point
-  theory might be applied here. Another facet is exploring whether some
-  \emph{other} number of dimensions could mathematically close a
-  recursion. We chose 14 (0--13D) guided by known constants and some
-  heuristic arguments about topological completeness\hspace{0pt}. But
-  could a 7-dimensional or 20-dimensional recursion make mathematical
-  sense? If yes, why don't we see those? Ensuring that 14 is the magic
-  number requires deeper understanding of the recursion algebra. One
-  approach is to formalize TORUS's recursion as an algebraic structure
-  -- indeed, an \textbf{algebraic appendix} has introduced a
-  High-dimensional Recursion Algebra (HRA) to encode the cycle
-  conditions -- and then prove that this algebra has a solution only for
-  cycle length 14\hspace{0pt}. Such a proof would cement the ``closed
-  torus'' as a necessity rather than an assumption. The priority here is
-  high, because the entire TORUS framework rests on the existence and
-  stability of that closed loop. Until it's proven, there's a
-  theoretical uncertainty at the core of the model.
+  constants a stable attractor)​. Demonstrating this might require
+  analyzing small perturbations in the recursion equations and showing
+  they damp out over the cycle. Both existence \emph{and} uniqueness of
+  the recursion solution are critical outstanding questions. Addressing
+  them will require advanced mathematical work: constructing a
+  high-dimensional phase space or potential function for the recursion
+  and proving it has a unique minimum corresponding to the observed
+  constants. Tools from nonlinear dynamics or fixed-point theory might
+  be applied here. Another facet is exploring whether some \emph{other}
+  number of dimensions could mathematically close a recursion. We chose
+  14 (0--13D) guided by known constants and some heuristic arguments
+  about topological completeness​. But could a 7-dimensional or
+  20-dimensional recursion make mathematical sense? If yes, why don't we
+  see those? Ensuring that 14 is the magic number requires deeper
+  understanding of the recursion algebra. One approach is to formalize
+  TORUS's recursion as an algebraic structure -- indeed, an
+  \textbf{algebraic appendix} has introduced a High-dimensional
+  Recursion Algebra (HRA) to encode the cycle conditions -- and then
+  prove that this algebra has a solution only for cycle length 14​. Such
+  a proof would cement the ``closed torus'' as a necessity rather than
+  an assumption. The priority here is high, because the entire TORUS
+  framework rests on the existence and stability of that closed loop.
+  Until it's proven, there's a theoretical uncertainty at the core of
+  the model.
 \item
   \textbf{Quantum Framework and the Nature of Recursion:} Another
   outstanding issue is the precise role of quantum theory in TORUS. Is
@@ -384,13 +383,13 @@ resolve them:
   context of quantum mechanics and quantum field theory. One issue is
   whether the recursion layers correspond to quantum corrections or if
   they need to be quantized themselves. For example, if we treat the
-  recursion operator \$\textbackslash mathcal\{R\}\$ as a classical
+  recursion operator \$\textbackslash{}mathcal\{R\}\$ as a classical
   transformation, we might be missing quantum fluctuations of the
   higher-dimensional fields. On the other hand, if we attempt to
   quantize the entire 14D system, we must confront the question of what
   the quantum state of the universe's recursion looks like. A promising
   way forward is to construct a \textbf{quantum field theoretic version}
-  of TORUS\hspace{0pt}. In such a formulation, each layer's fields
+  of TORUS​. In such a formulation, each layer's fields
   (electromagnetic, gravitational, etc.) would be quantum fields, and
   the recursion coupling would appear as additional interaction terms or
   constraints among them. This could lead to a rich structure of
@@ -400,25 +399,24 @@ resolve them:
   cross-scale influence. In fact, TORUS's inclusion of an
   observer-related element (through OSQN) implies a tiny departure from
   standard quantum theory: essentially a \emph{small nonlinear term}
-  that depends on the state of the observer-system
-  interaction\hspace{0pt}. This is a highly speculative aspect, but it
-  is outstanding in the sense that if TORUS is to claim a true unity of
-  physics, it must incorporate the observer and measurement process into
-  fundamental theory. Presently, standard quantum mechanics treats the
-  observer externally, while TORUS hints that the observer could be
-  embedded in the system's state (the ``observer-state
-  embedding'')\hspace{0pt}. The theoretical groundwork for this is far
-  from complete. It may border on the philosophical, but it yields
+  that depends on the state of the observer-system interaction​. This is
+  a highly speculative aspect, but it is outstanding in the sense that
+  if TORUS is to claim a true unity of physics, it must incorporate the
+  observer and measurement process into fundamental theory. Presently,
+  standard quantum mechanics treats the observer externally, while TORUS
+  hints that the observer could be embedded in the system's state (the
+  ``observer-state embedding'')​. The theoretical groundwork for this is
+  far from complete. It may border on the philosophical, but it yields
   testable questions like ``Does the mere presence of an observer induce
   calculable effects in a quantum system?'' TORUS has postulated an
-  effect at the \$10\^{}\{-6\}\$ level in certain setups\hspace{0pt},
-  but until a robust quantum formalism is built, this remains an
-  intriguing conjecture. In summary, clarifying the quantum nature of
-  TORUS is an outstanding task. The priority could be seen as moderate
-  -- core aspects of TORUS can be pursued classically in the near term,
-  but ultimately, a UTOE must reconcile with quantum principles. This
-  means that developing a quantum version of TORUS (or demonstrating
-  that the classical recursion naturally entails all quantum effects) is
+  effect at the \$10\^{}\{-6\}\$ level in certain setups​, but until a
+  robust quantum formalism is built, this remains an intriguing
+  conjecture. In summary, clarifying the quantum nature of TORUS is an
+  outstanding task. The priority could be seen as moderate -- core
+  aspects of TORUS can be pursued classically in the near term, but
+  ultimately, a UTOE must reconcile with quantum principles. This means
+  that developing a quantum version of TORUS (or demonstrating that the
+  classical recursion naturally entails all quantum effects) is
   essential for the theory's long-term viability.
 \item
   \textbf{Deepening the Mathematical Structure:} TORUS introduces novel
@@ -427,6 +425,7 @@ resolve them:
   physics. Fully fleshing out the mathematics of these structures is an
   ongoing task. For example, the High-dimensional Recursion Algebra
   (HRA) mentioned in the appendices provides a formal way to treat the
+<<<<<<< HEAD
   14 constants as an orbit under the recursion mapping\hspace{0pt}. One
   outstanding issue is to use such formalisms to derive conservation
   laws and check consistency. Early work using HRA suggests that if a
@@ -456,6 +455,36 @@ resolve them:
   needed is in the handling of the \textbf{Lambda (\Lambda)} and other
   recursion-modified terms. We introduced
   \$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$ (the
+=======
+  14 constants as an orbit under the recursion mapping​. One outstanding
+  issue is to use such formalisms to derive conservation laws and check
+  consistency. Early work using HRA suggests that if a quantity (like
+  total energy) is represented in the algebra, it will be conserved over
+  the full 14D cycle​ -- effectively proving a kind of generalized
+  energy conservation for the universe across cycles. This is
+  encouraging, but more needs to be done: all fundamental invariants
+  (energy, charge, momentum, etc.) should be examined in the context of
+  recursion. Is momentum in 13D mapping back to something in 0D? Does
+  charge conservation hold inherently due to the loop? The mathematics
+  here can get abstract, involving group theory and topology. One could
+  view the entire set of 14 layers as a single structure (a kind of
+  fiber bundle or principal bundle in geometric terms) that has a
+  torus-like topology. An outstanding theoretical question is whether
+  known mathematical classifications of manifolds or groups can identify
+  why a 14-fold structure is special. It might be fruitful to connect
+  TORUS to the theory of extra dimensions used in string theory or
+  Kaluza--Klein theory. In Kaluza--Klein, adding extra spatial
+  dimensions can unify forces; TORUS's difference is that its extra
+  ``dimensions'' are not all geometric -- some are constants or
+  parameters -- but mathematically one might treat them similarly.
+  Perhaps TORUS's recursion can be described as a \emph{bundle} where
+  the base space is our 4D spacetime and the fiber is a 10-dimensional
+  internal space cycling through physical constants. Exploring such a
+  picture could uncover constraints or symmetries we haven't noticed.
+  Another mathematical refinement needed is in the handling of the
+  \textbf{Lambda (\Lambda)} and other recursion-modified terms. We introduced
+  \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$ (the
+>>>>>>> 4f5eaae (Fix: robust Unicode/maths in LaTeX and explicit push to main in workflow)
   recursion-corrected cosmological term) by analogy, but a thorough
   derivation from first principles is still pending. Likewise, we have
   to ensure that the field equations with recursion terms do not violate
@@ -544,11 +573,11 @@ is that it provides multiple \textbf{concrete, testable predictions}
 across different domains of physics. Unlike some other unification
 schemes (for example, certain forms of string theory that operate at
 almost unreachable energy scales), TORUS makes predictions that current
-or near-future experiments could actually test\hspace{0pt}. This opens
-up a range of opportunities for empirical validation. In this section,
-we summarize the key predictions that TORUS has put forward which remain
-untested, and we highlight specific future experiments, observatories,
-or technologies that could confirm or falsify those predictions. We also
+or near-future experiments could actually test​. This opens up a range
+of opportunities for empirical validation. In this section, we summarize
+the key predictions that TORUS has put forward which remain untested,
+and we highlight specific future experiments, observatories, or
+technologies that could confirm or falsify those predictions. We also
 suggest strategies and priorities for these experimental efforts,
 recognizing that resources are finite and some tests will be easier to
 carry out than others. The overarching principle is to maximize
@@ -580,20 +609,19 @@ test them:
   far, observations have shown gravitational waves traveling at
   essentially the speed of light for all frequencies, but TORUS suggests
   there might be tiny differences that could be uncovered with more
-  sensitive analysis\hspace{0pt}. Additionally, by measuring
-  gravitational waves with networks of detectors, we can search for
-  polarization components that would indicate extra degrees of freedom
-  (a hint of the influence from additional recursion layers). This
-  effort is already underway -- scientists routinely check each new
-  gravitational wave event for anomalies. TORUS assigns this a
-  \emph{very high priority} because even a null result (no dispersion or
-  extra polarization) would significantly constrain the
-  theory\hspace{0pt}. In fact, if gravitational waves are observed to
-  always be non-dispersive to high precision, TORUS would either have to
-  adjust its parameters or might be ruled out. Conversely, if any
-  frequency-dependent speed or unusual polarization is detected (and not
-  explainable by mundane effects), it would be a groundbreaking
-  discovery possibly in TORUS's favor.
+  sensitive analysis​. Additionally, by measuring gravitational waves
+  with networks of detectors, we can search for polarization components
+  that would indicate extra degrees of freedom (a hint of the influence
+  from additional recursion layers). This effort is already underway --
+  scientists routinely check each new gravitational wave event for
+  anomalies. TORUS assigns this a \emph{very high priority} because even
+  a null result (no dispersion or extra polarization) would
+  significantly constrain the theory​. In fact, if gravitational waves
+  are observed to always be non-dispersive to high precision, TORUS
+  would either have to adjust its parameters or might be ruled out.
+  Conversely, if any frequency-dependent speed or unusual polarization
+  is detected (and not explainable by mundane effects), it would be a
+  groundbreaking discovery possibly in TORUS's favor.
 \item
   \textbf{Quantum Coherence Under Observation (Observer Effect in
   Quantum Mechanics):} Another bold prediction from TORUS is that the
@@ -604,39 +632,39 @@ test them:
   (as discussed in previous sections on OSQN). The prediction is that
   entangled particles or coherent quantum states will show tiny
   deviations in their behavior depending on whether an observer (or
-  measuring device) is present and how it is configured\hspace{0pt}.
-  Importantly, this is not the ordinary quantum collapse; it would be a
-  new effect beyond the standard quantum theory. \textbf{How to test:}
-  Physicists can design laboratory experiments with high control over
-  quantum systems. For example, take an entangled pair of particles
-  (photons or ions). Isolate one particle in a way that an ``observer''
-  can potentially interact with it (say, a sensor that can detect its
-  state, but we choose whether or not to turn the sensor on). The other
+  measuring device) is present and how it is configured​. Importantly,
+  this is not the ordinary quantum collapse; it would be a new effect
+  beyond the standard quantum theory. \textbf{How to test:} Physicists
+  can design laboratory experiments with high control over quantum
+  systems. For example, take an entangled pair of particles (photons or
+  ions). Isolate one particle in a way that an ``observer'' can
+  potentially interact with it (say, a sensor that can detect its state,
+  but we choose whether or not to turn the sensor on). The other
   particle is kept separate. According to TORUS, if the sensor
   (observer) is active, even if we don't actually record any
   measurement, the mere presence of this interaction could induce an
   extra decoherence or change in the entanglement correlations. By
   switching the observer on and off and gathering statistics over many
-  runs, one can see if there's a difference in the outcomes\hspace{0pt}.
-  Another setup is a classic double-slit experiment: let a which-path
-  detector observe the slits in some runs and be absent in others, and
-  see if there are any subtle differences in the interference pattern
-  beyond what quantum theory predicts. Modern quantum computing hardware
-  (like superconducting qubits or trapped ions) can be repurposed to
-  test this: they have high coherence, and one can introduce an
-  ``observer'' qubit or device in a controlled way to see if it affects
-  the system's phase coherence\hspace{0pt}. The challenge here is that
-  any effect is expected to be extremely small (TORUS's own estimates
-  might be on the order of one part in a million or less\hspace{0pt}).
-  But the technology for precise quantum measurements is rapidly
-  advancing, and even setting an upper bound on such effects is
-  valuable. The priority for these experiments is rated as \textbf{high}
-  -- they can be done with existing or near-term equipment, and a
-  positive result would revolutionize physics by indicating a breakdown
-  of standard quantum theory. A null result, on the other hand, would
-  constrain TORUS's parameter related to observer influence (or cast
-  doubt on the OSQN idea entirely). Either way, this is a fascinating
-  frontier where quantum foundations and TORUS intersect.
+  runs, one can see if there's a difference in the outcomes​. Another
+  setup is a classic double-slit experiment: let a which-path detector
+  observe the slits in some runs and be absent in others, and see if
+  there are any subtle differences in the interference pattern beyond
+  what quantum theory predicts. Modern quantum computing hardware (like
+  superconducting qubits or trapped ions) can be repurposed to test
+  this: they have high coherence, and one can introduce an ``observer''
+  qubit or device in a controlled way to see if it affects the system's
+  phase coherence​. The challenge here is that any effect is expected to
+  be extremely small (TORUS's own estimates might be on the order of one
+  part in a million or less​). But the technology for precise quantum
+  measurements is rapidly advancing, and even setting an upper bound on
+  such effects is valuable. The priority for these experiments is rated
+  as \textbf{high} -- they can be done with existing or near-term
+  equipment, and a positive result would revolutionize physics by
+  indicating a breakdown of standard quantum theory. A null result, on
+  the other hand, would constrain TORUS's parameter related to observer
+  influence (or cast doubt on the OSQN idea entirely). Either way, this
+  is a fascinating frontier where quantum foundations and TORUS
+  intersect.
 \item
   \textbf{Cosmological Large-Scale Structure Patterns:} TORUS's
   recursion implies that the universe might have a subtle \emph{toroidal
@@ -654,26 +682,25 @@ test them:
   of galaxies, which tells us how likely galaxies are to be at certain
   separations, and the power spectrum of density fluctuations. TORUS
   suggests looking for an unexpected bump or oscillation in these
-  statistics at very large scales (comparable to the horizon
-  size)\hspace{0pt}. For instance, there might be a slight excess of
-  galaxies separated by around one cosmic horizon diameter, which would
-  be weird in standard cosmology but could hint at a toroidal
-  wrap-around effect. Additionally, the \textbf{cosmic microwave
-  background (CMB)} -- the afterglow of the Big Bang -- contains
-  patterns of temperature fluctuations across the sky. TORUS might cause
-  alignments between certain large-angle patterns in the CMB and the
-  distribution of matter today\hspace{0pt}. Cross-correlating galaxy
-  maps with the CMB (from experiments like Planck or the upcoming Simons
-  Observatory) could reveal if both have a matching feature that
-  standard theory doesn't predict\hspace{0pt}. This is somewhat
-  speculative and pattern-finding in nature; thus the priority is marked
-  as **medium】. The data will be collected regardless (since these
-  surveys are happening for general cosmology), so the extra effort is
-  mainly in the analysis: applying ``TORUS filters'' to look for the
-  predicted harmonics or topology. If found, it would be a strong
-  indicator that our universe has a global self-consistency condition
-  (as TORUS posits). If nothing unusual is found, TORUS might still
-  survive (since such patterns could be subtle), but it would mean
+  statistics at very large scales (comparable to the horizon size)​. For
+  instance, there might be a slight excess of galaxies separated by
+  around one cosmic horizon diameter, which would be weird in standard
+  cosmology but could hint at a toroidal wrap-around effect.
+  Additionally, the \textbf{cosmic microwave background (CMB)} -- the
+  afterglow of the Big Bang -- contains patterns of temperature
+  fluctuations across the sky. TORUS might cause alignments between
+  certain large-angle patterns in the CMB and the distribution of matter
+  today​. Cross-correlating galaxy maps with the CMB (from experiments
+  like Planck or the upcoming Simons Observatory) could reveal if both
+  have a matching feature that standard theory doesn't predict​. This is
+  somewhat speculative and pattern-finding in nature; thus the priority
+  is marked as **medium】. The data will be collected regardless (since
+  these surveys are happening for general cosmology), so the extra
+  effort is mainly in the analysis: applying ``TORUS filters'' to look
+  for the predicted harmonics or topology. If found, it would be a
+  strong indicator that our universe has a global self-consistency
+  condition (as TORUS posits). If nothing unusual is found, TORUS might
+  still survive (since such patterns could be subtle), but it would mean
   there's no large-scale easy signal -- pushing the theory more toward
   the small-scale tests like those above.
 \item
@@ -693,9 +720,9 @@ test them:
   they fall with the same acceleration to extremely high precision.
   Missions like STE-Quest (a proposed space experiment) aim to compare
   free-fall of different atomic isotopes at the \$10\^{}\{-15\}\$ level
-  or better\hspace{0pt}. If TORUS-induced effects exist, one might see a
-  tiny discrepancy (one atom feels slightly different ``gravity'' due to
-  its different internal structure coupling into the recursion, for
+  or better​. If TORUS-induced effects exist, one might see a tiny
+  discrepancy (one atom feels slightly different ``gravity'' due to its
+  different internal structure coupling into the recursion, for
   example). Another approach is matter-wave interferometry: send
   increasingly large molecules or nanoparticles through a gravity field
   and see if their interference pattern deviates from expectations. If
@@ -707,14 +734,14 @@ test them:
   scale related to one of the intermediate constants). Experiments are
   already trying to create quantum superpositions of 10\^{}5 or 10\^{}6
   atomic mass unit objects; doing this in a controlled gravitational
-  field (or in free-fall) could be revealing\hspace{0pt}. The priority
-  of these tests is \textbf{medium}, mainly because they are very
-  challenging -- the technology is still being refined. Even a null
-  result (no deviation) is valuable: it would place limits on how much
-  TORUS's recursion effects can couple into low-mass
-  systems\hspace{0pt}. On the other hand, any anomaly in these precision
-  tests of gravity (even a tiny one) could be a sign that something like
-  TORUS is at play, bridging quantum physics and gravity in a new way.
+  field (or in free-fall) could be revealing​. The priority of these
+  tests is \textbf{medium}, mainly because they are very challenging --
+  the technology is still being refined. Even a null result (no
+  deviation) is valuable: it would place limits on how much TORUS's
+  recursion effects can couple into low-mass systems​. On the other
+  hand, any anomaly in these precision tests of gravity (even a tiny
+  one) could be a sign that something like TORUS is at play, bridging
+  quantum physics and gravity in a new way.
 \item
   \textbf{Precision Vacuum Measurements (Casimir and ``Zero-Point''
   Tests):} TORUS introduces additional fields and effects that might, in
@@ -726,28 +753,28 @@ test them:
   extra structure might cause subtle deviations in these well-studied
   effects. \textbf{How to test:} Perform Casimir force experiments at
   higher precision and shorter distances than ever before to search for
-  anomalies\hspace{0pt}. The Casimir effect is usually calculated with
-  quantum electrodynamics; if TORUS adds a new ingredient, the force
-  might differ by a tiny fraction from the expected value when plates
-  are extremely close (sub-micron separations). Similarly, ultra-stable
+  anomalies​. The Casimir effect is usually calculated with quantum
+  electrodynamics; if TORUS adds a new ingredient, the force might
+  differ by a tiny fraction from the expected value when plates are
+  extremely close (sub-micron separations). Similarly, ultra-stable
   optical cavities can detect tiny shifts in light frequency or
   additional noise that might come from modifications of vacuum energy.
   Some researchers have attempted to detect so-called ``holographic
   noise'' or Planck-scale fluctuations using interferometers -- TORUS is
   a different mechanism but any observed deviation from perfect
-  smoothness of space could hint at new physics\hspace{0pt}. As of now,
-  these experiments have not found any clear discrepancy, which already
+  smoothness of space could hint at new physics​. As of now, these
+  experiments have not found any clear discrepancy, which already
   constrains TORUS somewhat. Because no robust prediction from TORUS
   guarantees a big effect here (this is more of a fishing expedition for
-  any small inconsistency), the priority is \textbf{lower}\hspace{0pt}.
-  Still, improving the precision of vacuum measurements complements
-  other tests and could serendipitously catch an unexpected TORUS
-  signature. If, for example, a slight frequency drift in a resonant
-  cavity were observed that correlates with earth's position in the
-  solar system (just hypothetically, if some recursion effect tied to a
-  cosmic frame), it would be revolutionary. Absent such discoveries,
-  pushing these bounds simply tightens the possible space for TORUS's
-  parameters that affect vacuum physics.
+  any small inconsistency), the priority is \textbf{lower}​. Still,
+  improving the precision of vacuum measurements complements other tests
+  and could serendipitously catch an unexpected TORUS signature. If, for
+  example, a slight frequency drift in a resonant cavity were observed
+  that correlates with earth's position in the solar system (just
+  hypothetically, if some recursion effect tied to a cosmic frame), it
+  would be revolutionary. Absent such discoveries, pushing these bounds
+  simply tightens the possible space for TORUS's parameters that affect
+  vacuum physics.
 \item
   \textbf{Cross-Scale Consistency of Physical Constants:} One of TORUS's
   hallmark claims is that certain large-scale and small-scale constants
@@ -759,6 +786,7 @@ test them:
   than a specific experiment. It involves taking the latest and most
   precise measurements of fundamental constants (\alpha, \$G\$, etc.) and
   cosmological parameters (the Hubble constant, cosmic age, etc.) and
+<<<<<<< HEAD
   seeing if they satisfy TORUS's proposed formulas within error
   bars\hspace{0pt}. For instance, if future telescopes refine the age of
   the universe or the Hubble constant and those new values break the
@@ -774,6 +802,23 @@ test them:
   data collected for other purposes)\hspace{0pt}, but it remains an
   important consistency check. It ensures TORUS stays honest: the
   claimed cross-scale relations must continually match reality.
+=======
+  seeing if they satisfy TORUS's proposed formulas within error bars​.
+  For instance, if future telescopes refine the age of the universe or
+  the Hubble constant and those new values break the earlier noted TORUS
+  relation, that would be a blow to the theory. On the other hand, if
+  the relationship holds across improved data, it bolsters TORUS (though
+  one must be cautious, as such ``coincidences'' could still be just
+  numerical accidents). Additionally, long-term studies can see if
+  constants like \alpha or \$G\$ vary over time or space. TORUS in its
+  simplest form implies these constants are fixed by the recursion, so
+  finding any variation would force a theoretical adjustment or indicate
+  new physics. This line of inquiry has \emph{lower priority} in the
+  sense that it's mostly passive (using data collected for other
+  purposes)​, but it remains an important consistency check. It ensures
+  TORUS stays honest: the claimed cross-scale relations must continually
+  match reality.
+>>>>>>> 4f5eaae (Fix: robust Unicode/maths in LaTeX and explicit push to main in workflow)
 \end{itemize}
 
 \textbf{Strategies and Priorities:} To empirically vet TORUS, a
@@ -781,25 +826,24 @@ multi-pronged approach is best -- much as TORUS itself spans multiple
 domains, so should the testing. In the near term, the
 \textbf{gravitational wave tests} and \textbf{quantum coherence tests}
 stand out as high-priority because they are feasible now and have clear
-potential signatures\hspace{0pt}. Gravitational wave observatories are
-active and can be tuned to search for dispersion with only software and
-analysis improvements. Quantum observer-effect experiments require
-ingenuity but can be done with tabletop setups or existing quantum
-computers/labs. These offer relatively quick feedback: within a few
-years we could have results that either show hints of TORUS effects or
-put stringent limits. Medium-term (over the next decade),
-\textbf{cosmological surveys} and \textbf{quantum gravity experiments}
-(like atom interferometry in space or large-mass superpositions) will
-come into play\hspace{0pt}. As these projects gather data,
-TORUS-specific analyses should be integrated into their programs -- for
-instance, including TORUS's predictions in the science objectives of
-LISA (gravitational wave in space) or in the data analysis pipelines of
-Euclid and LSST (looking for topology signals). Long-term and
-opportunistic tests include the vacuum precision and constant-monitoring
-efforts\hspace{0pt}. These are the kind of experiments that might not
-show anything new 99\% of the time, but that 1\% chance of an anomaly
-makes them worth pursuing, especially since they push the boundaries of
-sensitivity in any case.
+potential signatures​. Gravitational wave observatories are active and
+can be tuned to search for dispersion with only software and analysis
+improvements. Quantum observer-effect experiments require ingenuity but
+can be done with tabletop setups or existing quantum computers/labs.
+These offer relatively quick feedback: within a few years we could have
+results that either show hints of TORUS effects or put stringent limits.
+Medium-term (over the next decade), \textbf{cosmological surveys} and
+\textbf{quantum gravity experiments} (like atom interferometry in space
+or large-mass superpositions) will come into play​. As these projects
+gather data, TORUS-specific analyses should be integrated into their
+programs -- for instance, including TORUS's predictions in the science
+objectives of LISA (gravitational wave in space) or in the data analysis
+pipelines of Euclid and LSST (looking for topology signals). Long-term
+and opportunistic tests include the vacuum precision and
+constant-monitoring efforts​. These are the kind of experiments that
+might not show anything new 99\% of the time, but that 1\% chance of an
+anomaly makes them worth pursuing, especially since they push the
+boundaries of sensitivity in any case.
 
 The TORUS research community should also be prepared to
 \textbf{interpret results} and update the theory accordingly. For
@@ -812,8 +856,7 @@ would become urgent, to fully explain and incorporate that result. In
 essence, each experimental outcome will guide the theoretical
 development -- a healthy interplay that will refine TORUS. This is the
 scientific method at its best: TORUS has been designed to be falsifiable
-and is now suggesting exactly how we might falsify or verify
-it\hspace{0pt}.
+and is now suggesting exactly how we might falsify or verify it​.
 
 By pursuing this slate of experiments and observations, we stand to
 either discover a trove of new physics or place strong constraints on

@@ -1,56 +1,57 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\author{}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
 \date{}
 
 \begin{document}
@@ -61,56 +62,54 @@
 
 In TORUS Theory, the existence and breaking of gauge symmetries are not
 just assumed \emph{a priori} -- they emerge naturally from the model's
-core principle of structured recursion\hspace{0pt}. The 0D--13D
-recursive cycle must self-consistently reproduce itself, and this
-requirement imposes symmetry conditions that manifest as the familiar
-gauge invariances once we look at the effective 4D physics\hspace{0pt}.
-In essence, at a sufficiently high recursion level all fundamental
-interactions are unified as one single, symmetric force. For example,
-around the 11-dimensional stage of the cycle (near the point of
-``unified coupling''), the theory can be thought of as having a single
-overarching symmetry that encompasses what will later become distinct
-gauge transformations\hspace{0pt}. One can imagine an abstract rotation
-in this high-dimensional internal space that simultaneously mixes the
-precursors of what in lower dimensions correspond to the \$SU(3)\$,
-\$SU(2)\$, and \$U(1)\$ charge directions\hspace{0pt}. In this unified
-11D state, there is effectively only one kind of ``charge'' and one
-force acting. As the recursion unfolds downward through the dimensional
-hierarchy toward the familiar 4D world, that master symmetry
-\emph{differentiates} into the separate gauge groups we
-observe\hspace{0pt}. In other words, the symmetry is
-\textbf{recursion-driven} -- it breaks in stages as a natural
-consequence of the system evolving through the recursion layers, rather
-than through an external field imposed by hand.
+core principle of structured recursion​. The 0D--13D recursive cycle
+must self-consistently reproduce itself, and this requirement imposes
+symmetry conditions that manifest as the familiar gauge invariances once
+we look at the effective 4D physics​. In essence, at a sufficiently high
+recursion level all fundamental interactions are unified as one single,
+symmetric force. For example, around the 11-dimensional stage of the
+cycle (near the point of ``unified coupling''), the theory can be
+thought of as having a single overarching symmetry that encompasses what
+will later become distinct gauge transformations​. One can imagine an
+abstract rotation in this high-dimensional internal space that
+simultaneously mixes the precursors of what in lower dimensions
+correspond to the \$SU(3)\$, \$SU(2)\$, and \$U(1)\$ charge directions​.
+In this unified 11D state, there is effectively only one kind of
+``charge'' and one force acting. As the recursion unfolds downward
+through the dimensional hierarchy toward the familiar 4D world, that
+master symmetry \emph{differentiates} into the separate gauge groups we
+observe​. In other words, the symmetry is \textbf{recursion-driven} --
+it breaks in stages as a natural consequence of the system evolving
+through the recursion layers, rather than through an external field
+imposed by hand.
 
 This mechanism is analogous in spirit to Grand Unified Theories (GUTs),
 where a large symmetry (like \$SU(5)\$) breaks into the Standard Model's
-\$SU(3)\textbackslash times SU(2)\textbackslash times U(1)\$. However,
+\$SU(3)\textbackslash{}times SU(2)\textbackslash{}times U(1)\$. However,
 TORUS achieves the split in a novel way: not via an arbitrary Higgs
 field introduced solely to break the symmetry, but through the intrinsic
-structure of recursion itself\hspace{0pt}. The high-dimensional
-recursion state already contains the seeds of the lower symmetries as
-internal invariants, so when the cycle ``descends'' to lower dimensional
-layers, those invariants appear as distinct gauge symmetries without
-requiring an independent symmetry-breaking mechanism\hspace{0pt}. In
-practical terms, if the unified 11D state is symmetric under a certain
-transformation, then that symmetry either persists or partitions as we
-move to, say, 7D or 4D. A portion of the original symmetry might
-manifest at one stage and another portion at a different stage, giving
-rise to the specific gauge groups (like \$SU(3)\$ or \$SU(2)\$) relevant
-at those levels\hspace{0pt}. Crucially, TORUS does not need to
-\emph{add} anything ad hoc to initiate this breakdown -- the
-\textbf{structured recursion itself} causes the symmetry to
-differentiate. If one attempted to omit these gauge symmetries from the
-theory, the recursion cycle would not close consistently; the unified
-state could not properly yield the distinct forces we see at lower
-energies\hspace{0pt}. Thus, TORUS provides a deeper explanation for why
-nature has the particular gauge groups it does: they are
-\textbf{inevitable outcomes} of requiring a unified, self-referential
-architecture. In effect, our observed forces' symmetries are ``shadows''
-or lower-dimensional cross-sections of a single higher-dimensional
-symmetry needed to complete the recursion\hspace{0pt}. This
-recursion-driven symmetry breaking framework sets the stage for how
+structure of recursion itself​. The high-dimensional recursion state
+already contains the seeds of the lower symmetries as internal
+invariants, so when the cycle ``descends'' to lower dimensional layers,
+those invariants appear as distinct gauge symmetries without requiring
+an independent symmetry-breaking mechanism​. In practical terms, if the
+unified 11D state is symmetric under a certain transformation, then that
+symmetry either persists or partitions as we move to, say, 7D or 4D. A
+portion of the original symmetry might manifest at one stage and another
+portion at a different stage, giving rise to the specific gauge groups
+(like \$SU(3)\$ or \$SU(2)\$) relevant at those levels​. Crucially,
+TORUS does not need to \emph{add} anything ad hoc to initiate this
+breakdown -- the \textbf{structured recursion itself} causes the
+symmetry to differentiate. If one attempted to omit these gauge
+symmetries from the theory, the recursion cycle would not close
+consistently; the unified state could not properly yield the distinct
+forces we see at lower energies​. Thus, TORUS provides a deeper
+explanation for why nature has the particular gauge groups it does: they
+are \textbf{inevitable outcomes} of requiring a unified,
+self-referential architecture. In effect, our observed forces'
+symmetries are ``shadows'' or lower-dimensional cross-sections of a
+single higher-dimensional symmetry needed to complete the recursion​.
+This recursion-driven symmetry breaking framework sets the stage for how
 TORUS reproduces the Standard Model forces in the next sections.
 
 \textbf{Section 6.2 --- \emph{Time-Asymmetry Lagrangian and Entropy
@@ -120,13 +119,14 @@ Ladder}}
 by adding a parity-odd bias that enforces a fixed entropy increment of
 ℏ⁄14 per recursion cycle. Let
 
-χ=χ(x,t),χ0=4.6692016  (Feigenbaum~δ)\textbackslash chi=\textbackslash chi(x,t),\textbackslash qquad
-\textbackslash chi\_0 =
-4.6692016\textbackslash;(\textbackslash text\{Feigenbaum \}
-\textbackslash delta)χ=χ(x,t),χ0\hspace{0pt}=4.6692016(Feigenbaum~δ)
+χ=χ(x,t),χ0=4.6692016  (Feigenbaum~δ)\textbackslash{}chi=\textbackslash{}chi(x,t),\textbackslash{}qquad
+\textbackslash{}chi\_0 =
+4.6692016\textbackslash{};(\textbackslash{}text\{Feigenbaum \}
+\textbackslash{}delta)χ=χ(x,t),χ0​=4.6692016(Feigenbaum~δ)
 
 and define the Lagrangian
 
+<<<<<<< HEAD
   L(χ)=12(∂tχ)2-λcosh⁡ ⁣(χχ0)  +  ε χ ∂tχ  (6-2-1)\textbackslash boxed\{\textbackslash;
 \textbackslash mathcal\{L\}(\textbackslash chi)=\textbackslash frac12(\textbackslash partial\_t\textbackslash chi)\^{}2-\textbackslash lambda\textbackslash cosh\textbackslash!\textbackslash Bigl(\textbackslash frac\{\textbackslash chi\}\{\textbackslash chi\_0\}\textbackslash Bigr)
 \textbackslash;+\textbackslash;\textbackslash varepsilon\textbackslash,\textbackslash chi\textbackslash,\textbackslash partial\_t\textbackslash chi
@@ -136,23 +136,34 @@ and define the Lagrangian
 with\\
 ε=ℏ14 λ\approx7.53×10-36\textbackslash displaystyle
 \textbackslash varepsilon=\textbackslash frac\{\textbackslash hbar\}\{14\textbackslash,\textbackslash lambda\}\textbackslash approx7.53\textbackslash times10\^{}\{-36\}ε=14λℏ\hspace{0pt}\approx7.53×10-36 (for
+=======
+  L(χ)=12(∂tχ)2-λcosh⁡ ⁣(χχ0)  +  ε χ ∂tχ  (6-2-1)\textbackslash{}boxed\{\textbackslash{};
+\textbackslash{}mathcal\{L\}(\textbackslash{}chi)=\textbackslash{}frac12(\textbackslash{}partial\_t\textbackslash{}chi)\^{}2-\textbackslash{}lambda\textbackslash{}cosh\textbackslash{}!\textbackslash{}Bigl(\textbackslash{}frac\{\textbackslash{}chi\}\{\textbackslash{}chi\_0\}\textbackslash{}Bigr)
+\textbackslash{};+\textbackslash{};\textbackslash{}varepsilon\textbackslash{},\textbackslash{}chi\textbackslash{},\textbackslash{}partial\_t\textbackslash{}chi
+\textbackslash{};\}
+\textbackslash{}tag\{6-2-1\}L(χ)=21​(∂t​χ)2-λcosh(χ0​χ​)+εχ∂t​χ​(6-2-1)
+
+with\\
+ε=ℏ14 λ\approx7.53×10-36\textbackslash{}displaystyle
+\textbackslash{}varepsilon=\textbackslash{}frac\{\textbackslash{}hbar\}\{14\textbackslash{},\textbackslash{}lambda\}\textbackslash{}approx7.53\textbackslash{}times10\^{}\{-36\}ε=14λℏ​\approx7.53×10-36 (for
+>>>>>>> 4f5eaae (Fix: robust Unicode/maths in LaTeX and explicit push to main in workflow)
 λ = 1).
 
 \textbf{Field equation.} Applying the Euler--Lagrange operator yields an
 asymmetric Klein--Gordon form
 
-d2χdt2+λχ0sinh⁡ ⁣(χχ0)=ε dχdt.(6-2-2)\textbackslash frac\{d\^{}2\textbackslash chi\}\{dt\^{}2\}+\textbackslash frac\{\textbackslash lambda\}\{\textbackslash chi\_0\}\textbackslash sinh\textbackslash!\textbackslash Bigl(\textbackslash frac\{\textbackslash chi\}\{\textbackslash chi\_0\}\textbackslash Bigr)=
-\textbackslash varepsilon\textbackslash,\textbackslash frac\{d\textbackslash chi\}\{dt\}.
-\textbackslash tag\{6-2-2\}dt2d2χ\hspace{0pt}+χ0\hspace{0pt}λ\hspace{0pt}sinh(χ0\hspace{0pt}χ\hspace{0pt})=εdtdχ\hspace{0pt}.(6-2-2)
+d2χdt2+λχ0sinh⁡ ⁣(χχ0)=ε dχdt.(6-2-2)\textbackslash{}frac\{d\^{}2\textbackslash{}chi\}\{dt\^{}2\}+\textbackslash{}frac\{\textbackslash{}lambda\}\{\textbackslash{}chi\_0\}\textbackslash{}sinh\textbackslash{}!\textbackslash{}Bigl(\textbackslash{}frac\{\textbackslash{}chi\}\{\textbackslash{}chi\_0\}\textbackslash{}Bigr)=
+\textbackslash{}varepsilon\textbackslash{},\textbackslash{}frac\{d\textbackslash{}chi\}\{dt\}.
+\textbackslash{}tag\{6-2-2\}dt2d2χ​+χ0​λ​sinh(χ0​χ​)=εdtdχ​.(6-2-2)
 
 \textbf{Noether current (time translation).}
 
-J0=12(∂tχ)2+λcosh⁡ ⁣(χχ0),J1=(∂tχ)(∂xχ)+εχ(∂xχ).(6-2-3)J\^{}0=\textbackslash tfrac12(\textbackslash partial\_t\textbackslash chi)\^{}2+\textbackslash lambda\textbackslash cosh\textbackslash!\textbackslash Bigl(\textbackslash frac\{\textbackslash chi\}\{\textbackslash chi\_0\}\textbackslash Bigr),\textbackslash qquad
-J\^{}1=(\textbackslash partial\_t\textbackslash chi)(\textbackslash partial\_x\textbackslash chi)+\textbackslash varepsilon\textbackslash chi(\textbackslash partial\_x\textbackslash chi).
-\textbackslash tag\{6-2-3\}J0=21\hspace{0pt}(∂t\hspace{0pt}χ)2+λcosh(χ0\hspace{0pt}χ\hspace{0pt}),J1=(∂t\hspace{0pt}χ)(∂x\hspace{0pt}χ)+εχ(∂x\hspace{0pt}χ).(6-2-3)
+J0=12(∂tχ)2+λcosh⁡ ⁣(χχ0),J1=(∂tχ)(∂xχ)+εχ(∂xχ).(6-2-3)J\^{}0=\textbackslash{}tfrac12(\textbackslash{}partial\_t\textbackslash{}chi)\^{}2+\textbackslash{}lambda\textbackslash{}cosh\textbackslash{}!\textbackslash{}Bigl(\textbackslash{}frac\{\textbackslash{}chi\}\{\textbackslash{}chi\_0\}\textbackslash{}Bigr),\textbackslash{}qquad
+J\^{}1=(\textbackslash{}partial\_t\textbackslash{}chi)(\textbackslash{}partial\_x\textbackslash{}chi)+\textbackslash{}varepsilon\textbackslash{}chi(\textbackslash{}partial\_x\textbackslash{}chi).
+\textbackslash{}tag\{6-2-3\}J0=21​(∂t​χ)2+λcosh(χ0​χ​),J1=(∂t​χ)(∂x​χ)+εχ(∂x​χ).(6-2-3)
 
 The parity-odd term skews the energy flux by\\
-Skew=εχ ∂tχ\textbackslash text\{Skew\}=\textbackslash varepsilon\textbackslash chi\textbackslash,\textbackslash partial\_t\textbackslash chiSkew=εχ∂t\hspace{0pt}χ,
+Skew=εχ ∂tχ\textbackslash{}text\{Skew\}=\textbackslash{}varepsilon\textbackslash{}chi\textbackslash{},\textbackslash{}partial\_t\textbackslash{}chiSkew=εχ∂t​χ,
 producing the observed 1⁄14-step entropy ladder (Fig. 6-2-1).
 
 \textbf{6.3 Emergent U(1), SU(2), and SU(3) Structures}
@@ -173,38 +184,37 @@ framework:
   antisymmetric component that behaves exactly like the electromagnetic
   field tensor. In a vacuum scenario, the recursion-modified field
   equations enforce a condition
-  \$\textbackslash nabla\^{}\textbackslash mu
-  \textbackslash Lambda\_\{\textbackslash text\{rec\},\textbackslash mu\textbackslash nu\}=0\$,
-  and when \$\textbackslash Lambda\_\{\textbackslash text\{rec\}\}\$
+  \$\textbackslash{}nabla\^{}\textbackslash{}mu
+  \textbackslash{}Lambda\_\{\textbackslash{}text\{rec\},\textbackslash{}mu\textbackslash{}nu\}=0\$,
+  and when \$\textbackslash{}Lambda\_\{\textbackslash{}text\{rec\}\}\$
   acquires an antisymmetric part
-  \$F\_\{\textbackslash mu\textbackslash nu\}\$, this condition becomes
-  \$\textbackslash nabla\^{}\textbackslash mu
-  F\_\{\textbackslash mu\textbackslash nu\}=0\$ -- precisely the
-  source-free Maxwell equation (one of Maxwell's equations)\hspace{0pt}.
-  Moreover, because \$F\_\{\textbackslash mu\textbackslash nu\}\$ arises
-  from a recursive potential, one can define a 4-potential
-  \$A\_\{\textbackslash mu\}\$ such that
-  \$F\_\{\textbackslash mu\textbackslash nu\}=\textbackslash partial\_\textbackslash mu
-  A\_\textbackslash nu - \textbackslash partial\_\textbackslash nu
-  A\_\textbackslash mu\$, automatically satisfying the absence of
-  magnetic monopoles\hspace{0pt}. In simpler terms, what appears to us
-  as the free electromagnetic field is, in TORUS, a \textbf{by-product
-  of recursion acting on gravity} -- a portion of the gravitational
-  recursion field oscillates in a way that yields the familiar electric
-  and magnetic fields\hspace{0pt}. Conceptually, this ties to a
-  fundamental phase symmetry at the beginning of the cycle. The 0D seed
-  of the recursion introduces a complex coupling (analogous to an
-  electric charge with a phase). The entire 14D cycle remains invariant
-  if this initial phase is rotated, which by the time we reach 4D
-  translates into the usual freedom to choose a local phase for charged
-  fields\hspace{0pt}. By Noether's theorem, such a phase invariance
-  implies a conserved charge and requires a gauge field (the photon
-  field) to mediate changes in that phase\hspace{0pt}. Thus, the
+  \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$, this condition
+  becomes \$\textbackslash{}nabla\^{}\textbackslash{}mu
+  F\_\{\textbackslash{}mu\textbackslash{}nu\}=0\$ -- precisely the
+  source-free Maxwell equation (one of Maxwell's equations)​. Moreover,
+  because \$F\_\{\textbackslash{}mu\textbackslash{}nu\}\$ arises from a
+  recursive potential, one can define a 4-potential
+  \$A\_\{\textbackslash{}mu\}\$ such that
+  \$F\_\{\textbackslash{}mu\textbackslash{}nu\}=\textbackslash{}partial\_\textbackslash{}mu
+  A\_\textbackslash{}nu - \textbackslash{}partial\_\textbackslash{}nu
+  A\_\textbackslash{}mu\$, automatically satisfying the absence of
+  magnetic monopoles​. In simpler terms, what appears to us as the free
+  electromagnetic field is, in TORUS, a \textbf{by-product of recursion
+  acting on gravity} -- a portion of the gravitational recursion field
+  oscillates in a way that yields the familiar electric and magnetic
+  fields​. Conceptually, this ties to a fundamental phase symmetry at
+  the beginning of the cycle. The 0D seed of the recursion introduces a
+  complex coupling (analogous to an electric charge with a phase). The
+  entire 14D cycle remains invariant if this initial phase is rotated,
+  which by the time we reach 4D translates into the usual freedom to
+  choose a local phase for charged fields​. By Noether's theorem, such a
+  phase invariance implies a conserved charge and requires a gauge field
+  (the photon field) to mediate changes in that phase​. Thus, the
   \$U(1)\$ gauge symmetry of electromagnetism emerges directly from a
   recursion invariant (a conserved phase/charge) and is carried by the
   photon, which appears in TORUS as a ripple in the recursion field.
 \item
-  \textbf{Weak Interaction -- \$SU(2)\_L \textbackslash times
+  \textbf{Weak Interaction -- \$SU(2)\_L \textbackslash{}times
   U(1)\_Y\$:} Another layer of the recursion gives rise to a
   two-component structure with an extra internal phase, naturally
   yielding an \$SU(2)\$ symmetry paired with a \$U(1)\$ -- the structure
@@ -213,53 +223,51 @@ framework:
   doublet: two interrelated states that can rotate into each other
   without changing the overall recursion configuration. This built-in
   twofold degeneracy corresponds to weak isospin, described by an
-  \$SU(2)\_L\$ symmetry acting on a doublet of states\hspace{0pt}.
-  Additionally, a separate phase-like symmetry at the same stage
-  functions analogously to the hypercharge \$U(1)\_Y\$ of the Standard
-  Model. At high energies (near the start of the recursion cycle), this
-  combined \$SU(2)\_L \textbackslash times U(1)\_Y\$ symmetry is
-  unbroken and intact, mirroring the Standard Model's electroweak
-  unification before spontaneous symmetry breaking occurs. TORUS does
-  not have to posit this structure -- it \textbf{falls out} of the
-  recursion mathematics as the solution requires a pair of coupled
-  components (the weak doublet) and an associated phase. As a result,
-  the three gauge bosons \$W\^{}+, W\^{}-, Z\^{}0\$ (associated with
-  \$SU(2)\_L\$) and the \$B\^{}0\$ boson (the mediator of \$U(1)\_Y\$)
-  are naturally present in the theory's internal states, poised to mix
-  and produce the observable weak-force carriers after symmetry breaking
-  (discussed in Section~6.3). In summary, TORUS's recursive architecture
-  inherently contains the electroweak gauge structure, with the correct
-  charges (isospin and hypercharge) and degrees of freedom required by
-  the Standard Model.
+  \$SU(2)\_L\$ symmetry acting on a doublet of states​. Additionally, a
+  separate phase-like symmetry at the same stage functions analogously
+  to the hypercharge \$U(1)\_Y\$ of the Standard Model. At high energies
+  (near the start of the recursion cycle), this combined \$SU(2)\_L
+  \textbackslash{}times U(1)\_Y\$ symmetry is unbroken and intact,
+  mirroring the Standard Model's electroweak unification before
+  spontaneous symmetry breaking occurs. TORUS does not have to posit
+  this structure -- it \textbf{falls out} of the recursion mathematics
+  as the solution requires a pair of coupled components (the weak
+  doublet) and an associated phase. As a result, the three gauge bosons
+  \$W\^{}+, W\^{}-, Z\^{}0\$ (associated with \$SU(2)\_L\$) and the
+  \$B\^{}0\$ boson (the mediator of \$U(1)\_Y\$) are naturally present
+  in the theory's internal states, poised to mix and produce the
+  observable weak-force carriers after symmetry breaking (discussed in
+  Section~6.3). In summary, TORUS's recursive architecture inherently
+  contains the electroweak gauge structure, with the correct charges
+  (isospin and hypercharge) and degrees of freedom required by the
+  Standard Model.
 \item
   \textbf{Strong Interaction -- \$SU(3)\_c\$:} At a slightly lower
   recursion layer (closer to the 4D end of the cycle), the recursion
   field splits into three equivalent components, a trifurcation that
-  gives rise to an \$SU(3)\$ symmetry\hspace{0pt}. Each of the three
-  components can be thought of as a precursor to a ``color'' charge
-  state, analogous to the red, green, and blue color charges of quantum
-  chromodynamics. The recursion's equations remain invariant if we
-  permute or rotate these three field components among themselves --
-  mathematically, this invariance is exactly an \$SU(3)\$ symmetry on an
-  internal triplet\hspace{0pt}. By writing down the recursion-augmented
-  Yang--Mills equations at this stage, one finds an eight-component
-  field strength tensor emerging, corresponding to the eight gluons of
-  the strong nuclear force\hspace{0pt}. In other words, what standard
-  physics calls the gluon field (carrying the strong force between
-  quarks) appears in TORUS as a natural outcome of a three-fold
-  degeneracy in the recursion field structure\hspace{0pt}. The model
+  gives rise to an \$SU(3)\$ symmetry​. Each of the three components can
+  be thought of as a precursor to a ``color'' charge state, analogous to
+  the red, green, and blue color charges of quantum chromodynamics. The
+  recursion's equations remain invariant if we permute or rotate these
+  three field components among themselves -- mathematically, this
+  invariance is exactly an \$SU(3)\$ symmetry on an internal triplet​.
+  By writing down the recursion-augmented Yang--Mills equations at this
+  stage, one finds an eight-component field strength tensor emerging,
+  corresponding to the eight gluons of the strong nuclear force​. In
+  other words, what standard physics calls the gluon field (carrying the
+  strong force between quarks) appears in TORUS as a natural outcome of
+  a three-fold degeneracy in the recursion field structure​. The model
   doesn't have to postulate separate ``color'' charge properties;
   instead, the need to have a self-consistent recursion cycle
   automatically introduces a triplet of states. The symmetry of
   exchanging these states is preserved, yielding the \$SU(3)\_c\$ gauge
-  symmetry and the associated gluon field dynamics\hspace{0pt}. Notably,
-  the emergence of an \$SU(3)\$ at this third recursion level
-  demonstrates that the strong force is generated by TORUS's internal
-  logic rather than being put in as an external element\hspace{0pt}.
-  Quarks in 4D physics are then understood as carrying combinations of
-  these recursion-based color states, and the gluons are the mediators
-  that keep the recursion triplet in balance, matching exactly the
-  behavior of QCD.
+  symmetry and the associated gluon field dynamics​. Notably, the
+  emergence of an \$SU(3)\$ at this third recursion level demonstrates
+  that the strong force is generated by TORUS's internal logic rather
+  than being put in as an external element​. Quarks in 4D physics are
+  then understood as carrying combinations of these recursion-based
+  color states, and the gluons are the mediators that keep the recursion
+  triplet in balance, matching exactly the behavior of QCD.
 \end{itemize}
 
 Through these recursive mechanisms, TORUS reproduces all three types of
@@ -271,17 +279,16 @@ recursive schema. The pattern of symmetry appearances across recursion
 levels aligns with observed physics: a unified electroweak force at high
 energy that contains \$SU(2)\_L\$ and \$U(1)\_Y\$, and a separate strong
 force \$SU(3)\_c\$, all descending from a single unified interaction at
-the top of the cycle\hspace{0pt}. All the group-theoretic subtleties --
-such as the existence of exactly three color charges, the doublet nature
-of weak isospin, and even quantitative details like the weak mixing
-angle -- are encoded in the recursion structure, not imposed
-externally\hspace{0pt}. By the time we reach the 4D world, the theory's
-internal symmetries manifest as the familiar gauge bosons (photon,
-\$W\^{}\textbackslash pm\$, \$Z\^{}0\$, and gluons) and their
-interactions, having been ``baked into'' the universe through the TORUS
-recursion process. This remarkable emergence of the Standard Model's
-gauge hierarchy from a single principle exemplifies TORUS's unifying
-power.
+the top of the cycle​. All the group-theoretic subtleties -- such as the
+existence of exactly three color charges, the doublet nature of weak
+isospin, and even quantitative details like the weak mixing angle -- are
+encoded in the recursion structure, not imposed externally​. By the time
+we reach the 4D world, the theory's internal symmetries manifest as the
+familiar gauge bosons (photon, \$W\^{}\textbackslash{}pm\$, \$Z\^{}0\$,
+and gluons) and their interactions, having been ``baked into'' the
+universe through the TORUS recursion process. This remarkable emergence
+of the Standard Model's gauge hierarchy from a single principle
+exemplifies TORUS's unifying power.
 
 \textbf{6.4 Higgs Mechanism via Recursive Symmetry Breaking}
 
@@ -290,9 +297,9 @@ the \$W\$ and \$Z\$ bosons and differentiates electromagnetism from the
 weak force -- is realized in TORUS through a \textbf{recursive Higgs
 mechanism}. In the Standard Model, a fundamental Higgs field develops a
 nonzero vacuum expectation value, which spontaneously breaks the
-\$SU(2)\_L \textbackslash times U(1)\emph{Y\$ symmetry down to
-\$U(1)}\{\textbackslash text\{em\}\}\$, endowing
-\$W\^{}\textbackslash pm\$ and \$Z\^{}0\$ with mass while leaving the
+\$SU(2)\_L \textbackslash{}times U(1)\emph{Y\$ symmetry down to
+\$U(1)}\{\textbackslash{}text\{em\}\}\$, endowing
+\$W\^{}\textbackslash{}pm\$ and \$Z\^{}0\$ with mass while leaving the
 photon massless. TORUS achieves the same end result, but the role of the
 Higgs field is played by an intrinsic mode of the recursion field
 itself.
@@ -300,23 +307,23 @@ itself.
 As the recursion progresses from the high-energy, symmetric state toward
 lower energies, one of the harmonic components of the recursion field
 naturally settles into a non-zero steady value -- effectively acting
-like a field acquiring a vacuum expectation value\hspace{0pt}. This
-happens as a stability condition of the recursion equations: the system
-``chooses'' a state that minimizes some effective potential or satisfies
-a self-consistency criterion, analogous to how the Higgs field in
+like a field acquiring a vacuum expectation value​. This happens as a
+stability condition of the recursion equations: the system ``chooses'' a
+state that minimizes some effective potential or satisfies a
+self-consistency criterion, analogous to how the Higgs field in
 conventional physics adopts a constant value to minimize its potential
-energy\hspace{0pt}. When this occurs, the internal \$SU(2)\_L
-\textbackslash times U(1)\emph{Y\$ symmetry of that recursion layer is
-spontaneously broken. In technical terms, the degeneracy between the two
-recursion components (the weak isospin doublet) is lifted because one
-component (or a combination of them) now has a persistent non-zero
-amplitude. The symmetry that allowed rotations between those components
-is no longer exact -- it ``breaks'' -- leaving only a residual \$U(1)\$
-symmetry untouched. That remaining \$U(1)\$ corresponds precisely to
+energy​. When this occurs, the internal \$SU(2)\_L \textbackslash{}times
+U(1)\emph{Y\$ symmetry of that recursion layer is spontaneously broken.
+In technical terms, the degeneracy between the two recursion components
+(the weak isospin doublet) is lifted because one component (or a
+combination of them) now has a persistent non-zero amplitude. The
+symmetry that allowed rotations between those components is no longer
+exact -- it ``breaks'' -- leaving only a residual \$U(1)\$ symmetry
+untouched. That remaining \$U(1)\$ corresponds precisely to
 electromagnetic gauge invariance,
-\$U(1)}\{\textbackslash text\{em\}\}\$\hspace{0pt}. This mirrors
-electroweak symmetry breaking in the Standard Model: out of \$SU(2)\_L
-\textbackslash times U(1)\_Y\$, only the \$U(1)\$ of electromagnetism
+\$U(1)}\{\textbackslash{}text\{em\}\}\$​. This mirrors electroweak
+symmetry breaking in the Standard Model: out of \$SU(2)\_L
+\textbackslash{}times U(1)\_Y\$, only the \$U(1)\$ of electromagnetism
 survives after the Higgs field (in this case, the recursion mode) takes
 on a vacuum value.
 
@@ -324,24 +331,23 @@ The consequences of this recursive symmetry breaking align exactly with
 what we observe. The three gauge bosons associated with \$SU(2)\_L\$ and
 the one from \$U(1)\emph{Y\$ mix among each other, reorganizing into
 four physical gauge bosons: \$W\^{}+\$, \$W\^{}-\$, \$Z\^{}0\$, and
-\$\textbackslash gamma\$ (the photon)\hspace{0pt}. In TORUS, this mixing
-and mass-generating process comes out of the mathematics of the
-recursion -- the mass terms for the \$W\$ and \$Z\$ arise from couplings
-to the recursion mode's nonzero background value, just as they would
-from a traditional Higgs field vacuum value. The photon, which
-corresponds to the unbroken \$U(1)}\{\textbackslash text\{em\}\}\$,
-emerges as a massless excitation of the field, whereas the \$W\^{}+\$,
-\$W\^{}-\$, and \$Z\^{}0\$ emerge as massive excitations (their
-associated fields now have extra ``restoring force'' due to the broken
-symmetry, which manifests as mass)\hspace{0pt}. Even quantitative
-details are naturally reproduced -- for instance, the mixing angle that
-dictates the exact combination of the original electroweak bosons to
-form the physical \$W\$ and \$Z\$ (the Weinberg angle) is determined by
-parameters in the recursion framework\hspace{0pt}. TORUS's equations
-predict a specific ratio of how the \$SU(2)\$ and \$U(1)\$ factors
-combine, paralleling the Standard Model's relation between the
-electromagnetic coupling, the weak coupling, and the mixing
-angle\hspace{0pt}. All of this occurs without explicitly inserting a
+\$\textbackslash{}gamma\$ (the photon)​. In TORUS, this mixing and
+mass-generating process comes out of the mathematics of the recursion --
+the mass terms for the \$W\$ and \$Z\$ arise from couplings to the
+recursion mode's nonzero background value, just as they would from a
+traditional Higgs field vacuum value. The photon, which corresponds to
+the unbroken \$U(1)}\{\textbackslash{}text\{em\}\}\$, emerges as a
+massless excitation of the field, whereas the \$W\^{}+\$, \$W\^{}-\$,
+and \$Z\^{}0\$ emerge as massive excitations (their associated fields
+now have extra ``restoring force'' due to the broken symmetry, which
+manifests as mass)​. Even quantitative details are naturally reproduced
+-- for instance, the mixing angle that dictates the exact combination of
+the original electroweak bosons to form the physical \$W\$ and \$Z\$
+(the Weinberg angle) is determined by parameters in the recursion
+framework​. TORUS's equations predict a specific ratio of how the
+\$SU(2)\$ and \$U(1)\$ factors combine, paralleling the Standard Model's
+relation between the electromagnetic coupling, the weak coupling, and
+the mixing angle​. All of this occurs without explicitly inserting a
 Higgs \emph{particle} by hand; the \textbf{role of the Higgs is played
 by the recursion field's behavior}.
 
@@ -354,16 +360,16 @@ be identified with the 125~GeV Higgs observed at CERN), but that
 scalar's existence and its effects (like giving mass to other particles)
 come from the dynamics of recursion rather than a separate put-in scalar
 field. Thus, TORUS embraces the Higgs mechanism as a \textbf{natural
-byproduct of recursive symmetry breaking}\hspace{0pt}. The theory
-inherently supplies what the Standard Model had to add manually: a
-trigger for electroweak symmetry breaking. By doing so, it generates the
-masses for the weak bosons (and, by similar coupling principles, masses
-for fermions as well) in a manner consistent with all known data, but
-with the philosophical advantage that the symmetry breaking is an
-outcome of deeper first principles. In summary, the Higgs mechanism in
-TORUS is not an external module but an \textbf{emergent phenomenon} -- a
-sign that the recursion-based architecture is functioning correctly to
-produce a low-energy world with separated forces and massive particles.
+byproduct of recursive symmetry breaking}​. The theory inherently
+supplies what the Standard Model had to add manually: a trigger for
+electroweak symmetry breaking. By doing so, it generates the masses for
+the weak bosons (and, by similar coupling principles, masses for
+fermions as well) in a manner consistent with all known data, but with
+the philosophical advantage that the symmetry breaking is an outcome of
+deeper first principles. In summary, the Higgs mechanism in TORUS is not
+an external module but an \textbf{emergent phenomenon} -- a sign that
+the recursion-based architecture is functioning correctly to produce a
+low-energy world with separated forces and massive particles.
 
 \textbf{6.5 Complete Unification of Gravity, Quantum Mechanics, and
 Standard Model Forces}
@@ -374,29 +380,28 @@ arising from a single recursive schema, TORUS presents a truly
 sections, we saw that the structured recursion yields general relativity
 in the large-scale limit, electromagnetic and nuclear forces at the
 appropriate smaller scales, and the mechanism of mass generation -- all
-from one underlying set of principles\hspace{0pt}. This means that,
-unlike in historical paradigms, we are not treating gravity as separate
-from quantum physics or treating the forces as disconnected pieces.
-Instead, \textbf{every interaction is a manifestation of the same
-recursive geometric tapestry}, just appearing at different layers or
-energy scales of the cycle\hspace{0pt}. Gravity (curvature of
-spacetime), electromagnetism, the weak and strong nuclear forces, and
-even thermodynamic and cosmological effects can all be traced to one
-source in TORUS: the recursive interplay of a 14-dimensional spacetime
-structure with itself. In more concrete terms, what Einstein's field
-equations describe as curvature (gravity) gets augmented in TORUS by
-recursion terms that \emph{simultaneously} give rise to classical
-electromagnetic fields and beyond\hspace{0pt}. Those same recursion
-dynamics enforce internal symmetries that become the \$SU(2)\$ and
-\$SU(3)\$ gauge fields. The \textbf{quantum-mechanical} aspects -- such
-as the existence of discrete quanta and uncertainty -- enter through
-built-in constants like \$\textbackslash hbar\$ at specific recursion
-layers, ensuring that quantum behavior is part of the fabric from the
-start\hspace{0pt}. In short, TORUS weaves what we call gravity and what
-we call quantum field theory into \textbf{one coherent theoretical
-structure}, thereby overcoming the long-standing incompatibilities
-between Einstein's General Relativity and the quantum-based Standard
-Model.
+from one underlying set of principles​. This means that, unlike in
+historical paradigms, we are not treating gravity as separate from
+quantum physics or treating the forces as disconnected pieces. Instead,
+\textbf{every interaction is a manifestation of the same recursive
+geometric tapestry}, just appearing at different layers or energy scales
+of the cycle​. Gravity (curvature of spacetime), electromagnetism, the
+weak and strong nuclear forces, and even thermodynamic and cosmological
+effects can all be traced to one source in TORUS: the recursive
+interplay of a 14-dimensional spacetime structure with itself. In more
+concrete terms, what Einstein's field equations describe as curvature
+(gravity) gets augmented in TORUS by recursion terms that
+\emph{simultaneously} give rise to classical electromagnetic fields and
+beyond​. Those same recursion dynamics enforce internal symmetries that
+become the \$SU(2)\$ and \$SU(3)\$ gauge fields. The
+\textbf{quantum-mechanical} aspects -- such as the existence of discrete
+quanta and uncertainty -- enter through built-in constants like
+\$\textbackslash{}hbar\$ at specific recursion layers, ensuring that
+quantum behavior is part of the fabric from the start​. In short, TORUS
+weaves what we call gravity and what we call quantum field theory into
+\textbf{one coherent theoretical structure}, thereby overcoming the
+long-standing incompatibilities between Einstein's General Relativity
+and the quantum-based Standard Model.
 
 One of the most significant implications of this unified architecture is
 that the traditional gaps and conflicts between frameworks disappear.
@@ -406,25 +411,25 @@ the forces (such as GUTs) faced major obstacles. In TORUS, these
 challenges are addressed at a fundamental level. For instance, Loop
 Quantum Gravity (LQG) quantizes spacetime but does not incorporate other
 forces, whereas TORUS incorporates gravity \emph{and} gauge forces
-together by treating them as different facets of the same
-recursion\hspace{0pt}. The recursion-modified Einstein equations in
-TORUS effectively play the role that quantized loops do in LQG, but with
-the advantage that \textbf{matter and gauge fields emerge simultaneously
-from the same equations} rather than being added in later. This means
-TORUS provides a built-in route to quantum gravity: the feedback of
-recursion can be viewed as a quantization of geometry that naturally
-produces forces and particles as part of the package. The Planck scale
-(the realm where quantum gravity becomes important) is explicitly part
-of TORUS's cycle -- it corresponds to the transition between 1D and 3D
-layers in the hierarchy -- so quantum gravitational effects are
-integrated at the proper scale by design\hspace{0pt}. There is no
-mystery about how to merge the Planck-scale physics with lower-energy
-physics because in TORUS they are all woven into the same continuous
-recursion. Classical spacetime itself is an \textbf{emergent} concept
-here: by the time the recursion reaches 4D, the cumulative effect of all
-those layers above produces the smooth spacetime and fields we
-experience, but underneath it is a higher-dimensional, cyclic
-scaffolding that is fundamentally quantum-mechanical.
+together by treating them as different facets of the same recursion​.
+The recursion-modified Einstein equations in TORUS effectively play the
+role that quantized loops do in LQG, but with the advantage that
+\textbf{matter and gauge fields emerge simultaneously from the same
+equations} rather than being added in later. This means TORUS provides a
+built-in route to quantum gravity: the feedback of recursion can be
+viewed as a quantization of geometry that naturally produces forces and
+particles as part of the package. The Planck scale (the realm where
+quantum gravity becomes important) is explicitly part of TORUS's cycle
+-- it corresponds to the transition between 1D and 3D layers in the
+hierarchy -- so quantum gravitational effects are integrated at the
+proper scale by design​. There is no mystery about how to merge the
+Planck-scale physics with lower-energy physics because in TORUS they are
+all woven into the same continuous recursion. Classical spacetime itself
+is an \textbf{emergent} concept here: by the time the recursion reaches
+4D, the cumulative effect of all those layers above produces the smooth
+spacetime and fields we experience, but underneath it is a
+higher-dimensional, cyclic scaffolding that is fundamentally
+quantum-mechanical.
 
 TORUS's unification also sidesteps the need for a separate Grand Unified
 Theory energy threshold. In conventional GUTs, one imagines a very high
@@ -433,25 +438,24 @@ energy (around \$10\^{}\{16\}\$ GeV) where \$SU(3)\$, \$SU(2)\$, and
 often leading to unobserved phenomena (for example, proton decay or
 magnetic monopoles) when that symmetry breaks. TORUS, by contrast,
 \textbf{does not introduce a larger intermediate gauge group} at some
-speculative energy\hspace{0pt}. The unification of forces happens as a
-natural consequence of the recursion at the Planck scale (and above, in
-the dimensional hierarchy), meaning there isn't a separate unification
+speculative energy​. The unification of forces happens as a natural
+consequence of the recursion at the Planck scale (and above, in the
+dimensional hierarchy), meaning there isn't a separate unification
 energy beyond reach -- the Planck scale is the highest energy in play,
-and it's already part of the model's architecture\hspace{0pt}. This
-approach neatly avoids the classic GUT pitfalls: since the Standard
-Model forces emerge from recursion modes rather than from a single
-super-symmetry that has to break, TORUS does not inherently predict
-proton decay or other exotic GUT signatures that have so far not been
-observed\hspace{0pt}. Any such phenomena would have to be accounted for
-by the recursion dynamics (for example, if the recursion somehow
-prevents baryon number violation, then proton decay is naturally
-absent), which means the theory stays safely in line with current
-experimental facts while still joining the forces in principle. In
-effect, TORUS achieves the goal that GUTs set out to accomplish --
-unifying the electroweak and strong interactions -- \emph{and} it brings
-gravity into the fold at the same time. It does so without the excess
-baggage of unwanted predictions or the need for new physics at energies
-we may never access\hspace{0pt}.
+and it's already part of the model's architecture​. This approach neatly
+avoids the classic GUT pitfalls: since the Standard Model forces emerge
+from recursion modes rather than from a single super-symmetry that has
+to break, TORUS does not inherently predict proton decay or other exotic
+GUT signatures that have so far not been observed​. Any such phenomena
+would have to be accounted for by the recursion dynamics (for example,
+if the recursion somehow prevents baryon number violation, then proton
+decay is naturally absent), which means the theory stays safely in line
+with current experimental facts while still joining the forces in
+principle. In effect, TORUS achieves the goal that GUTs set out to
+accomplish -- unifying the electroweak and strong interactions --
+\emph{and} it brings gravity into the fold at the same time. It does so
+without the excess baggage of unwanted predictions or the need for new
+physics at energies we may never access​.
 
 In conclusion, the TORUS theory's recursion-based architecture offers a
 \textbf{complete unification} of fundamental forces. Gravity is no
@@ -467,11 +471,11 @@ are necessary threads in the recursive TORUS tapestry that binds the
 microcosm to the macrocosm. Through this unification, TORUS moves closer
 to the long-sought goal of a Theory of Everything, encapsulating the
 universe's forces, particles, and spacetime into one elegant,
-self-consistent picture\hspace{0pt}. The hope is that this picture will
-not remain just theoretical -- TORUS's unified approach suggests new
-ways to test the connections between gravity and quantum phenomena, and
-it points toward observable consequences (from cosmology to particle
-physics) that can either validate or refute this profound unification of
-fundamental forces.
+self-consistent picture​. The hope is that this picture will not remain
+just theoretical -- TORUS's unified approach suggests new ways to test
+the connections between gravity and quantum phenomena, and it points
+toward observable consequences (from cosmology to particle physics) that
+can either validate or refute this profound unification of fundamental
+forces.
 
 \end{document}
