@@ -34,8 +34,17 @@ jobs:
           done
 
       # ─── duplicate-filename guard ───────────────────────────────────────
-      - name: Check for duplicate filenames
+      - name: Check for duplicate filenames (excluding .keep)
         run: |
-          if find docs/ -type f | sed 's!.*/!!' | sort | uniq -d | grep -q .; then
-            echo "Duplicate filenames detected!"; exit 1;
+          # Build list of duplicates but drop '.keep'
+          dups=$(find docs/ -type f \
+                 | sed 's!.*/!!' \
+                 | grep -v '^\.keep$' \
+                 | sort | uniq -d)
+          if [ -n "$dups" ]; then
+            echo "Duplicate filenames detected:"
+            echo "$dups"
+            exit 1
+          else
+            echo "No duplicate filenames (except .keep) found."
           fi
