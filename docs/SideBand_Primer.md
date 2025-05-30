@@ -1,33 +1,35 @@
-# Recursion-Based Side-Band Prediction: A Primer
+# Recursion-Based Side-Band Prediction in a Nutshell
 
-## Introduction
+## What Are Recursion-Induced Side-Bands?
 
-The TORUS Theory predicts the emergence of side-bands in the Fourier spectrum of pair-correlation functions due to its recursion-based structure. This primer explains the physical intuition, mathematical derivation, and practical detection of the side-band, focusing on the prediction at $k_1 = k_0(1+1/14)$, where $k_0$ is the primary spatial frequency.
+In structured optical or atomic interference systems described by the TORUS theory, the emergence of side-bands in the Fourier spectrum of pair-correlation functions is predicted. These side-bands result from the recursion-based structure of the system. The most notable side-band appears at $k_1 = k_0(1+1/14)$, where $k_0$ is the primary spatial frequency.
 
 ---
 
 ## 1. Physical Intuition
 
-In a system with recursive symmetry, such as those described by TORUS, the fundamental spatial frequency $k_0$ is not isolated. Instead, the recursive structure induces harmonics and side-bands at predictable offsets. The most robust and universal of these is the side-band at $k_1 = k_0(1+1/14)$, corresponding to the 14-layer closure of the TORUS recursion.
+The TORUS theory suggests that in systems with recursive symmetry, the fundamental spatial frequency $k_0$ is accompanied by harmonics and side-bands at regular intervals. The side-band at $k_1 = k_0(1+1/14)$ is particularly significant as it corresponds to the 14-layer closure of the TORUS recursion.
 
 - **$k_0$**: Primary spatial frequency (e.g., lattice or Talbot period)
-- **$k_1$**: Side-band frequency predicted by recursion
+- **$k_1$**: Side-band frequency, as predicted by the recursion
 
-The side-band is a direct signature of the recursive closure and is not expected in non-recursive (random or classical) systems.
+The presence of this side-band serves as a hallmark of the recursive structure inherent in TORUS, distinguishing it from non-recursive systems.
 
 ---
 
 ## 2. Mathematical Derivation
 
-Let $g^{(2)}(r)$ be the pair-correlation function of a spatial point process (e.g., atom positions, photon detections). Its Fourier transform $G^{(2)}(k)$ reveals dominant spatial frequencies.
+Consider the pair-correlation function $g^{(2)}(r)$ of a spatial point process, such as the positions of atoms or the detections of photons. The Fourier transform of this function, $G^{(2)}(k)$, exposes the dominant spatial frequencies within the system.
 
 ### 2.1. Fourier Transform of Pair Correlation
+
+The Fourier transform is given by:
 
 $$
 G^{(2)}(k) = \int g^{(2)}(r) e^{-ikr} dr
 $$
 
-For a periodic or quasi-periodic structure, $G^{(2)}(k)$ has a peak at $k_0$. In TORUS, recursion modifies the structure so that a secondary peak appears at
+For structures that are periodic or quasi-periodic, $G^{(2)}(k)$ will typically show a peak at the primary frequency $k_0$. However, due to the effects of recursion in TORUS, a secondary peak emerges at
 
 $$
 k_1 = k_0 \left(1 + \frac{1}{14}\right)
@@ -35,7 +37,7 @@ $$
 
 ### 2.2. Side-Band Amplitude
 
-The amplitude of the side-band, $A_1$, relative to the main peak $A_0$, is predicted to be small but robust. For synthetic data, a typical injected amplitude is 7%:
+The relative amplitude of the side-band, denoted as $A_1$, compared to the main peak $A_0$, is generally small but can be reliably detected. For instance, in synthetic data, a common injected amplitude for the side-band is 7% of that of the main peak:
 
 $$
 A_1 = 0.07 \times A_0
@@ -43,29 +45,31 @@ $$
 
 ### 2.3. Detection Criterion
 
-Define the power spectrum $P(k) = |G^{(2)}(k)|^2$. The detection metric is
+To identify the presence of the side-band, we analyze the power spectrum defined as $P(k) = |G^{(2)}(k)|^2$. The metric for detection is
 
 $$
 \Delta P = 10 \log_{10} \left( \frac{P(k_1)}{P(k_0)} \right )
 $$
 
-A value of $-45 < \Delta P < -25$ dB is considered TORUS-POSITIVE.
+A system is considered TORUS-POSITIVE if it exhibits a $\Delta P$ value in the range of $-45 < \Delta P < -25$ dB.
 
 ---
 
 ## 3. Practical Detection Pipeline
 
-1. **Collect (x, y) snapshots** of the system.
-2. **Compute $g^{(2)}(r)$** by binning pairwise distances.
-3. **Fourier transform** $g^{(2)}(r)$ to obtain $G^{(2)}(k)$.
-4. **Locate $k_0$** (main peak) and $k_1$ (side-band).
-5. **Compute $\Delta P$** and apply the detection criterion.
+The following steps outline the process for detecting the predicted side-band in experimental or simulated data:
+
+1. **Collect (x, y) snapshots** of the system under investigation.
+2. **Compute $g^{(2)}(r)$** by analyzing and binning the pairwise distances between points.
+3. **Fourier transform** the computed $g^{(2)}(r)$ to obtain $G^{(2)}(k)$.
+4. **Identify $k_0$** (the location of the main peak) and $k_1$ (the location of the side-band).
+5. **Calculate $\Delta P$** and evaluate it against the detection criterion.
 
 ---
 
 ## 4. Example SVG Figure
 
-Below is a schematic SVG showing the main peak and side-band in the power spectrum:
+The following SVG graphic illustrates a typical power spectrum showing both the main peak and the side-band:
 
 ```svg
 <svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
