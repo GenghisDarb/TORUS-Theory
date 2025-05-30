@@ -1,0 +1,48 @@
+name: CI Full
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Verify CI skeleton
+        run: echo "CI skeleton OK"
+
+      # ─── DOCX presence (warning-only) ──────────────────────────
+      - name: Validate chapters folder
+        run: |
+          if [ ! -d "docs/book/chapters/" ]; then
+            echo "Warning: docs/book/chapters/ folder is missing."
+          elif ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
+            echo "Warning: No DOCX files found in docs/book/chapters/."
+          fi
+
+      # ─── supplements & experiments must exist ─────────────────
+      - name: Validate supplements and experiments folders
+        run: |
+          for folder in docs/supplements docs/experiments; do
+            if [ ! -d "$folder" ]; then
+              echo "$folder does not exist!"; exit 1
+            fi
+          done
+
+      # ─── duplicate-filename guard (skip .keep) ────────────────
+      - name: Check for duplicate filenames (excluding .keep)
+        run: |
+          dups=$(find docs/ -type f \
+                 | sed 's!.*/!!' \
+                 | grep -v '^\.keep$' \
+                 | sort | uniq -d)
+          if [ -n "$dups" ]; then
+            echo "Duplicate filenames detected:"
+            echo "$dups"
+            exit 1
+          else
+            echo "No duplicate filenames (except .keep) found."
+          fi
