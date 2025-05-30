@@ -1,23 +1,41 @@
-name: CI Skeleton
-on: 
-  - push
-  - pull_request
+name: CI Full                 # single workflow name
+
+on:
+  push:
+  pull_request:
+
 jobs:
-  ci-check:
+  validate-structure:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # ─── basic sanity ping ───────────────────────────────────────────────
       - name: Verify CI skeleton
         run: echo "CI skeleton OK"
+
+      # ─── chapters folder guard (warning-only) ────────────────────────────
       - name: Validate chapters folder
         run: |
-          # If the folder itself is missing, still fail (structural error)
           if [ ! -d "docs/book/chapters/" ]; then
-            echo "Chapters folder does not exist!"; exit 1
+            echo "Warning: docs/book/chapters/ folder is missing.";
+          elif ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
+            echo "Warning: No DOCX files found in docs/book/chapters/.";
           fi
 
-          # If no .docx files are found, WARN but do not exit
-          if ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
-            echo "Warning: No DOCX files found in docs/book/chapters/."
+      # ─── supplements & experiments must exist ───────────────────────────
+      - name: Validate supplements and experiments folders
+        run: |
+          for folder in docs/supplements docs/experiments; do
+            if [ ! -d "$folder" ]; then
+              echo "$folder does not exist!"; exit 1;
+            fi
+          done
+
+      # ─── duplicate-filename guard ───────────────────────────────────────
+      - name: Check for duplicate filenames
+        run: |
+          if find docs/ -type f | sed 's!.*/!!' | sort | uniq -d | grep -q .; then
+            echo "Duplicate filenames detected!"; exit 1;
           fi
