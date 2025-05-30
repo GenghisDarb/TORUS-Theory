@@ -1,4 +1,4 @@
-name: CI Full                 # single workflow name
+name: CI Full
 
 on:
   push:
@@ -11,32 +11,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # ─── basic sanity ping ───────────────────────────────────────────────
       - name: Verify CI skeleton
         run: echo "CI skeleton OK"
 
-      # ─── chapters folder guard (warning-only) ────────────────────────────
+      # ─── DOCX check (warning-only) ────────────────────────────────────────
       - name: Validate chapters folder
         run: |
           if [ ! -d "docs/book/chapters/" ]; then
-            echo "Warning: docs/book/chapters/ folder is missing.";
+            echo "Warning: docs/book/chapters/ folder is missing."
           elif ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
-            echo "Warning: No DOCX files found in docs/book/chapters/.";
+            echo "Warning: No DOCX files found in docs/book/chapters/."
           fi
 
-      # ─── supplements & experiments must exist ───────────────────────────
+      # ─── supplements & experiments must exist ────────────────────────────
       - name: Validate supplements and experiments folders
         run: |
           for folder in docs/supplements docs/experiments; do
             if [ ! -d "$folder" ]; then
-              echo "$folder does not exist!"; exit 1;
+              echo "$folder does not exist!"; exit 1
             fi
           done
 
-      # ─── duplicate-filename guard ───────────────────────────────────────
+      # ─── duplicate-filename guard (skip .keep) ───────────────────────────
       - name: Check for duplicate filenames (excluding .keep)
         run: |
-          # Build list of duplicates but drop '.keep'
           dups=$(find docs/ -type f \
                  | sed 's!.*/!!' \
                  | grep -v '^\.keep$' \
