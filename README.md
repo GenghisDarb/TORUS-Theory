@@ -57,3 +57,13 @@ git clone https://github.com/GenghisDarb/TORUS-Theory.git
 cd TORUS-Theory
 # optional: run the audit script to verify structure
 bash scripts/audit_structure.sh   # (coming soon)
+```
+
+---
+
+## Validation Suite
+
+- [Side-Band Primer](docs/SideBand_Primer.md)
+- [Synthetic Benchmark (PairCorr_SideBand_Benchmark.ipynb)](notebooks/validation/synthetic/PairCorr_SideBand_Benchmark.ipynb)
+- [Real-Data Template (PairCorr_Fourier_SideBand.ipynb)](notebooks/validation/realdata/PairCorr_Fourier_SideBand.ipynb)
+- [Noise-Sweep ROC (Noise_Sweep_ROC.ipynb)](notebooks/validation/synthetic/Noise_Sweep_ROC.ipynb)
