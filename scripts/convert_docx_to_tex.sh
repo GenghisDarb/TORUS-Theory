@@ -3,6 +3,14 @@
 set -euo pipefail
 find docs/book -type f -name '*.docx' -print0 |
 while IFS= read -r -d '' file; do
+  # ── skip empty or corrupt DOCX ───────────────────────────────
+  if [ ! -s "$file" ]; then
+    echo "Skipping empty $file"; continue
+  fi
+  unzip -tq "$file" >/dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Skipping corrupt $file"; continue
+  fi
   rel=${file#docs/book/}                  # e.g. chapters/01_Intro…
   out="docs/book-latex/${rel%.docx}.tex"
   mkdir -p "$(dirname "$out")"
