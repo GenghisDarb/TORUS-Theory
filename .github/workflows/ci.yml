@@ -14,7 +14,7 @@ jobs:
       - name: Verify CI skeleton
         run: echo "CI skeleton OK"
 
-      # ─── DOCX check (warning-only) ────────────────────────────────────────
+      # ─── DOCX presence (warning-only) ──────────────────────────
       - name: Validate chapters folder
         run: |
           if [ ! -d "docs/book/chapters/" ]; then
@@ -23,7 +23,7 @@ jobs:
             echo "Warning: No DOCX files found in docs/book/chapters/."
           fi
 
-      # ─── supplements & experiments must exist ────────────────────────────
+      # ─── supplements & experiments must exist ─────────────────
       - name: Validate supplements and experiments folders
         run: |
           for folder in docs/supplements docs/experiments; do
@@ -32,7 +32,7 @@ jobs:
             fi
           done
 
-      # ─── duplicate-filename guard (skip .keep) ───────────────────────────
+      # ─── duplicate-filename guard (skip .keep) ────────────────
       - name: Check for duplicate filenames (excluding .keep)
         run: |
           dups=$(find docs/ -type f \
