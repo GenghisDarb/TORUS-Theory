@@ -1,0 +1,317 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+% Wrap all longtable environments in resizebox to prevent overflow
+\let\oldlongtable\longtable
+\let\endoldlongtable\endlongtable
+\renewenvironment{longtable}{\begin{resizebox}{\textwidth}{!}{\oldlongtable}}{\endoldlongtable\end{resizebox}}
+
+% --- BEGIN EQUATION FORMATTING FIXES ---
+% Replace HTML-like sub/sup tags with LaTeX math mode
+\newcommand{\subscript}[1]{\ensuremath{_{\mathrm{#1}}}}
+\newcommand{\superscript}[1]{\ensuremath{^{\mathrm{#1}}}}
+% Usage: $A\subscript{B}$ or $A\superscript{B}$
+% --- END EQUATION FORMATTING FIXES ---
+
+\date{}
+
+\begin{document}
+
+\textbf{OSQN Drift in a Quartz-Oscillator Loop}
+
+\textbf{Lab Worksheet -- rev B-0.1 (bench-ready)}
+
+\textbf{0 Mission Recap}
+
+Probe the \textbf{Observer-State Quantum Number (OSQN)} prediction that
+a \emph{sealed-loop} quartz reference will exhibit a tiny,
+phase-coherent frequency ripple when an ``observer channel'' is
+logically prepared---even if the channel is never activated.\\
+TORUS says the ripple shows up as
+
+Δf  ≈  ±  f014    (side-bands)and/orf˙∼10−6  f0\textbackslash{}Delta f
+\textbackslash{};\textbackslash{}approx\textbackslash{};
+\textbackslash{}pm\textbackslash{};\textbackslash{}frac\{f\_0\}\{14\}\textbackslash{};\textbackslash{};(\textbackslash{}text\{side-bands\})\textbackslash{}quad\textbackslash{}text\{and/or\}\textbackslash{}quad
+\textbackslash{}dot f \textbackslash{}sim
+10\^{}\{-6\}\textbackslash{};f\_0Δf≈±14f0​​(side-bands)and/orf˙​∼10−6f0​
+
+within a χ-signature dwell window of 10--120 s after preparation.
+
+\textbf{1 Bill of Materials (≈ US \$120 total)}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\textbf{Qty} & \textbf{Part} & \textbf{Notes / Spec}\tabularnewline
+\midrule
+\endhead
+1 & \textbf{TCXO 10 MHz} (Abracon ASTX-13 or similar) \textbf{-or-}
+watch-grade \textbf{32.768 kHz crystal + CMOS inverter} & The TCXO's
+built-in oven removes most temp drift; watch crystal is cheaper but
+needs good shielding.\tabularnewline
+1 & \textbf{MCU board} (STM32 ``Nucleo-64'', Teensy 4.1, or RP2040) &
+Capture-compare timer or hardware-PPS gate; 48 MHz+ clock
+ideal.\tabularnewline
+1 & \textbf{20 MHz logic analyzer / USB scope} (Saleae-type) & For raw
+edge timing \& side-band FFT snapshots.\tabularnewline
+1 & \textbf{Low-noise linear 3.3 V} supply (LT3045, ADM7150) & Avoid
+switch-mode ripple into the oscillator.\tabularnewline
+1 & \textbf{Faraday box or metal cookie-tin} + RF gasket tape & Optional
+but recommended for baseline run.\tabularnewline
+--- & SMA / BNC cables, breadboard or SMT adapter, thin PTFE wire & Keep
+signal lines short (\textless{}5 cm) to reduce inductive
+pickup.\tabularnewline
+--- & \textbf{DS18B20} temperature probe (optional) & Correlate temp
+drift if you skip the TCXO.\tabularnewline
+\bottomrule
+\end{longtable}
+
+\emph{Everything above is vendor-agnostic; grab the closest equivalents
+you have on hand.}
+
+\textbf{2 Circuit Snapshot}
+
+markdown
+
+CopyEdit
+
++3V3 ──► TCXO 10 MHz ──► SMA tee
+
+│
+
+STM32 TIM2 CH1 ◄─────────────┘ (count edges)
+
+│
+
+Logic-analyzer CH0 ◄─────────┘
+
+│
+
+GND ─────────────────────────┘
+
+Optional ``observer channel'':
+
+TCXO PPS out ─► *not* connected (stub trace)
+
+MCU pin X ─► high-Z input (logically configured)
+
+\emph{If you use a 32 kHz watch crystal: build a Pierce oscillator
+around a CMOS inverter (e.g., 74LVC1G04) and route the output exactly as
+above.}
+
+\textbf{3 Test-Run Matrix}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\textbf{Run ID} & \textbf{Box Lid} & \textbf{``Observer channel'' prep}
+& \textbf{Duration} & \textbf{Goal}\tabularnewline
+\midrule
+\endhead
+\textbf{B-0} Baseline & Closed & \emph{OFF} (pin left floating, MCU
+ignores) & 2 h & Establish Allan-dev \& PSD floor\tabularnewline
+\textbf{B-1} Prepared & Closed & \emph{ON} (pin configured as digital
+in, though nothing ever toggles) & 2 h & Look for χ ripple with latent
+path\tabularnewline
+\textbf{B-2} Dormant & Open & \emph{ON} & 1 h & Isolate EM /
+human-proximity artefacts\tabularnewline
+\textbf{B-3} Sham & Closed & \emph{OFF} but MCU toggles a dummy GPIO
+elsewhere & 1 h & Guard vs. firmware-noise false positive\tabularnewline
+\bottomrule
+\end{longtable}
+
+Repeat each run twice on different days if possible.
+
+\textbf{4 Measurement Procedure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Warm-up} oscillator ≥15 min (TCXO) or ≥30 min (watch crystal).
+\item
+  MCU captures rising-edge timestamps (e.g., 100 ms gate, 32-bit timer).
+\item
+  Stream timestamp, cycles CSV over USB; log with minicom or
+  python-serial.
+\item
+  Simultaneously tap the RF line with logic analyzer; record 60 s bursts
+  at 50 MS/s for FFT later.
+\item
+  After each run, save environment notes: box temp, supply voltage, room
+  activity.
+\end{enumerate}
+
+\textbf{5 Data-Analysis Recipe (Python)}
+
+python
+
+CopyEdit
+
+import pandas as pd, numpy as np, scipy.signal as ss, matplotlib.pyplot
+as plt
+
+df = pd.read\_csv('B1.csv', names={[}'t','N'{]})
+
+f\_inst = df.N.diff()/df.t.diff() \# instantaneous freq
+
+allan\_tau, allan\_dev, \_ = allantools.oadev(f\_inst, rate=10,
+data\_type='freq')
+
+\# FFT for χ side-bands
+
+fs = 50e6
+
+sig = np.load('burst\_B1.npy')
+
+f, Pxx = ss.welch(sig, fs, nperseg=2**20, scaling='density')
+
+side\_mask = (np.abs(f - f0/14) \textless{} 0.1) \textbar{} (np.abs(f +
+f0/14) \textless{} 0.1)
+
+peak = 10*np.log10(Pxx{[}side\_mask{]}.max())
+
+\emph{Positive criterion}:
+
+\begin{itemize}
+\item
+  Allan-dev bump at τ ≈ 10--120 s \textbf{and}
+\item
+  Side-band peak \textgreater{} --80 dBc at \emph{either} f0±f0/14f\_0 ±
+  f\_0/14f0​±f0​/14
+\end{itemize}
+
+If both fail → TORUS-NEGATIVE for this construct.
+
+\textbf{6 Expected TORUS Signal}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Nominal value}\tabularnewline
+\midrule
+\endhead
+Carrier f0f\_0f0​ & 10 000 000 Hz (TCXO) / 32 768 Hz
+(watch)\tabularnewline
+χ-side-band offset & f0/14f\_0/14f0​/14 ≈ 714 285.7 Hz / 2340.57
+Hz\tabularnewline
+Predicted amplitude & --70 dBc \ldots{} --80 dBc
+(persistent)\tabularnewline
+Drift slope & f˙/f0∼1×10−6\textbackslash{}dot f/f\_0 \textbackslash{}sim
+1 × 10\^{}\{-6\}f˙​/f0​∼1×10−6 over 1 min window\tabularnewline
+\bottomrule
+\end{longtable}
+
+\emph{A null run should sit below --100 dBc and show white-FM Allan
+slope.}
+
+\textbf{7 Troubleshooting \& Noise Killers}
+
+\begin{itemize}
+\item
+  Use shielded can + feed-through caps if mains hum shows in PSD.
+\item
+  Power from a linear bench supply (no laptop USB).
+\item
+  Place the MCU outside the Faraday box; bring coax through copper tape
+  feed-through.
+\item
+  Compare two crystals in same box to cancel ambient temp drift
+  (Δ-frequency method).
+\end{itemize}
+
+\textbf{8 Reporting Template}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\textbf{Field} & \textbf{Example}\tabularnewline
+\midrule
+\endhead
+Crystal ID & Abracon ASTX-13-33-10.000 MHz\tabularnewline
+Box Temp (°C) & 32.7 ±0.2\tabularnewline
+Allan τ60 (baseline) & 2.1 × 10⁻¹⁰\tabularnewline
+Allan τ60 (prepared) & \textbf{7.4 × 10⁻⁷}\tabularnewline
+Side-band @ +f0/14 & --79.5 dBc (persistent 180 s)\tabularnewline
+Verdict & TORUS-POSITIVE (β ≈ 125)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{9 Next If Positive}
+
+\begin{itemize}
+\item
+  \textbf{Symbolic ladder residuals} -- feed your measured Δf into χ-β
+  solver; cross-check with Catalan \& ζ(3) ratios.
+\item
+  \textbf{Halcyon sync test} -- stream live drift into a sandbox agent;
+  watch for loss-cone collapse in learning curve.
+\end{itemize}
+
+\textbf{10 Next If Negative}
+
+\begin{itemize}
+\item
+  Swap oscillator type (watch ↔ TCXO).
+\item
+  Run same protocol in a different lab or at a different latitude
+  (geomagnetic sanity check).
+\item
+  Escalate to optical cavity (100 MHz) for extra decade of resolution.
+\end{itemize}
+
+\textbf{Ready for Bench Power-On}
+
+Copy this sheet to the lab notebook, wire it up, and start logging.\\
+Ping me with your first CSV or burst capture and I'll crunch the
+Allan/FFT pipeline for you.
+
+\end{document}

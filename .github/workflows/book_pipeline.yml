@@ -1,0 +1,91 @@
+name: Build & Sync Book
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/book/**/*.docx'
+      - '.github/workflows/book_pipeline.yml'
+  workflow_dispatch:
+
+jobs:
+  sync-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository on main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          submodules: false
+          fetch-depth: 0
+      - name: Debug repository state
+        run: |
+          git status
+          git branch -a
+          if [ -f .gitmodules ]; then cat .gitmodules; else echo ".gitmodules not present"; fi
+      - name: Ensure the repository is on the correct branch
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull origin main
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-full fonts-lmodern texlive-fonts-recommended texlive-latex-extra
+      - name: Audit and Regenerate DOCX for Native Equations
+        run: scripts/audit_and_regen_docx.sh
+      - name: Convert DOCX → LaTeX
+        run: scripts/convert_docx_to_tex.sh
+      - name: Validate LaTeX Inputs
+        run: |
+          if [ ! -f docs/book-latex/torus_book.tex ]; then
+            echo "Error: torus_book.tex not found"; exit 1;
+          fi
+          # Check for missing files referenced in \includegraphics, \input, \include
+          grep -oP '\\(?:includegraphics|input|include)\{[^}]+\}' docs/book-latex/torus_book.tex | \
+            sed -E 's/.*\{([^}]+)\}.*/\1/' | while read f; do
+              if [ ! -e "docs/book-latex/$f" ] && [ ! -e "docs/book-latex/${f}.tex" ]; then
+                echo "Missing file: $f"; exit 1;
+              fi
+            done
+          # Run lacheck for syntax
+          find docs/book-latex/ -name "*.tex" -exec lacheck {} +
+      - name: Clean LaTeX build artifacts
+        run: |
+          git clean -fdX
+      - name: Pull latest changes
+        run: git pull --rebase origin main
+      - name: Commit updated .tex mirror
+        run: |
+          git config user.name  "docx-sync-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add docs/book-latex
+          git diff --cached --quiet || git commit -m "CI: auto-sync .tex mirror"
+          git push origin main
+      - name: Cleanup Generated Files
+        run: |
+          rm -rf *.aux *.log *.out *.toc
+      - name: Cleanup
+        working-directory: docs/book-latex
+        run: rm -f *.aux *.bbl *.blg *.log *.out *.toc
+      - name: Clean LaTeX Auxiliary Files
+        working-directory: docs/book-latex
+        run: latexmk -c
+      - name: Build PDF
+        working-directory: docs/book-latex
+        run: |
+          latexmk -pdf -f -silent torus_book.tex || cat torus_book.log
+      - name: Debug LaTeX File
+        working-directory: docs/book-latex
+        run: |
+          grep -i "missing" torus_book.log || echo "No missing characters detected"
+      - name: Debug LaTeX Issues (Optional)
+        if: failure()
+        working-directory: docs/book-latex
+        run: cat torus_book.log
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TORUS-Book
+          path: docs/book-latex/torus_book.pdf
