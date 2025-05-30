@@ -12,8 +12,12 @@ jobs:
         run: echo "CI skeleton OK"
       - name: Validate chapters folder
         run: |
+          # If the folder itself is missing, still fail (structural error)
           if [ ! -d "docs/book/chapters/" ]; then
-            echo "Warning: docs/book/chapters/ folder is missing."
-          elif ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
+            echo "Chapters folder does not exist!"; exit 1
+          fi
+
+          # If no .docx files are found, WARN but do not exit
+          if ! find docs/book/chapters/ -type f -name "*.docx" | grep -q .; then
             echo "Warning: No DOCX files found in docs/book/chapters/."
           fi
