@@ -1,11 +1,11 @@
-name: CI Full
+name: CI Full          # <- single name
 
 on:
   push:
   pull_request:
 
 jobs:
-  validate-structure:
+  validate-structure:  # <- one job block
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
