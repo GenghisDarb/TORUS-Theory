@@ -1,0 +1,35 @@
+name: Append to Validation Ledger
+
+on:
+  workflow_call:
+    inputs:
+      result-json-path:
+        required: true
+        type: string
+
+jobs:
+  append-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Pull SimLab image
+        run: |
+          docker pull ghcr.io/genghisdarb/torus-simlab:latest
+
+      - name: Run torus-cli validation (stub)
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace ghcr.io/genghisdarb/torus-simlab:latest torus-cli run-validate ${{ inputs.result-json-path }} || true
+
+      - name: Append row to TORUS Validation Ledger.docx and update badge
+        run: |
+          python3 .github/scripts/append_ledger_and_badge.py "${{ inputs.result-json-path }}"
+
+      - name: Commit and push ledger and badge
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "TORUS Validation Ledger.docx" "docs/evidence-badge.svg"
+          git commit -m "bot-commit: Update ledger and badge" || echo "No changes to commit"
+          git push
