@@ -69,6 +69,9 @@ jobs:
       - name: Clean LaTeX Auxiliary Files
         working-directory: docs/book-latex
         run: latexmk -c
+      - name: CI LaTeX Macro & Tab Check
+        working-directory: docs/book-latex
+        run: ./ci_latex_check.sh
       - name: Build PDF
         id: build
         working-directory: docs/book-latex
