@@ -32,30 +32,27 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-full fonts-lmodern texlive-fonts-recommended texlive-latex-extra
+          sudo apt-get install -y pandoc texlive-full fonts-lmodern \
+                                 texlive-xetex texlive-lang-all \
+                                 texlive-fonts-recommended texlive-latex-extra \
+                                 texlive-extra-utils   # provides lacheck
       - name: Audit and Regenerate DOCX for Native Equations
         run: scripts/audit_and_regen_docx.sh
       - name: Convert DOCX → LaTeX
         run: scripts/convert_docx_to_tex.sh
       - name: Validate LaTeX Inputs
         run: |
-          if [ ! -f docs/book-latex/torus_book.tex ]; then
-            echo "Error: torus_book.tex not found"; exit 1;
-          fi
-          # Check for missing files referenced in \includegraphics, \input, \include
-          grep -oP '\\(?:includegraphics|input|include)\{[^}]+\}' docs/book-latex/torus_book.tex | \
-            sed -E 's/.*\{([^}]+)\}.*/\1/' | while read f; do
-              if [ ! -e "docs/book-latex/$f" ] && [ ! -e "docs/book-latex/${f}.tex" ]; then
-                echo "Missing file: $f"; exit 1;
-              fi
-            done
-          # Run lacheck for syntax
+          refs=$(grep -Eo '\\(includegraphics|input|include)\{[^}]+\}' -R docs/book-latex | sed 's/.*{//;s/}//')
+          for f in $refs; do
+            if [ ! -e "docs/book-latex/$f" ] && [ ! -e "docs/book-latex/${f}.tex" ]; then
+              echo "::error::Missing file $f"
+              exit 1
+            fi
+          done
           find docs/book-latex/ -name "*.tex" -exec lacheck {} +
       - name: Clean LaTeX build artifacts
         run: |
           git clean -fdX
-      - name: Pull latest changes
-        run: git pull --rebase origin main
       - name: Commit updated .tex mirror
         run: |
           git config user.name  "docx-sync-bot"
@@ -73,9 +70,16 @@ jobs:
         working-directory: docs/book-latex
         run: latexmk -c
       - name: Build PDF
+        id: build
         working-directory: docs/book-latex
         run: |
-          latexmk -pdf -f -silent torus_book.tex || cat torus_book.log
+          latexmk -pdf -interaction=nonstopmode -file-line-error torus_book.tex
+      - name: Dump LaTeX log on failure
+        if: failure() && steps.build.outcome == 'failure'
+        working-directory: docs/book-latex
+        run: |
+          echo "------ torus_book.log (tail) ------"
+          tail -n 200 torus_book.log || true
       - name: Debug LaTeX File
         working-directory: docs/book-latex
         run: |
