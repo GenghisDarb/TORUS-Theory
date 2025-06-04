@@ -1,0 +1,16 @@
+%% Auto-patch: missing macros & safer compile
+\ProvidesFile{torus_book_preamble_patch}[2025/06/02 TORUS ad-hoc fixes]
+
+% ---- 1. macros that were undefined ----------------------
+\newcommand{\LambdaCDM}{\ensuremath{\Lambda\text{CDM}}}
+\newcommand{\LCDM}{\LambdaCDM} % alias if used elsewhere
+
+% ---- 2. show deeper error context -----------------------
+\errorcontextlines=100
+
+% ---- 3. ad-hoc fixes for DOCX conversion artifacts ----
+\newcommand{\hbarc}{\hbar c}
+\newcommand{\textless}{<}
+\newcommand{\textgreater}{>}
+\newcommand{\textless/sub}{\ensuremath{_{<}}}
+\newcommand{\textgreater/sub}{\ensuremath{_{>}}}
