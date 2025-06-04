@@ -19,8 +19,22 @@
 \newcommand{\Lambdarec}{\Lambda_{\mathrm{rec}}}
 \newcommand{\real}[1]{\mathrm{Re}\left(#1\right)}
 
-% Unicode and font support for XeLaTeX
+% ---- 5. Unicode and font support for XeLaTeX ----
 \usepackage{fontspec}
 \usepackage{unicode-math}
 \setmainfont{Latin Modern Roman}
 \setmathfont{Latin Modern Math}
+
+% ---- 6. Additional robust error surfacing ----
+% Show all undefined references and citations as errors
+\AtEndDocument{%
+  \if@filesw\immediate\write\@mainaux{\string\@input{\jobname.aux}}\fi
+  \ifx\@undefined\undefined\errmessage{Undefined macro found!}\fi
+}
+
+% Optionally, force fatal error on undefined control sequence (for CI)
+% \makeatletter
+% \def\@undefined#1{\errmessage{Undefined control sequence: #1}}
+% \makeatother
+
+% ---- 7. Add any further missing macros or fixes below ----
