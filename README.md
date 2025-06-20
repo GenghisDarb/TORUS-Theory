@@ -2,7 +2,7 @@
 
 [![Notebook CI](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml/badge.svg)](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml)
 
-TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional χ-β harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
+TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional \(\chi\)-\(\beta\) harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---
 
@@ -19,7 +19,14 @@ TORUS Theory extends standard gauge theory by embedding every field and interact
 | `docs/experiments/` | Bench protocols & lab worksheets |
 | `.github/workflows/` | CI: slug-rule & structure audit (WIP) |
 
-_All filenames are ASCII-safe “slugs”: spaces → underscores, Unicode letters spelled out (e.g., `χ` → `Chi`)._
+_All filenames are ASCII-safe “slugs”: spaces → underscores, Unicode letters spelled out (e.g., `\chi` → `Chi`)._
+
+### Data availability
+Raw structured-light data are archived on Zenodo  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14002229.svg)](https://doi.org/10.5281/zenodo.14002229)
+
+Only the lightweight `.h5` bundles are pulled automatically at run-time;  
+the multi-GB TIFF stacks remain on Zenodo to keep this repo lean.
 
 ---
 
