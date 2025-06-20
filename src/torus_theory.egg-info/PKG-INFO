@@ -16,6 +16,8 @@ Dynamic: license-file
 
 # TORUS Theory 📚
 
+[![Notebook CI](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml/badge.svg)](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml)
+
 TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional χ-β harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---
@@ -73,6 +75,7 @@ git clone https://github.com/GenghisDarb/TORUS-Theory.git
 cd TORUS-Theory
 # optional: run the audit script to verify structure
 bash scripts/audit_structure.sh   # (coming soon)
+pip install -r requirements.txt   # now includes mpmath, scipy, etc.
 ```
 
 ---
@@ -92,3 +95,22 @@ docker run -it --rm ghcr.io/genghisdarb/torus-simlab:latest torus-cli --help
 - [Synthetic Benchmark (PairCorr_SideBand_Benchmark.ipynb)](notebooks/validation/synthetic/PairCorr_SideBand_Benchmark.ipynb)
 - [Real-Data Template (PairCorr_Fourier_SideBand.ipynb)](notebooks/validation/realdata/PairCorr_Fourier_SideBand.ipynb)
 - [Noise-Sweep ROC (Noise_Sweep_ROC.ipynb)](notebooks/validation/synthetic/Noise_Sweep_ROC.ipynb)
+
+**Phase B**
+- B1 – [Constant Ladder Precision Re-Test](notebooks/validation/constants/Validation_ConstantLadder_PrecisionReTest.ipynb)
+- B2 – [Seed-Constant Multi-Probe](notebooks/validation/constants/Validation_SeedConstant_MultiProbe.ipynb)
+- B4 – [Talbot Side-Band Multiframe](notebooks/validation/optics/Validation_Talbot_SideBand_Multiframe.ipynb)
+
+---
+
+## Data
+Processed interferometer outputs and provenance live in
+[data/interferometer/upstream/solutions/](data/interferometer/upstream/solutions/) – see its README for details.
+
+---
+
+## License & Contact
+MIT License
+Maintainer: Genghis Darb <genghis.darb@gmail.com>
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GenghisDarb/TORUS-Theory/main?labpath=README.ipynb)
