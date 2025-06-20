@@ -46,3 +46,15 @@ jobs:
           else
             echo "No duplicate filenames (except .keep) found."
           fi
+
+      # ─── Generate T-HET spectrum for notebook ───────────────
+      - name: Generate T-HET spectrum file
+        run: |
+          python3 scripts/cmb_analysis_T-HET_vs_LCDM_adjusted_II.py
+
+      # ─── CMB notebook smoke test ─────────────────────────────
+      - name: Execute CMB notebook
+        run: |
+          pip install nbconvert nbclient
+          jupyter nbconvert --to notebook --execute notebooks/cmb_torus_vs_thet.ipynb \
+            --ExecutePreprocessor.timeout=1800 --output /tmp/out.ipynb

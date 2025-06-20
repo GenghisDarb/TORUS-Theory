@@ -4,6 +4,7 @@
 %
 \documentclass[
 ]{article}
+\input{style/xelatex_preamble}
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
@@ -35,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -54,6 +54,7 @@
 \date{}
 
 input{macros/torus_macros.tex}
+\input{macros/torus_macros.tex}
 \begin{document}
 
 \textbf{Preface}
