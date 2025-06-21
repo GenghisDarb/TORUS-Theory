@@ -22,3 +22,9 @@ Thumbs.db
 
 # Ignore validation and build artifacts
 /docs/validation/
+
+# Ignore TIFF files, notebook checkpoints, Untitled notebooks, and raw frames
+*.tif
+.ipynb_checkpoints/
+notebooks/**/Untitled*.ipynb
+data/structured_light/Order*/raw_frames/**

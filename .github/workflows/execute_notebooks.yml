@@ -28,6 +28,10 @@ jobs:
         run: |
           python scripts/fetch_structured_light.py --all --quiet
 
+      - name: Fetch GNSS sample (small)
+        run: |
+          python scripts/fetch_gnss.py --sample AUCK00NZL 2025-05-05 --quiet
+
       - name: Run PairCorr_SideBand_Benchmark notebook
         run: |
           papermill notebooks/validation/synthetic/PairCorr_SideBand_Benchmark.ipynb out.ipynb
