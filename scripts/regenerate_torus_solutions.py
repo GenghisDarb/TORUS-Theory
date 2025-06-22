@@ -3,6 +3,10 @@ import pathlib
 import shutil
 
 import pykat
+import pandas as pd
+import glob
+import re
+import numpy as np
 
 base_dir = pathlib.Path("data/interferometer/upstream/GWDetectorZoo")
 out_kat = pathlib.Path("data/interferometer/torus_lattice")
@@ -56,3 +60,16 @@ with open("data/interferometer/deltaS_table.csv", "w", newline="") as fp:
     w = csv.DictWriter(fp, fieldnames=["sol", "gain"])
     w.writeheader()
     w.writerows(deltaS)
+
+def main():
+    files = sorted(glob.glob("results/χ_*_noise.csv"))
+    out = []
+    for f in files:
+        df = pd.read_csv(f)
+        ΔS = np.trapz(df["strain"]**2, df["freq"])
+        out.append({"config": re.sub(r".*/χ_(.*)_noise.csv", r"\1", f), "ΔS": ΔS})
+    pd.DataFrame(out).to_csv("results/ΔS_summary.csv", index=False)
+    print("Wrote results/ΔS_summary.csv")
+
+if __name__ == "__main__":
+    main()

@@ -45,3 +45,7 @@ jobs:
       - name: Run audio FFT notebook
         run: |
           papermill notebooks/validation/audio/audio_fft.ipynb out3.ipynb
+
+      - name: Run GWD echo notebook
+        run: |
+          papermill notebooks/gwd/LIGO_Echo_Torus_vs_T-HET.ipynb out_gwd.ipynb
