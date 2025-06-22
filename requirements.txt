@@ -5,3 +5,5 @@ matplotlib>=3.4
 jupyterlab>=3.0
 papermill
 nbformat
+h5py>=3.11
+imageio>=2.34

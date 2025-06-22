@@ -6,6 +6,9 @@ This folder contains Jupyter notebooks for TORUS Theory simulations and validati
 - **validation/realdata/** – Notebooks for real experimental or observational datasets (e.g., pair-correlation analysis on real data).
 - **validation/constants/** – Phase B notebooks testing fundamental constant relationships (ladder precision, multi-probe seed constant).
 - **validation/optics/** – Phase B notebooks for optical/interferometric tests (Talbot carpet side-band analysis, etc.).
+- **validation/bicycle/** – Bicycle and controller recursion validation (e.g., recursive controller, pair-correlation)
+- **validation/audio/** – Audio side-band and FFT validation
+- **validation/entropy/** – Entropy drift and related experiments
 
 Most notebooks include a standard setup cell (imports and helper functions) and print a **TORUS-POSITIVE** or **TORUS-NEGATIVE** result indicating whether TORUS-theoretic signatures are detected.
 

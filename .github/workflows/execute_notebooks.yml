@@ -1,13 +1,13 @@
-name: Execute PairCorr Notebooks
+name: Execute Validation Notebooks
 
 on:
   push:
-    branches: [ feat/paircorr-suite ]
+    branches: [ feat/paircorr-suite, add-bicycle-figure ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  run-paircorr-benchmark:
+  run-validation-suite:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy pandas scipy matplotlib papermill nbformat notebook
+          pip install -r requirements.txt
           python -m ipykernel install --user --name=python3
 
       - name: Fetch structured-light H5 bundles
@@ -32,7 +32,16 @@ jobs:
         run: |
           python scripts/fetch_gnss.py --sample AUCK00NZL 2025-05-05 --quiet
 
+      - name: Run recursive controller notebook
+        run: |
+          papermill notebooks/validation/bicycle/recursive_controller_validation.ipynb out1.ipynb
+          grep TORUS-POSITIVE out1.ipynb || (echo "Notebook did not print TORUS-POSITIVE" && exit 1)
+
       - name: Run PairCorr_SideBand_Benchmark notebook
         run: |
-          papermill notebooks/validation/synthetic/PairCorr_SideBand_Benchmark.ipynb out.ipynb
-          grep TORUS-POSITIVE out.ipynb || (echo "Notebook did not print TORUS-POSITIVE" && exit 1)
+          papermill notebooks/validation/bicycle/PairCorr_SideBand_Benchmark.ipynb out2.ipynb
+          grep TORUS-POSITIVE out2.ipynb || (echo "Notebook did not print TORUS-POSITIVE" && exit 1)
+
+      - name: Run audio FFT notebook
+        run: |
+          papermill notebooks/validation/audio/audio_fft.ipynb out3.ipynb
