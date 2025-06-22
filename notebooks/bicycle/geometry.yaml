@@ -1,0 +1,10 @@
+# Sample geometry.yaml for bicycle validation
+# Place in notebooks/bicycle/ for reproducibility
+geometry:
+  wheelbase: 1.02  # meters
+  trail: 0.08      # meters
+  steer_axis_angle: 70  # degrees
+  rear_wheel_radius: 0.34
+  front_wheel_radius: 0.34
+  mass: 80         # kg
+  cg_height: 0.55  # meters

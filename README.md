@@ -94,6 +94,22 @@ docker run -it --rm ghcr.io/genghisdarb/torus-simlab:latest torus-cli --help
 
 ---
 
+## Bicycle Balance Mystery Resolution
+
+A new suite of validation notebooks has been added to resolve the Bicycle Balance Mystery:
+
+- **recursive_controller_validation.ipynb**: Monte-Carlo recursive controller lean/steer test.
+- **constant_ladder_residuals.ipynb**: Linearized stability and eigen-plot placeholder.
+- **audio_fft.ipynb**: Audio harmonics χ analysis.
+- **shannon_bound_compression.ipynb**: Recursive Shannon-bound compression test.
+- **timing_stats.ipynb**: Stack timing analysis.
+
+All are located in `notebooks/bicycle/`. See that folder's README for details.
+
+> **Note:** If you have a publication draft (e.g., `docs/papers/bicycle_balance_TORUS.pdf`), link it here for reference.
+
+---
+
 ## Data
 Processed interferometer outputs and provenance live in
 [data/interferometer/upstream/solutions/](data/interferometer/upstream/solutions/) – see its README for details.

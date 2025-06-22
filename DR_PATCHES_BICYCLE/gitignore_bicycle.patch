@@ -1,0 +1,3 @@
+# Patch: .gitignore additions for hygiene
+*.ipynb_checkpoints/
+Untitled*.ipynb
