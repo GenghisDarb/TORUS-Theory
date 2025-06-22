@@ -3,19 +3,30 @@
 Download individual .h5 assets from Zenodo record 14002229.
 Keeps a tiny local cache; avoids pulling 1.9-GB Data.tar.gz unless --all.
 """
-import argparse, os, requests, pathlib, tarfile, io, sys, tqdm, json
+import argparse
+import io
+import json
+import os
+import pathlib
+import sys
+import tarfile
+
+import requests
+import tqdm
 
 RECORD = "14002229"
 API = f"https://zenodo.org/api/records/{RECORD}"
 CACHE = pathlib.Path("data/structured_light")
 CACHE.mkdir(parents=True, exist_ok=True)
 
+
 def _zenodo_file_map():
     meta = requests.get(API, timeout=30).json()
-    return {f["key"].lstrip("./"): f["links"]["self"]
-            for f in meta["files"]}
+    return {f["key"].lstrip("./"): f["links"]["self"] for f in meta["files"]}
+
 
 FILES = _zenodo_file_map()
+
 
 def download(name):
     url = FILES[name]
@@ -26,15 +37,20 @@ def download(name):
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         total = int(r.headers.get("content-length", 0))
-        with open(out, "wb") as fh, tqdm.tqdm(total=total, unit="B", unit_scale=True) as bar:
+        with (
+            open(out, "wb") as fh,
+            tqdm.tqdm(total=total, unit="B", unit_scale=True) as bar,
+        ):
             for chunk in r.iter_content(chunk_size=8192):
                 fh.write(chunk)
                 bar.update(len(chunk))
     return out
 
+
 def ensure_h5(name):
-    if not (CACHE/name).exists():
+    if not (CACHE / name).exists():
         download(name)
+
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

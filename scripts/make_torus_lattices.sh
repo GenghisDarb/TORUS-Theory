@@ -29,3 +29,11 @@ done
 # === STEP 3: compute ΔS table ===
 python notebooks/interferometer/gw_run_pipeline.ipynb --to python --stdout | \
   python - > data/interferometer/deltaS_table.csv
+
+for cfg in interferometers/*.kat; do
+    base=$(basename "$cfg" .kat)
+    # inject χ-mass-aging: finesse param mass -> mass*(1+1/14)
+    sed -E 's/^Mass *= *([0-9.]+)/Mass = \1*1.0714286/' "$cfg" \
+      > "interferometers/χ_${base}.kat"
+done
+echo "χ-lattice configs regenerated ✔"

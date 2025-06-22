@@ -1,8 +1,10 @@
 import os
 import sys
 import urllib.request
+
 import numpy as np
 from entropic_spectrum import thet_tt  # scripts package now on path
+
 
 def ensure_planck_tt_data():
     """Ensure Planck TT spectrum file exists, download if missing."""
@@ -11,13 +13,18 @@ def ensure_planck_tt_data():
     if not os.path.exists(planck_path):
         os.makedirs(os.path.dirname(planck_path), exist_ok=True)
         print(f"Downloading Planck TT data to {planck_path} ...", end=" ", flush=True)
+
         def reporthook(blocknum, blocksize, totalsize):
             downloaded = blocknum * blocksize
-            percent = min(100, int(downloaded * 100 / totalsize)) if totalsize > 0 else 0
+            percent = (
+                min(100, int(downloaded * 100 / totalsize)) if totalsize > 0 else 0
+            )
             print(f"{percent}%", end="\r", flush=True)
+
         urllib.request.urlretrieve(url, planck_path, reporthook)
         print("Download complete.")
     return planck_path
+
 
 # --- Real entropic-modal T-HET TT curve ---
 ell_array = np.arange(2, 2508)
