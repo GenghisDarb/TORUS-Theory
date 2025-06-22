@@ -1,9 +1,9 @@
-numpy<2.3           # keep within wheels range
-scipy<1.13           # latest wheel compatible with NumPy<2.3
-pandas>=1.3
-matplotlib>=3.4
-jupyterlab>=3.0
-papermill
-nbformat
 h5py>=3.11
 imageio>=2.34
+jupyterlab>=3.0
+matplotlib>=3.4
+nbformat
+numpy<2.3           # keep within wheels range
+pandas>=1.3
+papermill
+scipy<1.13           # latest wheel compatible with NumPy<2.3

@@ -1,7 +1,5 @@
 # TORUS Theory 📚
 
-[![Notebook CI](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml/badge.svg)](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml)
-
 TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional \(\chi\)-\(\beta\) harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---

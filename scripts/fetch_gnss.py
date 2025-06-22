@@ -3,7 +3,12 @@
 Download a RINEX file from NASA CDDIS to data/gnss/rinex/YYYYMM/ if missing.
 Usage: ensure_rinex("AUCK00NZL", "2025-05-05", "30S")
 """
-import os, pathlib, requests, datetime
+import datetime
+import os
+import pathlib
+
+import requests
+
 
 def ensure_rinex(station, date, interval="30S"):
     dt = datetime.datetime.strptime(date, "%Y-%m-%d")
@@ -26,8 +31,10 @@ def ensure_rinex(station, date, interval="30S"):
     print(f"[gnss] Saved to {out}")
     return out
 
+
 if __name__ == "__main__":
     import argparse
+
     p = argparse.ArgumentParser()
     p.add_argument("--sample", nargs=2, metavar=("STATION", "DATE"))
     p.add_argument("--quiet", action="store_true")
