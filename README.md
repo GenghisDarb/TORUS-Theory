@@ -53,6 +53,7 @@ The following canonical documents are available in DOCX, TEX, and PDF formats:
 ### Validation
 - [Universal Recursion - A 12 Sigma Cross-Domain Validation (Phase A) (PDF,DOCX,TEX)](docs/validation/Universal%20Recursion%20-%20A%2012%20Sigma%20Cross-Domain%20Validation%20(Phase%20A).pdf)
 - [Universal Recursion - A 14 Sigma Cross-Domain Validation (Phase B) (PDF,DOCX,TEX)](docs/validation/Universal%20Recursion%20-%20A%2014%20Sigma%20Cross-Domain%20Validation%20(Phase%20B).pdf)
+See notebooks/validation/ladder/ for precision re-test of Stationary-Action ladder with CODATA 2022.
 
 ### Experiments
 - [OSQN Drift in a Quartz-Oscillator Loop Lab Worksheet (PDF,DOCX,TEX)](docs/experiments/OSQN%20Drift%20in%20a%20Quartz-Oscillator%20Loop%20Lab%20Worksheet.pdf)
