@@ -38,5 +38,20 @@
     "description": "Implement code marked as 'placeholder': complete TORUS lattice modifications in make_torus_lattices.sh or its Python equivalent; refine FINESSE output processing in regenerate_torus_solutions.py to produce meaningful ΔS metrics.",
     "priority": "medium",
     "owner": "GenghisDarb"
+  },
+  {
+    "description": "Integrate Bicycle Balance Mystery validation suite: move all related notebooks to notebooks/bicycle/, update documentation, and add CI smoke tests.",
+    "priority": "high",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Add sample geometry YAML and eigenvalue CSV to notebooks/bicycle/ for reproducibility of bicycle validation tests.",
+    "priority": "medium",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Update CI matrix to include smoke-run of recursive_controller_validation.ipynb and constant_ladder_residuals.ipynb with synthetic geometry.",
+    "priority": "high",
+    "owner": "GenghisDarb"
   }
 ]

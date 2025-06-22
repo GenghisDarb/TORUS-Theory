@@ -21,7 +21,7 @@ jobs:
           - docs/book-latex/torus_book.tex
     steps:
       - uses: actions/checkout@v4
-      - uses: dante-ev/latex-action@v2
+      - uses: dante-ev/latex-action@v3
         with:
           root_file: ${{ matrix.file }}
           engine: xelatex
