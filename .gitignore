@@ -34,3 +34,6 @@ data/structured_light/Order*/raw_frames/**
 *.csv
 *.bin
 data/gnss/**/*.rnx.gz
+
+# temp validation workspace
+tmp/
