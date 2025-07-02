@@ -1,3 +1,7 @@
+# Always treat as text
+* text=auto
+
+*.ipynb -filter -diff
 * text=auto
 *.bin filter=lfs diff=lfs
 *.wav filter=lfs diff=lfs
