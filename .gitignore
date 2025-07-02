@@ -28,3 +28,12 @@ Thumbs.db
 .ipynb_checkpoints/
 notebooks/**/Untitled*.ipynb
 data/structured_light/Order*/raw_frames/**
+
+# runtime artefacts
+*.wav
+*.csv
+*.bin
+data/gnss/**/*.rnx.gz
+
+# temp validation workspace
+tmp/

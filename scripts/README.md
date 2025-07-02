@@ -7,5 +7,9 @@ This directory contains utility scripts for maintenance and data processing in t
 - **make_torus_lattices.sh** – Uses FINESSE (via PyKat) to generate TORUS-modified interferometer models and their strain spectra. *(Currently uses placeholder logic for lattice modifications.)*
 - **regenerate_torus_solutions.py** – Python version of lattice generation: copies base solutions and applies χ-lattice parameter patches, then runs simulations to produce updated spectra and a summary table of ΔS gains. *(Contains placeholder steps to be improved.)*
 - **fetch_structured_light.py** – Downloads structured-light experiment data from Zenodo (DOI:10.5281/zenodo.14002229) on-demand. Used by notebooks to retrieve large `.h5` files at runtime instead of storing them in the repo.
+- **fetch_gnss.py** – Downloads GNSS sample data for validation notebooks.
+- **fetch_gw.py** – Downloads gravitational wave data for validation.
+- **audio_harmonics.py** – Audio harmonics analysis helper for FFT/PSD.
+- **entropy_drift.py** – Entropy drift experiment helper script.
 
 These scripts are typically run from the repository root. Ensure required dependencies (e.g., `pykat`, `finesse`) are installed for the interferometer scripts.

@@ -1,0 +1,28 @@
+---
+name: Bicycle Validation Suite
+on:
+  push:
+    paths:
+      - 'notebooks/bicycle/**.ipynb'
+      - 'notebooks/bicycle/geometry.yaml'
+      - 'notebooks/bicycle/eigenvalues.csv'
+  workflow_dispatch:
+jobs:
+  bicycle-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install matplotlib pandas numpy scipy sympy zstandard
+      - name: Run recursive controller notebook
+        run: |
+          jupyter nbconvert --to notebook --execute notebooks/bicycle/recursive_controller_validation.ipynb --output /tmp/out1.ipynb
+      - name: Run constant ladder residuals notebook
+        run: |
+          jupyter nbconvert --to notebook --execute notebooks/bicycle/constant_ladder_residuals.ipynb --output /tmp/out2.ipynb

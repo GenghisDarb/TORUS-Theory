@@ -1,7 +1,5 @@
 # TORUS Theory 📚
 
-[![Notebook CI](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml/badge.svg)](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/execute_notebooks.yml)
-
 TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional \(\chi\)-\(\beta\) harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---
@@ -53,6 +51,7 @@ The following canonical documents are available in DOCX, TEX, and PDF formats:
 ### Validation
 - [Universal Recursion - A 12 Sigma Cross-Domain Validation (Phase A) (PDF,DOCX,TEX)](docs/validation/Universal%20Recursion%20-%20A%2012%20Sigma%20Cross-Domain%20Validation%20(Phase%20A).pdf)
 - [Universal Recursion - A 14 Sigma Cross-Domain Validation (Phase B) (PDF,DOCX,TEX)](docs/validation/Universal%20Recursion%20-%20A%2014%20Sigma%20Cross-Domain%20Validation%20(Phase%20B).pdf)
+See notebooks/validation/ladder/ for precision re-test of Stationary-Action ladder with CODATA 2022.
 
 ### Experiments
 - [OSQN Drift in a Quartz-Oscillator Loop Lab Worksheet (PDF,DOCX,TEX)](docs/experiments/OSQN%20Drift%20in%20a%20Quartz-Oscillator%20Loop%20Lab%20Worksheet.pdf)
@@ -91,6 +90,22 @@ docker run -it --rm ghcr.io/genghisdarb/torus-simlab:latest torus-cli --help
 - B1 – [Constant Ladder Precision Re-Test](notebooks/validation/constants/Validation_ConstantLadder_PrecisionReTest.ipynb)
 - B2 – [Seed-Constant Multi-Probe](notebooks/validation/constants/Validation_SeedConstant_MultiProbe.ipynb)
 - B4 – [Talbot Side-Band Multiframe](notebooks/validation/optics/Validation_Talbot_SideBand_Multiframe.ipynb)
+
+---
+
+## Bicycle Balance Mystery Resolution
+
+A new suite of validation notebooks has been added to resolve the Bicycle Balance Mystery:
+
+- **recursive_controller_validation.ipynb**: Monte-Carlo recursive controller lean/steer test.
+- **constant_ladder_residuals.ipynb**: Linearized stability and eigen-plot placeholder.
+- **audio_fft.ipynb**: Audio harmonics χ analysis.
+- **shannon_bound_compression.ipynb**: Recursive Shannon-bound compression test.
+- **timing_stats.ipynb**: Stack timing analysis.
+
+All are located in `notebooks/bicycle/`. See that folder's README for details.
+
+> **Note:** If you have a publication draft (e.g., `docs/papers/bicycle_balance_TORUS.pdf`), link it here for reference.
 
 ---
 

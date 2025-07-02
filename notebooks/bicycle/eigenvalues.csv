@@ -1,0 +1,6 @@
+# Sample eigenvalues for linearized bicycle model
+# Place in notebooks/bicycle/ for reproducibility
+mode,eigenvalue_real,eigenvalue_imag
+weave,-0.5,2.1
+capsize,0.1,0.0
+caster,-0.2,0.8
