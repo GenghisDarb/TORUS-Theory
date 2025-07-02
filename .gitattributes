@@ -1,2 +1,5 @@
 * text=auto
 *.ipynb filter=nbstripout diff=ipynb
+*.bin filter=lfs diff=lfs
+*.wav filter=lfs diff=lfs
+*.ipynb -filter -diff
