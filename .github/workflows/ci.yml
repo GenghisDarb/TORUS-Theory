@@ -58,3 +58,6 @@ jobs:
           pip install nbconvert nbclient
           jupyter nbconvert --to notebook --execute notebooks/cmb_torus_vs_thet.ipynb \
             --ExecutePreprocessor.timeout=1800 --output /tmp/out.ipynb
+
+      - name: Install nbstripout
+        run: pip3 install nbstripout==0.8.1
