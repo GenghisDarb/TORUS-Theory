@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/torus_cli/__init__.py
+src/torus_cli/__main__.py
+src/torus_theory.egg-info/PKG-INFO
+src/torus_theory.egg-info/SOURCES.txt
+src/torus_theory.egg-info/dependency_links.txt
+src/torus_theory.egg-info/entry_points.txt
+src/torus_theory.egg-info/requires.txt
+src/torus_theory.egg-info/top_level.txt

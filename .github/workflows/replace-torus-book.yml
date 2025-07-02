@@ -1,0 +1,50 @@
+name: Replace Cleaned TORUS Book
+
+on:
+  push:
+    paths:
+      - 'torus_book_cleaned.tex'
+
+jobs:
+  validate-and-replace:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install LaTeX (TeX Live)
+        run: sudo apt-get update && sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
+
+      - name: Compile cleaned TEX
+        run: |
+          xelatex -interaction=nonstopmode torus_book_cleaned.tex || exit 1
+
+      - name: Validate PDF
+        run: |
+          if file torus_book_cleaned.pdf | grep -q "PDF document"; then
+            echo "✅ PDF is valid"
+          else
+            echo "❌ PDF is not valid"
+            exit 1
+          fi
+
+      - name: Replace original with cleaned version
+        run: |
+          cp docs/book-latex/torus_book.tex docs/book-latex/torus_book_backup.tex
+          mv torus_book_cleaned.tex docs/book-latex/torus_book.tex
+          mv torus_book_cleaned.pdf docs/book-latex/torus_book.pdf
+
+      - name: Commit and push replacement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/book-latex/torus_book.tex docs/book-latex/torus_book.pdf
+          git commit -m "ci: replace torus_book.tex with cleaned version"
+          git push
+      - name: Delete cleaned TEX after success
+        run: |
+          rm torus_book_cleaned.tex
+          git add -u
+          git commit -m "ci: cleanup cleaned .tex file after replacement"
+          git push

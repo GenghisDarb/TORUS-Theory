@@ -1,0 +1,42 @@
+[
+  {
+    "description": "Add README.md files for notebooks/, scripts/, and (optionally) data/ directories to document their contents and usage.",
+    "priority": "medium",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Remove Jupyter merge conflict markers and backup files; specifically, fix PairCorr_Fourier_SideBand.ipynb (remove <<<<< >>>>> lines) and delete PairCorr_SideBand_Benchmark.ipynb.bak.",
+    "priority": "high",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Ensure all notebooks have a kernelspec and the standard TORUS bootstrap cell. Update metadata and initial code in PairCorr_Fourier_SideBand, Validation_ConstantLadder_PrecisionReTest, Validation_SeedConstant_MultiProbe, etc.",
+    "priority": "high",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Unify Phase B notebook location: move notebooks/PhaseB/* into notebooks/validation/phaseB/, remove the old PhaseB folder. Adjust documentation references accordingly.",
+    "priority": "high",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Update main README and any docs to reflect changes (remove 'coming soon' if audit script not provided now, or add reference if provided; note new READMEs).",
+    "priority": "low",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Improve notebook robustness: add file-not-found handling in ladder and Talbot notebooks (catch exceptions and instruct user), skip or automate file dialog in real-data notebook for headless runs.",
+    "priority": "medium",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Remove unnecessary repository files: .copilot/validation_tasks.md (or relocate it outside main branch if kept for history).",
+    "priority": "low",
+    "owner": "GenghisDarb"
+  },
+  {
+    "description": "Implement code marked as 'placeholder': complete TORUS lattice modifications in make_torus_lattices.sh or its Python equivalent; refine FINESSE output processing in regenerate_torus_solutions.py to produce meaningful ΔS metrics.",
+    "priority": "medium",
+    "owner": "GenghisDarb"
+  }
+]

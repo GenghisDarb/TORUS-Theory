@@ -1,0 +1,30 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore LaTeX build and intermediate files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.xdv
+*.out
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.pdf
+
+# Ignore validation and build artifacts
+/docs/validation/
+
+# Ignore TIFF files, notebook checkpoints, Untitled notebooks, and raw frames
+*.tif
+.ipynb_checkpoints/
+notebooks/**/Untitled*.ipynb
+data/structured_light/Order*/raw_frames/**
