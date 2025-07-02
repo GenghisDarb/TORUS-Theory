@@ -2,5 +2,5 @@
 * text=auto
 
 # Strip outputs + give clean diff for Jupyter notebooks
-*.ipynb filter=/usr/local/bin/python\ -m\ nbstripout\ --filter
-*.ipynb diff=/usr/local/bin/python\ -m\ nbstripout\ --diff
+*.ipynb filter=nbstripout
+*.ipynb diff=nbstripout
