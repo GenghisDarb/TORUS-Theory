@@ -1,5 +1,5 @@
+# Always treat as text
 * text=auto
 
-# Strip output & provide clean diff for Jupyter notebooks
-*.ipynb filter="\"/usr/local/bin/python\" -m nbstripout --filter" diff="\"/usr/local/bin/python\" -m nbstripout --diff"
-*.zpln filter=nbstripout
+# Strip outputs + give clean diff for Jupyter notebooks
+*.ipynb filter="/usr/local/bin/python" -m nbstripout --filter diff="/usr/local/bin/python" -m nbstripout --diff
