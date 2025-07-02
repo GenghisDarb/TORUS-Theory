@@ -1,2 +1,2 @@
 * text=auto
-*.ipynb filter=nbstripout diff=ipynb
+*.ipynb -filter -diff
