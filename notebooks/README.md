@@ -22,10 +22,10 @@ This section documents the new validation notebooks and tests for the Bicycle Ba
 
 - **recursive_controller_validation.ipynb**: Monte-Carlo recursive controller lean/steer test. Simulates a 14-cycle lean–steer correction loop and validates the controller dimension concept in a classical mechanical setting.
 - **constant_ladder_residuals.ipynb**: Linearized stability and eigen-plot placeholder. Computes χ–β ladder residuals using CODATA constants.
-- **audio_fft.ipynb**: Audio harmonics χ analysis using PSD of recursion14.wav.
+- **audio_fft.ipynb**: Audio harmonics χ analysis using PSD of data/audio/recursion14.wav.
 - **shannon_bound_compression.ipynb**: Recursive Shannon-bound compression test.
-- **timing_stats.ipynb**: Stack timing analysis from timing.csv.
+- **timing_stats.ipynb**: Stack timing analysis from data/bicycle/timing.csv.
 
 All notebooks are now located in `notebooks/bicycle/`.
 
-> **Note:** For full reproducibility, ensure `recursion14.wav` and `timing.csv` are present in the repo root or update paths as needed.
+> **Note:** For full reproducibility, ensure `data/audio/recursion14.wav` and `data/bicycle/timing.csv` are present, or update paths as needed.

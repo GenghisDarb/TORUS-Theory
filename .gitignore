@@ -30,10 +30,6 @@ notebooks/**/Untitled*.ipynb
 data/structured_light/Order*/raw_frames/**
 
 # runtime artefacts
-*.wav
+data/**/tmp*/
 *.csv
-*.bin
-data/gnss/**/*.rnx.gz
-
-# temp validation workspace
-tmp/
+*.wav
