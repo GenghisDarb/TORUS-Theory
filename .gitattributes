@@ -6,3 +6,6 @@
 notebooks/** -filter -diff
 torus_brot/** -filter -diff
 *.ipynb      -filter -diff
+
+*.zpln filter=nbstripout
+*.ipynb diff=ipynb
