@@ -1,1 +1,0 @@
-10.5281/zenodo.14002229  # Talbot carpet raw dataset (fixed_order_intense.h5, etc.)

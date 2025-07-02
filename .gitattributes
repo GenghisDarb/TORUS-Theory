@@ -2,4 +2,7 @@
 *.ipynb filter=nbstripout diff=ipynb
 *.bin filter=lfs diff=lfs
 *.wav filter=lfs diff=lfs
-*.ipynb -filter -diff
+# ── TEMP: turn nbstripout OFF while we repair notebooks ──
+notebooks/** -filter -diff
+torus_brot/** -filter -diff
+*.ipynb      -filter -diff

@@ -1,8 +1,0 @@
-{
-  "name": "torus-theory-dev",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "forwardPorts": [8888],
-  "postCreateCommand": "pip install -e ."
-}
