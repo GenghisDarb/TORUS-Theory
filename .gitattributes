@@ -1,6 +1,5 @@
 # Always treat as text
 * text=auto
 
-# Strip outputs + give clean diff for Jupyter notebooks
-*.ipynb filter=nbstripout
-*.ipynb diff=nbstripout
+*.ipynb -filter -diff
+* text=auto
