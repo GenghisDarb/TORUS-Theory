@@ -2,3 +2,6 @@
 *.bin filter=lfs diff=lfs
 *.wav filter=lfs diff=lfs
 *.zpln filter=nbstripout
+
+*.ipynb filter=nbstripout
+*.ipynb diff=ipynb
