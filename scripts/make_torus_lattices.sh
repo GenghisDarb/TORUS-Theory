@@ -37,3 +37,38 @@ for cfg in interferometers/*.kat; do
       > "interferometers/χ_${base}.kat"
 done
 echo "χ-lattice configs regenerated ✔"
+
+# --- TORUS MODIFICATION SCRIPT ---
+
+# Requirements: FINESSE/PyKat installed, base .kat files present in docs/ or a known directory.
+# This script will loop over base interferometer configurations and apply TORUS theory adjustments.
+
+BASE_DIR="docs/finesse_models"   # hypothetical directory with base .kat files
+OUTPUT_DIR="torus_brot/output"   # directory to save modified lattices and results
+mkdir -p "$OUTPUT_DIR"
+
+# TORUS parameters (example values; in practice, determine from TORUS theory)
+CHI_PHASE_SHIFT=1e-15    # e.g., slight refractive index shift equivalent
+EXTRA_POLARIZATION=0.001 # e.g., introduce a small scalar polarization component
+
+echo "Generating TORUS-modified interferometer lattices..."
+DRY_RUN=false
+command -v finesse >/dev/null 2>&1 || { echo "⚠️  FINESSE not installed – running in dry-run mode."; DRY_RUN=true; }
+
+for katfile in "$BASE_DIR"/*.kat; do
+    fname=$(basename "$katfile")
+    torus_kat="$OUTPUT_DIR/torus_${fname}"
+    echo " - Processing $fname -> $torus_kat"
+    # Copy base file and append TORUS modifications
+    cp "$katfile" "$torus_kat"
+    echo "# TORUS modifications:" >> "$torus_kat"
+    echo "param chi_phase $CHI_PHASE_SHIFT" >> "$torus_kat"    # placeholder: an example global parameter
+    echo "## (Placeholder for actual TORUS lattice modifications)" >> "$torus_kat"
+    # For example, we might tweak mirror masses, add a thin lens, or adjust a cavity length to simulate recursion effects.
+
+    if [ "$DRY_RUN" = true ]; then continue; fi
+    # Run FINESSE on the modified .kat file to get output (assuming `kat` CLI available)
+    finesse "$torus_kat" "$OUTPUT_DIR/${fname%.kat}_torus.out" || echo "FINESSE run failed for $fname"
+done
+
+echo "Done. Modified lattice files and outputs are in $OUTPUT_DIR."
