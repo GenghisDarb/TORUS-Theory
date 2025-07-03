@@ -1,0 +1,2 @@
+# Optional; not installed in CI by default
+# pykat==1.2.5      # uncomment if local FINESSE is available

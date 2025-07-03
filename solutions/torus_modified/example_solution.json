@@ -1,0 +1,9 @@
+{
+  "name": "baseline_dummy",
+  "sensitivity": 0.7071,
+  "TORUS_patch_applied": true,
+  "TORUS_params_used": {
+    "chi_factor": 0.7071,
+    "extra_dof": 1
+  }
+}

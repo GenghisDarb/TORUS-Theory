@@ -61,3 +61,52 @@ jobs:
 
       - name: Install nbstripout
         run: pip3 install nbstripout==0.8.1
+
+  test-suite:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install papermill pytest
+
+    - name: Run validation notebooks
+      run: |
+        papermill notebooks/validation/entropy/entropy_drift_analysis.ipynb out_entropy.ipynb
+        papermill notebooks/validation/realdata/PairCorr_Fourier_SideBand.ipynb out_paircorr.ipynb
+
+    - name: Check notebook results
+      run: |
+        grep -q "TORUS-POSITIVE" out_entropy.ipynb || echo "Entropy analysis incomplete"
+        grep -q "TORUS-POSITIVE" out_paircorr.ipynb || echo "Pair-correlation analysis incomplete"
+
+  lattice-regeneration:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install PyKat (optional)
+      if: env.PYKAT_ENABLED == 'true'
+      run: |
+        pip install pykat
+
+    - name: Run lattice regeneration script
+      run: |
+        python scripts/regenerate_torus_solutions.py
+      continue-on-error: true

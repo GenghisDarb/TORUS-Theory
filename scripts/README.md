@@ -13,3 +13,22 @@ This directory contains utility scripts for maintenance and data processing in t
 - **entropy_drift.py** – Entropy drift experiment helper script.
 
 These scripts are typically run from the repository root. Ensure required dependencies (e.g., `pykat`, `finesse`) are installed for the interferometer scripts.
+
+# Scripts Directory
+
+This directory contains utility scripts for generating data, running simulations, and validating TORUS Theory predictions.
+
+## Key Scripts
+- `make_torus_lattices.sh`: Generates TORUS-modified interferometer lattices and spectra. Requires FINESSE and PyKat.
+- `regenerate_torus_solutions.py`: Applies TORUS patches to baseline solutions and computes performance metrics.
+- `audio_harmonics.py`: Generates audio test tones for sideband analysis.
+- `entropy_drift.py`: Simulates entropy drift and generates data for analysis.
+
+## Usage
+To run a script, ensure the required dependencies are installed. For example, to run `regenerate_torus_solutions.py`, you may need to install PyKat:
+
+```bash
+pip install pykat
+```
+
+Refer to individual script comments for specific usage instructions.

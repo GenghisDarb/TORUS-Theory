@@ -120,3 +120,16 @@ MIT License
 Maintainer: Genghis Darb <genghis.darb@gmail.com>
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GenghisDarb/TORUS-Theory/main?labpath=README.ipynb)
+
+---
+
+## Optional Advanced Test: Regenerate TORUS-Modified Interferometer Lattices
+
+This step requires FINESSE and PyKat. To install PyKat after setting up FINESSE:
+
+```bash
+pip install pykat
+python scripts/regenerate_torus_solutions.py
+```
+
+If PyKat is not installed, the script will skip lattice regeneration and exit gracefully.

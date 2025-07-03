@@ -16,6 +16,24 @@ Most notebooks include a standard setup cell (imports and helper functions) and 
 
 For headless or CI execution, interactive notebooks (like those prompting file selection) may need modifications (or use provided default data paths).
 
+# Notebooks Directory
+
+This directory contains Jupyter notebooks for validating various aspects of the TORUS Theory framework. The notebooks are organized into subdirectories based on their focus areas, such as entropy analysis, pair-correlation studies, and gravitational wave detection.
+
+## Subdirectories
+- `validation/`: Contains notebooks for validating theoretical predictions against experimental or synthetic data.
+- `gwd/`: Focuses on gravitational wave detection and analysis.
+- `bicycle/`: Includes notebooks related to the Bicycle Balance Mystery and its resolution.
+
+## Running the Notebooks
+To run a notebook, ensure you have Python 3 and Jupyter installed. Install the required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+Then, open the desired notebook in Jupyter and execute the cells sequentially.
+
 # Bicycle Balance Mystery Validation Suite
 
 This section documents the new validation notebooks and tests for the Bicycle Balance Mystery resolution:

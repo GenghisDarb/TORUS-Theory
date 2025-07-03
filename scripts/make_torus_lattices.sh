@@ -19,10 +19,15 @@ for base in data/interferometer/upstream/GWDetectorZoo/*/; do
     # For illustration, copy upstream file:
     cp "${base}"/*.kat "$kat_out"
 
+    # Redirect output to a writable directory
+    output_dir="torus_brot/output"
+    mkdir -p "$output_dir"
+    katout_path="$output_dir/katout.txt"
+
     # === STEP 2: run FINESSE simulation via PyKat ===
-    pykat "$kat_out" > /katout.txt
+    pykat "$kat_out" > "$katout_path"
     # Assume pykat writes strain spectrum to katout.txt; convert to CSV
-    grep '^PSD' /katout.txt | awk '{print $2","$3}' > "$csv_out"
+    grep '^PSD' "$katout_path" | awk '{print $2","$3}' > "$csv_out"
   done
 done
 
@@ -56,19 +61,17 @@ DRY_RUN=false
 command -v finesse >/dev/null 2>&1 || { echo "⚠️  FINESSE not installed – running in dry-run mode."; DRY_RUN=true; }
 
 for katfile in "$BASE_DIR"/*.kat; do
-    fname=$(basename "$katfile")
-    torus_kat="$OUTPUT_DIR/torus_${fname}"
-    echo " - Processing $fname -> $torus_kat"
-    # Copy base file and append TORUS modifications
-    cp "$katfile" "$torus_kat"
-    echo "# TORUS modifications:" >> "$torus_kat"
-    echo "param chi_phase $CHI_PHASE_SHIFT" >> "$torus_kat"    # placeholder: an example global parameter
-    echo "## (Placeholder for actual TORUS lattice modifications)" >> "$torus_kat"
-    # For example, we might tweak mirror masses, add a thin lens, or adjust a cavity length to simulate recursion effects.
+  fname=$(basename "$katfile")
+  torus_kat="$OUTPUT_DIR/torus_${fname}"
+  cp "$katfile" "$torus_kat"
+  echo "# TORUS modifications:" >> "$torus_kat"
+  echo "param chi_phase $CHI_PHASE_SHIFT" >> "$torus_kat"    # placeholder: an example global parameter
+  echo "## (Placeholder for actual TORUS lattice modifications)" >> "$torus_kat"
+  # For example, we might tweak mirror masses, add a thin lens, or adjust a cavity length to simulate recursion effects.
 
-    if [ "$DRY_RUN" = true ]; then continue; fi
-    # Run FINESSE on the modified .kat file to get output (assuming `kat` CLI available)
-    finesse "$torus_kat" "$OUTPUT_DIR/${fname%.kat}_torus.out" || echo "FINESSE run failed for $fname"
+  if [ "$DRY_RUN" = true ]; then continue; fi
+  # Run FINESSE on the modified .kat file to get output (assuming `kat` CLI available)
+  finesse "$torus_kat" "$OUTPUT_DIR/${fname%.kat}_torus.out" || echo "FINESSE run failed for $fname"
 done
 
 echo "Done. Modified lattice files and outputs are in $OUTPUT_DIR."
