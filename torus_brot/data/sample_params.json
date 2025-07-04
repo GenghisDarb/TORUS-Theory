@@ -1,0 +1,8 @@
+{
+  "R_major": 2.0,
+  "r_minor": 0.5,
+  "max_iter": 512,
+  "escape_radius": 4.0,
+  "χ_scale_factor": 1.0,
+  "note": "Default parameters for TORUS-brot rendering"
+}
