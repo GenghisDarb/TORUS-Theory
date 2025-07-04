@@ -32,3 +32,12 @@ pip install pykat
 ```
 
 Refer to individual script comments for specific usage instructions.
+
+# scripts
+**Role in TORUS:** Helper scripts for data processing and validation.
+**Key files:**
+- `make_torus_lattices.sh`: Generates lattice structures.
+- `regenerate_torus_solutions.py`: Recomputes solutions.
+**Try it:** Run `bash make_torus_lattices.sh`.
+**Upstream data:** Uses `data/` for inputs.
+**Next steps:** Explore `notebooks/` for validation.

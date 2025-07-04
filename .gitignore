@@ -33,3 +33,12 @@ data/structured_light/Order*/raw_frames/**
 data/**/tmp*/
 *.csv
 *.wav
+
+# Ignore build directories in docs
+docs/**/build
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore Jupyter notebook checkpoints
+*.ipynb_checkpoints

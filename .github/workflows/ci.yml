@@ -79,6 +79,9 @@ jobs:
         pip install -r requirements.txt
         pip install papermill pytest
 
+    - name: Editable install
+      run: pip install -e .
+
     - name: Run validation notebooks
       run: |
         papermill notebooks/validation/entropy/entropy_drift_analysis.ipynb out_entropy.ipynb

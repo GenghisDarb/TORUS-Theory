@@ -34,6 +34,15 @@ pip install -r requirements.txt
 
 Then, open the desired notebook in Jupyter and execute the cells sequentially.
 
+# notebooks
+**Role in TORUS:** Contains Jupyter notebooks for validation and exploration.
+**Key files:**
+- `validation/`: Phase A and Phase B suites.
+- `gwd/`: Gravitational wave detection analysis.
+**Try it:** `jupyter nbopen validation/PhaseA.ipynb`.
+**Upstream data:** Linked datasets in `data/`.
+**Next steps:** Explore `docs/` for theory and CLI tools.
+
 # Bicycle Balance Mystery Validation Suite
 
 This section documents the new validation notebooks and tests for the Bicycle Balance Mystery resolution:

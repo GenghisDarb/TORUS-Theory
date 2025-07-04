@@ -9,4 +9,5 @@ src/torus_theory.egg-info/dependency_links.txt
 src/torus_theory.egg-info/entry_points.txt
 src/torus_theory.egg-info/requires.txt
 src/torus_theory.egg-info/top_level.txt
+tests/test_closure.py
 tests/test_placeholders.py

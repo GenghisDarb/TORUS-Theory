@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+title: TORUS-Theory Repository
+message: "If you use this code or data, please cite as below."
+authors: [{family-names: Peter, given-names: Bradley C.}]
+date-released: 2025-07-04
+version: 0.1.0
+url: https://github.com/GenghisDarb/TORUS-Theory
+license: CC0-1.0
