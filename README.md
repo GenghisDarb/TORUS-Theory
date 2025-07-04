@@ -148,3 +148,7 @@ If PyKat is not installed, the script will skip lattice regeneration and exit gr
 ## 📖 Documentation Index
 
 Explore the [Documentation Index](docs/INDEX.md) for a sitemap of all key files and sections in the repository.
+
+---
+
+> _Currently pinned to CPython ≤ 3.12 because SciPy wheels for 3.13+ are not yet available (2025-07). Remove upper bound once released._

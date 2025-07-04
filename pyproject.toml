@@ -10,7 +10,7 @@ authors = [
   {name = "Genghis Darb", email = "genghisdarb@example.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.9,<3.13"
 dependencies = [
     "typer>=0.12",
     "papermill>=2.5",

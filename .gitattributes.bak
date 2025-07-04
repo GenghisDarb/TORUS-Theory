@@ -1,5 +1,0 @@
-# Always treat as text
-* text=auto
-
-# Temporarily disable nbstripout
-*.ipynb -filter -diff
