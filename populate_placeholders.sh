@@ -19,3 +19,16 @@ chmod +x scripts/*.sh
 
 # Notify completion
 echo "Placeholder population complete."
+
+# ensure all stubs carry a python3 kernelspec
+python3 - <<'PY'
+import nbformat, pathlib
+for nb_path in pathlib.Path("notebooks").rglob("*.ipynb"):
+    nb = nbformat.read(nb_path, as_version=4)
+    ks = nb["metadata"].setdefault("kernelspec", {"name": "python3",
+                                                  "display_name": "Python 3",
+                                                  "language": "python"})
+    if ks["name"] != "python3":
+        ks.update(name="python3", display_name="Python 3", language="python")
+        nbformat.write(nb, nb_path)
+PY
