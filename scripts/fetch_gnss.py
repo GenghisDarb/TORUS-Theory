@@ -4,7 +4,6 @@ Download a RINEX file from NASA CDDIS to data/gnss/rinex/YYYYMM/ if missing.
 Usage: ensure_rinex("AUCK00NZL", "2025-05-05", "30S")
 """
 import datetime
-import os
 import pathlib
 
 import requests

@@ -2,22 +2,25 @@
 
 ## Updated Folder Structure
 
-import nbformat, json, pathlib, shutil
+import nbformat
+import json
+import pathlib
+import shutil
 
-root = pathlib.Path('.')
+root = pathlib.Path(".")
 stub = {"cells": [], "metadata": {}, "nbformat": 4, "nbformat_minor": 2}
 fixed = []
 
-for p in root.rglob('*.ipynb'):
+for p in root.rglob("*.ipynb"):
     try:
-        txt = p.read_text(encoding='utf-8')
+        txt = p.read_text(encoding="utf-8")
         if len(txt.strip()) < 300:
             raise ValueError("too small")
         nb = nbformat.reads(txt, as_version=4)
         if len(nb.cells) == 0:
             raise ValueError("zero cells")
-    except Exception as e:
-        bak = p.with_suffix('.ipynb.bak')
+    except Exception:
+        bak = p.with_suffix(".ipynb.bak")
         shutil.copy2(p, bak)
         p.write_text(json.dumps(stub, indent=1))
         fixed.append(p)

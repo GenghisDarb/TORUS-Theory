@@ -1,4 +1,6 @@
-import math, torus_cli
+import math
+import torus_cli
+
 
 def test_fourteen_cycle_identity():
     ident = torus_cli.recursion_closure_demo()  # write helper if absent

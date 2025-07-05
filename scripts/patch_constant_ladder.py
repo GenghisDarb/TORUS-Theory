@@ -1,5 +1,5 @@
 import nbformat as nbf
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
 NB = Path("notebooks/validation/ladder/Validation_ConstantLadder_PrecisionReTest.ipynb")
 nb = nbf.read(NB, as_version=4)

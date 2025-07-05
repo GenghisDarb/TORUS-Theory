@@ -3,10 +3,7 @@
 Outputs raw binary to entropy_raw.bin and a simple CSV of byte counts."""
 import argparse
 import csv
-import hashlib
 import os
-import random
-import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--bytes", type=int, default=10_000_000, help="bytes to gather")

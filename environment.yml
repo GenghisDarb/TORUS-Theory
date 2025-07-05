@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.9
+  - python=3.12
   - numpy
   - pandas
   - matplotlib
@@ -13,3 +13,10 @@ dependencies:
   - zstandard
   - h5py
   - pytest
+  - black[jupyter]
+  - papermill
+  - nbconvert
+  - jupyterlab # provides kernelspec CLI
+  - nbclient
+  - click
+  - ruff

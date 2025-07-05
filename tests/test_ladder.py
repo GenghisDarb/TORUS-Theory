@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def test_ladder_residual():
     # Mock CODATA constants
     codata_constants = np.array([1.0, 1.000002])

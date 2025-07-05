@@ -1,7 +1,6 @@
 import sys
 import json
 from docx import Document
-from datetime import datetime
 import requests
 import os
 
@@ -41,7 +40,7 @@ label = "TORUS Evidence"
 value = str(result.get("sigma", "?"))
 color = "blue"
 badge_url = f"https://img.shields.io/badge/{label}-{value}-{color}.svg"
-badge_url = badge_url.replace(' ', '%20')
+badge_url = badge_url.replace(" ", "%20")
 r = requests.get(badge_url)
 if r.ok:
     os.makedirs("docs", exist_ok=True)
