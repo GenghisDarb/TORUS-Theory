@@ -1,0 +1,12 @@
+{
+    "python.analysis.extraPaths": [
+        "./src",
+        "./notebooks",
+        "./scripts",
+        "./tests"
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportOptionalSubscript": "none"
+    }
+}
