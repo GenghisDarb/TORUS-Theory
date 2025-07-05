@@ -1,3 +1,5 @@
+This directory contains Docker-related resources for the TORUS-Theory project.
+
 This folder stores Dockerfiles that reproduce the TORUS analysis stack
 (python 3.12, jupyterlab, black, papermill). Use:
 

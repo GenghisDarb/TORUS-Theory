@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+matplotlib
+ipykernel
+papermill
+nbconvert
+nbclient
+nbformat>=5.9
+jupyterlab
+click
+black[jupyter]
+ruff
+pytest

@@ -1,7 +1,11 @@
 import os
 import urllib.request
 
-import numpy as np
+try:
+    import numpy as np
+except ImportError:  # pragma: no cover
+    raise SystemExit("numpy missing; install via requirements-ci.txt")
+
 from entropic_spectrum import thet_tt  # scripts package now on path
 
 
