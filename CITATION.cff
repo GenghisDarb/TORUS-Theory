@@ -1,8 +1,16 @@
 cff-version: 1.2.0
-title: TORUS-Theory Repository
-message: "If you use this code or data, please cite as below."
-authors: [{family-names: Peter, given-names: Bradley C.}]
-date-released: 2025-07-04
-version: 0.1.0
-url: https://github.com/GenghisDarb/TORUS-Theory
-license: CC0-1.0
+title: "TORUS Theory Repository"
+message: "If you use this repository, please cite it as below."
+authors:
+  - name: "TORUS Collaboration"
+    orcid: "0000-0000-0000-0000"
+    affiliation: "TORUS Research Group"
+date-released: "2025-05-01"
+version: "0.4-PhaseB"
+url: "https://github.com/TORUS-Theory"
+repository-code: "https://github.com/TORUS-Theory"
+license: "MIT"
+keywords:
+  - "TORUS Theory"
+  - "recursion physics"
+  - "scientific reproducibility"

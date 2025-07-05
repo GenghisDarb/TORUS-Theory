@@ -131,3 +131,48 @@ jobs:
       - name: Run notebook tests
         run: |
           papermill notebooks/validation/bicycle/recursive_controller_validation.ipynb out.ipynb
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install black ruff
+      - name: Run linting
+        run: |
+          black --check .
+          ruff .
+
+  run-notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install jupyter
+      - name: Execute notebooks
+        run: |
+          for notebook in $(find notebooks -name '*.ipynb'); do
+            jupyter nbconvert --execute --to notebook --inplace "$notebook" --ExecutePreprocessor.timeout=600;
+          done
+
+  check-readmes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check README presence
+        run: |
+          for folder in $(find . -type d -maxdepth 1); do
+            if [ ! -f "$folder/README.md" ]; then
+              echo "Missing README in $folder" && exit 1;
+            fi
+          done

@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--bytes", type=int, default=10_000_000, help="bytes to gather")
 args = parser.parse_args()
 
-fname = "entropy_raw.bin"
+fname = "data/entropy/entropy_raw.bin"
 with open(fname, "wb") as f:
     f.write(os.urandom(args.bytes))
 
@@ -21,7 +21,7 @@ counts = [0] * 256
 with open(fname, "rb") as f:
     for b in f.read():
         counts[b] += 1
-with open("entropy_counts.csv", "w", newline="") as f:
+with open("data/entropy/entropy_counts.csv", "w", newline="") as f:
     w = csv.writer(f)
     w.writerow(["byte", "count"])
     for i, c in enumerate(counts):

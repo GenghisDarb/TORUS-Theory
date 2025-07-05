@@ -1,6 +1,17 @@
-# Bicycle validation notebooks
+# Bicycle Validation
 
-This folder contains Jupyter notebooks for bicycle and controller recursion validation:
+## Why this folder matters for TORUS
+This folder contains notebooks and data related to the "Bicycle Balance Mystery" tests, including Monte Carlo simulations.
+
+## What it contains
+- **Notebooks**: Jupyter notebooks analyzing bicycle balance dynamics.
+- **Data**: Simulation outputs and processed results.
+
+## How to use
+Open the notebooks in Jupyter and execute the cells to analyze the simulation data. Ensure the required data files are present in the `data/bicycle/` folder.
+
+## Next steps
+Additional notebooks will be added for extended bicycle validation tests.
 
 ### Notebooks in this folder
 | notebook | purpose |

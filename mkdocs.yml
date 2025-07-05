@@ -1,0 +1,30 @@
+site_name: TORUS-Theory Documentation
+site_url: https://github.com/TORUS-Theory
+repo_url: https://github.com/TORUS-Theory
+repo_name: GitHub
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - search.highlight
+    - search.share
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc
+
+nav:
+  - Home: index.md
+  - Theory Papers:
+      - Dimensional Constants: docs/supplements/Dimensional_Constants.md
+      - Black Hole Entropy: docs/supplements/Black_Hole_Entropy.md
+  - Validation Summaries:
+      - Ladder Validation: notebooks/validation/ladder/README.md
+      - Optical Tests: notebooks/validation/optics/README.md
+  - Examples:
+      - TORUS Echo Analysis: notebooks/gwd/LIGO_Echo_Torus_vs_T_HET.py

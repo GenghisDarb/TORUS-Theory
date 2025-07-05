@@ -17,13 +17,13 @@ while len(buf) < args.bytes:
     t2 = time.perf_counter_ns()
     buf.append((t2 - t1) & 0xFF)        # take 8 LSBs of timing jitter
 
-open('entropy_raw.bin', 'wb').write(buf)
+open('data/entropy/entropy_raw.bin', 'wb').write(buf)
 print('Wrote entropy_raw.bin')
 
 counts = [0]*256
 for b in buf:
     counts[b] += 1
-with open('entropy_counts.csv', 'w', newline='') as f:
+with open('data/entropy/entropy_counts.csv', 'w', newline='') as f:
     w = csv.writer(f); w.writerow(['byte','count'])
     w.writerows(enumerate(counts))
 print('Wrote entropy_counts.csv')

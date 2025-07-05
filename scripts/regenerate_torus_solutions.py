@@ -6,10 +6,20 @@ import os
 from math import log10
 
 try:
-    import pykat                                 # noqa: F401
-    PYKAT_OK = True
-except ModuleNotFoundError:
+    import pykat                              # noqa: F401
+except ImportError:
     PYKAT_OK = False
+
+    class _NoKat:
+        def __getattr__(self, name):
+            raise RuntimeError(
+                "pykat not installed; run `pip install pykat` "
+                "or rerun regenerate_torus_solutions.py with --no-kat"
+            )
+
+    pykat = _NoKat()                          # type: ignore
+else:
+    PYKAT_OK = True
 
 import pandas as pd
 import glob
@@ -32,42 +42,50 @@ params = {
     9: {"L": 14, "phi": 0.08},
 }
 
-for base in base_dir.glob("solutions/type*/sol*/CFGS_*.txt"):
-    family = base.parent.parent.name  # typeX
-    solnum = base.parent.name  # solYY
-    for t, p in params.items():
-        sol = f"type{t}_sol1_{family}_{solnum}"
-        kat_out = out_kat / f"{sol}.kat"
-        csv_out = out_csv / f"{sol}_strain.csv"
+if PYKAT_OK:
+    for base in base_dir.glob("solutions/type*/sol*/CFGS_*.txt"):
+        family = base.parent.parent.name  # typeX
+        solnum = base.parent.name  # solYY
+        for t, p in params.items():
+            sol = f"type{t}_sol1_{family}_{solnum}"
+            kat_out = out_kat / f"{sol}.kat"
+            csv_out = out_csv / f"{sol}_strain.csv"
 
-        # --- 1 · copy pristine model ---
-        shutil.copy(base, kat_out)
+            # --- 1 · copy pristine model ---
+            shutil.copy(base, kat_out)
 
-        # --- 2 · append χ-lattice optics (placeholder patch) ---
-        with kat_out.open("a") as f:
-            f.write(f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n")
+            # --- 2 · append χ-lattice optics (placeholder patch) ---
+            with kat_out.open("a") as f:
+                f.write(f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n")
 
-        # --- 3 · simulate ---
-        kat = pykat.finesse.kat()
-        kat.loadKatFile(str(kat_out))
-        kat.parseCommands("xaxis * lambda lin 1064 1065 100\n")
-        kat.run(printout=False)
-        # Save output (placeholder: just save the xaxis and yaxis)
-        with open(csv_out, "w", newline="") as fp:
-            writer = csv.writer(fp)
-            writer.writerow(["lambda", "PSD"])
-            for x, y in zip(kat.xaxis, kat.yaxis):
-                writer.writerow([x, y])
+            # --- 3 · simulate ---
+            try:
+                kat = pykat.finesse.kat()
+                kat.loadKatFile(str(kat_out))
+                kat.parseCommands("xaxis * lambda lin 1064 1065 100\n")
+                kat.run()
+                # Save output (placeholder: just save the xaxis and yaxis)
+                with open(csv_out, "w", newline="") as fp:
+                    writer = csv.writer(fp)
+                    writer.writerow(["lambda", "PSD"])
+                    for x, y in zip(getattr(kat, 'xaxis', []), getattr(kat, 'yaxis', [])):
+                        writer.writerow([x, y])
 
-        # --- 4 · ΔS integration (very coarse) ---
-        psd = list(kat.yaxis)
-        deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
+                # --- 4 · ΔS integration (very coarse) ---
+                psd = list(getattr(kat, 'yaxis', []))
+                deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
+            except AttributeError as e:
+                print(f"Error during simulation for {sol}: {e}")
 
-# save ΔS table
-with open("data/interferometer/deltaS_table.csv", "w", newline="") as fp:
-    w = csv.DictWriter(fp, fieldnames=["sol", "gain"])
-    w.writeheader()
-    w.writerows(deltaS)
+    # save ΔS table
+    with open("data/interferometer/deltaS_table.csv", "w", newline="") as fp:
+        w = csv.DictWriter(fp, fieldnames=["sol", "gain"])
+        w.writeheader()
+        w.writerows(deltaS)
+else:
+    print("⚠️  PyKat (FINESSE) not installed; skipping lattice regeneration.")
+    print("    → Install with:  pip install pykat  (after installing FINESSE)")
+    exit(0)
 
 def main():
     if not PYKAT_OK:
@@ -102,20 +120,23 @@ def main():
                     f.write(f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n")
 
                 # --- 3 · simulate ---
-                kat = pykat.finesse.kat()
-                kat.loadKatFile(str(kat_out))
-                kat.parseCommands("xaxis * lambda lin 1064 1065 100\n")
-                kat.run(printout=False)
-                # Save output (placeholder: just save the xaxis and yaxis)
-                with open(csv_out, "w", newline="") as fp:
-                    writer = csv.writer(fp)
-                    writer.writerow(["lambda", "PSD"])
-                    for x, y in zip(kat.xaxis, kat.yaxis):
-                        writer.writerow([x, y])
+                try:
+                    kat = pykat.finesse.kat()
+                    kat.loadKatFile(str(kat_out))
+                    kat.parseCommands("xaxis * lambda lin 1064 1065 100\n")
+                    kat.run()
+                    # Save output (placeholder: just save the xaxis and yaxis)
+                    with open(csv_out, "w", newline="") as fp:
+                        writer = csv.writer(fp)
+                        writer.writerow(["lambda", "PSD"])
+                        for x, y in zip(getattr(kat, 'xaxis', []), getattr(kat, 'yaxis', [])):
+                            writer.writerow([x, y])
 
-                # --- 4 · ΔS integration (very coarse) ---
-                psd = list(kat.yaxis)
-                deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
+                    # --- 4 · ΔS integration (very coarse) ---
+                    psd = list(getattr(kat, 'yaxis', []))
+                    deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
+                except AttributeError as e:
+                    print(f"Error during simulation for {sol}: {e}")
 
     # save ΔS table
     with open("data/interferometer/deltaS_table.csv", "w", newline="") as fp:

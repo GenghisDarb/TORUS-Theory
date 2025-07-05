@@ -4,7 +4,7 @@ This folder contains Jupyter notebooks for TORUS Theory simulations and validati
 
 - **validation/synthetic/** – Synthetic data tests and benchmarks (e.g., side-band injection tests, noise robustness).
 - **validation/realdata/** – Notebooks for real experimental or observational datasets (e.g., pair-correlation analysis on real data).
-- **validation/constants/** – Phase B notebooks testing fundamental constant relationships (ladder precision, multi-probe seed constant).
+- **validation/ladder/** – Phase B notebooks testing ladder relationships (precision, multi-probe seed constant).
 - **validation/optics/** – Phase B notebooks for optical/interferometric tests (Talbot carpet side-band analysis, etc.).
 - **validation/bicycle/** – Bicycle and controller recursion validation (e.g., recursive controller, pair-correlation)
 - **validation/audio/** – Audio side-band and FFT validation
@@ -21,18 +21,14 @@ For headless or CI execution, interactive notebooks (like those prompting file s
 This directory contains Jupyter notebooks for validating various aspects of the TORUS Theory framework. The notebooks are organized into subdirectories based on their focus areas, such as entropy analysis, pair-correlation studies, and gravitational wave detection.
 
 ## Subdirectories
-- `validation/`: Contains notebooks for validating theoretical predictions against experimental or synthetic data.
-- `gwd/`: Focuses on gravitational wave detection and analysis.
-- `bicycle/`: Includes notebooks related to the Bicycle Balance Mystery and its resolution.
+- **validation/**: Contains notebooks for validating TORUS models and constants.
+- **audio/**: Harmonic analysis and audio-based recursion experiments.
+- **bicycle/**: Timing and chi-modtime trace analysis.
+- **entropy/**: Entropy drift and spectrum analysis.
+- **optics/**: Optical and interferometric tests.
 
-## Running the Notebooks
-To run a notebook, ensure you have Python 3 and Jupyter installed. Install the required dependencies using:
-
-```bash
-pip install -r requirements.txt
-```
-
-Then, open the desired notebook in Jupyter and execute the cells sequentially.
+## Usage
+Open the notebooks in Jupyter and execute the cells sequentially. Ensure all required data files are present in the `data/` directory.
 
 # notebooks
 **Role in TORUS:** Contains Jupyter notebooks for validation and exploration.

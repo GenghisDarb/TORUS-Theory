@@ -1,18 +1,23 @@
 # Scripts
 
-This directory contains utility scripts for maintenance and data processing in the TORUS Theory project:
+## Why this folder matters for TORUS
+This folder contains various standalone scripts that support data handling and analysis in the TORUS project. These are Python (and occasionally Bash) tools intended to be run from the command line.
 
-- **restore_structure.sh** – Reorganizes the repository file structure to the canonical layout (moves and renames files to their proper folders). Typically used after major document imports or merges.
-- **audit_structure.sh** – *(Planned)* Script to verify that all files and filenames conform to the expected slug rules and directory layout (mentioned in README; to be implemented).
-- **make_torus_lattices.sh** – Uses FINESSE (via PyKat) to generate TORUS-modified interferometer models and their strain spectra. *(Currently uses placeholder logic for lattice modifications.)*
-- **regenerate_torus_solutions.py** – Python version of lattice generation: copies base solutions and applies χ-lattice parameter patches, then runs simulations to produce updated spectra and a summary table of ΔS gains. *(Contains placeholder steps to be improved.)*
-- **fetch_structured_light.py** – Downloads structured-light experiment data from Zenodo (DOI:10.5281/zenodo.14002229) on-demand. Used by notebooks to retrieve large `.h5` files at runtime instead of storing them in the repo.
-- **fetch_gnss.py** – Downloads GNSS sample data for validation notebooks.
-- **fetch_gw.py** – Downloads gravitational wave data for validation.
-- **audio_harmonics.py** – Audio harmonics analysis helper for FFT/PSD.
-- **entropy_drift.py** – Entropy drift experiment helper script.
+## What it contains
+- **fetch_gnss.py**: Downloads GNSS timing data (RINEX files) needed for the GPS satellite clock drift test.
+- **fetch_optics.py**: Helper to pull the optics experiment HDF5 from Zenodo.
+- **stack_timing.py**: Processes data/bicycle/timing.csv and computes aggregate statistics for analysis in notebooks.
+- **update_import_paths.py**: Scans notebooks and fixes import or data file path references after any reorganization.
 
-These scripts are typically run from the repository root. Ensure required dependencies (e.g., `pykat`, `finesse`) are installed for the interferometer scripts.
+## How to use
+Each script can be executed from the repository root. For example:
+- To fetch GNSS data: `python scripts/fetch_gnss.py --date 2025-05-05`
+- To fetch optics data: `python scripts/fetch_optics.py`
+
+Many scripts print usage instructions if run with `-h`. Run them before corresponding notebooks if you don’t already have the required data files.
+
+## Next steps
+Developers can add new scripts here for any repetitive task. Please document any new script by adding a bullet to this README, including what it does and how to run it.
 
 # Scripts Directory
 

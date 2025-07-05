@@ -1,4 +1,11 @@
-"""Placeholder module for gwd notebooks."""
-from .LIGO_Echo_Torus_vs_T_HET import torus_echo, thet_echo
+"""
+gwd package – Gravitational-Wave Detector validation modules
+"""
+from importlib import import_module
 
-__all__: list[str] = ["torus_echo", "thet_echo"]
+# lazy import so pykat can remain optional
+_LIGO = import_module(".LIGO_Echo_Torus_vs_T_HET", package=__name__)
+
+# re-export for `from gwd import LIGO_Echo_Torus_vs_T_HET`
+LIGO_Echo_Torus_vs_T_HET = _LIGO
+__all__ = ["LIGO_Echo_Torus_vs_T_HET"]

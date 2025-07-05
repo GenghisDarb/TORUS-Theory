@@ -16,7 +16,7 @@ import tqdm
 
 RECORD = "14002229"
 API = f"https://zenodo.org/api/records/{RECORD}"
-CACHE = pathlib.Path("data/structured_light")
+CACHE = pathlib.Path("data/optics")
 CACHE.mkdir(parents=True, exist_ok=True)
 
 
