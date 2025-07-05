@@ -72,12 +72,15 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
         pip install papermill pytest
+
+    - name: Editable install
+      run: pip install -e .
 
     - name: Run validation notebooks
       run: |
@@ -99,7 +102,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.12'
 
     - name: Install PyKat (optional)
       if: env.PYKAT_ENABLED == 'true'
@@ -110,3 +113,21 @@ jobs:
       run: |
         python scripts/regenerate_torus_solutions.py
       continue-on-error: true
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11']   # ← pin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install deps
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run notebook tests
+        run: |
+          papermill notebooks/validation/bicycle/recursive_controller_validation.ipynb out.ipynb

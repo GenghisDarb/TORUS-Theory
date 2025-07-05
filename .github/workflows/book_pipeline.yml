@@ -82,20 +82,6 @@ jobs:
         working-directory: docs/book-latex
         run: |
           latexmk -pdf -interaction=nonstopmode -file-line-error torus_book.tex
-      - name: Dump LaTeX log on failure
-        if: failure() && steps.build.outcome == 'failure'
-        working-directory: docs/book-latex
-        run: |
-          echo "------ torus_book.log (tail) ------"
-          tail -n 200 torus_book.log || true
-      - name: Debug LaTeX File
-        working-directory: docs/book-latex
-        run: |
-          grep -i "missing" torus_book.log || echo "No missing characters detected"
-      - name: Debug LaTeX Issues (Optional)
-        if: failure()
-        working-directory: docs/book-latex
-        run: cat torus_book.log
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:

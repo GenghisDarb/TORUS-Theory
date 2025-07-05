@@ -8,3 +8,12 @@ This directory contains all data assets used in the TORUS Theory project. Subfol
 - **gnss/** – GNSS (Global Navigation Satellite System) data, including RINEX files. See `gnss/README.md` for fetch instructions and file structure.
 
 Each subfolder may contain its own README with more details and data provenance. For large datasets, see the relevant Zenodo DOI or fetch helper script in `scripts/`.
+
+# data
+**Role in TORUS:** Contains datasets for analysis and validation.
+**Key files:**
+- `bicycle/timing.csv`: Timing data for bicycle model.
+- `entropy/entropy_counts.csv`: Entropy analysis data.
+**Try it:** Use `scripts/fetch_gnss.py` to load GNSS data.
+**Upstream data:** Linked DOI references in `docs/`.
+**Next steps:** Explore `notebooks/` for analysis.

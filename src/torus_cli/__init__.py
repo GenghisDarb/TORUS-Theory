@@ -20,3 +20,11 @@ def run(notebook_path: str):
         typer.echo(f"Execution failed: {e}", err=True)
         raise typer.Exit(e.returncode)
     typer.echo("Notebook executed successfully.")
+
+def recursion_closure_demo():
+    """Simulates 14 dummy operations and returns 1.0."""
+    for _ in range(14):
+        pass
+    return 1.0
+
+__all__ = ["recursion_closure_demo"]

@@ -1,5 +1,0 @@
-* text=auto
-*.bin filter=lfs diff=lfs
-*.wav filter=lfs diff=lfs
-*.zpln filter=nbstripout
-docs/book-latex/notebooks/validation/astronomy/Validation_Earthquake_Aurora_ChiScan.ipynb -filter -diff

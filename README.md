@@ -1,5 +1,9 @@
 # TORUS Theory 📚
 
+[![CI Status](https://github.com/GenghisDarb/TORUS-Theory/actions/workflows/ci.yml/badge.svg)](https://github.com/GenghisDarb/TORUS-Theory/actions)
+[![Docs Index](docs/INDEX.md)](docs/INDEX.md)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GenghisDarb/TORUS-Theory/HEAD)
+
 TORUS Theory extends standard gauge theory by embedding every field and interaction inside a 14-dimensional \(\chi\)-\(\beta\) harmonic lattice; the resulting closure matrix forces each recursion loop to return to unity, simultaneously resolving black-hole entropy, measurement paradoxes, and the unification of all four fundamental forces. From this single topological move flow predictive links between quantum amplitudes, gravitational curvature, large-scale cosmology, and observer-state dynamics—yielding testable signatures in gravitational-wave spectra, particle-decay branching ratios, and recursive-intelligence architectures.
 
 ---
@@ -68,6 +72,13 @@ bash scripts/audit_structure.sh   # (coming soon)
 pip install -r requirements.txt   # now includes mpmath, scipy, etc.
 ```
 
+## Installation
+
+```bash
+# one-time dev install
+pip install -e .
+```
+
 ---
 
 ## Quick start
@@ -119,8 +130,6 @@ Processed interferometer outputs and provenance live in
 MIT License
 Maintainer: Genghis Darb <genghis.darb@gmail.com>
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GenghisDarb/TORUS-Theory/main?labpath=README.ipynb)
-
 ---
 
 ## Optional Advanced Test: Regenerate TORUS-Modified Interferometer Lattices
@@ -133,3 +142,13 @@ python scripts/regenerate_torus_solutions.py
 ```
 
 If PyKat is not installed, the script will skip lattice regeneration and exit gracefully.
+
+---
+
+## 📖 Documentation Index
+
+Explore the [Documentation Index](docs/INDEX.md) for a sitemap of all key files and sections in the repository.
+
+---
+
+> _Currently pinned to CPython ≤ 3.12 because SciPy wheels for 3.13+ are not yet available (2025-07). Remove upper bound once released._
