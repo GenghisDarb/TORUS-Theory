@@ -32,7 +32,7 @@ if __name__ == "__main__":
     args = ap.parse_args()
 
     pic = render_grid()
-    plt.imshow(pic, cmap="inferno", extent=[-2, 2, -2, 2])
+    plt.imshow(pic, cmap="inferno", extent=(-2.0, 2.0, -2.0, 2.0))
     plt.title("TORUS-brot demo")
     plt.axis("off")
     plt.savefig(args.out, dpi=300, bbox_inches="tight")
