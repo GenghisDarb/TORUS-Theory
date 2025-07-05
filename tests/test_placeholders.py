@@ -31,6 +31,12 @@ class TestEchoFunctions(unittest.TestCase):
                 "Missing __init__.py in notebooks/gwd; cannot import as a package."
             )
 
+        # Ensure the gwd module is resolvable
+        sys.path.insert(0, str(notebooks_gwd_path))
+
+        # Ensure the parent directory of notebooks is included in sys.path
+        sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
+
         # Debug: Print sys.path after modification
         print("Updated Python sys.path:", sys.path)
 

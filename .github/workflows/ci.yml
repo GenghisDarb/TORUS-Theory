@@ -4,6 +4,7 @@ on:
   push:
   pull_request:
 
+# VS Code YAML hint suppression
 jobs:
   validate-structure:  # <- one job block
     runs-on: ubuntu-latest
@@ -192,3 +193,48 @@ jobs:
               echo "Missing README in $folder" && exit 1;
             fi
           done
+
+  full-dependency-install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # ----- Install full stack -----
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-ci.txt
+
+      # ----- Register kernel once -----
+      - name: Register Jupyter kernel
+        run: python -m ipykernel install --user --name torus-ci --display-name "Python (TORUS CI)"
+
+      # ----- Notebook execution (skip heavy PhaseA) -----
+      - name: Execute validation notebooks
+        run: |
+          find notebooks/validation -name '*.ipynb' -print0 | while IFS= read -r -d '' nb; do
+            jupyter nbconvert --execute --to notebook "$nb" \
+              --ExecutePreprocessor.kernel_name=torus-ci \
+              --ExecutePreprocessor.timeout=180;
+          done
+
+      # ----- Run lightweight scripts -----
+      - name: Run CMB script
+        run: python scripts/cmb_analysis_T-HET_vs_LCDM_adjusted_II.py
+        env: { PYTHONPATH: "${{ github.workspace }}"}   # ensure local modules
+
+      # ----- Lint & format -----
+      - name: Lint
+        run: |
+          black --check .
+          ruff .
+
+      # ----- README guard (skip hidden & allowlist) -----
+      - name: Check READMEs
+        run: python tests/README_guard.py

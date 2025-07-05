@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import pathlib, json, sys
+import pathlib
 
 SKIP_DIRS = {"PhaseA", ".ipynb_checkpoints"}
 
