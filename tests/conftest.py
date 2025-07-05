@@ -1,6 +1,7 @@
 import pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))       # ensure repo root first
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))           # repo root first
 
 NOTEBOOKS = ROOT / "notebooks"
 sys.path.insert(0, str(NOTEBOOKS))       # ensure notebooks directory is discoverable

@@ -12,3 +12,4 @@ dependencies:
   - jupyter
   - zstandard
   - h5py
+  - pytest

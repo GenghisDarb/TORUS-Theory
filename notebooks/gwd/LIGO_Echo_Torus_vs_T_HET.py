@@ -2,29 +2,8 @@
 
 from typing import Dict, Any, Tuple
 import numpy as np
-from scipy.signal import butter as _butter, filtfilt, welch
-
-def _safe_butter(
-    low: float,
-    high: float,
-    fs: float,
-    order: int = 4
-) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    Return band-pass Butterworth coefficients, validated.
-
-    Raises
-    ------
-    ValueError
-        If low/high band edges are not 0 < low < high < fs/2.
-    """
-    if not (0 < low < high < fs / 2):
-        raise ValueError(
-            f"Invalid band: low={low}, high={high}, fs={fs}"
-        )
-    wn = (low / (fs / 2), high / (fs / 2))
-    b, a = _butter(order, wn, btype="band")
-    return b, a
+from scipy.signal import filtfilt, welch
+from gwd._prep import _safe_butter
 
 def _prep(strain: np.ndarray, fs: float,
           fl: float = 20.0, fh: float = 1024.0) -> np.ndarray:
@@ -52,7 +31,7 @@ def _prep(strain: np.ndarray, fs: float,
 
         # Corrected Butterworth filter implementation
         try:
-            b, a = _safe_butter(low, high, fs)
+            b, a = _safe_butter(low=low, high=high, fs=fs, order=4)
             print(f"Butterworth filter coefficients: b={b}, a={a}")
         except Exception as butter_error:
             print(f"Error in butter function: {butter_error}")
