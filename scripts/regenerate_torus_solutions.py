@@ -6,7 +6,7 @@ import os
 from math import log10
 
 try:
-    import pykat                              # noqa: F401
+    import pykat  # noqa: F401
 except ImportError:
     PYKAT_OK = False
 
@@ -17,7 +17,7 @@ except ImportError:
                 "or rerun regenerate_torus_solutions.py with --no-kat"
             )
 
-    pykat = _NoKat()                          # type: ignore
+    pykat = _NoKat()  # type: ignore
 else:
     PYKAT_OK = True
 
@@ -56,7 +56,9 @@ if PYKAT_OK:
 
             # --- 2 · append χ-lattice optics (placeholder patch) ---
             with kat_out.open("a") as f:
-                f.write(f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n")
+                f.write(
+                    f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n"
+                )
 
             # --- 3 · simulate ---
             try:
@@ -68,11 +70,13 @@ if PYKAT_OK:
                 with open(csv_out, "w", newline="") as fp:
                     writer = csv.writer(fp)
                     writer.writerow(["lambda", "PSD"])
-                    for x, y in zip(getattr(kat, 'xaxis', []), getattr(kat, 'yaxis', [])):
+                    for x, y in zip(
+                        getattr(kat, "xaxis", []), getattr(kat, "yaxis", [])
+                    ):
                         writer.writerow([x, y])
 
                 # --- 4 · ΔS integration (very coarse) ---
-                psd = list(getattr(kat, 'yaxis', []))
+                psd = list(getattr(kat, "yaxis", []))
                 deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
             except AttributeError as e:
                 print(f"Error during simulation for {sol}: {e}")
@@ -87,6 +91,7 @@ else:
     print("    → Install with:  pip install pykat  (after installing FINESSE)")
     exit(0)
 
+
 def main():
     if not PYKAT_OK:
         print("⚠️  PyKat (FINESSE) not installed; skipping lattice regeneration.")
@@ -97,7 +102,7 @@ def main():
     out = []
     for f in files:
         df = pd.read_csv(f)
-        ΔS = np.trapz(df["strain"]**2, df["freq"])
+        ΔS = np.trapz(df["strain"] ** 2, df["freq"])
         out.append({"config": re.sub(r".*/χ_(.*)_noise.csv", r"\1", f), "ΔS": ΔS})
     pd.DataFrame(out).to_csv("results/ΔS_summary.csv", index=False)
     print("Wrote results/ΔS_summary.csv")
@@ -117,7 +122,9 @@ def main():
 
                 # --- 2 · append χ-lattice optics (placeholder patch) ---
                 with kat_out.open("a") as f:
-                    f.write(f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n")
+                    f.write(
+                        f"\n# TORUS χ-lattice patch\nschnupp {p['L']} m\nphi {p['phi']}\n"
+                    )
 
                 # --- 3 · simulate ---
                 try:
@@ -129,11 +136,13 @@ def main():
                     with open(csv_out, "w", newline="") as fp:
                         writer = csv.writer(fp)
                         writer.writerow(["lambda", "PSD"])
-                        for x, y in zip(getattr(kat, 'xaxis', []), getattr(kat, 'yaxis', [])):
+                        for x, y in zip(
+                            getattr(kat, "xaxis", []), getattr(kat, "yaxis", [])
+                        ):
                             writer.writerow([x, y])
 
                     # --- 4 · ΔS integration (very coarse) ---
-                    psd = list(getattr(kat, 'yaxis', []))
+                    psd = list(getattr(kat, "yaxis", []))
                     deltaS.append(dict(sol=sol, gain=max(psd) if psd else 0))
                 except AttributeError as e:
                     print(f"Error during simulation for {sol}: {e}")
@@ -144,17 +153,19 @@ def main():
         w.writeheader()
         w.writerows(deltaS)
 
+
 # regenerate_torus_solutions.py – Apply TORUS patches to baseline solutions and compute ΔS metrics
 # Directories for input and output
-BASE_SOL_DIR = "solutions/baseline"   # hypothetical directory of baseline solution JSONs
+BASE_SOL_DIR = "solutions/baseline"  # hypothetical directory of baseline solution JSONs
 TORUS_SOL_DIR = "solutions/torus_modified"
 os.makedirs(TORUS_SOL_DIR, exist_ok=True)
 
 # Example TORUS parameters to apply (these would come from theory or prior calculations)
 TORUS_PARAMS = {
-    "chi_factor": 0.7071,   # e.g., modify a coupling constant by sqrt(1/2) per recursion
-    "extra_dof": 1         # e.g., add one extra degree of freedom or state variable
+    "chi_factor": 0.7071,  # e.g., modify a coupling constant by sqrt(1/2) per recursion
+    "extra_dof": 1,  # e.g., add one extra degree of freedom or state variable
 }
+
 
 def apply_torus_modifications(base_data):
     """Apply TORUS modifications to a single solution data dict."""
@@ -168,6 +179,7 @@ def apply_torus_modifications(base_data):
     mod_data["TORUS_params_used"] = TORUS_PARAMS
     return mod_data
 
+
 def compute_delta_S(base_data, torus_data):
     """Compute performance difference (ΔS) between base and torus solutions."""
     # Placeholder: if 'sensitivity' or similar metric exists, compute log10 ratio
@@ -176,17 +188,18 @@ def compute_delta_S(base_data, torus_data):
     delta = 10 * log10(torus_sens / base_sens)
     return delta
 
+
 # Process each baseline solution file
 summary = {}
-if not list(pathlib.Path(BASE_SOL_DIR).glob('*.json')):
-    print('⚠️  No baseline solutions found – skipping regeneration.')
+if not list(pathlib.Path(BASE_SOL_DIR).glob("*.json")):
+    print("⚠️  No baseline solutions found – skipping regeneration.")
     exit(0)
 
 for fname in os.listdir(BASE_SOL_DIR):
     if fname.endswith(".json"):
         base_path = os.path.join(BASE_SOL_DIR, fname)
         torus_path = os.path.join(TORUS_SOL_DIR, fname)
-        with open(base_path, 'r') as f:
+        with open(base_path, "r") as f:
             base_solution = json.load(f)
         # Apply TORUS modifications
         torus_solution = apply_torus_modifications(base_solution)
@@ -194,11 +207,11 @@ for fname in os.listdir(BASE_SOL_DIR):
         delta_S = compute_delta_S(base_solution, torus_solution)
         summary[fname] = {"delta_S_dB": round(delta_S, 3)}
         # Save the modified solution
-        with open(torus_path, 'w') as f_out:
+        with open(torus_path, "w") as f_out:
             json.dump(torus_solution, f_out, indent=2)
         print(f"Processed {fname}: ΔS = {delta_S:.2f} dB")
 
 # Save summary of all solutions
-with open(os.path.join(TORUS_SOL_DIR, "summary_deltaS.json"), 'w') as f_sum:
+with open(os.path.join(TORUS_SOL_DIR, "summary_deltaS.json"), "w") as f_sum:
     json.dump(summary, f_sum, indent=2)
 print("Regeneration complete. Summary saved to summary_deltaS.json")

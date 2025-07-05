@@ -5,7 +5,10 @@ inject a kernelspec if missing, and drop in a universal bootstrap cell
 (imports, RNG seed, safe-sigma helper, etc.).  Idempotent: re-running
 won’t duplicate cells.
 """
-import json, pathlib, uuid, sys
+import json
+import pathlib
+import uuid
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 BOOT_CELL_TAG = "TORUS-BOOTSTRAP-CELL"
@@ -34,9 +37,10 @@ BOOT_CELL = {
     ],
 }
 
+
 def patch_notebook(path: pathlib.Path):
-    raw = path.read_text(encoding='utf-8')
-    if not raw.strip():                   # empty file → leave for user to fill
+    raw = path.read_text(encoding="utf-8")
+    if not raw.strip():  # empty file → leave for user to fill
         print(f"[skip] {path} is empty")
         return
     try:
@@ -56,15 +60,19 @@ def patch_notebook(path: pathlib.Path):
         print(f"[fix] kernelspec added → {path}")
 
     # 2. bootstrap cell
-    if not any(c.get("metadata", {}).get("tags") == [BOOT_CELL_TAG] for c in nb["cells"]):
+    if not any(
+        c.get("metadata", {}).get("tags") == [BOOT_CELL_TAG] for c in nb["cells"]
+    ):
         nb["cells"].insert(0, BOOT_CELL)
         print(f"[fix] bootstrap cell injected → {path}")
 
-    path.write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding='utf-8')
+    path.write_text(json.dumps(nb, indent=1, ensure_ascii=False), encoding="utf-8")
+
 
 def main():
     for ipynb in ROOT.rglob("*.ipynb"):
         patch_notebook(ipynb)
+
 
 if __name__ == "__main__":
     main() or sys.exit(0)

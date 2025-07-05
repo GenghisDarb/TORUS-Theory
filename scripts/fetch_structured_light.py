@@ -4,12 +4,8 @@ Download individual .h5 assets from Zenodo record 14002229.
 Keeps a tiny local cache; avoids pulling 1.9-GB Data.tar.gz unless --all.
 """
 import argparse
-import io
-import json
-import os
 import pathlib
 import sys
-import tarfile
 
 import requests
 import tqdm
