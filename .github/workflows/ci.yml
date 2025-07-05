@@ -136,11 +136,17 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install deps
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-ci.txt
+      - name: Register CI kernel
+        run: python -m ipykernel install --user --name torus-ci --display-name "Python (TORUS CI)"
       - name: Run notebook tests
         run: |
-          papermill notebooks/validation/bicycle/recursive_controller_validation.ipynb out.ipynb
+          for nb in $(python tools/list_notebooks.py); do
+            jupyter nbconvert --to notebook --execute "$nb" \
+              --ExecutePreprocessor.kernel_name=torus-ci \
+              --ExecutePreprocessor.timeout=180
+          done
 
   lint:
     runs-on: ubuntu-latest
