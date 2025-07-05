@@ -116,7 +116,7 @@ jobs:
         python-version: '3.12'
 
     - name: Install PyKat (optional)
-      if: env.PYKAT_ENABLED == 'true'
+      if: env.PYKAT_ENABLED == 'true'  # noqa: editor-hint
       run: |
         pip install pykat
 
@@ -238,3 +238,6 @@ jobs:
       # ----- README guard (skip hidden & allowlist) -----
       - name: Check READMEs
         run: python tests/README_guard.py
+
+env:
+  PYKAT_ENABLED: false
