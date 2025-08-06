@@ -128,7 +128,7 @@ Processed interferometer outputs and provenance live in
 
 ## License & Contact
 MIT License
-Maintainer: Genghis Darb <genghis.darb@gmail.com>
+Maintainer: Bradley Peter (Genghis Darb) <bradleypeter1984@gmail.com>
 
 ---
 
